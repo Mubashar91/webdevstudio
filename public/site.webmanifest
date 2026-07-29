@@ -1,0 +1,27 @@
+{
+  "name": "WebDevStudio — React & MERN Stack Development",
+  "short_name": "WebDevStudio",
+  "description": "WebDevStudio — React, TypeScript & MERN stack web development, led by Muhammad Mubashar Shahzad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f6fa",
+  "theme_color": "#2563eb",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

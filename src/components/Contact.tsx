@@ -1,0 +1,201 @@
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
+import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "lucide-react";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+
+const contactInfo = [
+  { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
+  { icon: Phone,  label: "Phone",    value: "+92 309 6403160",              href: "tel:+923096403160",                  iconBg: "bg-violet-500/12",  iconColor: "text-violet-500",  hoverBorder: "hover:border-violet-500/40" },
+  { icon: MapPin, label: "Location", value: "Mian Channu, Pakistan",        href: null,                                 iconBg: "bg-emerald-500/12", iconColor: "text-emerald-500", hoverBorder: "hover:border-emerald-500/40" },
+  { icon: Clock,  label: "Response", value: "Within 24 hours",              href: null,                                 iconBg: "bg-amber-500/12",   iconColor: "text-amber-500",   hoverBorder: "hover:border-amber-500/40" },
+];
+
+interface ContactProps {
+  compactHeader?: boolean;
+}
+
+export const Contact = ({ compactHeader = false }: ContactProps) => {
+  const { toast } = useToast();
+  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+  const [form, setForm] = useState({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const API_URL = import.meta.env?.VITE_API_URL || "http://localhost:5000";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setSubmitting(true);
+      const res = await fetch(`${API_URL}/api/requirements`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, budget: form.budget || undefined, timeline: form.timeline || undefined }),
+      });
+      if (!res.ok) throw new Error((await res.text().catch(() => "")) || `Error ${res.status}`);
+      toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
+      setForm({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
+    } catch (err) {
+      toast({ title: "Failed to send", description: err instanceof Error ? err.message : "Please try again.", variant: "destructive" });
+    } finally { setSubmitting(false); }
+  };
+
+  const inputCls = "bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/50";
+
+  return (
+    <section id="contact" className="py-28 relative overflow-hidden">
+      <div className="absolute inset-0 bg-muted/30 pointer-events-none" />
+      <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/4 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-500/4 rounded-full blur-[120px] pointer-events-none" />
+
+      <div ref={ref} className="container mx-auto px-6 relative z-10">
+
+        {/* Header */}
+        {!compactHeader && (
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className="section-label mb-6">
+              <MessageSquare className="h-4 w-4" />
+              Get In Touch
+            </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 tracking-tight">
+              Let's{" "}
+              <span className="gradient-text">Work Together</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+              Have a project in mind? I'd love to hear about it. Send me a message and let's make it happen.
+            </p>
+          </div>
+        )}
+
+        <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
+
+          {/* Form */}
+          <div className={`lg:col-span-3 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            <div className="rounded-2xl border border-border/40 bg-card shadow-card p-8">
+              <h3 className="text-xl font-bold mb-1">Send a Message</h3>
+              <p className="text-muted-foreground text-sm mb-7">Fill out the form and I'll respond within 24 hours.</p>
+
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="name" className="text-sm font-bold text-foreground/75">Your Name</label>
+                    <Input id="name" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="John Doe" required className={inputCls} />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="email" className="text-sm font-bold text-foreground/75">Email Address</label>
+                    <Input id="email" type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="john@example.com" required className={inputCls} />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="projectType" className="text-sm font-bold text-foreground/75">Project Type</label>
+                  <select
+                    id="projectType"
+                    value={form.projectType}
+                    onChange={e => setForm({ ...form, projectType: e.target.value })}
+                    className="w-full h-11 rounded-xl border border-border/50 bg-background/50 px-3 text-sm
+                      focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200"
+                  >
+                    {[["MERN","MERN Application"],["Node","Node.js Backend"],["React","React Frontend"],["Other","Other"]].map(([v,l]) => (
+                      <option key={v} value={v}>{l}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label htmlFor="description" className="text-sm font-bold text-foreground/75">Project Details</label>
+                  <Textarea
+                    id="description"
+                    value={form.description}
+                    onChange={e => setForm({ ...form, description: e.target.value })}
+                    placeholder="Tell me about your project, goals, and requirements..."
+                    rows={5}
+                    required
+                    className="bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary rounded-xl resize-none transition-all duration-200 placeholder:text-muted-foreground/50"
+                  />
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label htmlFor="budget" className="text-sm font-bold text-foreground/75">
+                      Budget <span className="text-muted-foreground font-normal">(optional)</span>
+                    </label>
+                    <Input id="budget" value={form.budget} onChange={e => setForm({ ...form, budget: e.target.value })} placeholder="e.g. $1,000 – $3,000" className={inputCls} />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label htmlFor="timeline" className="text-sm font-bold text-foreground/75">
+                      Timeline <span className="text-muted-foreground font-normal">(optional)</span>
+                    </label>
+                    <Input id="timeline" value={form.timeline} onChange={e => setForm({ ...form, timeline: e.target.value })} placeholder="e.g. 4–6 weeks" className={inputCls} />
+                  </div>
+                </div>
+
+                <Button type="submit" size="lg" disabled={submitting}
+                  className="w-full h-12 font-bold shadow-glow-sm group gap-2.5 rounded-2xl">
+                  {submitting ? (
+                    <><span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> Sending...</>
+                  ) : (
+                    <><Send className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" /> Send Message</>
+                  )}
+                </Button>
+              </form>
+            </div>
+          </div>
+
+          {/* Sidebar */}
+          <div className={`lg:col-span-2 flex flex-col gap-4 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+            {contactInfo.map(({ icon: Icon, label, value, href, iconBg, iconColor, hoverBorder }) => (
+              <div key={label}
+                className={`group flex items-center gap-4 p-5 rounded-2xl border border-border/40 bg-card
+                  shadow-card ${hoverBorder} hover:shadow-card-hover transition-all duration-300`}>
+                <div className={`p-3 rounded-xl ${iconBg} ${iconColor} flex-shrink-0
+                  group-hover:scale-110 transition-transform duration-300`}>
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.12em] mb-0.5">{label}</p>
+                  {href
+                    ? <a href={href} className="text-sm font-semibold hover:text-primary transition-colors truncate block underline-anim">{value}</a>
+                    : <p className="text-sm font-semibold truncate">{value}</p>}
+                </div>
+              </div>
+            ))}
+
+            {/* Availability */}
+            <div className="relative overflow-hidden rounded-2xl p-7 mt-1
+              bg-gradient-to-br from-primary via-blue-600 to-violet-600
+              shadow-[0_8px_40px_hsl(224_78%_52%/0.35)]">
+              <div className="absolute inset-0 dot-grid opacity-8" />
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
+              <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/8 rounded-full blur-2xl" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <span className="relative flex h-3 w-3">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+                  </span>
+                  <span className="text-white font-bold text-sm">Available Now</span>
+                </div>
+                <h3 className="text-xl font-extrabold text-white mb-2">Open for Freelance</h3>
+                <p className="text-white/70 text-sm leading-relaxed mb-5">
+                  Currently accepting new projects. Let's build something great together.
+                </p>
+                <div className="space-y-2.5">
+                  {["Quick onboarding", "Flexible hours", "Regular updates", "Quality guaranteed"].map(item => (
+                    <div key={item} className="flex items-center gap-2.5 text-white/80 text-xs font-medium">
+                      <CheckCircle2 className="h-3.5 w-3.5 text-green-400 flex-shrink-0" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};

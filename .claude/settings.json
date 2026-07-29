@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:8080/web-development-new-zealand -o /dev/null -w \"nz page: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:8080/web-development-cyprus -o /dev/null -w \"cyprus page: %{http_code}\\\\n\")",
+      "Bash(curl -s http://localhost:8080/sitemap.xml -o /dev/null -w \"sitemap: %{http_code}\\\\n\")",
+      "Bash(taskkill //F //IM node.exe //FI \"WINDOWTITLE eq npm*\")",
+      "Bash(pkill -f \"vite\")"
+    ]
+  }
+}

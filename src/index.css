@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 98%;
+    --foreground: 222 48% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 48% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 48% 12%;
+    --primary: 224 82% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-rgb: 32, 95, 225;
+    --primary-glow: 224 82% 68%;
+    --secondary: 220 25% 95%;
+    --secondary-foreground: 222 48% 12%;
+    --muted: 220 22% 95%;
+    --muted-foreground: 220 16% 50%;
+    --accent: 262 85% 62%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 62%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 22% 90%;
+    --input: 220 22% 90%;
+    --ring: 224 82% 55%;
+    --radius: 0.85rem;
+    --shadow-glow: 0 0 0 1px hsl(224 82% 55% / 0.15), 0 10px 48px hsl(224 82% 55% / 0.28);
+    --shadow-glow-sm: 0 0 0 1px hsl(224 82% 55% / 0.1), 0 6px 24px hsl(224 82% 55% / 0.22);
+    --shadow-card: 0 2px 4px hsl(0 0% 0% / 0.05), 0 6px 20px hsl(0 0% 0% / 0.08);
+    --shadow-card-hover: 0 6px 12px hsl(0 0% 0% / 0.08), 0 16px 56px hsl(224 82% 55% / 0.18);
+  }
+
+  .dark {
+    --background: 224 30% 4%;
+    --foreground: 213 35% 95%;
+    --card: 224 28% 8%;
+    --card-foreground: 213 35% 95%;
+    --popover: 224 28% 8%;
+    --popover-foreground: 213 35% 95%;
+    --primary: 224 85% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-rgb: 62, 122, 245;
+    --primary-glow: 224 85% 78%;
+    --secondary: 224 24% 12%;
+    --secondary-foreground: 213 35% 95%;
+    --muted: 224 24% 10%;
+    --muted-foreground: 215 22% 60%;
+    --accent: 262 80% 70%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 65% 48%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 224 24% 14%;
+    --input: 224 24% 14%;
+    --ring: 224 85% 68%;
+    --shadow-glow: 0 0 0 1px hsl(224 85% 68% / 0.22), 0 10px 48px hsl(224 85% 68% / 0.32);
+    --shadow-glow-sm: 0 0 0 1px hsl(224 85% 68% / 0.14), 0 6px 24px hsl(224 85% 68% / 0.26);
+    --shadow-card: 0 2px 4px hsl(0 0% 0% / 0.25), 0 6px 20px hsl(0 0% 0% / 0.22);
+    --shadow-card-hover: 0 6px 12px hsl(0 0% 0% / 0.3), 0 16px 56px hsl(224 85% 68% / 0.22);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4, h5, h6 { @apply font-bold tracking-tight; }
+  ::selection {
+    background: hsl(var(--primary) / 0.22);
+    color: hsl(var(--foreground));
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.3); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.55); }
+}
+
+@layer utilities {
+  /* Backgrounds */
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--primary) / 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  .line-grid {
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  /* Shadows */
+  .shadow-glow    { box-shadow: var(--shadow-glow); }
+  .shadow-glow-sm { box-shadow: var(--shadow-glow-sm); }
+  .shadow-card    { box-shadow: var(--shadow-card); }
+  .shadow-card-hover { box-shadow: var(--shadow-card-hover); }
+
+  /* Glass */
+  .glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid hsl(var(--border) / 0.45);
+  }
+
+  /* Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-blue-400 to-violet-500 bg-clip-text text-transparent;
+  }
+  .gradient-text-warm {
+    @apply bg-gradient-to-r from-amber-500 via-orange-400 to-pink-500 bg-clip-text text-transparent;
+  }
+  
+  /* Animated gradient background */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Glassmorphism variants */
+  .glass-dark {
+    background: hsl(var(--card) / 0.75);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid hsl(var(--border) / 0.55);
+  }
+  
+  .glass-light {
+    background: hsl(var(--card) / 0.45);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid hsl(var(--border) / 0.35);
+  }
+
+  /* Section label pill */
+  .section-label {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full
+      bg-primary/10 border border-primary/20 text-primary text-sm font-semibold
+      backdrop-blur-sm;
+  }
+
+  /* Hover card */
+  .card-lift {
+    @apply transition-all duration-300
+      hover:-translate-y-2
+      hover:shadow-[0_16px_56px_hsl(var(--primary)/0.16)]
+      hover:border-primary/35;
+  }
+
+  /* 3D tilt-lift — a restrained perspective tilt + rise on hover, used across
+     card grids (stats, services, projects, testimonials, process, skills) so
+     the whole site shares one consistent sense of depth. Respects
+     prefers-reduced-motion via the global rule below. */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease,
+      border-color 0.4s ease, opacity 0.7s ease;
+  }
+  .tilt-card:hover {
+    transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateY(-6px);
+  }
+
+  /* Animated underline */
+  .underline-anim {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0
+      after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+@layer utilities {
+  /* Aurora background blobs — slow independent drift, used on the Hero.
+     Kept separate from any mouse-parallax transform (applied to a wrapping
+     element instead) since a CSS animation's transform always wins over an
+     inline style transform on the same element. */
+  @keyframes aurora-drift-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(70px, -50px) scale(1.15); }
+  }
+  @keyframes aurora-drift-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, 60px) scale(1.1); }
+  }
+  @keyframes aurora-drift-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, 45px) scale(0.92); }
+  }
+  @keyframes aurora-drift-4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-45px, -35px) scale(1.08); }
+  }
+  .animate-aurora-1 { animation: aurora-drift-1 19s ease-in-out infinite; }
+  .animate-aurora-2 { animation: aurora-drift-2 23s ease-in-out infinite; }
+  .animate-aurora-3 { animation: aurora-drift-3 27s ease-in-out infinite; }
+  .animate-aurora-4 { animation: aurora-drift-4 21s ease-in-out infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
