@@ -57,7 +57,7 @@ export const Pricing = ({ compactHeader = false }: PricingProps) => {
             >
               {pkg.featured && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full
-                  bg-gradient-to-r from-primary to-violet-600 text-white text-[11px] font-bold
+                  bg-gradient-to-r from-primary to-violet-600 text-white text-xs md:text-[11px] font-bold
                   uppercase tracking-wider shadow-glow-sm whitespace-nowrap">
                   Most popular
                 </span>
@@ -71,7 +71,7 @@ export const Pricing = ({ compactHeader = false }: PricingProps) => {
               {/* Price. "from" sits on its own line rather than inline —
                   at three columns the inline version pushed "/project" past
                   the card edge and clipped it. */}
-              <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.14em] mb-1">
+              <p className="text-xs md:text-[11px] font-bold text-muted-foreground uppercase tracking-[0.14em] mb-1">
                 from
               </p>
               <div className="flex items-baseline flex-wrap gap-x-1.5 mb-1">

@@ -29,9 +29,15 @@ const Blogs = () => {
           headline: post.title,
           description: post.excerpt,
           url: canonicalPath(`/blogs/${post.slug}`),
+          // image, dateModified and publisher are all required for Article
+          // rich-result eligibility; without them these entries could never
+          // qualify no matter how good the content was.
+          image: post.coverImage,
           datePublished: post.publishedAt,
+          dateModified: post.updatedAt ?? post.publishedAt,
           keywords: post.tags.join(", "),
           author: { "@id": `${canonicalPath("/")}#founder` },
+          publisher: { "@id": `${canonicalPath("/")}#organization` },
         })),
       },
       breadcrumbNodeFor([

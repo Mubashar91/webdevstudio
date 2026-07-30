@@ -17,6 +17,16 @@
     <meta name="twitter:site" content="@mubashardev" />
     <meta name="twitter:creator" content="@mubashardev" />
 
+    <!-- Google Search Console ownership verification.
+         Static (not generated) so prerender.mjs copies it to every route —
+         Google only checks the homepage, but leaving it sitewide means
+         re-verification keeps working if the verified URL ever changes.
+         Do not remove: deleting it un-verifies the property. -->
+    <meta
+      name="google-site-verification"
+      content="pFterQN1G5H_UPC95RtATtrigdx92LtU8futA4a8Wp0"
+    />
+
     <!-- ── Favicon & PWA ── -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -44,6 +54,10 @@
       />
     </noscript>
 
+    <!-- Google Analytics (gtag.js) is injected here by vite.config.ts for
+         production builds only, from GA_MEASUREMENT_ID in site.config.mjs. -->
+    <!--analytics-->
+
     <!-- ── Performance hints ── -->
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
   </head>
@@ -52,26 +66,14 @@
     <div id="root"></div>
 
     <!--
-      Fallback copy for crawlers and users without JavaScript. Prerendered
-      <head> tags cover metadata; this covers the visible content contract so a
-      no-JS fetch is never a blank page.
+      No hardcoded fallback copy here.
+
+      This block previously contained a static <h1>, and because prerender.mjs
+      copies this same template to every route, all 8 pages shipped an
+      identical H1 in their raw HTML. scripts/prerender.mjs now injects the
+      real server-rendered page — including that route's own H1 — into #root
+      above, so a no-JS fetch already receives the genuine content.
     -->
-    <noscript>
-      <div style="max-width: 40rem; margin: 4rem auto; padding: 0 1.5rem; font-family: system-ui, sans-serif; line-height: 1.6;">
-        <h1>WebDevStudio — React &amp; MERN Web Development</h1>
-        <p>
-          WebDevStudio builds fast, conversion-focused React, TypeScript and
-          MERN stack web applications for businesses worldwide, led by
-          Muhammad Mubashar Shahzad.
-        </p>
-        <p>
-          This site needs JavaScript for the full experience. To get in touch
-          directly, email
-          <a href="mailto:mmubasharshahzad40@gmail.com">mmubasharshahzad40@gmail.com</a>
-          or call <a href="tel:+923096403160">+92 309 6403160</a>.
-        </p>
-      </div>
-    </noscript>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>

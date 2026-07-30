@@ -1,1 +1,10 @@
-/*    /index.html   200
+# Netlify fallback rules (Vercel uses vercel.json instead).
+#
+# Static files win before these rules, so the 8 prerendered routes are served
+# directly. Only genuinely dynamic paths fall back to the SPA shell; everything
+# else gets a real 404 instead of the soft-200 a blanket /* rule produced.
+/projects/*   /index.html   200
+/blogs/*      /index.html   200
+/admin        /index.html   200
+/admin/*      /index.html   200
+/*            /404.html     404

@@ -12,10 +12,39 @@
  * ─────────────────────────────────────────────────────────────────────────
  */
 
-export const DEFAULT_SITE_URL = "https://webdevstudio.me";
+/**
+ * Canonical origin for the whole site — canonical tags, OG URLs, sitemap
+ * <loc> entries and every JSON-LD @id derive from this.
+ *
+ * MUST include "www". Verified 2026-07-30:
+ *   https://www.webdevstudio.me/  → 200 (serves the site)
+ *   https://webdevstudio.me/      → 308 redirect to the www host
+ *
+ * Pointing canonicals at the apex would aim every canonical, sitemap entry and
+ * @id at a URL that only redirects. Google generally follows that, but it
+ * wastes crawl budget and delays indexing — the canonical should be the URL
+ * that actually returns 200.
+ *
+ * If you ever flip Vercel's primary domain to the apex, change this to match
+ * whichever host serves 200, or set VITE_SITE_URL in the Vercel environment.
+ */
+export const DEFAULT_SITE_URL = "https://www.webdevstudio.me";
 export const SITE_NAME = "WebDevStudio";
 export const FOUNDER_NAME = "Muhammad Mubashar Shahzad";
+/**
+ * GA4 measurement ID. Injected by the seoHead plugin in vite.config.ts, and
+ * only in production builds — a static tag in index.html would also fire from
+ * `npm run dev`, mixing local development traffic into real reports.
+ * Set to "" to disable analytics entirely.
+ */
+export const GA_MEASUREMENT_ID = "G-1EB05GJDW9";
+
 export const CONTACT_EMAIL = "mmubasharshahzad40@gmail.com";
+/**
+ * Displayed on the contact page and footer for humans, but deliberately NOT
+ * emitted in structured data — a personal mobile in machine-readable markup on
+ * every page is an easy scraping target for spam.
+ */
 export const TELEPHONE = "+923096403160";
 export const FOUNDING_YEAR = "2020";
 
@@ -25,18 +54,27 @@ export const SOCIAL_PROFILES = [
   "https://linkedin.com/in/mubasharshahzad",
 ];
 
+/**
+ * Country only — deliberately not a street/locality address.
+ *
+ * This previously published the founder's home town in LocalBusiness-style
+ * schema on every page. That exposed a personal address sitewide and
+ * misrepresented a remote-only practice as having a physical premises.
+ * Country-level is enough for entity disambiguation and honest about the
+ * service model.
+ */
 export const POSTAL_ADDRESS = {
-  locality: "Mian Channu",
-  region: "Punjab",
   country: "PK",
 };
 
 /**
- * Price band advertised in schema and on the pricing section.
  * NOTE: confirm these reflect your actual rates before going live —
  * schema prices that contradict the page are a structured-data violation.
+ *
+ * There is deliberately no entity-level `priceRange` any more: that property
+ * belongs to LocalBusiness types, and the real numbers are already expressed
+ * precisely in the Offer/PriceSpecification nodes.
  */
-export const PRICE_RANGE = "$$";
 export const PRICE_CURRENCY = "USD";
 
 export const SERVICE_PACKAGES = [
@@ -213,9 +251,9 @@ export const ROUTES = [
     priority: "1.0",
     changefreq: "weekly",
     lastmod: "2026-07-29",
-    title: "React & MERN Web Development for Growing Businesses | WebDevStudio",
+    title: "React & MERN Web Development | WebDevStudio",
     description:
-      "WebDevStudio builds fast, conversion-focused React, TypeScript and MERN stack web applications. 5+ years experience, 50+ projects delivered. Remote development for New Zealand, Cyprus and clients worldwide.",
+      "Fast, conversion-focused React, TypeScript and MERN web apps. 5+ years, 50+ projects delivered. Remote development for NZ, Cyprus and worldwide.",
     keywords:
       "React development agency, MERN stack development, hire React developer, TypeScript web development, Node.js development, remote web developer, WebDevStudio",
   },
@@ -226,7 +264,7 @@ export const ROUTES = [
     lastmod: "2026-07-29",
     title: "Web Development Services & Pricing | WebDevStudio",
     description:
-      "Transparent pricing for React, MERN and Node.js development. Marketing sites from $900, full web applications from $2,500, monthly retainers from $1,200. Fixed scope, fixed price, no agency overhead.",
+      "Transparent pricing for React, MERN and Node.js development. Sites from $900, web apps from $2,500, retainers from $1,200/mo. Fixed scope, fixed price.",
     keywords:
       "web development services, React development pricing, MERN stack development cost, hire freelance web developer, Node.js backend development",
     faqs: SERVICES_FAQS,
@@ -238,7 +276,7 @@ export const ROUTES = [
     lastmod: "2026-07-29",
     title: "Web Development Portfolio & Case Studies | WebDevStudio",
     description:
-      "Selected React, MERN and Node.js projects — the problem, the build, and the result. See how WebDevStudio delivers production web applications for clients worldwide.",
+      "Selected React, MERN and Node.js projects — the problem, the build and the result. See how WebDevStudio delivers production web applications.",
     keywords:
       "React portfolio, MERN stack projects, web development case studies, Node.js projects, developer portfolio",
   },
@@ -249,7 +287,7 @@ export const ROUTES = [
     lastmod: "2026-07-29",
     title: "About WebDevStudio | Led by Muhammad Mubashar Shahzad",
     description:
-      "WebDevStudio is the web development practice of Muhammad Mubashar Shahzad — 5+ years building React, TypeScript and MERN stack applications for clients across New Zealand, Cyprus, the EU and beyond.",
+      "WebDevStudio is the practice of Muhammad Mubashar Shahzad — 5+ years building React, TypeScript and MERN stack apps for clients worldwide.",
     keywords:
       "Muhammad Mubashar Shahzad, about WebDevStudio, React developer background, MERN stack expert",
   },
@@ -280,9 +318,9 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-29",
-    title: "Web Developer for New Zealand Businesses | React & MERN — WebDevStudio",
+    title: "React & MERN Developer for New Zealand | WebDevStudio",
     description:
-      "Remote React and MERN stack developer for New Zealand businesses — Auckland, Wellington, Christchurch and nationwide. NZD-friendly pricing, senior-level delivery, no local agency markup.",
+      "Remote React and MERN developer for New Zealand businesses — Auckland, Wellington and nationwide. NZD-friendly pricing, senior-level delivery.",
     keywords:
       "web developer New Zealand, hire React developer NZ, MERN stack developer Auckland, web development Wellington, freelance developer New Zealand",
     faqs: NZ_FAQS,
@@ -292,7 +330,7 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-29",
-    title: "Web Developer for Cyprus Businesses | React & MERN — WebDevStudio",
+    title: "React & MERN Developer for Cyprus | WebDevStudio",
     description:
       "Remote React and MERN stack developer serving Cyprus — Limassol, Nicosia and Larnaca. EUR/USD pricing, real working-hours overlap, GDPR-conscious builds.",
     keywords:
@@ -353,9 +391,15 @@ export function organizationGraph(siteUrl) {
       caption: SITE_NAME,
     },
     {
-      // Dual-typed: an Organization for entity resolution, and a
-      // ProfessionalService so service-business rich results apply.
-      "@type": ["Organization", "ProfessionalService"],
+      // Plain Organization — NOT ProfessionalService.
+      //
+      // ProfessionalService is a LocalBusiness subtype: it asserts a physical
+      // place of business, which is false for a remote-only practice serving
+      // NZ/Cyprus/UK/AU/US. Claiming it alongside a personal home address was
+      // both a misrepresentation and a privacy leak on every page.
+      // priceRange also lived here; the real prices belong in the
+      // Offer/PriceSpecification nodes below, where they already are.
+      "@type": "Organization",
       "@id": id.organization,
       name: SITE_NAME,
       alternateName: "WebDev Studio",
@@ -365,18 +409,12 @@ export function organizationGraph(siteUrl) {
       description:
         "WebDevStudio builds fast, conversion-focused React, TypeScript and MERN stack web applications for businesses worldwide.",
       email: CONTACT_EMAIL,
-      telephone: TELEPHONE,
       foundingDate: FOUNDING_YEAR,
       founder: { "@id": id.founder },
       employee: { "@id": id.founder },
-      priceRange: PRICE_RANGE,
-      currenciesAccepted: "USD, EUR, NZD",
-      paymentAccepted: "Bank transfer, Wise, PayPal",
       knowsLanguage: ["en", "ur"],
       address: {
         "@type": "PostalAddress",
-        addressLocality: POSTAL_ADDRESS.locality,
-        addressRegion: POSTAL_ADDRESS.region,
         addressCountry: POSTAL_ADDRESS.country,
       },
       areaServed: [
@@ -390,7 +428,6 @@ export function organizationGraph(siteUrl) {
         "@type": "ContactPoint",
         contactType: "sales",
         email: CONTACT_EMAIL,
-        telephone: TELEPHONE,
         availableLanguage: ["English"],
         areaServed: "Worldwide",
       },
@@ -434,11 +471,17 @@ export function organizationGraph(siteUrl) {
       url: `${base}/about`,
       email: CONTACT_EMAIL,
       worksFor: { "@id": id.organization },
+      // Country only, for the same privacy reason as the Organization node.
       address: {
         "@type": "PostalAddress",
-        addressLocality: POSTAL_ADDRESS.locality,
-        addressRegion: POSTAL_ADDRESS.region,
         addressCountry: POSTAL_ADDRESS.country,
+      },
+      // Education history lives here rather than in a second bare #founder
+      // node on /about: JSON-LD does NOT merge two nodes sharing an @id within
+      // one document, so that produced a split, half-typed entity.
+      alumniOf: {
+        "@type": "CollegeOrUniversity",
+        name: "University of Education, Lahore",
       },
       sameAs: SOCIAL_PROFILES,
       knowsAbout: [

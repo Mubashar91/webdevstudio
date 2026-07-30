@@ -46,12 +46,15 @@ export const Hero = () => {
   const bookingWindow = nextBookingWindow();
 
   return (
+    /* min-h-svh, not min-h-screen: 100vh on mobile browsers includes the
+       collapsing URL bar, so the hero measured taller than the visible area
+       and its lower content sat under the chrome on first paint. */
     <section
       id="hero"
       ref={scene.ref as React.RefObject<HTMLElement>}
       onMouseMove={scene.onMouseMove}
       onMouseLeave={scene.onMouseLeave}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-deep"
+      className="relative min-h-svh flex items-center justify-center overflow-hidden bg-surface-deep"
       style={{ perspective: "1400px" }}
     >
       {/* ── Background — aurora mesh, no stock imagery ──
@@ -98,9 +101,9 @@ export const Hero = () => {
         bg-gradient-to-b from-transparent to-background" />
 
       {/* ── Content ── */}
-      <div className="container mx-auto px-6 relative z-10 pt-28 pb-24">
+      <div className="container mx-auto px-6 relative z-10 pt-24 pb-16 md:pt-28 md:pb-24">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          <div className="flex flex-col lg:flex-row items-center gap-10 md:gap-14 lg:gap-24">
 
             {/* ── Left column ── */}
             <div className="flex-1 text-center lg:text-left">
@@ -111,7 +114,7 @@ export const Hero = () => {
                   reason to exist beyond decoration. */}
               <div className="inline-flex items-center gap-2.5 pl-3 pr-4 py-2 rounded-full
                 bg-white/[0.07] border border-white/12 text-white text-[13px] font-semibold
-                mb-8 animate-fade-in backdrop-blur-md">
+                mb-6 md:mb-8 animate-fade-in backdrop-blur-md">
                 <span className="relative flex h-2 w-2 ml-1">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
@@ -129,7 +132,7 @@ export const Hero = () => {
                   an introduction. The founder's name moves to the byline below:
                   visitors deciding whether to hire still see it, but the H1 now
                   carries the terms people actually search for. */}
-              <h1 className="font-extrabold mb-7 animate-fade-in tracking-tight">
+              <h1 className="font-extrabold mb-5 md:mb-7 animate-fade-in tracking-tight">
                 <span className="block text-4xl md:text-6xl lg:text-[4.2rem] leading-[1.02] mb-3">
                   <span className="bg-gradient-to-r from-white via-blue-200 to-violet-300 bg-clip-text text-transparent">
                     React &amp; MERN
@@ -143,7 +146,7 @@ export const Hero = () => {
               </h1>
 
               {/* Description */}
-              <p className="text-base md:text-lg text-white/60 leading-relaxed mb-8
+              <p className="text-base md:text-lg text-white/60 leading-relaxed mb-6 md:mb-8
                 max-w-lg mx-auto lg:mx-0 animate-fade-in">
                 I design and ship fast, accessible web applications in{" "}
                 <span className="text-white font-bold">React</span>,{" "}
@@ -155,7 +158,7 @@ export const Hero = () => {
 
               {/* Founder byline — keeps the personal trust signal the old H1
                   carried, without spending the H1 on it. */}
-              <p className="text-sm text-white/45 mb-10 animate-fade-in">
+              <p className="text-sm text-white/45 mb-7 md:mb-10 animate-fade-in">
                 Led by{" "}
                 <span className="text-white/80 font-semibold">
                   Muhammad Mubashar Shahzad
@@ -167,7 +170,7 @@ export const Hero = () => {
                   than browsing work. "Hire Me" asked for a commitment before
                   the visitor had any reason to make one. */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start
-                gap-4 mb-5 animate-fade-in">
+                gap-3 md:gap-4 mb-5 animate-fade-in">
                 <Button
                   size="lg"
                   asChild
@@ -198,7 +201,7 @@ export const Hero = () => {
 
               {/* Risk-reversal strip directly under the CTA */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start
-                gap-x-5 gap-y-2 mb-12 animate-fade-in">
+                gap-x-5 gap-y-2 mb-8 md:mb-12 animate-fade-in">
                 {ctaAssurances.map((item) => (
                   <span key={item} className="inline-flex items-center gap-1.5 text-xs text-white/45 font-medium">
                     <Check className="h-3.5 w-3.5 text-green-400/80" />
@@ -243,7 +246,7 @@ export const Hero = () => {
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="p-2.5 rounded-xl bg-white/[0.06] border border-white/12 text-white/55
+                      className="p-3 md:p-2.5 rounded-xl bg-white/[0.06] border border-white/12 text-white/55
                         hover:text-white hover:border-white/30 hover:bg-white/12
                         transition-all duration-300 backdrop-blur-sm"
                     >
@@ -313,7 +316,7 @@ export const Hero = () => {
                       >
                         <Icon className="h-4 w-4 text-primary" />
                         <span className="text-lg font-extrabold text-white leading-none">{value}</span>
-                        <span className="text-[10px] text-white/45 font-bold uppercase tracking-wide">{label}</span>
+                        <span className="text-xs md:text-[10px] text-white/45 font-bold uppercase tracking-wide">{label}</span>
                       </div>
                     ))}
                   </div>
@@ -331,7 +334,7 @@ export const Hero = () => {
       <div className="hidden tall:flex absolute bottom-8 left-1/2 -translate-x-1/2
         flex-col items-center gap-2 opacity-40 pointer-events-none">
         <ChevronDown className="h-5 w-5 text-white animate-bounce" />
-        <span className="text-[10px] text-white/65 tracking-[0.25em] uppercase font-bold">Scroll</span>
+        <span className="text-xs md:text-[10px] text-white/65 tracking-[0.25em] uppercase font-bold">Scroll</span>
       </div>
     </section>
   );

@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/prerender.mjs",
-    "build:dev": "vite build --mode development && node scripts/prerender.mjs",
+    "build": "vite build && npm run build:ssr && node scripts/prerender.mjs",
+    "build:dev": "vite build --mode development && npm run build:ssr && node scripts/prerender.mjs",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr --ssrManifest false",
     "prerender": "node scripts/prerender.mjs",
     "og": "node scripts/generate-og-image.mjs",
     "lint": "eslint .",

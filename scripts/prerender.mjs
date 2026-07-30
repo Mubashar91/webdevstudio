@@ -20,7 +20,7 @@
  */
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 import {
   ROUTES,
@@ -33,6 +33,7 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "..", "dist");
+const ssrEntry = join(__dirname, "..", "dist-ssr", "entry-server.js");
 
 const SITE_URL = normalizeSiteUrl(
   process.env.VITE_SITE_URL || process.env.SITE_URL
@@ -50,6 +51,22 @@ const escapeJsonLd = (value) =>
   JSON.stringify(value).replace(/</g, "\\u003c");
 
 /**
+ * Injects server-rendered markup into <div id="root"></div>.
+ *
+ * React hydrates over this on load, so the visible result is unchanged for
+ * real users — but a crawler that never runs JS now receives the full page.
+ */
+function injectBody(html, bodyHtml) {
+  const rootPattern = /(<div id="root">)(<\/div>)/;
+  if (!rootPattern.test(html)) {
+    throw new Error(
+      'prerender: could not find <div id="root"></div> in the built HTML.'
+    );
+  }
+  return html.replace(rootPattern, (_m, open, close) => `${open}${bodyHtml}${close}`);
+}
+
+/**
  * Replaces the crawler-relevant tags in the built index.html.
  * Everything else (asset links, favicons, fonts) is preserved as-is.
  */
@@ -59,10 +76,11 @@ function renderHead(templateHtml, route) {
 
   let html = templateHtml;
 
-  // Title
+  // Title. Replacer function for the same reason as below — "$" sequences in
+  // dynamic content must never be interpreted as replacement patterns.
   html = html.replace(
     /<title>[\s\S]*?<\/title>/,
-    `<title>${escapeAttr(route.title)}</title>`
+    () => `<title>${escapeAttr(route.title)}</title>`
   );
 
   // Simple name/property meta replacements
@@ -86,7 +104,15 @@ function renderHead(templateHtml, route) {
           `Update scripts/prerender.mjs if you changed the head markup.`
       );
     }
-    html = html.replace(pattern, `$1${escapeAttr(value)}$2`);
+    // Replacer FUNCTION, not a replacement string. With a string, "$" is
+    // special: the services description contains "$2,500" and "$1,200", and
+    // String.replace read those as backreferences to capture groups 2 and 1,
+    // rewriting the description to '..."500, monthly retainers from <meta
+    // name="description" content=",200...'. A function receives the groups as
+    // arguments, so "$" in the content is never interpreted.
+    html = html.replace(pattern, (_match, open, close) =>
+      `${open}${escapeAttr(value)}${close}`
+    );
   }
 
   // Replace all build-time JSON-LD with this route's single connected graph.
@@ -94,11 +120,15 @@ function renderHead(templateHtml, route) {
     /\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,
     ""
   );
+  // The graph embeds price copy ("$900", "$2,500"), so this also uses a
+  // replacer function — with a string replacement "$&", "$`" and "$'" stay
+  // special even when the search pattern is a plain string.
   html = html.replace(
     "</head>",
-    `  <script type="application/ld+json">${escapeJsonLd(
-      routeGraph(SITE_URL, route)
-    )}</script>\n  </head>`
+    () =>
+      `  <script type="application/ld+json">${escapeJsonLd(
+        routeGraph(SITE_URL, route)
+      )}</script>\n  </head>`
   );
 
   return html;
@@ -121,6 +151,86 @@ ${urls}
 `;
 }
 
+/**
+ * robots.txt is generated rather than kept static so its Sitemap: line always
+ * matches the origin everything else is built with. A hardcoded copy silently
+ * pointed at the dead webdevstudio.me host.
+ */
+function renderRobots() {
+  const aiBots = [
+    "GPTBot",
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "PerplexityBot",
+    "ClaudeBot",
+    "Google-Extended",
+    "Applebot-Extended",
+  ];
+
+  return `# ${SITE_NAME} — ${SITE_URL}
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# ── AI answer engines ──
+# Named explicitly so the intent survives future edits to the group above.
+${aiBots
+  .map((bot) => `User-agent: ${bot}\nAllow: /\nDisallow: /admin\n`)
+  .join("\n")}
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
+}
+
+/**
+ * llms.txt — a plain-text site summary some AI engines read. Previously this
+ * path fell through the SPA catch-all and returned the HTML shell with a 200,
+ * which is worse than a 404 because it looks like a valid file.
+ *
+ * Google Search and AI Overviews do not use llms.txt; this is cheap coverage
+ * for the engines that do.
+ */
+function renderLlmsTxt() {
+  const lines = ROUTES.map(
+    (r) => `- [${r.title.split("|")[0].trim()}](${absoluteUrl(SITE_URL, r.path)}): ${r.description}`
+  ).join("\n");
+
+  return `# ${SITE_NAME}
+
+> React, TypeScript and MERN stack web development for businesses worldwide.
+> Led by Muhammad Mubashar Shahzad. Remote delivery, fixed-price projects.
+
+## Pages
+
+${lines}
+
+## Contact
+
+- Email: mmubasharshahzad40@gmail.com
+- Quote requests: ${absoluteUrl(SITE_URL, "/contact")}
+`;
+}
+
+/**
+ * A real 404 page. Vercel serves dist/404.html for paths that match no file
+ * and no rewrite, which — combined with the narrowed rewrite rules in
+ * vercel.json — replaces the soft-200 that previously served the full
+ * homepage (including its canonical and JSON-LD) for every bad URL.
+ */
+function render404(template) {
+  let html = template;
+  html = html.replace(/<title>[\s\S]*?<\/title>/, () => "<title>Page not found | " + SITE_NAME + "</title>");
+  html = html.replace(
+    /(<meta\s+name="robots"\s+content=")[^"]*(")/,
+    (_m, open, close) => `${open}noindex, follow${close}`
+  );
+  // A 404 must not assert a canonical URL or carry the homepage entity graph.
+  html = html.replace(/\s*<link rel="canonical"[^>]*>/g, "");
+  html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
+  return html;
+}
+
 async function main() {
   let template;
   try {
@@ -132,8 +242,31 @@ async function main() {
     process.exit(1);
   }
 
+  let render;
+  try {
+    ({ render } = await import(pathToFileURL(ssrEntry).href));
+  } catch (err) {
+    console.error(
+      "prerender: could not load dist-ssr/entry-server.js — run `npm run build:ssr` first.\n",
+      err.message
+    );
+    process.exit(1);
+  }
+
   for (const route of ROUTES) {
-    const html = renderHead(template, route);
+    let html = renderHead(template, route);
+
+    // Server-render the route's markup into the root div. A failure here is
+    // fatal rather than silently falling back to an empty body — shipping a
+    // blank page to crawlers is the exact regression this step prevents.
+    const body = render(route.path);
+    if (!body || body.length < 500) {
+      throw new Error(
+        `prerender: ${route.path} rendered only ${body?.length ?? 0} chars of HTML. ` +
+          `Expected a full page — check for a render-time error in that route.`
+      );
+    }
+    html = injectBody(html, body);
 
     // "/" overwrites dist/index.html; every other route becomes
     // dist/<path>/index.html, which static hosts serve directly.
@@ -144,11 +277,24 @@ async function main() {
 
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, html, "utf8");
-    console.log(`  ✓ ${route.path.padEnd(32)} → ${outPath.replace(distDir, "dist")}`);
+    console.log(
+      `  ✓ ${route.path.padEnd(32)} → ${outPath.replace(distDir, "dist")}  (${(
+        body.length / 1024
+      ).toFixed(0)} KB body)`
+    );
   }
+
+  await writeFile(join(distDir, "404.html"), render404(template), "utf8");
+  console.log("  ✓ 404.html");
 
   await writeFile(join(distDir, "sitemap.xml"), renderSitemap(), "utf8");
   console.log(`  ✓ sitemap.xml (${ROUTES.length} URLs)`);
+
+  await writeFile(join(distDir, "robots.txt"), renderRobots(), "utf8");
+  console.log("  ✓ robots.txt");
+
+  await writeFile(join(distDir, "llms.txt"), renderLlmsTxt(), "utf8");
+  console.log("  ✓ llms.txt");
 
   console.log(`\nprerender: ${SITE_NAME} — ${ROUTES.length} routes at ${SITE_URL}`);
 }

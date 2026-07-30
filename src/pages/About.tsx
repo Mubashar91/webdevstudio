@@ -25,17 +25,6 @@ const About = () => {
         url: canonicalPath("/about"),
         mainEntity: { "@id": `${canonicalPath("/")}#founder` },
       },
-      // Education and employment history attach to the existing Person node
-      // by @id. Previously this page declared a second Person whose worksFor
-      // pointed at a different employer than the homepage's, which left Google
-      // reconciling two conflicting people with the same name.
-      {
-        "@id": `${canonicalPath("/")}#founder`,
-        alumniOf: {
-          "@type": "CollegeOrUniversity",
-          name: "University of Education, Lahore",
-        },
-      },
       breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },

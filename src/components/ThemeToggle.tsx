@@ -31,7 +31,13 @@ export const ThemeToggle = ({ className }: ThemeToggleProps) => {
       variant="ghost"
       size="icon"
       onClick={toggleTheme}
-      className={cn("rounded-full hover:bg-primary/10 transition-all duration-300", className)}
+      aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
+      className={cn(
+        // h-11 w-11 on mobile for a 44px touch target; the shadcn icon size
+        // default is 40px, which is under the accessible minimum.
+        "h-11 w-11 md:h-10 md:w-10 rounded-full hover:bg-primary/10 transition-all duration-300",
+        className
+      )}
     >
       {theme === "light" ? (
         <Moon className="h-5 w-5" />

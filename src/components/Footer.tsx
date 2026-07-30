@@ -96,7 +96,7 @@ export const Footer = () => {
 
           {/* Navigation */}
           <div className={`md:col-span-3 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h4 className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
+            <h4 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
               Navigation
             </h4>
             <ul className="space-y-3.5">
@@ -116,7 +116,7 @@ export const Footer = () => {
 
           {/* Connect */}
           <div className={`md:col-span-4 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h4 className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
+            <h4 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
               Connect
             </h4>
             <div className="flex flex-col gap-3">
@@ -127,7 +127,7 @@ export const Footer = () => {
                   aria-label={label}
                   className={`group inline-flex items-center gap-3 text-sm text-muted-foreground
                     hover:text-foreground transition-all duration-200 font-medium`}>
-                  <div className={`w-9 h-9 rounded-xl bg-muted/50 border border-border/40
+                  <div className={`w-11 h-11 md:w-9 md:h-9 rounded-xl bg-muted/50 border border-border/40
                     flex items-center justify-center ${color}
                     transition-all duration-200 shadow-sm group-hover:shadow-md`}>
                     <Icon className="h-4 w-4" />

@@ -84,7 +84,7 @@ export const Blogs = ({ compactHeader = false }: BlogsProps) => {
                   {post.excerpt}
                 </p>
 
-                <Button size="sm" variant="ghost" className="w-fit h-9 text-xs font-bold gap-1.5 rounded-xl" asChild>
+                <Button size="sm" variant="ghost" className="w-fit h-11 md:h-9 text-xs font-bold gap-1.5 rounded-xl" asChild>
                   <Link to={`/blogs/${post.slug}`}>
                     Read article
                     <ArrowRight className="h-3.5 w-3.5" />

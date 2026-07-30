@@ -43,7 +43,9 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
     } finally { setSubmitting(false); }
   };
 
-  const inputCls = "bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/50";
+  // text-base on mobile: iOS Safari zooms the viewport when a focused
+  // field is under 16px and never zooms back out.
+  const inputCls = "text-base md:text-sm bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/50";
 
   return (
     <section id="contact" className="py-28 relative overflow-hidden">
@@ -97,7 +99,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
                     id="projectType"
                     value={form.projectType}
                     onChange={e => setForm({ ...form, projectType: e.target.value })}
-                    className="w-full h-11 rounded-xl border border-border/50 bg-background/50 px-3 text-sm
+                    className="w-full h-11 rounded-xl border border-border/50 bg-background/50 px-3 text-base md:text-sm
                       focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200"
                   >
                     {[["MERN","MERN Application"],["Node","Node.js Backend"],["React","React Frontend"],["Other","Other"]].map(([v,l]) => (
@@ -115,7 +117,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
                     placeholder="Tell me about your project, goals, and requirements..."
                     rows={5}
                     required
-                    className="bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary rounded-xl resize-none transition-all duration-200 placeholder:text-muted-foreground/50"
+                    className="bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary rounded-xl resize-none transition-all duration-200 placeholder:text-muted-foreground/50 text-base md:text-sm"
                   />
                 </div>
 
@@ -157,7 +159,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-[0.12em] mb-0.5">{label}</p>
+                  <p className="text-xs md:text-[11px] font-bold text-muted-foreground uppercase tracking-[0.12em] mb-0.5">{label}</p>
                   {href
                     ? <a href={href} className="text-sm font-semibold hover:text-primary transition-colors truncate block underline-anim">{value}</a>
                     : <p className="text-sm font-semibold truncate">{value}</p>}

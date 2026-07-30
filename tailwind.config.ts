@@ -19,6 +19,13 @@ export default {
            collided with the CTA row on short laptop screens. */
         tall: { raw: "(min-height: 780px)" },
       },
+      spacing: {
+        /* Tailwind's default scale skips 13, so the `h-13` used on the hero
+           and services CTAs generated no CSS at all — those buttons collapsed
+           to their 24px content height instead of 52px, well under the 44px
+           minimum touch target. Defining it makes the existing markup work. */
+        13: "3.25rem",
+      },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },

@@ -62,12 +62,12 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
 
       <div ref={ref} className="container mx-auto px-6 relative z-10">
         {!compactHeader && (
-          <div className={`text-center mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-            <div className="section-label mb-8">
+          <div className={`text-center mb-12 md:mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+            <div className="section-label mb-5 md:mb-8">
               <FolderOpen className="h-5 w-5" />
               Portfolio
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 md:mb-6 tracking-tight">
               Featured{" "}
               <span className="gradient-text">Projects</span>
             </h2>
@@ -77,13 +77,18 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
           </div>
         )}
 
-        <div className={`flex justify-center mb-16 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="inline-flex items-center gap-1.5 p-2 rounded-2xl bg-card border border-border/50 shadow-card">
+        {/* flex-wrap, not inline-flex: five px-6 pills measure ~550px, so on a
+            375px screen the row overflowed its centred container on both sides
+            and the section's overflow-hidden clipped the outer filters off the
+            screen entirely — they were unreachable, not just cut off. */}
+        <div className={`flex justify-center mb-10 md:mb-16 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="flex flex-wrap justify-center items-center gap-1.5 p-2 max-w-full
+            rounded-2xl bg-card border border-border/50 shadow-card">
             {FILTERS.map(({ value, label }) => (
               <button
                 key={value}
                 onClick={() => setFilter(value)}
-                className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
+                className={`inline-flex items-center min-h-11 px-4 sm:px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
                   filter === value
                     ? "bg-primary text-white shadow-sm shadow-primary/40 scale-[1.03]"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/70"
@@ -167,13 +172,13 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                       {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40"
+                          className="px-2.5 py-0.5 rounded-full text-xs md:text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 4 && (
-                        <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs md:text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40">
                           +{project.technologies.length - 4}
                         </span>
                       )}
@@ -181,7 +186,7 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
 
                     <div className="flex gap-2 pt-4 border-t border-border/35">
                       {project.githubLink && (
-                        <Button size="sm" variant="ghost" className="flex-1 h-9 text-xs font-bold hover:bg-muted/70 gap-1.5 rounded-xl" asChild>
+                        <Button size="sm" variant="ghost" className="flex-1 h-11 md:h-9 text-xs font-bold hover:bg-muted/70 gap-1.5 rounded-xl" asChild>
                           <a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                             <Github className="h-3.5 w-3.5" /> Source
                           </a>
@@ -189,7 +194,7 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                       )}
                       <Button
                         size="sm"
-                        className={`${project.githubLink ? "flex-1" : "w-full"} h-9 text-xs font-bold shadow-sm shadow-primary/20 gap-1.5 rounded-xl`}
+                        className={`${project.githubLink ? "flex-1" : "w-full"} h-11 md:h-9 text-xs font-bold shadow-sm shadow-primary/20 gap-1.5 rounded-xl`}
                         asChild
                       >
                         <Link to={detailPath}>

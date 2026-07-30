@@ -96,14 +96,18 @@ export const Navigation = () => {
           {/* Right side */}
           <div className="flex items-center gap-2">
             <ThemeToggle className={isTransparent ? "text-white hover:bg-white/15" : ""} />
+            {/* 44x44 is the minimum comfortable touch target (WCAG 2.5.5 /
+                Apple HIG). This was 36x36 — hard to hit accurately, and it's
+                the first control every mobile visitor has to use. */}
             <Button
               variant="ghost"
               size="icon"
-              className={`md:hidden h-9 w-9 rounded-xl transition-colors ${
+              className={`md:hidden h-11 w-11 rounded-xl transition-colors ${
                 isTransparent ? "text-white hover:bg-white/15" : ""
               }`}
               onClick={() => setOpen(!open)}
               aria-label="Toggle menu"
+              aria-expanded={open}
             >
               {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -115,13 +119,18 @@ export const Navigation = () => {
           <div className={`md:hidden mt-3 pt-3 pb-2 border-t animate-fade-in ${
             isTransparent ? "border-white/20" : "border-border/40"
           }`}>
+            {/* min-h-11 gives each row a 44px touch target — py-2.5 alone
+                produced ~38px rows stacked directly against each other, and
+                tapping the intended link was fiddly. Closing the menu on
+                navigation also stops it staying open over the new page. */}
             <div className="flex flex-col gap-0.5">
               {navLinks.map(({ to, label }) => (
                 <Link
                   key={to}
                   to={to}
                   aria-current={active(to) ? "page" : undefined}
-                  className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                  onClick={() => setOpen(false)}
+                  className={`flex items-center min-h-11 px-4 py-2.5 rounded-xl text-base font-semibold transition-all duration-200 ${
                     active(to)
                       ? "bg-primary/15 text-primary"
                       : isTransparent

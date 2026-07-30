@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import {
+  GA_MEASUREMENT_ID,
   ROUTES,
   SITE_NAME,
   absoluteUrl,
@@ -23,7 +24,7 @@ import {
  * scripts/prerender.mjs runs after the build and rewrites this same block per
  * route into dist/<route>/index.html.
  */
-function seoHead(siteUrl: string): Plugin {
+function seoHead(siteUrl: string, injectAnalytics: boolean): Plugin {
   return {
     name: "seo-head",
     transformIndexHtml(html: string) {
@@ -62,14 +63,35 @@ function seoHead(siteUrl: string): Plugin {
       routeGraph(siteUrl, home)
     ).replace(/</g, "\\u003c")}</script>`;
 
-      return html.replace("<!--seo-head-->", head);
+      // Google Analytics. Production builds only, so `npm run dev` never
+      // sends hits into the real property.
+      const analytics =
+        injectAnalytics && GA_MEASUREMENT_ID
+          ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${GA_MEASUREMENT_ID}');
+    </script>`
+          : "";
+
+      // Replacer functions: `head` embeds JSON-LD containing price strings, and
+      // in a string replacement "$&", "$`", "$'" and "$$" are special even
+      // when the search pattern is a plain string rather than a regex.
+      return html
+        .replace("<!--seo-head-->", () => head)
+        .replace("<!--analytics-->", () => analytics);
     },
   };
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
+export default defineConfig(({ mode, command, isSsrBuild }) => {
   const siteUrl = normalizeSiteUrl(process.env.VITE_SITE_URL);
+  // Analytics only in a real production build — not the dev server, and not
+  // the SSR pass (that output is discarded after prerendering).
+  const injectAnalytics = command === "build" && mode === "production" && !isSsrBuild;
 
   return {
     server: {
@@ -78,7 +100,7 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      seoHead(siteUrl),
+      seoHead(siteUrl, injectAnalytics),
       mode === "development" && componentTagger(),
     ].filter(Boolean),
     resolve: {
@@ -89,12 +111,15 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          // Splits the vendor bundle so a content change doesn't invalidate
-          // React/Radix for returning visitors, shortening the critical path.
-          manualChunks: {
-            react: ["react", "react-dom", "react-router-dom"],
-            charts: ["recharts"],
-          },
+          // Client only. In the SSR build React is an external, and Rollup
+          // errors if an external is named in manualChunks.
+          manualChunks: isSsrBuild
+            ? undefined
+            : {
+                // Splits the vendor bundle so a content change doesn't
+                // invalidate React for returning visitors.
+                react: ["react", "react-dom", "react-router-dom"],
+              },
         },
       },
     },
