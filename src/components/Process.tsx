@@ -48,7 +48,7 @@ export const Process = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-muted/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-surface-alt pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.15] pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-primary/4 rounded-full blur-[120px] pointer-events-none" />
 

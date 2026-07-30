@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useSEO } from "@/hooks/use-seo";
 import { UserPlus, Shield, User, Mail, Lock, Sparkles } from "lucide-react";
 
 const schema = z.object({
@@ -21,6 +22,9 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>;
 
 export default function AdminSignup() {
+  // Auth screens must never appear in search results.
+  useSEO({ title: "Sign up | WebDevStudio Admin", description: "WebDevStudio admin sign up.", noindex: true });
+
   const navigate = useNavigate();
   const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { adminCode: "", name: "", email: "", password: "" } });
   const API_URL = ((import.meta as unknown) as { env?: Record<string, string | undefined> }).env?.VITE_API_URL || "http://localhost:5000";

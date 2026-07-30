@@ -5,43 +5,42 @@ import { Skills } from "@/components/Skills";
 import { TechStack } from "@/components/TechStack";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath } from "@/lib/seo";
+import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
+
+const meta = routeMeta("/about")!;
 
 const About = () => {
   useSEO({
-    title: "About WebDevStudio | Muhammad Mubashar Shahzad, Frontend Developer",
-    description:
-      "WebDevStudio is led by Muhammad Mubashar Shahzad — Frontend Developer from Pakistan with 5+ years experience in React.js, TypeScript, Node.js & MERN stack. BIT graduate, worked at Codewire Solution & Solvefy.",
-    keywords:
-      "about WebDevStudio, Muhammad Mubashar Shahzad, frontend developer Pakistan, React developer experience, MERN stack developer, Codewire Solution, Solvefy developer",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/about"),
-    structuredData: [
+    structuredData: pageGraph("/about", [
       {
-        "@context": "https://schema.org",
         "@type": "AboutPage",
+        "@id": `${canonicalPath("/about")}#aboutpage`,
         name: "About Muhammad Mubashar Shahzad",
         description:
           "Professional background, work experience, education and skills of Muhammad Mubashar Shahzad, Frontend Developer.",
         url: canonicalPath("/about"),
-        mainEntity: {
-          "@type": "Person",
-          name: "Muhammad Mubashar Shahzad",
-          jobTitle: "Frontend Developer",
-          alumniOf: {
-            "@type": "CollegeOrUniversity",
-            name: "University of Education, Lahore",
-          },
-          worksFor: {
-            "@type": "Organization",
-            name: "Codewire Solution",
-          },
+        mainEntity: { "@id": `${canonicalPath("/")}#founder` },
+      },
+      // Education and employment history attach to the existing Person node
+      // by @id. Previously this page declared a second Person whose worksFor
+      // pointed at a different employer than the homepage's, which left Google
+      // reconciling two conflicting people with the same name.
+      {
+        "@id": `${canonicalPath("/")}#founder`,
+        alumniOf: {
+          "@type": "CollegeOrUniversity",
+          name: "University of Education, Lahore",
         },
       },
-      breadcrumbSchema([
+      breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
       ]),
-    ],
+    ]),
   });
 
   return (

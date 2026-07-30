@@ -4,7 +4,12 @@ import { Footer } from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath, SITE_NAME } from "@/lib/seo";
+import {
+  breadcrumbNodeFor,
+  canonicalPath,
+  pageGraph,
+  SITE_NAME,
+} from "@/lib/seo";
 import { findBlogPost } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 
@@ -23,24 +28,36 @@ const BlogDetail = () => {
     ogType: "article",
     noindex: !post,
     structuredData: post
-      ? [
+      ? pageGraph("/blogs", [
           {
-            "@context": "https://schema.org",
             "@type": "BlogPosting",
+            "@id": `${canonicalPath(`/blogs/${post.slug}`)}#article`,
             headline: post.title,
             description: post.excerpt,
             image: post.coverImage,
             datePublished: post.publishedAt,
+            // Google treats a missing dateModified as "never updated".
+            // Falling back to publish date is accurate and avoids the gap.
+            dateModified: post.updatedAt ?? post.publishedAt,
             url: canonicalPath(`/blogs/${post.slug}`),
-            author: { "@type": "Organization", name: SITE_NAME },
+            mainEntityOfPage: canonicalPath(`/blogs/${post.slug}`),
+            // A named human author, not the Organization. Google's guidance
+            // for E-E-A-T expects articles to be attributed to a person with
+            // a resolvable identity — which the Person node in the graph
+            // provides via sameAs links.
+            author: { "@id": `${canonicalPath("/")}#founder` },
+            publisher: { "@id": `${canonicalPath("/")}#organization` },
             keywords: post.tags.join(", "),
+            articleSection: post.category,
+            wordCount: post.content.join(" ").split(/\s+/).length,
+            inLanguage: "en",
           },
-          breadcrumbSchema([
+          breadcrumbNodeFor([
             { name: "Home", path: "/" },
             { name: "Blog", path: "/blogs" },
             { name: post.title, path: `/blogs/${post.slug}` },
           ]),
-        ]
+        ])
       : undefined,
   });
 

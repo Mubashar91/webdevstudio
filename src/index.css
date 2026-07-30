@@ -6,6 +6,14 @@
   :root {
     --background: 220 30% 98%;
     --foreground: 222 48% 12%;
+    /* Alternating section surface. Sections previously used four different
+       ad-hoc treatments (bg-muted/40, /30, /25 and an undefined
+       bg-section-alt), which banded unevenly down the page. One token keeps
+       every "off" band identical in both themes. */
+    --surface-alt: 220 26% 96%;
+    /* Base tone of the always-dark hero and CTA bands, shared so they match
+       each other exactly rather than each hardcoding a slightly different hsl. */
+    --surface-deep: 224 45% 7%;
     --card: 0 0% 100%;
     --card-foreground: 222 48% 12%;
     --popover: 0 0% 100%;
@@ -35,6 +43,10 @@
   .dark {
     --background: 224 30% 4%;
     --foreground: 213 35% 95%;
+    /* Only ~3% lighter than --background: enough to read as a band on an OLED
+       panel without the muddy grey step the old bg-muted/40 produced. */
+    --surface-alt: 224 26% 7%;
+    --surface-deep: 224 32% 5%;
     --card: 224 28% 8%;
     --card-foreground: 213 35% 95%;
     --popover: 224 28% 8%;

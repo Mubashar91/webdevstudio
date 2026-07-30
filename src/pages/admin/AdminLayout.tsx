@@ -3,6 +3,7 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { useSEO } from "@/hooks/use-seo";
 import { LayoutDashboard, FolderPlus, LogOut, Home, Sparkles, FileText, Moon, Sun } from "lucide-react";
 
 const navItems = [
@@ -13,6 +14,15 @@ const navItems = [
 
 export default function AdminLayout(_props: PropsWithChildren) {
   const navigate = useNavigate();
+
+  // robots.txt asks crawlers not to fetch /admin, but a disallowed URL can
+  // still be indexed if something links to it. The noindex tag is what
+  // actually keeps these pages out of results.
+  useSEO({
+    title: "Admin | WebDevStudio",
+    description: "WebDevStudio admin area.",
+    noindex: true,
+  });
 
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof window === "undefined") return "light";

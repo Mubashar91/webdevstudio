@@ -7,6 +7,9 @@ export interface BlogPost {
   category: string;
   readTime: string;
   publishedAt: string;
+  /** ISO date. Set when you revise a post — feeds BlogPosting.dateModified,
+   *  which Google uses to judge freshness. Falls back to publishedAt. */
+  updatedAt?: string;
   tags: string[];
 }
 

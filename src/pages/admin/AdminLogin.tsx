@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useSEO } from "@/hooks/use-seo";
 import { LogIn, Mail, Lock, Eye, EyeOff, Sparkles } from "lucide-react";
 
 const schema = z.object({
@@ -27,6 +28,9 @@ type LoginResponse = {
 };
 
 export default function AdminLogin() {
+  // Auth screens must never appear in search results.
+  useSEO({ title: "Sign in | WebDevStudio Admin", description: "WebDevStudio admin sign in.", noindex: true });
+
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { email: "", password: "" } });

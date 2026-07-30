@@ -4,34 +4,51 @@ import { Projects as ProjectsSection } from "@/components/Projects";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath } from "@/lib/seo";
+import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
+import { STATIC_PROJECTS } from "@/data/projects";
+
+const meta = routeMeta("/projects")!;
 
 const Projects = () => {
   useSEO({
-    title: "Projects | WebDevStudio — React & MERN Stack Portfolio",
-    description:
-      "Explore WebDevStudio's portfolio of 50+ web applications built with React.js, TypeScript, Node.js & MERN stack — including hospital management systems, e-commerce dashboards, and mobile apps.",
-    keywords:
-      "WebDevStudio projects, React portfolio, MERN stack projects, Node.js projects, web development portfolio, hospital management system, e-commerce dashboard",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/projects"),
-    structuredData: [
+    structuredData: pageGraph("/projects", [
       {
-        "@context": "https://schema.org",
         "@type": "CollectionPage",
+        "@id": `${canonicalPath("/projects")}#collection`,
         name: "Projects by WebDevStudio",
         description:
           "Portfolio of web applications built with React.js, TypeScript, Node.js and MERN stack.",
         url: canonicalPath("/projects"),
-        author: {
-          "@type": "Organization",
-          name: "WebDevStudio",
+        author: { "@id": `${canonicalPath("/")}#organization` },
+        // Enumerating the portfolio as an ItemList gives crawlers and AI
+        // answer engines the actual project names and stacks, instead of a
+        // page they can only describe as "a portfolio".
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: STATIC_PROJECTS.length,
+          itemListElement: STATIC_PROJECTS.map((project, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            item: {
+              "@type": "CreativeWork",
+              name: project.title,
+              description: project.description,
+              url: canonicalPath(`/projects/${project._id}`),
+              keywords: project.technologies.join(", "),
+              creator: { "@id": `${canonicalPath("/")}#organization` },
+            },
+          })),
         },
       },
-      breadcrumbSchema([
+      breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "Projects", path: "/projects" },
       ]),
-    ],
+    ]),
   });
 
   return (

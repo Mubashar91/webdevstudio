@@ -3,36 +3,33 @@ import { PageHeader } from "@/components/PageHeader";
 import { Contact as ContactSection } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath } from "@/lib/seo";
+import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
+
+const meta = routeMeta("/contact")!;
 
 const Contact = () => {
   useSEO({
-    title: "Contact WebDevStudio | Hire a Frontend Developer",
-    description:
-      "Get in touch with WebDevStudio for web development projects. Available for React.js, MERN stack, and full-stack development for clients in New Zealand, Cyprus, and worldwide. Fast response within 24 hours.",
-    keywords:
-      "contact WebDevStudio, hire frontend developer, hire React developer, hire web developer New Zealand, hire web developer Cyprus, freelance web developer, MERN stack freelancer, web development inquiry",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/contact"),
-    structuredData: [
+    structuredData: pageGraph("/contact", [
       {
-        "@context": "https://schema.org",
         "@type": "ContactPage",
+        "@id": `${canonicalPath("/contact")}#contactpage`,
         name: "Contact WebDevStudio",
         description:
           "Contact page for hiring WebDevStudio for web development projects.",
         url: canonicalPath("/contact"),
-        mainEntity: {
-          "@type": "Organization",
-          name: "WebDevStudio",
-          email: "mmubasharshahzad40@gmail.com",
-          telephone: "+923096403160",
-        },
+        // References the site-wide Organization rather than declaring a
+        // second, thinner copy of it with a different set of properties.
+        mainEntity: { "@id": `${canonicalPath("/")}#organization` },
       },
-      breadcrumbSchema([
+      breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "Contact", path: "/contact" },
       ]),
-    ],
+    ]),
   });
 
   return (

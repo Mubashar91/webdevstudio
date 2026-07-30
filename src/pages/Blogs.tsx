@@ -4,33 +4,41 @@ import { Blogs as BlogsSection } from "@/components/Blogs";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath } from "@/lib/seo";
+import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
+import { BLOG_POSTS } from "@/data/blogs";
+
+const meta = routeMeta("/blogs")!;
 
 const Blogs = () => {
   useSEO({
-    title: "Blog | WebDevStudio — React & MERN Development",
-    description:
-      "Articles on React performance, TypeScript patterns, and MERN stack architecture from WebDevStudio's development work.",
-    keywords:
-      "React blog, MERN stack tutorials, TypeScript tips, frontend developer blog, web development articles",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/blogs"),
-    structuredData: [
+    structuredData: pageGraph("/blogs", [
       {
-        "@context": "https://schema.org",
         "@type": "Blog",
+        "@id": `${canonicalPath("/blogs")}#blog`,
         name: "WebDevStudio — Developer Blog",
         description: "Articles on React, TypeScript, and MERN stack development.",
         url: canonicalPath("/blogs"),
-        author: {
-          "@type": "Organization",
-          name: "WebDevStudio",
-        },
+        publisher: { "@id": `${canonicalPath("/")}#organization` },
+        blogPost: BLOG_POSTS.map((post) => ({
+          "@type": "BlogPosting",
+          "@id": `${canonicalPath(`/blogs/${post.slug}`)}#article`,
+          headline: post.title,
+          description: post.excerpt,
+          url: canonicalPath(`/blogs/${post.slug}`),
+          datePublished: post.publishedAt,
+          keywords: post.tags.join(", "),
+          author: { "@id": `${canonicalPath("/")}#founder` },
+        })),
       },
-      breadcrumbSchema([
+      breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "Blog", path: "/blogs" },
       ]),
-    ],
+    ]),
   });
 
   return (

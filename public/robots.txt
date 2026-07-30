@@ -1,4 +1,41 @@
+# WebDevStudio — https://webdevstudio.me
+
 User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# ── AI answer engines ──
+# Explicitly allowed. These crawlers surface businesses inside ChatGPT,
+# Perplexity, Claude and Google AI Overviews, which is an increasingly common
+# way prospective clients find developers. Leaving them implicit works, but
+# naming them documents the intent and survives future edits to the wildcard
+# group above.
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+
+User-agent: Applebot-Extended
 Allow: /
 Disallow: /admin
 

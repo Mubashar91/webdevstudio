@@ -3,39 +3,23 @@ import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
 import { Services as ServicesSection } from "@/components/Services";
+import { Pricing } from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath, faqSchema } from "@/lib/seo";
+import {
+  breadcrumbNodeFor,
+  canonicalPath,
+  faqNodeFor,
+  pageGraph,
+  routeMeta,
+} from "@/lib/seo";
+// FAQs live in site.config.mjs so the prerenderer can emit FAQPage schema
+// into the static HTML; importing them here keeps the visible Q&A identical
+// to the markup, which Google requires.
+import { NZ_FAQS as faqs } from "@/lib/site.config.mjs";
 
-const faqs = [
-  {
-    question: "Do you work with businesses based in New Zealand?",
-    answer:
-      "Yes. I'm a remote frontend/MERN stack developer based in Pakistan, currently working with clients across New Zealand, Australia, the UK and beyond. All collaboration happens online — video calls, Slack/email, and shared project boards — so location is never a blocker.",
-  },
-  {
-    question: "How do we handle the time zone difference?",
-    answer:
-      "Pakistan Standard Time is roughly 7–8 hours behind New Zealand. In practice this works in your favour: I typically work while it's evening/overnight in NZ, so tasks logged today are often progressed or completed by the time your team starts the next business day. We agree on a short overlap window (early NZ morning) for calls when needed.",
-  },
-  {
-    question: "What currency and payment methods do you accept?",
-    answer:
-      "I invoice in USD or NZD via bank transfer, Wise, or PayPal — whichever is easiest on your end. Rates are quoted upfront with a clear scope, so there are no surprises.",
-  },
-  {
-    question: "Can you match New Zealand business hours for calls?",
-    answer:
-      "Yes — I keep flexible hours specifically to overlap with NZ mornings (NZST/NZDT) for stand-ups, demos, or planning sessions when live discussion is useful.",
-  },
-  {
-    question: "Do you sign contracts and NDAs?",
-    answer:
-      "Absolutely. I'm happy to work under your standard contract, NDA, or IP assignment terms before any project details are shared.",
-  },
-];
 
 const valueProps = [
   {
@@ -66,40 +50,44 @@ const valueProps = [
 
 const industries = ["SaaS & Startups", "E-commerce", "Tourism & Hospitality", "Agritech", "Professional Services"];
 
+const meta = routeMeta("/web-development-new-zealand")!;
+
 const WebDevelopmentNewZealand = () => {
   useSEO({
-    title: "Web Developer for New Zealand Businesses | React & MERN Stack — WebDevStudio",
-    description:
-      "Remote React.js & MERN stack developer serving New Zealand businesses — Auckland, Wellington, Christchurch & beyond. 5+ years experience, transparent NZD/USD pricing, overnight delivery workflow.",
-    keywords:
-      "web developer New Zealand, hire React developer New Zealand, MERN stack developer NZ, remote web developer Auckland, web development Wellington, freelance developer New Zealand",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/web-development-new-zealand"),
-    structuredData: [
+    structuredData: pageGraph("/web-development-new-zealand", [
+      // Country-scoped Service linked to the site-wide Organization by @id,
+      // rather than a detached duplicate of it.
       {
-        "@context": "https://schema.org",
         "@type": "Service",
+        "@id": `${canonicalPath("/web-development-new-zealand")}#service`,
         name: "Web Development Services for New Zealand Businesses",
         description:
           "Remote React.js, MERN stack, and full-stack web development for businesses in New Zealand, delivered by WebDevStudio.",
         url: canonicalPath("/web-development-new-zealand"),
-        provider: { "@type": "Organization", name: "WebDevStudio" },
-        areaServed: { "@type": "Country", name: "New Zealand" },
-        hasOfferCatalog: {
-          "@type": "OfferCatalog",
-          name: "Web Development Services",
-          itemListElement: [
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Full-Stack MERN Development" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "React.js Development" } },
-            { "@type": "Offer", itemOffered: { "@type": "Service", name: "Node.js Backend Development" } },
-          ],
+        serviceType: "Web Development",
+        provider: { "@id": `${canonicalPath("/")}#organization` },
+        areaServed: [
+          { "@type": "Country", name: "New Zealand" },
+          { "@type": "City", name: "Auckland" },
+          { "@type": "City", name: "Wellington" },
+          { "@type": "City", name: "Christchurch" },
+        ],
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: canonicalPath("/contact"),
+          availableLanguage: { "@type": "Language", name: "English" },
         },
       },
-      faqSchema(faqs),
-      breadcrumbSchema([
+      faqNodeFor(faqs),
+      breadcrumbNodeFor([
         { name: "Home", path: "/" },
         { name: "Web Development New Zealand", path: "/web-development-new-zealand" },
       ]),
-    ],
+    ]),
   });
 
   return (
@@ -119,6 +107,7 @@ const WebDevelopmentNewZealand = () => {
           faqs={faqs}
         />
         <ServicesSection compactHeader />
+        <Pricing />
         <Testimonials />
         <CTA />
       </main>

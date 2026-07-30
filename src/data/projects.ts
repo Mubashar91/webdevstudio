@@ -16,8 +16,11 @@ export interface Project {
   features?: string[];
 }
 
-export const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000";
+// Re-exported for the existing call sites in Projects.tsx / ProjectDetail.tsx.
+// Resolution lives in one place so the localhost fallback can't leak into
+// production builds again.
+import { API_BASE_URL } from "@/lib/api";
+export { API_BASE_URL };
 
 export const STATIC_PROJECTS: Project[] = [
   {

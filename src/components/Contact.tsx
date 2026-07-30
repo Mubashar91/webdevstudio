@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { buildEnquiryMailto, submitRequirement } from "@/lib/api";
 
 const contactInfo = [
   { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
@@ -23,22 +24,22 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
   const [form, setForm] = useState({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
   const [submitting, setSubmitting] = useState(false);
 
-  const API_URL = import.meta.env?.VITE_API_URL || "http://localhost:5000";
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setSubmitting(true);
-      const res = await fetch(`${API_URL}/api/requirements`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, budget: form.budget || undefined, timeline: form.timeline || undefined }),
-      });
-      if (!res.ok) throw new Error((await res.text().catch(() => "")) || `Error ${res.status}`);
+      await submitRequirement(form);
       toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
       setForm({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
-    } catch (err) {
-      toast({ title: "Failed to send", description: err instanceof Error ? err.message : "Please try again.", variant: "destructive" });
+    } catch {
+      // Never drop a lead: hand the enquiry to the visitor's mail client
+      // prefilled, rather than showing a dead-end error.
+      window.location.href = buildEnquiryMailto(form);
+      toast({
+        title: "Opening your email app",
+        description:
+          "The contact form couldn't reach the server, so I've prefilled an email for you instead. Just hit send.",
+      });
     } finally { setSubmitting(false); }
   };
 
@@ -46,7 +47,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
 
   return (
     <section id="contact" className="py-28 relative overflow-hidden">
-      <div className="absolute inset-0 bg-muted/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-surface-alt pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/4 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-violet-500/4 rounded-full blur-[120px] pointer-events-none" />

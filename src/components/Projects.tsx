@@ -55,7 +55,7 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
 
   return (
     <section id="projects" className={`relative overflow-hidden ${compactHeader ? "py-24" : "py-32"}`}>
-      <div className="absolute inset-0 bg-muted/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-surface-alt pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.15] pointer-events-none" />
       <div className="absolute -top-64 left-1/3 w-[800px] h-[800px] bg-primary/8 rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute -bottom-64 right-1/4 w-[700px] h-[700px] bg-violet-500/8 rounded-full blur-[160px] pointer-events-none" />

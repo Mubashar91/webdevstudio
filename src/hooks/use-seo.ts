@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
 
 interface SEOProps {
@@ -22,6 +22,16 @@ export const useSEO = ({
   noindex = false,
   structuredData,
 }: SEOProps) => {
+  // Callers build their graph inline, so `structuredData` is a new object
+  // identity on every render. Depending on it directly made the effect tear
+  // down and re-append every JSON-LD script on each render. Keying on the
+  // serialized form means the DOM is only touched when the data changes —
+  // and the serialized string is what gets written anyway.
+  const structuredDataJson = useMemo(
+    () => (structuredData ? JSON.stringify(structuredData) : ""),
+    [structuredData]
+  );
+
   useEffect(() => {
     document.title = title;
 
@@ -61,9 +71,17 @@ export const useSEO = ({
       link.setAttribute("href", canonical);
     }
 
+    // Remove any JSON-LD baked in at build time by the prerenderer before
+    // adding the runtime graph, otherwise a hydrated page carries two copies
+    // of the same entities with conflicting @id nodes.
+    document
+      .querySelectorAll('script[type="application/ld+json"]')
+      .forEach((el) => el.remove());
+
     const scripts: HTMLScriptElement[] = [];
-    if (structuredData) {
-      const items = Array.isArray(structuredData) ? structuredData : [structuredData];
+    if (structuredDataJson) {
+      const parsed = JSON.parse(structuredDataJson);
+      const items = Array.isArray(parsed) ? parsed : [parsed];
       items.forEach((data, index) => {
         const script = document.createElement("script");
         script.type = "application/ld+json";
@@ -77,5 +95,5 @@ export const useSEO = ({
     return () => {
       scripts.forEach((s) => s.remove());
     };
-  }, [title, description, keywords, canonical, ogImage, ogType, noindex, structuredData]);
+  }, [title, description, keywords, canonical, ogImage, ogType, noindex, structuredDataJson]);
 };

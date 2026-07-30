@@ -225,7 +225,7 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 bg-surface-alt">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
               <TrendingUp className="h-8 w-8 text-primary" />
@@ -277,7 +277,7 @@ const ProjectDetail = () => {
 
         <Separator />
 
-        <section className="py-12 bg-muted/30">
+        <section className="py-12 bg-surface-alt">
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
               <Lightbulb className="h-8 w-8 text-accent" />

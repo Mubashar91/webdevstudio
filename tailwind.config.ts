@@ -13,6 +13,12 @@ export default {
       },
     },
     extend: {
+      screens: {
+        /* Height-based, for elements that only make sense when there's
+           vertical room to spare — e.g. the hero's scroll indicator, which
+           collided with the CTA row on short laptop screens. */
+        tall: { raw: "(min-height: 780px)" },
+      },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
@@ -22,6 +28,11 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        /* Alternating section band + the always-dark hero/CTA tone.
+           `bg-section-alt` was used in two components but never defined here,
+           so it compiled to nothing and those sections rendered transparent. */
+        "surface-alt": "hsl(var(--surface-alt))",
+        "surface-deep": "hsl(var(--surface-deep))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

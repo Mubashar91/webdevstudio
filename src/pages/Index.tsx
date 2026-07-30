@@ -5,35 +5,24 @@ import { Projects } from "@/components/Projects";
 import { Blogs } from "@/components/Blogs";
 import { TechStack } from "@/components/TechStack";
 import { CTA } from "@/components/CTA";
+import { Pricing } from "@/components/Pricing";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { canonicalPath, SITE_URL } from "@/lib/seo";
+import { canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
+
+const meta = routeMeta("/")!;
 
 const Index = () => {
   useSEO({
-    title: "WebDevStudio | Frontend Developer & MERN Stack Expert",
-    description:
-      "WebDevStudio — 5+ years experience building high-performance React.js, TypeScript & MERN stack applications. 50+ projects delivered. Remote web development for New Zealand, Cyprus & clients worldwide.",
-    keywords:
-      "WebDevStudio, frontend developer, React developer, MERN stack, TypeScript, Node.js, web developer Pakistan, web developer New Zealand, web developer Cyprus, freelance developer",
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
     canonical: canonicalPath("/"),
-    structuredData: {
-      "@context": "https://schema.org",
-      "@type": "ProfilePage",
-      "mainEntity": {
-        "@type": "Organization",
-        "name": "WebDevStudio",
-        "url": SITE_URL,
-        "founder": {
-          "@type": "Person",
-          "name": "Muhammad Mubashar Shahzad",
-        },
-        "sameAs": [
-          "https://github.com/mubasharshahzad",
-          "https://linkedin.com/in/mubasharshahzad",
-        ],
-      },
-    },
+    // One connected @graph (Organization + Person + WebSite + WebPage),
+    // identical to what scripts/prerender.mjs bakes into the static HTML.
+    // The previous ProfilePage node was the wrong type for a business
+    // homepage and was not linked to any other entity.
+    structuredData: pageGraph("/"),
   });
 
   return (
@@ -43,6 +32,7 @@ const Index = () => {
         <Hero />
         <Stats />
         <Projects />
+        <Pricing />
         <Blogs />
         <TechStack />
         <CTA />

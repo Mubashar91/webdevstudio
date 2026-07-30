@@ -14,7 +14,7 @@ export const Blogs = ({ compactHeader = false }: BlogsProps) => {
 
   return (
     <section id="blog" className={`relative overflow-hidden ${compactHeader ? "py-20" : "py-28"}`}>
-      <div className="absolute inset-0 bg-muted/30 pointer-events-none" />
+      <div className="absolute inset-0 bg-surface-alt pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
       <div className="absolute -top-48 right-1/4 w-[700px] h-[700px] bg-violet-500/8 rounded-full blur-[140px] pointer-events-none" />
 
