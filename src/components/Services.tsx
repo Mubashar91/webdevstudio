@@ -30,6 +30,13 @@ export const Services = ({ compactHeader = false }: ServicesProps) => {
       <div ref={ref} className="container mx-auto px-6 relative z-10">
 
         {/* Header */}
+        {compactHeader && (
+          /* Keeps the heading outline intact when the visible section
+             heading is hidden — the card <h3>s would otherwise follow
+             the page <h1> directly and skip a level. */
+          <h2 className="sr-only">Web development services</h2>
+        )}
+
         {!compactHeader && (
           <div className={`text-center mb-20 max-w-3xl mx-auto transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <div className="section-label mb-8">

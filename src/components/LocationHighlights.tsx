@@ -75,7 +75,7 @@ export const LocationHighlights = ({
 
           {industries.length > 0 && (
             <div className="text-center">
-              <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted-foreground/50 mb-5">
+              <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-5">
                 Industries I Build For
               </p>
               <div className="flex flex-wrap justify-center gap-3">

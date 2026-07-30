@@ -96,9 +96,9 @@ export const Footer = () => {
 
           {/* Navigation */}
           <div className={`md:col-span-3 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h4 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
+            <h2 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
               Navigation
-            </h4>
+            </h2>
             <ul className="space-y-3.5">
               {navLinks.map(({ to, label }) => (
                 <li key={to}>
@@ -116,9 +116,9 @@ export const Footer = () => {
 
           {/* Connect */}
           <div className={`md:col-span-4 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h4 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/45 mb-6">
+            <h2 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
               Connect
-            </h4>
+            </h2>
             <div className="flex flex-col gap-3">
               {socials.map(({ href, label, icon: Icon, ext, color }) => (
                 <a key={label} href={href}
@@ -149,7 +149,7 @@ export const Footer = () => {
             <Heart className="h-3 w-3 text-red-500 fill-red-500 animate-pulse" />
             All rights reserved.
           </p>
-          <p className="text-xs text-muted-foreground/35 font-semibold tracking-wide">
+          <p className="text-xs text-muted-foreground/70 font-semibold tracking-wide">
             React · TypeScript · Tailwind CSS
           </p>
         </div>

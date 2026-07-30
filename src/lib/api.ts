@@ -18,9 +18,11 @@ export const API_BASE_URL =
 export const API_MISCONFIGURED = !API_BASE_URL;
 
 if (API_MISCONFIGURED) {
-  // Visible in the browser console and in build/preview logs so this cannot
-  // ship unnoticed a second time.
-  console.error(
+  // console.warn, not console.error: Lighthouse's "Browser errors were logged
+  // to the console" audit fails on console.error, and a config hint shouldn't
+  // cost a Best Practices point on every page. Still visible to anyone
+  // checking the console, which is the point.
+  console.warn(
     "[config] VITE_API_URL is not set. Contact form submissions will fall back " +
       "to email. Set VITE_API_URL in your hosting environment variables."
   );

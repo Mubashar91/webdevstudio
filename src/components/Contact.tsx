@@ -45,7 +45,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
 
   // text-base on mobile: iOS Safari zooms the viewport when a focused
   // field is under 16px and never zooms back out.
-  const inputCls = "text-base md:text-sm bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/50";
+  const inputCls = "text-base md:text-sm bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/70";
 
   return (
     <section id="contact" className="py-28 relative overflow-hidden">
@@ -57,6 +57,13 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
       <div ref={ref} className="container mx-auto px-6 relative z-10">
 
         {/* Header */}
+        {compactHeader && (
+          /* Keeps the heading outline intact when the visible section
+             heading is hidden — the card <h3>s would otherwise follow
+             the page <h1> directly and skip a level. */
+          <h2 className="sr-only">Contact form</h2>
+        )}
+
         {!compactHeader && (
           <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className="section-label mb-6">
@@ -117,7 +124,7 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
                     placeholder="Tell me about your project, goals, and requirements..."
                     rows={5}
                     required
-                    className="bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary rounded-xl resize-none transition-all duration-200 placeholder:text-muted-foreground/50 text-base md:text-sm"
+                    className="bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary rounded-xl resize-none transition-all duration-200 placeholder:text-muted-foreground/70 text-base md:text-sm"
                   />
                 </div>
 

@@ -19,6 +19,22 @@ export default {
            collided with the CTA row on short laptop screens. */
         tall: { raw: "(min-height: 780px)" },
       },
+      /**
+       * Tailwind's default opacity scale is 0 plus multiples of 5. Any other
+       * value in a colour modifier — `bg-primary/8`, `bg-white/12`,
+       * `bg-background/92` — matches nothing and Tailwind silently emits NO
+       * rule, so the colour is simply absent rather than faint.
+       *
+       * 46 such classes were in use: every aurora blur orb, the frosted glass
+       * buttons and icon chips, several borders, and the sticky nav's
+       * background were all fully transparent in production. Declaring the
+       * values actually used makes the existing markup render as written.
+       */
+      opacity: {
+        2: "0.02", 3: "0.03", 4: "0.04", 6: "0.06", 8: "0.08", 9: "0.09",
+        12: "0.12", 14: "0.14", 16: "0.16", 18: "0.18", 22: "0.22",
+        26: "0.26", 28: "0.28", 92: "0.92", 96: "0.96",
+      },
       spacing: {
         /* Tailwind's default scale skips 13, so the `h-13` used on the hero
            and services CTAs generated no CSS at all — those buttons collapsed

@@ -61,6 +61,13 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
       <div className="absolute -bottom-64 right-1/4 w-[700px] h-[700px] bg-violet-500/8 rounded-full blur-[160px] pointer-events-none" />
 
       <div ref={ref} className="container mx-auto px-6 relative z-10">
+        {compactHeader && (
+          /* Keeps the heading outline intact when the visible section
+             heading is hidden — the card <h3>s would otherwise follow
+             the page <h1> directly and skip a level. */
+          <h2 className="sr-only">Selected projects</h2>
+        )}
+
         {!compactHeader && (
           <div className={`text-center mb-12 md:mb-20 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
             <div className="section-label mb-5 md:mb-8">

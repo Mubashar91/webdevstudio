@@ -76,10 +76,10 @@ export const About = () => {
         <div className={`max-w-4xl mx-auto mb-20 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-card p-9 pl-12">
             <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-b from-primary to-violet-500 rounded-l-2xl" />
-            <h3 className="text-xl font-bold mb-5 flex items-center gap-3">
+            <h2 className="text-xl font-bold mb-5 flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-primary" />
               Professional Summary
-            </h3>
+            </h2>
             <p className="text-muted-foreground leading-relaxed text-base">
               Frontend Developer with hands-on experience building responsive, user-centric web and mobile
               applications using modern technologies. Skilled in React.js, JavaScript, TypeScript, Tailwind CSS,
@@ -91,9 +91,9 @@ export const About = () => {
 
         {/* Experience */}
         <div className={`mb-20 max-w-5xl mx-auto transition-all duration-700 delay-150 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h3 className="text-3xl md:text-4xl font-extrabold mb-14 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-14 text-center">
             Work <span className="gradient-text">Experience</span>
-          </h3>
+          </h2>
 
           <div className="relative">
             {/* Timeline line */}
@@ -124,7 +124,7 @@ export const About = () => {
                     <div className="p-8">
                       <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                         <div>
-                          <h4 className="text-xl font-bold mb-1">{exp.role}</h4>
+                          <h3 className="text-xl font-bold mb-1">{exp.role}</h3>
                           <p className="text-primary font-semibold text-sm">{exp.company}, {exp.location}</p>
                         </div>
                         <div className="flex items-center gap-3">

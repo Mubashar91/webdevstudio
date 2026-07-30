@@ -25,7 +25,7 @@ export const TechStack = () => {
       <div ref={ref} className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <p className="text-xs md:text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground/50 mb-3">
+          <p className="text-xs md:text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground/80 mb-3">
             Tech Stack
           </p>
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -51,7 +51,7 @@ export const TechStack = () => {
               <span className="font-bold text-xs md:text-[11px] text-center group-hover:text-primary transition-colors leading-tight">
                 {t.name}
               </span>
-              <span className="text-[9px] text-muted-foreground/50 text-center leading-tight hidden sm:block">
+              <span className="text-[11px] text-muted-foreground/75 text-center leading-tight hidden sm:block">
                 {t.cat}
               </span>
             </div>

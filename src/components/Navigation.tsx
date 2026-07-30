@@ -24,7 +24,13 @@ export const Navigation = () => {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", fn);
+    // Sync immediately, not only on the next scroll event. Browsers restore
+    // scroll position on refresh and back-navigation, so the page can load
+    // already scrolled — leaving the nav in its transparent state (white text)
+    // over light content, where the "WebDev" half of the wordmark and the
+    // desktop links become invisible until the user happens to scroll.
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
 

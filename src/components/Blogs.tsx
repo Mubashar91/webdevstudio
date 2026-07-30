@@ -19,6 +19,13 @@ export const Blogs = ({ compactHeader = false }: BlogsProps) => {
       <div className="absolute -top-48 right-1/4 w-[700px] h-[700px] bg-violet-500/8 rounded-full blur-[140px] pointer-events-none" />
 
       <div ref={ref} className="container mx-auto px-6 relative z-10">
+        {compactHeader && (
+          /* Keeps the heading outline intact when the visible section
+             heading is hidden — the card <h3>s would otherwise follow
+             the page <h1> directly and skip a level. */
+          <h2 className="sr-only">Latest articles</h2>
+        )}
+
         {!compactHeader && (
           <div
             className={`text-center mb-16 transition-all duration-700 ${
