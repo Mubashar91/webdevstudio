@@ -1,6 +1,209 @@
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
+import { BLOG_POSTS } from "./data/blogs";
+import { STATIC_PROJECTS } from "./data/projects";
+import { SITE_NAME, absoluteUrl } from "./lib/site.config.mjs";
+
+/**
+ * Blog and project detail routes, derived from the same data the pages render.
+ *
+ * Exported for scripts/prerender.mjs, which cannot import the TypeScript data
+ * modules directly. Without these, /blogs/:slug and /projects/:id fell through
+ * the SPA rewrite to index.html — and since index.html is now the fully
+ * prerendered homepage, every detail URL served homepage content with
+ * `canonical` pointing at "/", declaring all nine pages duplicates of the home
+ * page.
+ */
+export const DYNAMIC_ROUTES = [
+  ...BLOG_POSTS.map((post) => ({
+    path: `/blogs/${post.slug}`,
+    title: `${post.title} | ${SITE_NAME}`,
+    description: post.excerpt,
+    keywords: post.tags.join(", "),
+    lastmod: post.updatedAt ?? post.publishedAt,
+    changefreq: "monthly",
+    priority: "0.7",
+    ogType: "article",
+    image: post.coverImage,
+  })),
+  ...STATIC_PROJECTS.map((project) => ({
+    path: `/projects/${project._id}`,
+    title: `${project.title} | ${SITE_NAME}`,
+    description: project.description,
+    keywords: project.technologies.join(", "),
+    lastmod: undefined, // no per-project date in the data yet
+    changefreq: "monthly",
+    priority: "0.6",
+    ogType: "article",
+    image: project.image,
+  })),
+];
+
+/**
+ * Page-specific Schema.org nodes, keyed by route path.
+ *
+ * These previously existed ONLY in the JSON-LD that useSEO() injects at
+ * runtime, so the prerendered HTML carried just the site-wide entities plus
+ * WebPage/BreadcrumbList. Googlebot renders JS and would eventually see them,
+ * but the AI crawlers robots.txt invites in do not — meaning BlogPosting,
+ * the project ItemList and the country-scoped Service nodes were invisible to
+ * exactly the engines this site is trying to be cited by.
+ *
+ * Built here rather than in site.config.mjs because these nodes derive from
+ * the TypeScript data modules, which the plain-ESM config cannot import.
+ */
+export function pageSchema(siteUrl: string): Record<string, object[]> {
+  const url = (p: string) => absoluteUrl(siteUrl, p);
+  const orgRef = { "@id": `${url("/")}#organization` };
+  const founderRef = { "@id": `${url("/")}#founder` };
+
+  const map: Record<string, object[]> = {
+    "/projects": [
+      {
+        "@type": "CollectionPage",
+        "@id": `${url("/projects")}#collection`,
+        name: "Projects by WebDevStudio",
+        url: url("/projects"),
+        author: orgRef,
+        mainEntity: {
+          "@type": "ItemList",
+          numberOfItems: STATIC_PROJECTS.length,
+          itemListElement: STATIC_PROJECTS.map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            item: {
+              "@type": "CreativeWork",
+              name: p.title,
+              description: p.description,
+              url: url(`/projects/${p._id}`),
+              keywords: p.technologies.join(", "),
+              creator: orgRef,
+            },
+          })),
+        },
+      },
+    ],
+    "/blogs": [
+      {
+        "@type": "Blog",
+        "@id": `${url("/blogs")}#blog`,
+        name: "WebDevStudio — Developer Blog",
+        url: url("/blogs"),
+        publisher: orgRef,
+        blogPost: BLOG_POSTS.map((post) => ({
+          "@type": "BlogPosting",
+          "@id": `${url(`/blogs/${post.slug}`)}#article`,
+          headline: post.title,
+          description: post.excerpt,
+          url: url(`/blogs/${post.slug}`),
+          image: post.coverImage,
+          datePublished: post.publishedAt,
+          dateModified: post.updatedAt ?? post.publishedAt,
+          keywords: post.tags.join(", "),
+          author: founderRef,
+          publisher: orgRef,
+        })),
+      },
+    ],
+    "/about": [
+      {
+        "@type": "AboutPage",
+        "@id": `${url("/about")}#aboutpage`,
+        url: url("/about"),
+        mainEntity: founderRef,
+      },
+    ],
+    "/contact": [
+      {
+        "@type": "ContactPage",
+        "@id": `${url("/contact")}#contactpage`,
+        url: url("/contact"),
+        mainEntity: orgRef,
+      },
+    ],
+  };
+
+  // Country-scoped Service nodes for the two location landing pages. These
+  // are the highest-intent pages on the site, and the areaServed cities are
+  // exactly what an AI engine matches on for "React developer in Limassol".
+  const locations = [
+    {
+      path: "/web-development-new-zealand",
+      country: "New Zealand",
+      cities: ["Auckland", "Wellington", "Christchurch"],
+    },
+    {
+      path: "/web-development-cyprus",
+      country: "Cyprus",
+      cities: ["Limassol", "Nicosia", "Larnaca"],
+    },
+  ];
+  for (const loc of locations) {
+    map[loc.path] = [
+      {
+        "@type": "Service",
+        "@id": `${url(loc.path)}#service`,
+        name: `Web Development Services for ${loc.country} Businesses`,
+        description: `Remote React.js, MERN stack, and full-stack web development for businesses in ${loc.country}, delivered by ${SITE_NAME}.`,
+        url: url(loc.path),
+        serviceType: "Web Development",
+        provider: orgRef,
+        areaServed: [
+          { "@type": "Country", name: loc.country },
+          ...loc.cities.map((name) => ({ "@type": "City", name })),
+        ],
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: url("/contact"),
+          availableLanguage: { "@type": "Language", name: "English" },
+        },
+      },
+    ];
+  }
+
+  // Individual article pages — the roadmap's highest-priority schema gap.
+  for (const post of BLOG_POSTS) {
+    map[`/blogs/${post.slug}`] = [
+      {
+        "@type": "BlogPosting",
+        "@id": `${url(`/blogs/${post.slug}`)}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        url: url(`/blogs/${post.slug}`),
+        mainEntityOfPage: url(`/blogs/${post.slug}`),
+        image: post.coverImage,
+        datePublished: post.publishedAt,
+        dateModified: post.updatedAt ?? post.publishedAt,
+        keywords: post.tags.join(", "),
+        articleSection: post.category,
+        wordCount: post.content.join(" ").split(/\s+/).length,
+        inLanguage: "en",
+        author: founderRef,
+        publisher: orgRef,
+      },
+    ];
+  }
+
+  // Individual case-study pages.
+  for (const p of STATIC_PROJECTS) {
+    map[`/projects/${p._id}`] = [
+      {
+        "@type": "CreativeWork",
+        "@id": `${url(`/projects/${p._id}`)}#project`,
+        name: p.title,
+        description: p.fullDescription ?? p.description,
+        url: url(`/projects/${p._id}`),
+        ...(p.image ? { image: p.image } : {}),
+        keywords: p.technologies.join(", "),
+        creator: orgRef,
+        inLanguage: "en",
+      },
+    ];
+  }
+
+  return map;
+}
 
 /**
  * Server entry used only at build time by scripts/prerender.mjs.

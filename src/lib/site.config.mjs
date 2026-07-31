@@ -250,7 +250,7 @@ export const ROUTES = [
     path: "/",
     priority: "1.0",
     changefreq: "weekly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "React & MERN Web Development | WebDevStudio",
     description:
       "Fast, conversion-focused React, TypeScript and MERN web apps. 5+ years, 50+ projects delivered. Remote development for NZ, Cyprus and worldwide.",
@@ -261,7 +261,7 @@ export const ROUTES = [
     path: "/services",
     priority: "0.9",
     changefreq: "monthly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "Web Development Services & Pricing | WebDevStudio",
     description:
       "Transparent pricing for React, MERN and Node.js development. Sites from $900, web apps from $2,500, retainers from $1,200/mo. Fixed scope, fixed price.",
@@ -273,7 +273,7 @@ export const ROUTES = [
     path: "/projects",
     priority: "0.9",
     changefreq: "weekly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "Web Development Portfolio & Case Studies | WebDevStudio",
     description:
       "Selected React, MERN and Node.js projects — the problem, the build and the result. See how WebDevStudio delivers production web applications.",
@@ -284,7 +284,7 @@ export const ROUTES = [
     path: "/about",
     priority: "0.8",
     changefreq: "monthly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "About WebDevStudio | Led by Muhammad Mubashar Shahzad",
     description:
       "WebDevStudio is the practice of Muhammad Mubashar Shahzad — 5+ years building React, TypeScript and MERN stack apps for clients worldwide.",
@@ -295,7 +295,7 @@ export const ROUTES = [
     path: "/blogs",
     priority: "0.8",
     changefreq: "weekly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "React, TypeScript & MERN Stack Articles | WebDevStudio",
     description:
       "Practical writing on React performance, TypeScript patterns and MERN stack architecture — lessons from real production builds, not theory.",
@@ -306,7 +306,7 @@ export const ROUTES = [
     path: "/contact",
     priority: "0.9",
     changefreq: "monthly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "Start a Project | Free Consultation — WebDevStudio",
     description:
       "Tell WebDevStudio about your project and get a scoped quote within 24 hours. Free 30-minute consultation, transparent pricing, no obligation.",
@@ -317,7 +317,7 @@ export const ROUTES = [
     path: "/web-development-new-zealand",
     priority: "0.85",
     changefreq: "monthly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "React & MERN Developer for New Zealand | WebDevStudio",
     description:
       "Remote React and MERN developer for New Zealand businesses — Auckland, Wellington and nationwide. NZD-friendly pricing, senior-level delivery.",
@@ -329,7 +329,7 @@ export const ROUTES = [
     path: "/web-development-cyprus",
     priority: "0.85",
     changefreq: "monthly",
-    lastmod: "2026-07-29",
+    lastmod: "2026-07-30",
     title: "React & MERN Developer for Cyprus | WebDevStudio",
     description:
       "Remote React and MERN stack developer serving Cyprus — Limassol, Nicosia and Larnaca. EUR/USD pricing, real working-hours overlap, GDPR-conscious builds.",
@@ -568,7 +568,7 @@ export function buildGraph(nodes) {
  * Used by both the Vite plugin (homepage) and the prerenderer (every route),
  * so the static HTML carries the same graph the React app emits at runtime.
  */
-export function routeGraph(siteUrl, route) {
+export function routeGraph(siteUrl, route, extraNodes = []) {
   const nodes = [...organizationGraph(siteUrl), webPageNode(siteUrl, route)];
 
   if (route.path !== "/") {
@@ -582,6 +582,13 @@ export function routeGraph(siteUrl, route) {
 
   if (route.faqs?.length) {
     nodes.push(faqNode(route.faqs));
+  }
+
+  // Page-specific nodes (BlogPosting, CollectionPage, Service…) supplied by
+  // the prerenderer, so the static HTML carries the same graph the React app
+  // emits at runtime rather than only the site-wide entities.
+  if (extraNodes?.length) {
+    nodes.push(...extraNodes);
   }
 
   return buildGraph(nodes);

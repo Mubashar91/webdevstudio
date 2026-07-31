@@ -70,7 +70,7 @@ function injectBody(html, bodyHtml) {
  * Replaces the crawler-relevant tags in the built index.html.
  * Everything else (asset links, favicons, fonts) is preserved as-is.
  */
-function renderHead(templateHtml, route) {
+function renderHead(templateHtml, route, extraSchema = []) {
   const url = absoluteUrl(SITE_URL, route.path);
   const ogImage = ogImageUrl(SITE_URL);
 
@@ -83,17 +83,23 @@ function renderHead(templateHtml, route) {
     () => `<title>${escapeAttr(route.title)}</title>`
   );
 
+  // Detail pages carry their own cover image and are articles, not the site
+  // homepage — sharing a blog post should show that post's image.
+  const pageImage = route.image || ogImage;
+  const pageOgType = route.ogType || "website";
+
   // Simple name/property meta replacements
   const metaReplacements = [
     [/(<meta\s+name="description"\s+content=")[^"]*(")/, route.description],
     [/(<meta\s+name="keywords"\s+content=")[^"]*(")/, route.keywords],
+    [/(<meta\s+property="og:type"\s+content=")[^"]*(")/, pageOgType],
     [/(<meta\s+property="og:title"\s+content=")[^"]*(")/, route.title],
     [/(<meta\s+property="og:description"\s+content=")[^"]*(")/, route.description],
     [/(<meta\s+property="og:url"\s+content=")[^"]*(")/, url],
-    [/(<meta\s+property="og:image"\s+content=")[^"]*(")/, ogImage],
+    [/(<meta\s+property="og:image"\s+content=")[^"]*(")/, pageImage],
     [/(<meta\s+name="twitter:title"\s+content=")[^"]*(")/, route.title],
     [/(<meta\s+name="twitter:description"\s+content=")[^"]*(")/, route.description],
-    [/(<meta\s+name="twitter:image"\s+content=")[^"]*(")/, ogImage],
+    [/(<meta\s+name="twitter:image"\s+content=")[^"]*(")/, pageImage],
     [/(<link\s+rel="canonical"\s+href=")[^"]*(")/, url],
   ];
 
@@ -127,22 +133,28 @@ function renderHead(templateHtml, route) {
     "</head>",
     () =>
       `  <script type="application/ld+json">${escapeJsonLd(
-        routeGraph(SITE_URL, route)
+        routeGraph(SITE_URL, route, extraSchema)
       )}</script>\n  </head>`
   );
 
   return html;
 }
 
-function renderSitemap() {
-  const urls = ROUTES.map(
-    (route) => `  <url>
-    <loc>${absoluteUrl(SITE_URL, route.path)}</loc>
-    <lastmod>${route.lastmod}</lastmod>
+function renderSitemap(allRoutes) {
+  const urls = allRoutes
+    .map(
+      (route) => `  <url>
+    <loc>${absoluteUrl(SITE_URL, route.path)}</loc>${
+        // lastmod is omitted rather than faked. Stamping every URL with the
+        // build date makes the signal meaningless and Google starts ignoring
+        // it, so only pages with a real content date carry one.
+        route.lastmod ? `\n    <lastmod>${route.lastmod}</lastmod>` : ""
+      }
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
   </url>`
-  ).join("\n");
+    )
+    .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -231,6 +243,17 @@ function render404(template) {
   return html;
 }
 
+/**
+ * A content-free SPA shell: no body markup, no canonical, no JSON-LD.
+ * Served only for detail URLs that had no prerendered file at build time.
+ */
+function renderShell(template) {
+  let html = template;
+  html = html.replace(/\s*<link rel="canonical"[^>]*>/g, "");
+  html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
+  return html;
+}
+
 async function main() {
   let template;
   try {
@@ -242,9 +265,9 @@ async function main() {
     process.exit(1);
   }
 
-  let render;
+  let render, DYNAMIC_ROUTES, pageSchema;
   try {
-    ({ render } = await import(pathToFileURL(ssrEntry).href));
+    ({ render, DYNAMIC_ROUTES, pageSchema } = await import(pathToFileURL(ssrEntry).href));
   } catch (err) {
     console.error(
       "prerender: could not load dist-ssr/entry-server.js — run `npm run build:ssr` first.\n",
@@ -253,8 +276,14 @@ async function main() {
     process.exit(1);
   }
 
-  for (const route of ROUTES) {
-    let html = renderHead(template, route);
+  // Blog posts and project case studies are prerendered too. Without them the
+  // SPA rewrite served index.html — the prerendered homepage — for every
+  // detail URL, canonical included.
+  const allRoutes = [...ROUTES, ...DYNAMIC_ROUTES];
+  const schemaByPath = pageSchema(SITE_URL);
+
+  for (const route of allRoutes) {
+    let html = renderHead(template, route, schemaByPath[route.path] ?? []);
 
     // Server-render the route's markup into the root div. A failure here is
     // fatal rather than silently falling back to an empty body — shipping a
@@ -287,8 +316,18 @@ async function main() {
   await writeFile(join(distDir, "404.html"), render404(template), "utf8");
   console.log("  ✓ 404.html");
 
-  await writeFile(join(distDir, "sitemap.xml"), renderSitemap(), "utf8");
-  console.log(`  ✓ sitemap.xml (${ROUTES.length} URLs)`);
+  // Neutral shell for detail URLs that have no prerendered file — e.g. a
+  // project created through the admin API after this build. Pointing the
+  // fallback rewrite at index.html would serve the homepage's content and
+  // canonical for those URLs; this shell asserts neither and lets the
+  // client-side useSEO hook populate the head.
+  await writeFile(join(distDir, "spa.html"), renderShell(template), "utf8");
+  console.log("  ✓ spa.html (fallback for un-prerendered detail routes)");
+
+  await writeFile(join(distDir, "sitemap.xml"), renderSitemap(allRoutes), "utf8");
+  console.log(
+    `  ✓ sitemap.xml (${allRoutes.length} URLs — ${ROUTES.length} static, ${DYNAMIC_ROUTES.length} detail)`
+  );
 
   await writeFile(join(distDir, "robots.txt"), renderRobots(), "utf8");
   console.log("  ✓ robots.txt");
