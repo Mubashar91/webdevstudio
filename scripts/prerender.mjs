@@ -23,6 +23,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import {
+  INDEXNOW_KEY,
   ROUTES,
   SITE_NAME,
   absoluteUrl,
@@ -334,6 +335,13 @@ async function main() {
 
   await writeFile(join(distDir, "llms.txt"), renderLlmsTxt(), "utf8");
   console.log("  ✓ llms.txt");
+
+  // IndexNow ownership key. Must be reachable at the site root for Bing to
+  // accept URL submissions; see scripts/indexnow.mjs.
+  if (INDEXNOW_KEY) {
+    await writeFile(join(distDir, `${INDEXNOW_KEY}.txt`), INDEXNOW_KEY, "utf8");
+    console.log(`  ✓ ${INDEXNOW_KEY}.txt (IndexNow key)`);
+  }
 
   console.log(`\nprerender: ${SITE_NAME} — ${ROUTES.length} routes at ${SITE_URL}`);
 }

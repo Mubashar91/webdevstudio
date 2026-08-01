@@ -32,7 +32,7 @@ export const DYNAMIC_ROUTES = [
     title: `${project.title} | ${SITE_NAME}`,
     description: project.description,
     keywords: project.technologies.join(", "),
-    lastmod: undefined, // no per-project date in the data yet
+    lastmod: project.updatedAt,
     changefreq: "monthly",
     priority: "0.6",
     ogType: "article",

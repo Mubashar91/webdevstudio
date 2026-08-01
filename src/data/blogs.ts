@@ -5,7 +5,16 @@ export interface BlogPost {
   content: string[];
   coverImage: string;
   category: string;
-  readTime: string;
+  /**
+   * DERIVED — do not hand-write. Use `readTimeOf(post)`.
+   *
+   * These were hardcoded at "5–8 min read" on posts of 81–96 words (roughly
+   * 25–40 seconds of actual reading). An SEO audit flagged it as fabricated
+   * metadata, and a prospective client who clicks a "6 min read" badge and
+   * hits four sentences draws the obvious conclusion about everything else
+   * on the site.
+   */
+  readTime?: string;
   publishedAt: string;
   /** ISO date. Set when you revise a post — feeds BlogPosting.dateModified,
    *  which Google uses to judge freshness. Falls back to publishedAt. */
@@ -16,13 +25,12 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "react-performance-tips-2025",
-    title: "10 React Performance Tips That Actually Move the Needle",
+    title: "5 React Performance Tips That Actually Move the Needle",
     excerpt:
       "Practical React optimizations for real apps — memoization, lazy loading, and bundle splitting without over-engineering.",
     coverImage:
       "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&h=450&fit=crop",
     category: "React",
-    readTime: "6 min read",
     publishedAt: "2025-11-12",
     tags: ["React", "Performance", "TypeScript"],
     content: [
@@ -41,7 +49,6 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage:
       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=450&fit=crop",
     category: "MERN",
-    readTime: "8 min read",
     publishedAt: "2025-10-03",
     tags: ["MERN", "Node.js", "MongoDB", "Architecture"],
     content: [
@@ -60,7 +67,6 @@ export const BLOG_POSTS: BlogPost[] = [
     coverImage:
       "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=450&fit=crop",
     category: "TypeScript",
-    readTime: "5 min read",
     publishedAt: "2025-09-18",
     tags: ["TypeScript", "React", "DX"],
     content: [
@@ -75,4 +81,25 @@ export const BLOG_POSTS: BlogPost[] = [
 
 export function findBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.slug === slug);
+}
+
+/** Average adult reading speed for technical prose, words per minute. */
+const WORDS_PER_MINUTE = 220;
+
+export function wordCountOf(post: BlogPost): number {
+  return post.content.join(" ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+/**
+ * Read time derived from the actual body, never hand-written.
+ *
+ * Short posts report seconds rather than rounding up to "1 min read", so the
+ * badge stays honest about genuinely short pieces instead of inflating them.
+ */
+export function readTimeOf(post: BlogPost): string {
+  if (post.readTime) return post.readTime; // explicit override, if ever needed
+  const words = wordCountOf(post);
+  const minutes = words / WORDS_PER_MINUTE;
+  if (minutes < 0.9) return `${Math.max(15, Math.round((minutes * 60) / 15) * 15)} sec read`;
+  return `${Math.round(minutes)} min read`;
 }

@@ -45,7 +45,7 @@
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+      data-font-preload
     />
     <noscript>
       <link
@@ -54,9 +54,8 @@
       />
     </noscript>
 
-    <!-- Google Analytics (gtag.js) is injected here by vite.config.ts for
-         production builds only, from GA_MEASUREMENT_ID in site.config.mjs. -->
-    <!--analytics-->
+    <!-- Analytics and font activation run from src/lib/boot.ts, not inline
+         scripts, so the CSP can drop script-src 'unsafe-inline'. -->
 
     <!-- ── Performance hints ── -->
     <link rel="dns-prefetch" href="https://images.unsplash.com" />

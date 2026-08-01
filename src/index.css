@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Metric-matched fallback for Plus Jakarta Sans.
+ *
+ * The webfont loads with font-display:swap, so the first paint uses a system
+ * font and then swaps. Because the two faces have different metrics, the swap
+ * reflowed the hero and drove homepage CLS as high as 0.197 across runs.
+ *
+ * These size-adjust/metric overrides make the local fallback occupy almost
+ * exactly the same space as the real font, so the swap is invisible to layout.
+ * Values are derived from Plus Jakarta Sans' own metrics.
+ */
+@font-face {
+  font-family: 'Jakarta Fallback';
+  src: local('Segoe UI'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+  size-adjust: 105.5%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 @layer base {
   :root {
     --background: 220 30% 98%;
@@ -78,7 +98,7 @@
   html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', 'Jakarta Fallback', system-ui, sans-serif;
     font-feature-settings: 'cv11', 'ss01';
     text-rendering: optimizeLegibility;
   }

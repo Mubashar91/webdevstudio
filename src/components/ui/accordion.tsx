@@ -40,7 +40,13 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    // `data-[state=closed]:h-0` is required whenever this is used with
+    // `forceMount` (as the FAQ sections do, so answer text ships in the static
+    // HTML for crawlers). The accordion-up keyframe has no animation-fill-mode,
+    // so once it finishes the element reverts to its natural height and every
+    // "closed" panel renders fully expanded. Setting the resting height to 0
+    // lets the animation play and then holds it collapsed.
+    className="overflow-hidden text-sm transition-all data-[state=closed]:h-0 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

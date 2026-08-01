@@ -11,7 +11,8 @@
     "prerender": "node scripts/prerender.mjs",
     "og": "node scripts/generate-og-image.mjs",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

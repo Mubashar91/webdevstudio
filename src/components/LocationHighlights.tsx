@@ -114,7 +114,7 @@ export const LocationHighlights = ({
                 <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
+                <AccordionContent forceMount className="text-muted-foreground leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>

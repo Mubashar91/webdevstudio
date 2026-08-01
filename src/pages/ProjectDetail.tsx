@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 import {
   ArrowLeft,
   Github,
@@ -32,21 +33,28 @@ import {
 const ProjectDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [project, setProject] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Seed from static data on the FIRST render, not in an effect.
+  //
+  // Effects never run during server rendering, so starting at
+  // {project: null, loading: true} meant the prerenderer captured the
+  // "Loading project…" skeleton — all six case-study pages shipped zero
+  // portfolio content to crawlers. Resolving the static project during render
+  // means the HTML contains the real case study, and the fetch below only
+  // upgrades it for API-backed projects.
+  const seeded = id ? findStaticProject(id) : undefined;
+  const [project, setProject] = useState<Project | null>(seeded ?? null);
+  const [loading, setLoading] = useState(!seeded);
 
   useEffect(() => {
     if (!id) return;
 
+    // Already resolved from static data during render — nothing to fetch, and
+    // flipping `loading` back on here would replace the prerendered case study
+    // with a skeleton for a frame on hydration.
+    if (findStaticProject(id)) return;
+
     const fetchProject = async () => {
       setLoading(true);
-
-      const staticProject = findStaticProject(id);
-      if (staticProject) {
-        setProject(staticProject);
-        setLoading(false);
-        return;
-      }
 
       try {
         const res = await fetch(`${API_BASE_URL}/api/projects/${id}`);
@@ -214,8 +222,13 @@ const ProjectDetail = () => {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-black/20 dark:from-black/60 dark:via-black/30 dark:to-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                     <img
-                      src={projectImageUrl(project.image)}
-                      alt={project.title}
+                      src={optimizedImage(projectImageUrl(project.image))}
+                      alt={`${project.title} — project screenshot`}
+                      width={CARD_IMAGE.width}
+                      height={CARD_IMAGE.height}
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
                       className="rounded-lg shadow-2xl w-full aspect-video object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500 group-hover:shadow-2xl dark:shadow-black/50"
                     />
                   </div>

@@ -1,6 +1,7 @@
 import { createRoot, hydrateRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+import { boot } from "./lib/boot";
 
 const container = document.getElementById("root")!;
 
@@ -14,3 +15,6 @@ if (container.hasChildNodes()) {
 } else {
   createRoot(container).render(<App />);
 }
+
+// Font activation + deferred analytics (see src/lib/boot.ts).
+boot();

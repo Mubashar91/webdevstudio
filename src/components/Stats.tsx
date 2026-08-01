@@ -18,15 +18,23 @@ const tones = [
 
 const Counter = ({ target, suffix }: { target: string; suffix: string }) => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.5 });
-  const [display, setDisplay] = useState("0");
+  // Seeded with the real figure, not "0".
+  //
+  // The count-up lives in an effect, which does not run during prerendering,
+  // so the static HTML read "0+ Happy Clients" and "0+ Projects Done" — the
+  // exact opposite of the credibility these counters exist to convey. The
+  // client resets to zero and animates only when it can actually animate.
+  const [display, setDisplay] = useState(target);
 
   useEffect(() => {
     if (!isVisible) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const num = parseFloat(target);
     if (isNaN(num)) { setDisplay(target); return; }
     const dec = target.includes(".");
     const steps = 60, dur = 1800;
     let s = 0;
+    setDisplay(dec ? "0.0" : "0");
     const t = setInterval(() => {
       s++;
       const e = 1 - Math.pow(1 - s / steps, 3);

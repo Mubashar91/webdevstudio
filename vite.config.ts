@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import {
-  GA_MEASUREMENT_ID,
   ROUTES,
   SITE_NAME,
   absoluteUrl,
@@ -24,7 +23,7 @@ import {
  * scripts/prerender.mjs runs after the build and rewrites this same block per
  * route into dist/<route>/index.html.
  */
-function seoHead(siteUrl: string, injectAnalytics: boolean): Plugin {
+function seoHead(siteUrl: string): Plugin {
   return {
     name: "seo-head",
     transformIndexHtml(html: string) {
@@ -65,23 +64,11 @@ function seoHead(siteUrl: string, injectAnalytics: boolean): Plugin {
 
       // Google Analytics. Production builds only, so `npm run dev` never
       // sends hits into the real property.
-      const analytics =
-        injectAnalytics && GA_MEASUREMENT_ID
-          ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${GA_MEASUREMENT_ID}');
-    </script>`
-          : "";
 
       // Replacer functions: `head` embeds JSON-LD containing price strings, and
       // in a string replacement "$&", "$`", "$'" and "$$" are special even
       // when the search pattern is a plain string rather than a regex.
-      return html
-        .replace("<!--seo-head-->", () => head)
-        .replace("<!--analytics-->", () => analytics);
+      return html.replace("<!--seo-head-->", () => head);
     },
   };
 }
@@ -89,9 +76,6 @@ function seoHead(siteUrl: string, injectAnalytics: boolean): Plugin {
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command, isSsrBuild }) => {
   const siteUrl = normalizeSiteUrl(process.env.VITE_SITE_URL);
-  // Analytics only in a real production build — not the dev server, and not
-  // the SSR pass (that output is discarded after prerendering).
-  const injectAnalytics = command === "build" && mode === "production" && !isSsrBuild;
 
   return {
     server: {
@@ -100,7 +84,7 @@ export default defineConfig(({ mode, command, isSsrBuild }) => {
     },
     plugins: [
       react(),
-      seoHead(siteUrl, injectAnalytics),
+      seoHead(siteUrl),
       mode === "development" && componentTagger(),
     ].filter(Boolean),
     resolve: {

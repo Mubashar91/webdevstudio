@@ -70,10 +70,21 @@ const SkillBar = ({
   barGradient: string;
 }) => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.4 });
-  const [value, setValue] = useState(0);
+  // Starts at the FINAL value, not 0.
+  //
+  // The count-up runs in an effect, which never executes during prerendering,
+  // so the static HTML shipped a literal "0" for every skill bar and trust
+  // stat — on the pages whose entire job is credibility. Seeding the real
+  // number means crawlers read the truth; the client resets to 0 and animates
+  // up only once it's confirmed it can actually run the animation.
+  const [value, setValue] = useState(skill.level);
 
   useEffect(() => {
     if (!isVisible) return;
+    // Reduced-motion users keep the static value rather than seeing it
+    // reset and re-count.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setValue(0);
     const t = setTimeout(() => {
       const steps = 50;
       const duration = 900;

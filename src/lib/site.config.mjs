@@ -39,6 +39,18 @@ export const FOUNDER_NAME = "Muhammad Mubashar Shahzad";
  */
 export const GA_MEASUREMENT_ID = "G-1EB05GJDW9";
 
+/**
+ * IndexNow key. The build writes `<key>.txt` containing this value to the site
+ * root, which is how Bing/Yandex verify ownership before accepting submissions.
+ *
+ * IndexNow pushes changed URLs instead of waiting to be crawled. Google does
+ * not participate, but Bing does — and Bing's index is what feeds Microsoft
+ * Copilot, so this is cheap AI-surface coverage.
+ *
+ * Run `npm run indexnow` after a deploy to submit the current sitemap URLs.
+ */
+export const INDEXNOW_KEY = "fc23cebf24ceec280444e93d80202093";
+
 export const CONTACT_EMAIL = "mmubasharshahzad40@gmail.com";
 /**
  * Displayed on the contact page and footer for humans, but deliberately NOT
@@ -524,7 +536,13 @@ export function webPageNode(siteUrl, route) {
     description: route.description,
     isPartOf: { "@id": id.website },
     about: { "@id": id.organization },
-    primaryImageOfPage: { "@id": id.logo },
+    // A page with its own hero image declares that, not the sitewide logo.
+    // Project and article pages were all claiming the WebDevStudio logo as
+    // their primary image, which is useless for image search and for any
+    // surface that previews the page.
+    primaryImageOfPage: route.image
+      ? { "@type": "ImageObject", url: route.image, contentUrl: route.image }
+      : { "@id": id.logo },
     inLanguage: "en",
     ...(route.lastmod ? { dateModified: route.lastmod } : {}),
   };

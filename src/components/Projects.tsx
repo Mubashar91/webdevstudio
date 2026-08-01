@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight, Layers, FolderOpen } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 import {
   API_BASE_URL,
   mergeProjects,
@@ -34,23 +35,33 @@ interface ProjectsProps {
 export const Projects = ({ compactHeader = false }: ProjectsProps) => {
   const [filter, setFilter] = useState<ProjectType | "all">("all");
   const [projects, setProjects] = useState<Project[]>(STATIC_PROJECTS);
-  const [loading, setLoading] = useState(true);
+  // false, not true: STATIC_PROJECTS is already populated on the first render,
+  // so starting in a loading state made the prerenderer capture six empty
+  // skeleton cards instead of the portfolio. The API fetch below merges in
+  // any additional projects without ever showing a skeleton over real content.
+  const [loading, setLoading] = useState(false);
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
 
   const filtered = filter === "all" ? projects : projects.filter((p) => p.type === filter);
 
   useEffect(() => {
+    // No backend configured — skip the request entirely. Firing it anyway
+    // guaranteed a failed round trip and a console error on every visit, for
+    // a result identical to the static data already rendered.
+    if (!API_BASE_URL) return;
+
+    let cancelled = false;
     (async () => {
       try {
         const r = await fetch(`${API_BASE_URL}/api/projects`);
         if (!r.ok) throw new Error();
-        setProjects(mergeProjects(await r.json()));
+        const merged = mergeProjects(await r.json());
+        if (!cancelled) setProjects(merged);
       } catch {
-        setProjects(STATIC_PROJECTS);
-      } finally {
-        setLoading(false);
+        // Keep the static list already on screen rather than clearing it.
       }
     })();
+    return () => { cancelled = true; };
   }, []);
 
   return (
@@ -140,10 +151,13 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                   <Link to={detailPath} className="block relative overflow-hidden aspect-[16/9] bg-muted/30 flex-shrink-0">
                     {project.image ? (
                       <img
-                        src={projectImageUrl(project.image)}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
+                        src={optimizedImage(projectImageUrl(project.image))}
+                        alt={`${project.title} — project screenshot`}
+                        width={CARD_IMAGE.width}
+                        height={CARD_IMAGE.height}
                         loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.08]"
                       />
                     ) : (
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/8 to-violet-500/8">

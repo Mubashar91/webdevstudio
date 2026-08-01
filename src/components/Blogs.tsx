@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { BLOG_POSTS } from "@/data/blogs";
+import { BLOG_POSTS, readTimeOf } from "@/data/blogs";
+import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 
 interface BlogsProps {
   compactHeader?: boolean;
@@ -57,8 +58,10 @@ export const Blogs = ({ compactHeader = false }: BlogsProps) => {
             >
               <Link to={`/blogs/${post.slug}`} className="block relative aspect-[16/9] overflow-hidden">
                 <img
-                  src={post.coverImage}
+                  src={optimizedImage(post.coverImage)}
                   alt={post.title}
+                  width={CARD_IMAGE.width}
+                  height={CARD_IMAGE.height}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                   loading="lazy"
                 />
@@ -80,7 +83,7 @@ export const Blogs = ({ compactHeader = false }: BlogsProps) => {
                   </span>
                   <span className="inline-flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    {post.readTime}
+                    {readTimeOf(post)}
                   </span>
                 </div>
 

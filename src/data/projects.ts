@@ -14,6 +14,14 @@ export interface Project {
   teamSize?: string;
   role?: string;
   features?: string[];
+  /**
+   * ISO date of the last real content change to this case study.
+   *
+   * Feeds both WebPage.dateModified and the sitemap <lastmod>. Set it only
+   * when you actually revise the write-up — stamping every entry with the
+   * build date makes lastmod worthless and Google stops trusting it.
+   */
+  updatedAt?: string;
 }
 
 // Re-exported for the existing call sites in Projects.tsx / ProjectDetail.tsx.
@@ -36,6 +44,7 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://expense-sharing-app.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    updatedAt: "2026-07-31",
     duration: "4 months",
     teamSize: "3 members",
     role: "Full Stack Developer",
@@ -62,6 +71,7 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://hospital-mgmt-system.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    updatedAt: "2026-07-31",
     duration: "5 months",
     teamSize: "4 members",
     role: "Lead Frontend Developer",
@@ -88,6 +98,7 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://software-house-website.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
+    updatedAt: "2026-07-31",
     duration: "3 months",
     teamSize: "2 members",
     role: "Full Stack Developer",
@@ -114,6 +125,7 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://ecommerce-dashboard.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    updatedAt: "2026-07-31",
     duration: "6 months",
     teamSize: "5 members",
     role: "Senior Frontend Developer",
@@ -139,6 +151,7 @@ export const STATIC_PROJECTS: Project[] = [
     technologies: ["Node.js", "Express", "MongoDB", "Redis", "JWT", "Swagger", "Docker"],
     githubLink: "https://github.com/mubasharshahzad",
     type: "Node",
+    updatedAt: "2026-07-31",
     duration: "2 months",
     teamSize: "2 members",
     role: "Backend Developer",
@@ -165,6 +178,7 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://portfolio-blog-platform.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
+    updatedAt: "2026-07-31",
     duration: "4 months",
     teamSize: "1 member",
     role: "Solo Developer",

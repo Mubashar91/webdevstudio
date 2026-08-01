@@ -10,8 +10,9 @@ import {
   pageGraph,
   SITE_NAME,
 } from "@/lib/seo";
-import { findBlogPost } from "@/data/blogs";
+import { findBlogPost, readTimeOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -99,7 +100,7 @@ const BlogDetail = () => {
             </span>
             <span className="inline-flex items-center gap-1">
               <Clock className="h-4 w-4" />
-              {post.readTime}
+              {readTimeOf(post)}
             </span>
           </div>
 
@@ -109,8 +110,12 @@ const BlogDetail = () => {
           <p className="text-lg text-muted-foreground leading-relaxed mb-10">{post.excerpt}</p>
 
           <img
-            src={post.coverImage}
+            src={optimizedImage(post.coverImage)}
             alt={post.title}
+            width={CARD_IMAGE.width}
+            height={CARD_IMAGE.height}
+            loading="eager"
+            fetchPriority="high"
             className="w-full aspect-video object-cover rounded-2xl mb-10 border border-border/50 shadow-card"
           />
 
