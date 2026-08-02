@@ -1,12 +1,26 @@
-import { Award, GitBranch, Star, Users2 } from "lucide-react";
+import { Award, CalendarClock, GitBranch, Users2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState, useEffect } from "react";
 
+/**
+ * "5.0 Average Rating" was removed here.
+ *
+ * There are no published reviews, no testimonials and no third-party rating
+ * source anywhere on the site, so a precise 5.0 was a claim nothing could
+ * back — flagged in two consecutive audits. A visitor who scrolls looking for
+ * the reviews behind it finds none, which costs more trust than the number
+ * buys. Replaced with response time, which is a real, verifiable commitment
+ * already promised on the contact page.
+ *
+ * If a verifiable rating ever exists (Google Business Profile, Clutch,
+ * Trustpilot), bring it back WITH an AggregateRating node pointing at that
+ * source — self-reported ratings are ineligible for rich results anyway.
+ */
 const items = [
-  { icon: Users2,    value: "30",  suffix: "+", label: "Happy Clients",   sub: "Worldwide" },
-  { icon: GitBranch, value: "50",  suffix: "+", label: "Projects Done",   sub: "Delivered" },
-  { icon: Star,      value: "5.0", suffix: "",  label: "Average Rating",  sub: "Client Satisfaction" },
-  { icon: Award,     value: "8",   suffix: "+", label: "Certifications",  sub: "Professional" },
+  { icon: Users2,        value: "30", suffix: "+", label: "Happy Clients",  sub: "Worldwide" },
+  { icon: GitBranch,     value: "50", suffix: "+", label: "Projects Done",  sub: "Delivered" },
+  { icon: CalendarClock, value: "24", suffix: "h", label: "Response Time",  sub: "Every enquiry" },
+  { icon: Award,         value: "8",  suffix: "+", label: "Certifications", sub: "Professional" },
 ];
 
 // Two-tone accent system — alternates the site's primary and accent colors

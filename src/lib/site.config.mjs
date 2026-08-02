@@ -330,9 +330,9 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-30",
-    title: "React & MERN Developer for New Zealand | WebDevStudio",
+    title: "Web Developer for New Zealand — Fixed Prices from $900",
     description:
-      "Remote React and MERN developer for New Zealand businesses — Auckland, Wellington and nationwide. NZD-friendly pricing, senior-level delivery.",
+      "Websites and web apps for New Zealand businesses — fixed price from $900, live in 2–3 weeks. Free 30-minute call and a written quote before work starts.",
     keywords:
       "web developer New Zealand, hire React developer NZ, MERN stack developer Auckland, web development Wellington, freelance developer New Zealand",
     faqs: NZ_FAQS,
@@ -342,9 +342,9 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-30",
-    title: "React & MERN Developer for Cyprus | WebDevStudio",
+    title: "Web Developer in Cyprus — Fixed Prices from $900",
     description:
-      "Remote React and MERN stack developer serving Cyprus — Limassol, Nicosia and Larnaca. EUR/USD pricing, real working-hours overlap, GDPR-conscious builds.",
+      "Websites and web apps for Cyprus businesses in Limassol, Nicosia and Larnaca — fixed price from $900, live in 2–3 weeks. Free call, written quote first.",
     keywords:
       "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, fintech web development Cyprus",
     faqs: CYPRUS_FAQS,

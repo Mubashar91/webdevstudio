@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { buildEnquiryMailto } from "@/lib/api";
+import { buildEnquiryMailto, submitRequirement } from "@/lib/api";
 
 const contactInfo = [
   { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
@@ -33,30 +33,22 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
       setSubmitting(true);
       setResult("");
 
-      if (honeypot.trim()) {
-        setResult("Thanks! Your message has been received.");
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("access_key", "50db1ca8-cf90-48db-a946-c148f9d06a79");
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("projectType", form.projectType);
-      formData.append("message", form.description);
-      formData.append("budget", form.budget);
-      formData.append("timeline", form.timeline);
-      formData.append("company", honeypot);
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
+      // Posts to the same-origin /api/contact function, which holds the
+      // Web3Forms key server-side.
+      //
+      // Calling api.web3forms.com straight from the browser also works, but it
+      // compiles the access key into the JS bundle where anyone can lift it and
+      // spam this inbox, and it leaves the honeypot and field validation on the
+      // client where a bot POSTing directly never runs them.
+      await submitRequirement({
+        name: form.name,
+        email: form.email,
+        projectType: form.projectType,
+        description: form.description,
+        budget: form.budget || undefined,
+        timeline: form.timeline || undefined,
+        company: honeypot,
       });
-
-      const data = await response.json();
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Unable to send message");
-      }
 
       setResult("Thanks! Your message was sent successfully.");
       toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });

@@ -78,6 +78,38 @@ function asText(d) {
     .join("\n");
 }
 
+/**
+ * Web3Forms accepts JSON as well as multipart FormData. JSON keeps this
+ * server-side call simple and avoids pulling in a FormData polyfill.
+ *
+ * `replyto` is what makes the delivered email actually useful — hitting Reply
+ * in the inbox goes straight to the prospect instead of to Web3Forms.
+ */
+async function sendViaWeb3Forms(d) {
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      access_key: WEB3FORMS_KEY,
+      subject: `New enquiry — ${d.projectType} — ${d.name}`,
+      from_name: "WebDevStudio website",
+      replyto: d.email,
+      // Named fields appear as labelled rows in the Web3Forms email.
+      name: d.name,
+      email: d.email,
+      project_type: d.projectType,
+      budget: d.budget || "Not specified",
+      timeline: d.timeline || "Not specified",
+      message: d.description,
+    }),
+  });
+
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || json.success !== true) {
+    throw new Error(`Web3Forms ${res.status}: ${json.message || "unknown error"}`);
+  }
+}
+
 async function sendViaResend(d) {
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -133,14 +165,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    if (process.env.RESEND_API_KEY) {
+    if (WEB3FORMS_KEY) {
+      await sendViaWeb3Forms(data);
+    } else if (process.env.RESEND_API_KEY) {
       await sendViaResend(data);
     } else if (process.env.BACKEND_API_URL) {
       await forwardToBackend(data);
     } else {
       // Nothing configured — tell the client to use the mailto fallback.
       console.error(
-        "[contact] No delivery method configured. Set RESEND_API_KEY or BACKEND_API_URL in Vercel."
+        "[contact] No delivery method configured. Set WEB3FORMS_ACCESS_KEY, " +
+          "RESEND_API_KEY or BACKEND_API_URL in Vercel."
       );
       return res.status(503).json({ error: "Contact endpoint not configured" });
     }

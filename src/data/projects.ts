@@ -15,6 +15,23 @@ export interface Project {
   role?: string;
   features?: string[];
   /**
+   * Problem → Approach → Result narrative.
+   *
+   * Three consecutive audits flagged these case studies as identical
+   * Duration/Team/Stack/Features spec sheets with no story and no outcome —
+   * "the strongest possible Experience signal for a dev portfolio remains
+   * structurally absent". A feature list says what was built; only these say
+   * why it mattered and what changed.
+   *
+   * Fill these in per project. `result` should carry a real number — load
+   * time, conversion, bookings, users — even if the client stays anonymous
+   * ("a Limassol salon"). Leave a field out and its section simply doesn't
+   * render, so half-finished narratives never ship.
+   */
+  problem?: string;
+  approach?: string;
+  result?: string;
+  /**
    * ISO date of the last real content change to this case study.
    *
    * Feeds both WebPage.dateModified and the sitemap <lastmod>. Set it only

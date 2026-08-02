@@ -288,6 +288,55 @@ const ProjectDetail = () => {
           </div>
         </section>
 
+        {/* Problem → Approach → Result.
+            Renders only for projects that have the narrative filled in, so a
+            case study is either a real story or just its spec sheet — never a
+            page of empty headings. See the fields in src/data/projects.ts. */}
+        {(project.problem || project.approach || project.result) && (
+          <>
+            <Separator />
+            <section className="py-12">
+              <div className="container mx-auto px-6 max-w-4xl">
+                <div className="space-y-10">
+                  {project.problem && (
+                    <div>
+                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
+                        <Target className="h-6 w-6 text-primary" />
+                        The problem
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed text-base">
+                        {project.problem}
+                      </p>
+                    </div>
+                  )}
+                  {project.approach && (
+                    <div>
+                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
+                        <Code2 className="h-6 w-6 text-primary" />
+                        The approach
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed text-base">
+                        {project.approach}
+                      </p>
+                    </div>
+                  )}
+                  {project.result && (
+                    <div className="rounded-2xl border border-primary/25 bg-primary/5 p-6">
+                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
+                        <TrendingUp className="h-6 w-6 text-primary" />
+                        The result
+                      </h2>
+                      <p className="text-foreground/90 leading-relaxed text-base">
+                        {project.result}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
         <Separator />
 
         <section className="py-12 bg-surface-alt">

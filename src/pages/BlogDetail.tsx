@@ -107,7 +107,31 @@ const BlogDetail = () => {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-6">
             {post.title}
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-10">{post.excerpt}</p>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">{post.excerpt}</p>
+
+          {/* Visible byline. The BlogPosting schema already names an author,
+              but nothing on the rendered page did — so a human (or an AI
+              summarising the page) had no attribution to read. E-E-A-T is
+              judged on what's visible, not only on markup. */}
+          <div className="flex items-center gap-3 pb-8 mb-10 border-b border-border/40">
+            <div
+              aria-hidden="true"
+              className="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-violet-600
+                flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+            >
+              MS
+            </div>
+            <div className="text-sm">
+              <p className="font-bold">
+                <Link to="/about" className="hover:text-primary transition-colors">
+                  Muhammad Mubashar Shahzad
+                </Link>
+              </p>
+              <p className="text-muted-foreground">
+                Founder &amp; lead developer at WebDevStudio — React, TypeScript and MERN
+              </p>
+            </div>
+          </div>
 
           <img
             src={optimizedImage(post.coverImage)}
@@ -135,7 +159,36 @@ const BlogDetail = () => {
             ))}
           </div>
 
-          <div className="mt-12 p-6 rounded-2xl bg-muted/40 border border-border/50">
+          {/* Contextual internal links. An audit found zero in-body links
+              connecting posts to the commercial pages — so a reader who
+              finished an article had nowhere to go, and no link equity flowed
+              to /services or the case studies. */}
+          <nav aria-label="Related pages" className="mt-10 pt-8 border-t border-border/40">
+            <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground mb-4">
+              Related
+            </h2>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link to="/services" className="text-primary hover:underline font-medium">
+                  Web development services &amp; pricing
+                </Link>
+                <span className="text-muted-foreground"> — fixed quotes from $900</span>
+              </li>
+              <li>
+                <Link to="/projects" className="text-primary hover:underline font-medium">
+                  Recent {post.category} work
+                </Link>
+                <span className="text-muted-foreground"> — case studies and the stacks behind them</span>
+              </li>
+              <li>
+                <Link to="/blogs" className="text-primary hover:underline font-medium">
+                  More articles on React, TypeScript and MERN
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="mt-10 p-6 rounded-2xl bg-muted/40 border border-border/50">
             <p className="text-muted-foreground mb-4">
               Interested in working together on a React or MERN project?
             </p>

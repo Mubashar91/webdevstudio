@@ -2,13 +2,37 @@ import { Badge } from "@/components/ui/badge";
 import { Briefcase, GraduationCap, Mail, Phone, MapPin, CheckCircle2, User, Calendar } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
+/**
+ * Work history. `current: true` marks the present role.
+ *
+ * The WebDevStudio entry leads because the rest of the site — the hero, the
+ * meta description and the Person schema's jobTitle — all describe Mubashar as
+ * its founder. Previously this list opened with an employed role at another
+ * company still tagged "Current" (13 months after it ended), so the page read
+ * as an unedited CV and directly contradicted the site's own entity narrative.
+ * An SEO audit rated that the single highest-risk accuracy issue on the site.
+ */
 const experiences = [
+  {
+    role: "Founder & Lead Developer",
+    company: "WebDevStudio",
+    location: "Remote — worldwide",
+    period: "2020 – Present",
+    current: true,
+    color: "from-primary to-violet-600",
+    points: [
+      "Run an independent React, TypeScript and MERN stack practice serving clients in New Zealand, Cyprus, the UK and beyond",
+      "Scope and deliver fixed-price projects end to end — discovery, build, deployment and post-launch support",
+      "Specialise in performance, accessibility and SEO-ready builds that clients can actually be found through",
+      "Work directly with founders and small teams, with no agency layer in between",
+    ],
+  },
   {
     role: "Frontend Developer",
     company: "Codewire Solution",
     location: "Vehari",
     period: "Mar 2025 – Jul 2025",
-    current: true,
+    current: false,
     color: "from-primary to-blue-500",
     points: [
       "Designed and developed responsive web & mobile apps using React.js",
@@ -80,11 +104,23 @@ export const About = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-primary" />
               Professional Summary
             </h2>
+            {/* First person, founder-first. The previous copy was third-person
+                CV boilerplate that never named WebDevStudio, contradicting the
+                hero, the meta description and the Person schema. It also left
+                the "5+ years" claim unexplained against a work history showing
+                ~3.4 employed years — the freelance start date bridges that. */}
             <p className="text-muted-foreground leading-relaxed text-base">
-              Frontend Developer with hands-on experience building responsive, user-centric web and mobile
-              applications using modern technologies. Skilled in React.js, JavaScript, TypeScript, Tailwind CSS,
-              and API integration with a strong foundation in full-stack development. Passionate about delivering
-              intuitive user interfaces, optimizing performance, and contributing to innovative software projects.
+              I'm Muhammad Mubashar Shahzad, and I run WebDevStudio — an independent React,
+              TypeScript and MERN stack practice I started in 2020. I've been building for the
+              web for over five years: first freelancing alongside agency and in-house roles,
+              and now full time for clients in New Zealand, Cyprus, the UK and beyond.
+            </p>
+            <p className="text-muted-foreground leading-relaxed text-base mt-4">
+              I work the way I'd want to be worked with. You get a fixed price and a written
+              scope before anything starts, you talk to the person actually writing the code,
+              and there's no agency margin on top. Most of what I build is a marketing site or
+              a full web application — always fast, accessible, and set up so search engines
+              and customers can actually find it.
             </p>
           </div>
         </div>
