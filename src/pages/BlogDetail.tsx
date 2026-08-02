@@ -143,12 +143,58 @@ const BlogDetail = () => {
             className="w-full aspect-video object-cover rounded-2xl mb-10 border border-border/50 shadow-card"
           />
 
-          <div className="prose prose-neutral dark:prose-invert max-w-none space-y-5">
-            {post.content.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)} className="text-foreground/90 leading-relaxed">
-                {paragraph}
-              </p>
-            ))}
+          {/* Structured blocks rather than plain paragraphs, so posts can carry
+              headings, lists and code. Headings render as h2 — the page h1 is
+              the title above, so this keeps the outline correct. */}
+          <div className="max-w-none">
+            {post.content.map((block, i) => {
+              switch (block.type) {
+                case "h2":
+                  return (
+                    <h2
+                      key={i}
+                      className="text-2xl md:text-3xl font-extrabold tracking-tight mt-12 mb-4 scroll-mt-24"
+                    >
+                      {block.text}
+                    </h2>
+                  );
+                case "p":
+                  return (
+                    <p key={i} className="text-foreground/90 leading-relaxed mb-5">
+                      {block.text}
+                    </p>
+                  );
+                case "list":
+                  return (
+                    <ul key={i} className="mb-6 space-y-2.5">
+                      {block.items.map((item) => (
+                        <li key={item} className="flex items-start gap-3 text-foreground/90 leading-relaxed">
+                          <span
+                            aria-hidden="true"
+                            className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"
+                          />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  );
+                case "code":
+                  return (
+                    <div key={i} className="mb-6 rounded-xl border border-border/50 overflow-hidden bg-[hsl(224,32%,10%)]">
+                      <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-white/40">
+                          {block.lang}
+                        </span>
+                      </div>
+                      {/* overflow-x-auto on the pre keeps long lines scrollable
+                          inside the block instead of widening the page. */}
+                      <pre className="overflow-x-auto p-4 text-[13px] leading-relaxed">
+                        <code className="font-mono text-white/85 whitespace-pre">{block.code}</code>
+                      </pre>
+                    </div>
+                  );
+              }
+            })}
           </div>
 
           <div className="flex flex-wrap gap-2 mt-10 pt-8 border-t border-border/40">

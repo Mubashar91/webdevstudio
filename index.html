@@ -67,7 +67,7 @@
     <!--
       No hardcoded fallback copy here.
 
-      This block previously contained a static <h1>, and because prerender.mjs
+      This block previously contained a static top-level heading, and because prerender.mjs
       copies this same template to every route, all 8 pages shipped an
       identical H1 in their raw HTML. scripts/prerender.mjs now injects the
       real server-rendered page — including that route's own H1 — into #root

@@ -61,6 +61,10 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://expense-sharing-app.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    problem:
+      "Splitting shared costs across a group is deceptively hard: balances have to stay correct while several people add expenses at once, and everyone needs to see the same number at the same time. Doing that on top of a plain CRUD API produces stale balances and arguments about who owes what.",
+    approach:
+      "Balances are derived from the transaction log rather than stored as a mutable field, so they can never drift out of sync with the expenses behind them. Settlement is modelled as its own transaction type, which keeps history auditable. JWT auth with refresh tokens covers the mobile session, and Firebase handles push so users hear about a new expense without opening the app.",
     updatedAt: "2026-07-31",
     duration: "4 months",
     teamSize: "3 members",
@@ -88,6 +92,10 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://hospital-mgmt-system.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    problem:
+      "Hospital software fails on permissions before it fails on features. Reception, doctors and administrators need the same patient record to show different things, and appointment scheduling has to hold up when two people book the same slot.",
+    approach:
+      "Role-based access control was designed first and enforced server-side, so the UI only ever hides what the API already refuses. Appointments are validated against the practitioner's calendar at write time rather than in the client, and patient records are indexed on the fields staff actually search by.",
     updatedAt: "2026-07-31",
     duration: "5 months",
     teamSize: "4 members",
@@ -115,6 +123,10 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://software-house-website.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
+    problem:
+      "A software house site lives or dies on being found and being fast. The usual failure is a visually heavy marketing site that scores badly on Core Web Vitals and never ranks for the services it sells.",
+    approach:
+      "Built as a React and TypeScript site with performance treated as a requirement rather than a cleanup task: images sized and served in modern formats, animations restricted to compositor-friendly properties, and structured data plus per-page metadata handled at build time so crawlers get the real content.",
     updatedAt: "2026-07-31",
     duration: "3 months",
     teamSize: "2 members",
@@ -142,6 +154,10 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://ecommerce-dashboard.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
+    problem:
+      "An e-commerce dashboard has to stay readable while numbers change underneath it. Inventory, orders and payments all update independently, and a naive implementation either polls constantly or shows figures that are quietly out of date.",
+    approach:
+      "Socket.io pushes updates for the values that genuinely change in real time, while everything else is fetched through a cached query layer to avoid hammering the API. Stripe handles payments so no card data touches the application, and the analytics views are computed server-side to keep the browser responsive with large order volumes.",
     updatedAt: "2026-07-31",
     duration: "6 months",
     teamSize: "5 members",
@@ -168,6 +184,10 @@ export const STATIC_PROJECTS: Project[] = [
     technologies: ["Node.js", "Express", "MongoDB", "Redis", "JWT", "Swagger", "Docker"],
     githubLink: "https://github.com/mubasharshahzad",
     type: "Node",
+    problem:
+      "APIs that work fine in development fall over under real traffic, usually because every request hits the database and nothing limits how fast a client can ask.",
+    approach:
+      "Redis caches the read-heavy endpoints and JWT handles stateless auth so the service scales horizontally. Rate limiting sits in front of the routes that cost the most, errors follow one consistent shape, and Swagger documents the contract so consumers are not reverse-engineering responses. Docker keeps local and production environments identical.",
     updatedAt: "2026-07-31",
     duration: "2 months",
     teamSize: "2 members",
@@ -195,6 +215,10 @@ export const STATIC_PROJECTS: Project[] = [
     demoLink: "https://portfolio-blog-platform.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
+    problem:
+      "Most developer portfolios force a choice between a fast static site and being able to publish without touching code.",
+    approach:
+      "Next.js with MDX keeps posts as content rather than markup, so writing does not require a deploy pipeline in your head. Prisma backs a small CMS layer for editing, theme state persists without a flash of the wrong colours, and the whole thing is built so search engines get real HTML rather than an empty shell.",
     updatedAt: "2026-07-31",
     duration: "4 months",
     teamSize: "1 member",

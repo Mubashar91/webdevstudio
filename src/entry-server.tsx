@@ -1,7 +1,7 @@
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
-import { BLOG_POSTS } from "./data/blogs";
+import { BLOG_POSTS, wordCountOf } from "./data/blogs";
 import { STATIC_PROJECTS } from "./data/projects";
 import { SITE_NAME, absoluteUrl } from "./lib/site.config.mjs";
 
@@ -15,10 +15,21 @@ import { SITE_NAME, absoluteUrl } from "./lib/site.config.mjs";
  * `canonical` pointing at "/", declaring all nine pages duplicates of the home
  * page.
  */
+/**
+ * Appends " | WebDevStudio" only when the result still fits Google's ~62
+ * character display limit. Past that the brand is truncated anyway, and it
+ * costs characters that the actual headline needs — so long article titles
+ * stand on their own.
+ */
+function withBrand(title: string): string {
+  const full = `${title} | ${SITE_NAME}`;
+  return full.length <= 62 ? full : title;
+}
+
 export const DYNAMIC_ROUTES = [
   ...BLOG_POSTS.map((post) => ({
     path: `/blogs/${post.slug}`,
-    title: `${post.title} | ${SITE_NAME}`,
+    title: withBrand(post.title),
     description: post.excerpt,
     keywords: post.tags.join(", "),
     lastmod: post.updatedAt ?? post.publishedAt,
@@ -29,7 +40,7 @@ export const DYNAMIC_ROUTES = [
   })),
   ...STATIC_PROJECTS.map((project) => ({
     path: `/projects/${project._id}`,
-    title: `${project.title} | ${SITE_NAME}`,
+    title: withBrand(project.title),
     description: project.description,
     keywords: project.technologies.join(", "),
     lastmod: project.updatedAt,
@@ -177,7 +188,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
         dateModified: post.updatedAt ?? post.publishedAt,
         keywords: post.tags.join(", "),
         articleSection: post.category,
-        wordCount: post.content.join(" ").split(/\s+/).length,
+        wordCount: wordCountOf(post),
         inLanguage: "en",
         author: founderRef,
         publisher: orgRef,
