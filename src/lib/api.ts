@@ -17,14 +17,14 @@ export const API_BASE_URL =
 /** True when the app was built without a backend URL — production only. */
 export const API_MISCONFIGURED = !API_BASE_URL;
 
-if (API_MISCONFIGURED) {
-  // console.warn, not console.error: Lighthouse's "Browser errors were logged
-  // to the console" audit fails on console.error, and a config hint shouldn't
-  // cost a Best Practices point on every page. Still visible to anyone
-  // checking the console, which is the point.
+if (API_MISCONFIGURED && import.meta.env.DEV) {
+  // DEV only now. The contact form no longer depends on this — it posts to the
+  // same-origin /api/contact function — so a missing VITE_API_URL only affects
+  // the projects list and the admin panel, both of which degrade gracefully to
+  // static data. Warning on every production page view would be noise.
   console.warn(
-    "[config] VITE_API_URL is not set. Contact form submissions will fall back " +
-      "to email. Set VITE_API_URL in your hosting environment variables."
+    "[config] VITE_API_URL is not set. The projects list will use static data " +
+      "and the admin panel will not connect. The contact form is unaffected."
   );
 }
 
@@ -38,6 +38,8 @@ export interface RequirementPayload {
   description: string;
   budget?: string;
   timeline?: string;
+  /** Honeypot. Real submissions leave this empty; see api/contact.js. */
+  company?: string;
 }
 
 /** Builds a prefilled mailto: URL carrying the whole enquiry. */
@@ -62,21 +64,25 @@ export function buildEnquiryMailto(form: RequirementPayload): string {
 }
 
 /**
- * Submits an enquiry. Throws on any failure so the caller can trigger the
- * mailto fallback — a lead is never dropped silently.
+ * Submits an enquiry to the same-origin serverless endpoint (api/contact.js).
+ *
+ * Deliberately NOT `${API_BASE_URL}/api/requirements` any more. That depended
+ * on VITE_API_URL — a client-side build variable that wasn't set in Vercel, so
+ * the request had nowhere to go and every lead was lost. `/api/contact` always
+ * exists, needs no client config, and avoids CORS entirely; the delivery
+ * method is chosen server-side where the credentials live.
+ *
+ * Throws on any failure so the caller can trigger the mailto fallback.
  */
 export async function submitRequirement(form: RequirementPayload): Promise<void> {
-  if (API_MISCONFIGURED) {
-    throw new Error("No backend configured");
-  }
-
-  const res = await fetch(`${API_BASE_URL}/api/requirements`, {
+  const res = await fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       ...form,
       budget: form.budget || undefined,
       timeline: form.timeline || undefined,
+      company: form.company ?? "",
     }),
   });
 

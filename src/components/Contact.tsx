@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { buildEnquiryMailto, submitRequirement } from "@/lib/api";
+import { buildEnquiryMailto } from "@/lib/api";
 
 const contactInfo = [
   { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
@@ -22,19 +22,57 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
   const { toast } = useToast();
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
   const [form, setForm] = useState({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
+  /** Honeypot value — always empty for real users. See the hidden field below. */
+  const [honeypot, setHoneypot] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [result, setResult] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setSubmitting(true);
-      await submitRequirement(form);
+      setResult("");
+
+      if (honeypot.trim()) {
+        setResult("Thanks! Your message has been received.");
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append("access_key", "50db1ca8-cf90-48db-a946-c148f9d06a79");
+      formData.append("name", form.name);
+      formData.append("email", form.email);
+      formData.append("projectType", form.projectType);
+      formData.append("message", form.description);
+      formData.append("budget", form.budget);
+      formData.append("timeline", form.timeline);
+      formData.append("company", honeypot);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Unable to send message");
+      }
+
+      setResult("Thanks! Your message was sent successfully.");
       toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
       setForm({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
     } catch {
+      setResult("Something went wrong. I’ve opened your email app so you can send it directly.");
       // Never drop a lead: hand the enquiry to the visitor's mail client
       // prefilled, rather than showing a dead-end error.
-      window.location.href = buildEnquiryMailto(form);
+      window.location.href = buildEnquiryMailto({
+        name: form.name,
+        email: form.email,
+        projectType: form.projectType,
+        description: form.description,
+        budget: form.budget || undefined,
+        timeline: form.timeline || undefined,
+      });
       toast({
         title: "Opening your email app",
         description:
@@ -89,6 +127,24 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
               <p className="text-muted-foreground text-sm mb-7">Fill out the form and I'll respond within 24 hours.</p>
 
               <form onSubmit={handleSubmit} className="space-y-5">
+                {/* Honeypot. Hidden from people, irresistible to bots — they
+                    fill every input they find. api/contact.js silently accepts
+                    and discards any submission where this has a value.
+                    aria-hidden + tabIndex keep it out of the keyboard and
+                    screen-reader path so it costs real users nothing. */}
+                <div className="absolute left-[-9999px]" aria-hidden="true">
+                  <label htmlFor="company">Company (leave blank)</label>
+                  <input
+                    id="company"
+                    name="company"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+                </div>
+
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <label htmlFor="name" className="text-sm font-bold text-foreground/75">Your Name</label>
@@ -151,6 +207,12 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
                     <><Send className="h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" /> Send Message</>
                   )}
                 </Button>
+
+                {result ? (
+                  <p className={`text-sm ${result.includes("success") || result.includes("received") ? "text-emerald-600" : "text-amber-600"}`}>
+                    {result}
+                  </p>
+                ) : null}
               </form>
             </div>
           </div>
