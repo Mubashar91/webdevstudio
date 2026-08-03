@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useSEO } from "@/hooks/use-seo";
+import { trackEvent } from "@/lib/boot";
 import { Home, ArrowLeft } from "lucide-react";
 
 const NotFound = () => {
@@ -13,6 +15,16 @@ const NotFound = () => {
     description: "The page you requested could not be found. Return to the portfolio homepage.",
     noindex: true,
   });
+
+  // GA4 reports "Page Not Found" views but not which URL was missed, so a
+  // broken inbound link looks identical to someone mistyping. Recording the
+  // attempted path and the referrer makes it diagnosable.
+  useEffect(() => {
+    trackEvent("page_not_found", {
+      attempted_path: location.pathname,
+      referrer: document.referrer || "(none)",
+    });
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

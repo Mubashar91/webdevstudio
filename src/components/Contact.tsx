@@ -6,6 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { buildEnquiryMailto, submitRequirement } from "@/lib/api";
+import { trackEvent } from "@/lib/boot";
 
 const contactInfo = [
   { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
@@ -50,10 +51,23 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
         company: honeypot,
       });
 
+      // The conversion. GA4 was reporting 0 key events, so there was no way to
+      // tell whether the form had ever been used — only that pages were viewed.
+      // Mark `generate_lead` as a key event in GA4 → Admin → Events.
+      trackEvent("generate_lead", {
+        method: "form",
+        project_type: form.projectType,
+        has_budget: Boolean(form.budget),
+        has_timeline: Boolean(form.timeline),
+      });
+
       setResult("Thanks! Your message was sent successfully.");
       toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
       setForm({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
     } catch {
+      // Tracked with a different `method` so a spike in mailto fallbacks shows
+      // up as an endpoint problem rather than blending into healthy conversions.
+      trackEvent("generate_lead", { method: "mailto_fallback", project_type: form.projectType });
       setResult("Something went wrong. I’ve opened your email app so you can send it directly.");
       // Never drop a lead: hand the enquiry to the visitor's mail client
       // prefilled, rather than showing a dead-end error.

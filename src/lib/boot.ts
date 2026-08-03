@@ -33,13 +33,39 @@ function activateFonts(): void {
  * pageview on dataLayer first means nothing is lost: gtag replays the queue
  * once the real script arrives.
  */
+interface GtagWindow {
+  dataLayer?: unknown[];
+  gtag?: (...args: unknown[]) => void;
+}
+
+/**
+ * Sends a GA4 event.
+ *
+ * Safe to call at any time: events queue on dataLayer and gtag.js replays the
+ * queue when it finishes loading, so nothing is lost during the deferred load
+ * window. No-ops in dev and whenever analytics is disabled.
+ *
+ * GA4 was reporting **0 key events** — meaning there was no way to tell
+ * whether anyone had ever used the contact form, only that pages were viewed.
+ * Mark `generate_lead` as a key event in GA4 → Admin → Events to turn these
+ * into conversion numbers.
+ */
+export function trackEvent(name: string, params: Record<string, unknown> = {}): void {
+  if (typeof window === "undefined") return;
+  const w = window as unknown as GtagWindow;
+  if (typeof w.gtag !== "function") return;
+  w.gtag("event", name, params);
+}
+
 function initAnalytics(): void {
   if (!GA_MEASUREMENT_ID || import.meta.env.DEV) return;
 
-  const w = window as unknown as { dataLayer?: unknown[] };
+  const w = window as unknown as GtagWindow;
   w.dataLayer = w.dataLayer || [];
+  // Assigned to window so trackEvent() elsewhere in the app can reach it.
   // eslint-disable-next-line prefer-rest-params
-  function gtag(...args: unknown[]) { w.dataLayer!.push(args); }
+  w.gtag = function gtag(...args: unknown[]) { w.dataLayer!.push(args); };
+  const gtag = w.gtag;
 
   gtag("js", new Date());
   gtag("config", GA_MEASUREMENT_ID);
