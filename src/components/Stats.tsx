@@ -15,12 +15,22 @@ import { useState, useEffect } from "react";
  * If a verifiable rating ever exists (Google Business Profile, Clutch,
  * Trustpilot), bring it back WITH an AggregateRating node pointing at that
  * source — self-reported ratings are ineligible for rich results anyway.
+ *
+ * "8+ Certifications" was removed for the same reason, and it was worse: the
+ * About page's own Certifications section names exactly one credential (PMP),
+ * so the site contradicted itself two clicks apart. An inflated round number
+ * sitting beside real figures invites a visitor to discount those too.
+ * Replaced with years of practice, which the dated work-history timeline on
+ * /about actually substantiates.
+ *
+ * To put a certification tile back: name every credential on /about with its
+ * issuing body, then make the number here match that list exactly.
  */
 const items = [
   { icon: Users2,        value: "30", suffix: "+", label: "Happy Clients",  sub: "Worldwide" },
   { icon: GitBranch,     value: "50", suffix: "+", label: "Projects Done",  sub: "Delivered" },
   { icon: CalendarClock, value: "24", suffix: "h", label: "Response Time",  sub: "Every enquiry" },
-  { icon: Award,         value: "8",  suffix: "+", label: "Certifications", sub: "Professional" },
+  { icon: Award,         value: "5",  suffix: "+", label: "Years Building", sub: "Since 2020" },
 ];
 
 // Two-tone accent system — alternates the site's primary and accent colors

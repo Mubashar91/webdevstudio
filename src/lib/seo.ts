@@ -19,6 +19,7 @@ import {
   webPageNode,
   breadcrumbNode,
   faqNode,
+  servicesServiceNode,
   buildGraph,
   findRoute,
   normalizeSiteUrl,
@@ -126,4 +127,15 @@ export function faqNodeFor(
   items: { question: string; answer: string }[]
 ): object {
   return faqNode(items);
+}
+
+/**
+ * Bare Service node for /services, resolved against the runtime site URL.
+ *
+ * Same node the prerenderer emits, from the same builder — hydration replaces
+ * the prerendered JSON-LD wholesale, so /services must include this or it
+ * loses the node as soon as React takes over.
+ */
+export function servicesServiceNodeFor(): object {
+  return servicesServiceNode(SITE_URL);
 }

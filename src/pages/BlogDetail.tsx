@@ -7,10 +7,11 @@ import { useSEO } from "@/hooks/use-seo";
 import {
   breadcrumbNodeFor,
   canonicalPath,
+  faqNodeFor,
   pageGraph,
   SITE_NAME,
 } from "@/lib/seo";
-import { findBlogPost, readTimeOf } from "@/data/blogs";
+import { faqsOf, findBlogPost, readTimeOf, wordCountOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 
@@ -18,6 +19,7 @@ const BlogDetail = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const post = slug ? findBlogPost(slug) : undefined;
+  const faqs = post ? faqsOf(post) : [];
 
   useSEO({
     title: post
@@ -50,7 +52,14 @@ const BlogDetail = () => {
             publisher: { "@id": `${canonicalPath("/")}#organization` },
             keywords: post.tags.join(", "),
             articleSection: post.category,
-            wordCount: post.content.join(" ").split(/\s+/).length,
+            // wordCountOf(), not content.join(" ") — `content` is a
+            // ContentBlock[] of objects, so joining it stringified each block
+            // to "[object Object]" and reported the number of blocks (~40) as
+            // the word count. Hydration replaces the prerendered JSON-LD, so
+            // this wrong number was overwriting the correct one from the
+            // build. The helper also excludes code samples, as the prerenderer
+            // does, keeping the two graphs identical.
+            wordCount: wordCountOf(post),
             inLanguage: "en",
           },
           breadcrumbNodeFor([
@@ -58,6 +67,9 @@ const BlogDetail = () => {
             { name: "Blog", path: "/blogs" },
             { name: post.title, path: `/blogs/${post.slug}` },
           ]),
+          // Mirrors the FAQPage the prerenderer emits for posts with an
+          // on-page FAQ section, so hydration doesn't drop it.
+          ...(faqs.length ? [faqNodeFor(faqs)] : []),
         ])
       : undefined,
   });

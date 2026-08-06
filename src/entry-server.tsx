@@ -1,9 +1,13 @@
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
-import { BLOG_POSTS, wordCountOf } from "./data/blogs";
+import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
 import { STATIC_PROJECTS } from "./data/projects";
-import { SITE_NAME, absoluteUrl } from "./lib/site.config.mjs";
+import {
+  SITE_NAME,
+  absoluteUrl,
+  servicesServiceNode,
+} from "./lib/site.config.mjs";
 
 /**
  * Blog and project detail routes, derived from the same data the pages render.
@@ -37,6 +41,12 @@ export const DYNAMIC_ROUTES = [
     priority: "0.7",
     ogType: "article",
     image: post.coverImage,
+    // routeGraph() emits FAQPage whenever a route carries FAQs, the same path
+    // /services and the location pages already use. The three buyer-intent
+    // posts target question-format queries and had the Q&A on the page but no
+    // markup around it, so AI Overviews and Copilot had nothing to extract.
+    // Empty for posts with no FAQ section, and `faqs?.length` gates the node.
+    faqs: faqsOf(post),
   })),
   ...STATIC_PROJECTS.map((project) => ({
     path: `/projects/${project._id}`,
@@ -70,6 +80,9 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
   const founderRef = { "@id": `${url("/")}#founder` };
 
   const map: Record<string, object[]> = {
+    // Shared with the React runtime via site.config.mjs — see the note there
+    // on why this must not be built twice.
+    "/services": [servicesServiceNode(siteUrl)],
     "/projects": [
       {
         "@type": "CollectionPage",
@@ -208,6 +221,12 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
         ...(p.image ? { image: p.image } : {}),
         keywords: p.technologies.join(", "),
         creator: orgRef,
+        // CreativeWork has no rich result to lose, but an undated portfolio
+        // gives an AI crawler no way to tell a current build from a five-year-
+        // old one when it decides whether the work is worth citing. updatedAt
+        // is the date of the last real revision to the write-up, which is the
+        // honest available signal — omitted rather than faked when unset.
+        ...(p.updatedAt ? { dateCreated: p.updatedAt } : {}),
         inLanguage: "en",
       },
     ];

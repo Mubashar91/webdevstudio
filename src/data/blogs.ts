@@ -543,7 +543,12 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
   },
   {
     slug: "custom-web-app-cost-2026",
-    title: "How Much Does a Custom Web App Cost in 2026? A Developer's Honest Breakdown",
+    // Was "... in 2026? A Developer's Honest Breakdown" — 76 characters, so
+    // Google truncated it mid-subtitle and the brand never appeared. At 44 the
+    // question survives intact and withBrand() can still append
+    // " | WebDevStudio" inside the ~62 character budget. The subtitle it drops
+    // is already the first thing on the page, as the excerpt.
+    title: "How Much Does a Custom Web App Cost in 2026?",
     excerpt:
       "What a custom web app really costs, what drives the number up, and the four levers that cut the price without cutting quality — from a developer who quotes fixed prices.",
     coverImage:
@@ -554,7 +559,7 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     content: [
       {
         type: "p",
-        text: "Nobody wants to be the client who asks “how much does a custom web app cost” and gets back “it depends.” It does depend — but the things it depends on are knowable, and you're entitled to see them before you sign anything. This is how I price work, what pushes a quote from $800 to $5,000, and where you can genuinely save money without ending up with something you'll pay someone else to rebuild in eighteen months.",
+        text: "Nobody wants to be the client who asks “how much does a custom web app cost” and gets back “it depends.” It does depend — but the things it depends on are knowable, and you're entitled to see them before you sign anything. This is how I price work, what pushes a quote from $900 to $10,000, and where you can genuinely save money without ending up with something you'll pay someone else to rebuild in eighteen months.",
       },
       { type: "h2", text: "How much does a custom web app cost? The three price bands" },
       {
@@ -564,9 +569,9 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
       {
         type: "list",
         items: [
-          "Marketing site — from $300, 2–3 weeks: up to about six pages, React and TypeScript, SEO foundations, a contact form, Core Web Vitals tuned",
-          "Web application — from $800, 6–10 weeks: a full MERN build, auth and roles, a REST API, a MongoDB schema, an admin dashboard, a deploy pipeline",
-          "Ongoing partner — from $400 a month, rolling: dedicated hours, features, code review, performance and accessibility audits",
+          "Marketing site — from $900, 2–3 weeks: up to about six pages, React and TypeScript, SEO foundations, a contact form, Core Web Vitals tuned",
+          "Web application — from $2,500, 6–10 weeks: a full MERN build, auth and roles, a REST API, a MongoDB schema, an admin dashboard, a deploy pipeline",
+          "Ongoing partner — from $1,200 a month, rolling: dedicated hours, features, code review, performance and accessibility audits",
         ],
       },
       {
@@ -770,7 +775,7 @@ const Job = new Schema({
       { type: "h2", text: "What does ongoing maintenance cost?" },
       {
         type: "p",
-        text: "Budget for it as a real line item — dependency updates, security patches and small fixes don't stop after launch. My retainers start at $400 a month; ad hoc work is also fine if your needs are occasional.",
+        text: "Budget for it as a real line item — dependency updates, security patches and small fixes don't stop after launch. My retainers start at $1,200 a month; ad hoc work is also fine if your needs are occasional.",
       },
       { type: "h2", text: "Do you work across time zones?" },
       {
@@ -856,7 +861,7 @@ const Job = new Schema({
       {
         type: "list",
         items: [
-          "Starting price — website from $300, web app from $800, mobile app significantly more since it's two platforms",
+          "Starting price — website from $900, web app from $2,500, mobile app significantly more since it's two platforms",
           "Typical timeline — website 2–3 weeks, web app 6–10 weeks, mobile app longer, plus store review",
           "Works on — website and web app run on everything with a browser; a mobile app only runs on the platforms you build for",
           "Updates — website and web app updates are instant; a mobile app update waits for store review each time",
@@ -1147,6 +1152,55 @@ const Job = new Schema({
 
 export function findBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.slug === slug);
+}
+
+/**
+ * Q&A pairs lifted out of a post's own visible "Frequently asked questions"
+ * section, for FAQPage schema.
+ *
+ * DERIVED, deliberately — not a hand-written `faqs` field on BlogPost.
+ *
+ * Google treats FAQ markup whose text does not appear on the page as a
+ * structured-data violation, and a duplicated array is exactly the thing that
+ * silently rots the first time someone edits the prose and forgets the copy
+ * underneath it. Reading the rendered blocks means the markup is the page text
+ * by construction.
+ *
+ * The shape it looks for is the one all three buyer-intent posts already use:
+ * an h2 "Frequently asked questions", then alternating question-h2 / answer-p
+ * pairs, ending at the first h2 that isn't a question ("Where to start").
+ * Posts without that section get an empty array and no FAQPage node.
+ */
+export function faqsOf(post: BlogPost): { question: string; answer: string }[] {
+  const start = post.content.findIndex(
+    (b) => b.type === "h2" && /^frequently asked questions/i.test(b.text.trim())
+  );
+  if (start === -1) return [];
+
+  const faqs: { question: string; answer: string }[] = [];
+  let current: { question: string; answer: string[] } | null = null;
+
+  const flush = () => {
+    if (current?.answer.length) {
+      faqs.push({ question: current.question, answer: current.answer.join(" ") });
+    }
+  };
+
+  for (const block of post.content.slice(start + 1)) {
+    if (block.type === "h2") {
+      flush();
+      // A heading that isn't phrased as a question closes the FAQ section.
+      if (!block.text.trim().endsWith("?")) return faqs;
+      current = { question: block.text.trim(), answer: [] };
+      continue;
+    }
+    // Only prose becomes an answer; the lead-in paragraph before the first
+    // question is skipped because `current` is still null there.
+    if (current && block.type === "p") current.answer.push(block.text);
+  }
+
+  flush();
+  return faqs;
 }
 
 /** Average adult reading speed for technical prose, words per minute. */

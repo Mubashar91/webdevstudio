@@ -41,6 +41,15 @@ const Contact = () => {
           highlight="Touch"
           description="Have a project in mind? Send a message — I typically respond within 24 hours."
           breadcrumbs={[{ label: "Contact" }]}
+          // The form is the conversion on this page, but on a 390px viewport it
+          // starts below the fold, so the opening screen asked for nothing.
+          // An anchor to the form is the honest equivalent of the "book a call"
+          // button the other pages point here with.
+          cta={{
+            label: "Send a message",
+            to: "#contact",
+            note: "Reply within 24 hours · No obligation",
+          }}
         />
         <ContactSection compactHeader />
       </main>

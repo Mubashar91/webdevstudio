@@ -548,6 +548,64 @@ export function webPageNode(siteUrl, route) {
   };
 }
 
+/**
+ * Page-scoped Service node for /services.
+ *
+ * /services previously carried no Service node of its own and leaned entirely
+ * on Organization.hasOfferCatalog — which is emitted byte-identically on all
+ * 20 pages, so it ties the three offers to no page in particular. The two
+ * location pages already declare a proper Service; this is the same pattern
+ * for the page the offers actually live on.
+ *
+ * Lives here, in the shared config, because both the prerenderer and the React
+ * runtime need to emit it. Built separately they would drift, and since
+ * hydration replaces the prerendered JSON-LD, a runtime copy that omitted this
+ * node would silently delete it the moment the page became interactive.
+ */
+export function servicesServiceNode(siteUrl) {
+  const base = normalizeSiteUrl(siteUrl);
+  const id = schemaIds(base);
+  const servicesUrl = absoluteUrl(base, "/services");
+
+  return {
+    "@type": "Service",
+    "@id": `${servicesUrl}#service`,
+    name: "Web Development Services",
+    description:
+      "Fixed-price React, TypeScript and MERN stack web development: marketing sites, web applications, and ongoing frontend and backend support.",
+    url: servicesUrl,
+    serviceType: "Web Development",
+    provider: { "@id": id.organization },
+    areaServed: "Worldwide",
+    // Derived from SERVICE_PACKAGES, so this can never contradict the pricing
+    // table rendered on the page or the sitewide OfferCatalog.
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Web Development Services",
+      itemListElement: SERVICE_PACKAGES.map((pkg) => ({
+        "@type": "Offer",
+        name: pkg.name,
+        description: pkg.tagline,
+        price: String(pkg.priceFrom),
+        priceCurrency: PRICE_CURRENCY,
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          minPrice: pkg.priceFrom,
+          priceCurrency: PRICE_CURRENCY,
+          valueAddedTaxIncluded: false,
+        },
+        availability: "https://schema.org/InStock",
+        url: servicesUrl,
+      })),
+    },
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: absoluteUrl(base, "/contact"),
+      availableLanguage: { "@type": "Language", name: "English" },
+    },
+  };
+}
+
 export function breadcrumbNode(siteUrl, items) {
   return {
     "@type": "BreadcrumbList",

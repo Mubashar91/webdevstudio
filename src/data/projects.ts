@@ -8,6 +8,18 @@ export interface Project {
   image?: string;
   technologies: string[];
   githubLink?: string;
+  /**
+   * Public, reachable demo URL. OMIT IT unless you have just loaded the page
+   * yourself and seen the real project.
+   *
+   * Every case study previously carried an invented domain
+   * (expense-sharing-app.com, hospital-mgmt-system.com, …). Verified
+   * 2026-08-06: four failed DNS resolution outright and ecommerce-dashboard.com
+   * returned a parked-domain lander. A "Live Demo" button that dead-ends is
+   * worse than no button on the one page a prospective client visits
+   * specifically to check the work is real — the ProjectDetail button renders
+   * only when this is set, so leaving it out is always the safe default.
+   */
   demoLink?: string;
   type: ProjectType;
   duration?: string;
@@ -58,7 +70,6 @@ export const STATIC_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=450&fit=crop",
     technologies: ["React Native", "Node.js", "MongoDB", "Express", "JWT", "Firebase"],
-    demoLink: "https://expense-sharing-app.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
     problem:
@@ -89,7 +100,6 @@ export const STATIC_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=450&fit=crop",
     technologies: ["React", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS", "PostgreSQL"],
-    demoLink: "https://hospital-mgmt-system.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
     problem:
@@ -120,7 +130,6 @@ export const STATIC_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Node.js", "Express", "Framer Motion"],
-    demoLink: "https://software-house-website.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
     problem:
@@ -151,7 +160,6 @@ export const STATIC_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop",
     technologies: ["React", "Redux", "Node.js", "MongoDB", "Stripe", "Chart.js", "Socket.io"],
-    demoLink: "https://ecommerce-dashboard.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "MERN",
     problem:
@@ -212,7 +220,6 @@ export const STATIC_PROJECTS: Project[] = [
     image:
       "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=450&fit=crop",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "Vercel", "Prisma"],
-    demoLink: "https://portfolio-blog-platform.com",
     githubLink: "https://github.com/mubasharshahzad",
     type: "React",
     problem:

@@ -62,8 +62,12 @@ export const Footer = () => {
               ].map(({ icon: Icon, text, href }) => (
                 <div key={text} className="flex items-center gap-2.5 text-xs text-muted-foreground">
                   <Icon className="h-3.5 w-3.5 text-primary/45 flex-shrink-0" />
+                  {/* The mail and tel links are the fastest route to a real
+                      conversation from a phone, and both were ~16px tall.
+                      inline-flex + min-h gives them a thumb-sized target
+                      without changing how the row looks. */}
                   {href
-                    ? <a href={href} className="hover:text-primary transition-colors underline-anim">{text}</a>
+                    ? <a href={href} className="inline-flex items-center min-h-11 md:min-h-0 hover:text-primary transition-colors underline-anim">{text}</a>
                     : <span>{text}</span>}
                 </div>
               ))}
@@ -100,11 +104,17 @@ export const Footer = () => {
             <h2 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
               Navigation
             </h2>
-            <ul className="space-y-3.5">
+            {/* Six ~20px links stacked 14px apart gave every one of them a tap
+                target well under the 44px guideline, on the nav a mobile
+                visitor is most likely to reach for. min-h-11 sizes the touch
+                area on mobile only; from md up the pointer is a mouse and the
+                original tighter rhythm is kept. */}
+            <ul className="space-y-1 md:space-y-3.5">
               {navLinks.map(({ to, label }) => (
                 <li key={to}>
                   <Link to={to}
-                    className="group inline-flex items-center gap-1.5 text-sm text-muted-foreground
+                    className="group inline-flex items-center gap-1.5 min-h-11 md:min-h-0
+                      text-sm text-muted-foreground
                       hover:text-primary transition-colors font-medium">
                     <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1.5
                       group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />

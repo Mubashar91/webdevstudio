@@ -60,6 +60,11 @@ const Projects = () => {
           highlight="Projects"
           description="A curated selection of web applications showcasing expertise in React, TypeScript, Node.js, and the MERN stack."
           breadcrumbs={[{ label: "Projects" }]}
+          cta={{
+            label: "Start a project",
+            to: "/contact",
+            note: "Free 30-min call · Fixed quote before work starts",
+          }}
         />
         <ProjectsSection compactHeader />
         <CTA />

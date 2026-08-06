@@ -92,8 +92,11 @@ export const Contact = ({ compactHeader = false }: ContactProps) => {
   // field is under 16px and never zooms back out.
   const inputCls = "text-base md:text-sm bg-background/50 border-border/50 focus:border-primary focus-visible:ring-1 focus-visible:ring-primary h-11 rounded-xl transition-all duration-200 placeholder:text-muted-foreground/70";
 
+  // scroll-mt-20 matches the fixed nav's height (pt-20 on <main>), so the
+  // "Send a message" anchor in the page header lands the form below the
+  // navbar instead of behind it.
   return (
-    <section id="contact" className="py-28 relative overflow-hidden">
+    <section id="contact" className="py-28 relative overflow-hidden scroll-mt-20">
       <div className="absolute inset-0 bg-surface-alt pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.12] pointer-events-none" />
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/4 rounded-full blur-[140px] pointer-events-none" />

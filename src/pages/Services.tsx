@@ -15,6 +15,7 @@ import {
   faqNodeFor,
   pageGraph,
   routeMeta,
+  servicesServiceNodeFor,
 } from "@/lib/seo";
 import { SERVICES_FAQS } from "@/lib/site.config.mjs";
 
@@ -26,10 +27,13 @@ const Services = () => {
     description: meta.description,
     keywords: meta.keywords,
     canonical: canonicalPath("/services"),
-    // The Organization node already carries the full OfferCatalog with real
-    // prices, so this page adds only its breadcrumb rather than restating a
-    // second, price-less Service node that competed with it.
+    // The sitewide Organization node carries the OfferCatalog, but it is
+    // emitted identically on every page, so on its own it never marks THIS
+    // page as the one the offers belong to. The Service node below is
+    // page-scoped and reuses the same SERVICE_PACKAGES data, so it reinforces
+    // the catalog rather than competing with a second set of numbers.
     structuredData: pageGraph("/services", [
+      servicesServiceNodeFor(),
       faqNodeFor(SERVICES_FAQS),
       breadcrumbNodeFor([
         { name: "Home", path: "/" },
@@ -47,6 +51,11 @@ const Services = () => {
           highlight="Services"
           description="End-to-end development from React frontends to scalable Node.js backends — built for performance, accessibility, and growth."
           breadcrumbs={[{ label: "Services" }]}
+          cta={{
+            label: "Get a quote",
+            to: "/contact",
+            note: "Free 30-min call · Fixed price agreed upfront",
+          }}
           footnote={
             <>
               Serving clients worldwide, including{" "}
