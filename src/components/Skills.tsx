@@ -140,8 +140,36 @@ export const Skills = () => {
           </p>
         </div>
 
+        {/* Same data as the animated cards below, as a real <table> rather than
+            floating percentage bars. A GEO audit flagged skill levels as
+            visual-only with nothing a non-rendering crawler could parse as
+            structured data — sr-only keeps it invisible to sighted users
+            (the cards are the real UI) while still being real text in the
+            HTML for screen readers and text-based crawlers. */}
+        <table className="sr-only">
+          <caption>Technical skills by category</caption>
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Skill</th>
+              <th scope="col">Proficiency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {skillCategories.flatMap((cat) =>
+              cat.skills.map((skill) => (
+                <tr key={`${cat.category}-${skill.name}`}>
+                  <td>{cat.category}</td>
+                  <td>{skill.name}</td>
+                  <td>{skill.level}%</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+
         {/* Grid */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto" aria-hidden="true">
           {skillCategories.map((cat, ci) => (
             <Card
               key={cat.category}

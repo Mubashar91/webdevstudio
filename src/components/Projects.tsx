@@ -152,7 +152,7 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                     {project.image ? (
                       <img
                         src={optimizedImage(projectImageUrl(project.image))}
-                        alt={`${project.title} — project screenshot`}
+                        alt={`${project.title} — illustrative cover image`}
                         width={CARD_IMAGE.width}
                         height={CARD_IMAGE.height}
                         loading="lazy"
@@ -209,7 +209,7 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                       {project.githubLink && (
                         <Button size="sm" variant="ghost" className="flex-1 h-11 md:h-9 text-xs font-bold hover:bg-muted/70 gap-1.5 rounded-xl" asChild>
                           <a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
-                            <Github className="h-3.5 w-3.5" /> Source
+                            <Github className="h-3.5 w-3.5" /> GitHub
                           </a>
                         </Button>
                       )}

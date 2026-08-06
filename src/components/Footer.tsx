@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Code2, Github, Linkedin, Mail, Heart, ArrowUpRight, MapPin, Phone, ExternalLink } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { CONTACT_EMAIL, TELEPHONE } from "@/lib/site.config.mjs";
 
 const navLinks = [
   { to: "/",         label: "Home" },
@@ -14,7 +15,7 @@ const navLinks = [
 const socials = [
   { href: "https://github.com/mubasharshahzad",      icon: Github,   label: "GitHub",   ext: true,  color: "hover:bg-gray-800 hover:border-gray-700 hover:text-white" },
   { href: "https://linkedin.com/in/mubasharshahzad", icon: Linkedin, label: "LinkedIn", ext: true,  color: "hover:bg-blue-600 hover:border-blue-500 hover:text-white" },
-  { href: "mailto:mmubasharshahzad40@gmail.com",     icon: Mail,     label: "Email",    ext: false, color: "hover:bg-primary hover:border-primary hover:text-white" },
+  { href: `mailto:${CONTACT_EMAIL}`,                 icon: Mail,     label: "Email",    ext: false, color: "hover:bg-primary hover:border-primary hover:text-white" },
 ];
 
 export const Footer = () => {
@@ -55,8 +56,8 @@ export const Footer = () => {
             {/* Contact */}
             <div className="space-y-2.5 mb-6">
               {[
-                { icon: Mail,   text: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com" },
-                { icon: Phone,  text: "+92 309 6403160",              href: "tel:+923096403160" },
+                { icon: Mail,   text: CONTACT_EMAIL,     href: `mailto:${CONTACT_EMAIL}` },
+                { icon: Phone,  text: "+92 309 6403160", href: `tel:${TELEPHONE}` },
                 { icon: MapPin, text: "Mian Channu, Pakistan",        href: null },
               ].map(({ icon: Icon, text, href }) => (
                 <div key={text} className="flex items-center gap-2.5 text-xs text-muted-foreground">

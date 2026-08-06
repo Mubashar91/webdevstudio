@@ -7,10 +7,11 @@ import { Mail, MapPin, Phone, Send, MessageSquare, Clock, CheckCircle2 } from "l
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { buildEnquiryMailto, submitRequirement } from "@/lib/api";
 import { trackEvent } from "@/lib/boot";
+import { CONTACT_EMAIL, TELEPHONE } from "@/lib/site.config.mjs";
 
 const contactInfo = [
-  { icon: Mail,   label: "Email",    value: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com", iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
-  { icon: Phone,  label: "Phone",    value: "+92 309 6403160",              href: "tel:+923096403160",                  iconBg: "bg-violet-500/12",  iconColor: "text-violet-500",  hoverBorder: "hover:border-violet-500/40" },
+  { icon: Mail,   label: "Email",    value: CONTACT_EMAIL,     href: `mailto:${CONTACT_EMAIL}`, iconBg: "bg-blue-500/12",    iconColor: "text-blue-500",    hoverBorder: "hover:border-blue-500/40" },
+  { icon: Phone,  label: "Phone",    value: "+92 309 6403160", href: `tel:${TELEPHONE}`,        iconBg: "bg-violet-500/12",  iconColor: "text-violet-500",  hoverBorder: "hover:border-violet-500/40" },
   { icon: MapPin, label: "Location", value: "Mian Channu, Pakistan",        href: null,                                 iconBg: "bg-emerald-500/12", iconColor: "text-emerald-500", hoverBorder: "hover:border-emerald-500/40" },
   { icon: Clock,  label: "Response", value: "Within 24 hours",              href: null,                                 iconBg: "bg-amber-500/12",   iconColor: "text-amber-500",   hoverBorder: "hover:border-amber-500/40" },
 ];

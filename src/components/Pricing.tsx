@@ -44,6 +44,33 @@ export const Pricing = ({ compactHeader = false }: PricingProps) => {
           </div>
         )}
 
+        {/* Same data as the pricing cards below, as a real <table>. A GEO
+            audit flagged pricing as float/percent-style loose markup with no
+            structured comparison a non-rendering crawler could parse — the
+            cards (with their working "Get a quote" links) stay the real UI;
+            this is sr-only so sighted users never see it duplicated. */}
+        <table className="sr-only">
+          <caption>Pricing packages</caption>
+          <thead>
+            <tr>
+              <th scope="col">Package</th>
+              <th scope="col">Starting price</th>
+              <th scope="col">Typical timeline</th>
+              <th scope="col">Includes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {SERVICE_PACKAGES.map((pkg) => (
+              <tr key={pkg.id}>
+                <td>{pkg.name}</td>
+                <td>${pkg.priceFrom.toLocaleString("en-US")}/{pkg.unit}</td>
+                <td>{pkg.timeline}</td>
+                <td>{pkg.includes.join("; ")}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
         <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
           {SERVICE_PACKAGES.map((pkg, i) => (
             <div

@@ -23,6 +23,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import {
+  CONTACT_EMAIL,
   INDEXNOW_KEY,
   ROUTES,
   SITE_NAME,
@@ -203,11 +204,27 @@ Sitemap: ${SITE_URL}/sitemap.xml
  *
  * Google Search and AI Overviews do not use llms.txt; this is cheap coverage
  * for the engines that do.
+ *
+ * Takes `dynamicRoutes` (blog posts + case studies) as well as the static
+ * ROUTES — a GEO audit found this listing only the 8 top-level pages, which
+ * left out exactly the passages an LLM summarizer would want to cite directly
+ * (case-study problem/approach narratives, dated blog posts with specific
+ * claims). Both index pages stay listed too, for readers who want the full list.
  */
-function renderLlmsTxt() {
+function renderLlmsTxt(dynamicRoutes) {
   const lines = ROUTES.map(
     (r) => `- [${r.title.split("|")[0].trim()}](${absoluteUrl(SITE_URL, r.path)}): ${r.description}`
   ).join("\n");
+
+  const articleLines = dynamicRoutes
+    .filter((r) => r.path.startsWith("/blogs/"))
+    .map((r) => `- [${r.title.split("|")[0].trim()}](${absoluteUrl(SITE_URL, r.path)}): ${r.description}`)
+    .join("\n");
+
+  const caseStudyLines = dynamicRoutes
+    .filter((r) => r.path.startsWith("/projects/"))
+    .map((r) => `- [${r.title.split("|")[0].trim()}](${absoluteUrl(SITE_URL, r.path)}): ${r.description}`)
+    .join("\n");
 
   return `# ${SITE_NAME}
 
@@ -218,9 +235,17 @@ function renderLlmsTxt() {
 
 ${lines}
 
+## Articles
+
+${articleLines}
+
+## Case Studies
+
+${caseStudyLines}
+
 ## Contact
 
-- Email: mmubasharshahzad40@gmail.com
+- Email: ${CONTACT_EMAIL}
 - Quote requests: ${absoluteUrl(SITE_URL, "/contact")}
 `;
 }
@@ -333,7 +358,7 @@ async function main() {
   await writeFile(join(distDir, "robots.txt"), renderRobots(), "utf8");
   console.log("  ✓ robots.txt");
 
-  await writeFile(join(distDir, "llms.txt"), renderLlmsTxt(), "utf8");
+  await writeFile(join(distDir, "llms.txt"), renderLlmsTxt(DYNAMIC_ROUTES), "utf8");
   console.log("  ✓ llms.txt");
 
   // IndexNow ownership key. Must be reachable at the site root for Bing to

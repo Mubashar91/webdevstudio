@@ -8,6 +8,8 @@
  * and the contact form falls back to a prefilled mailto so the enquiry still
  * reaches an inbox.
  */
+import { CONTACT_EMAIL as CONFIG_CONTACT_EMAIL } from "@/lib/site.config.mjs";
+
 const rawApiUrl = import.meta.env.VITE_API_URL as string | undefined;
 
 export const API_BASE_URL =
@@ -28,8 +30,15 @@ if (API_MISCONFIGURED && import.meta.env.DEV) {
   );
 }
 
-/** Inbox that receives enquiries when the API is unreachable or unset. */
-export const CONTACT_EMAIL = "mmubasharshahzad40@gmail.com";
+/**
+ * Inbox that receives enquiries when the API is unreachable or unset.
+ *
+ * Re-exported from site.config.mjs rather than redefined here — this file and
+ * site.config.mjs each hardcoded their own copy of the same address, so
+ * changing it meant remembering to edit both (an E-E-A-T audit flagged the
+ * two-source drift risk directly).
+ */
+export const CONTACT_EMAIL: string = CONFIG_CONTACT_EMAIL;
 
 export interface RequirementPayload {
   name: string;

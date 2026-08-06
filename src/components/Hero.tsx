@@ -5,11 +5,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScenePointer } from "@/hooks/use-scene-pointer";
+import { CONTACT_EMAIL } from "@/lib/site.config.mjs";
 
 const socials = [
   { href: "https://github.com/mubasharshahzad",      icon: Github,   label: "GitHub" },
   { href: "https://linkedin.com/in/mubasharshahzad", icon: Linkedin, label: "LinkedIn" },
-  { href: "mailto:mmubasharshahzad40@gmail.com",     icon: Mail,     label: "Email" },
+  { href: `mailto:${CONTACT_EMAIL}`,                 icon: Mail,     label: "Email" },
 ];
 
 const stats = [

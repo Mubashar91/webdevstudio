@@ -184,7 +184,7 @@ const ProjectDetail = () => {
                     <Button asChild className="hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 dark:hover:shadow-primary/40 shadow-md">
                       <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                         <Github className="mr-2 h-4 w-4" />
-                        View Code
+                        GitHub Profile
                       </a>
                     </Button>
                   )}
@@ -223,7 +223,7 @@ const ProjectDetail = () => {
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-black/20 dark:from-black/60 dark:via-black/30 dark:to-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                     <img
                       src={optimizedImage(projectImageUrl(project.image))}
-                      alt={`${project.title} — project screenshot`}
+                      alt={`${project.title} — illustrative cover image`}
                       width={CARD_IMAGE.width}
                       height={CARD_IMAGE.height}
                       loading="eager"

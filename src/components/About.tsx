@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, GraduationCap, Mail, Phone, MapPin, CheckCircle2, User, Calendar } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { CONTACT_EMAIL, TELEPHONE } from "@/lib/site.config.mjs";
 
 /**
  * Work history. `current: true` marks the present role.
@@ -83,8 +84,8 @@ export const About = () => {
           <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
             {[
               { icon: MapPin, text: "Mian Channu, Pakistan" },
-              { icon: Mail,   text: "mmubasharshahzad40@gmail.com", href: "mailto:mmubasharshahzad40@gmail.com" },
-              { icon: Phone,  text: "+92 309 6403160",              href: "tel:+923096403160" },
+              { icon: Mail,   text: CONTACT_EMAIL,     href: `mailto:${CONTACT_EMAIL}` },
+              { icon: Phone,  text: "+92 309 6403160", href: `tel:${TELEPHONE}` },
             ].map(({ icon: Icon, text, href }) => (
               <div key={text} className="flex items-center gap-2">
                 <Icon className="h-5 w-5 text-primary/60" />
@@ -127,9 +128,17 @@ export const About = () => {
 
         {/* Experience */}
         <div className={`mb-20 max-w-5xl mx-auto transition-all duration-700 delay-150 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-14 text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-center">
             Work <span className="gradient-text">Experience</span>
           </h2>
+          {/* The WebDevStudio, Solvefy and BIT-degree periods below overlap on
+              the calendar — that's freelance work running alongside study and
+              employment, not three conflicting timelines. Said once here so it
+              doesn't have to be inferred from the dates. */}
+          <p className="text-center text-sm text-muted-foreground max-w-2xl mx-auto mb-10">
+            WebDevStudio ran part-time from the start — alongside the degree below and the
+            employed roles here — before becoming my full-time focus.
+          </p>
 
           <div className="relative">
             {/* Timeline line */}
