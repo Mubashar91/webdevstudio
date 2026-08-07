@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { LucideIcon, HelpCircle } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import {
@@ -23,6 +24,12 @@ interface LocationHighlightsProps {
   valueProps: LocationValueProp[];
   industries: string[];
   faqs: LocationFAQ[];
+  /**
+   * Rendered between the value props and the FAQ — the slot the city coverage
+   * section needs. Both of those blocks live inside this component, so a page
+   * can't place anything between them without a slot.
+   */
+  children?: ReactNode;
 }
 
 export const LocationHighlights = ({
@@ -30,6 +37,7 @@ export const LocationHighlights = ({
   valueProps,
   industries,
   faqs,
+  children,
 }: LocationHighlightsProps) => {
   const [valuesRef, valuesVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [faqRef, faqVisible] = useIntersectionObserver({ threshold: 0.1 });
@@ -92,6 +100,8 @@ export const LocationHighlights = ({
           )}
         </div>
       </section>
+
+      {children}
 
       {/* FAQ */}
       <section className="py-24 border-t border-border/40">

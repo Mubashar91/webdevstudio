@@ -2,6 +2,8 @@ import { Clock, Coins, MessagesSquare, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
+import { CitiesServed } from "@/components/CitiesServed";
+import { nzGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Pricing } from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
@@ -105,7 +107,14 @@ const WebDevelopmentNewZealand = () => {
           valueProps={valueProps}
           industries={industries}
           faqs={faqs}
-        />
+        >
+          <CitiesServed
+            heading={nzGeo.heading}
+            intro={nzGeo.intro}
+            cities={nzGeo.cities}
+            note={nzGeo.note}
+          />
+        </LocationHighlights>
         <ServicesSection compactHeader />
         <Pricing />
         <Testimonials />

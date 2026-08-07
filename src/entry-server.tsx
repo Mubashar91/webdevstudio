@@ -2,6 +2,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
 import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
+import { buildAreaServed, cyGeo, nzGeo } from "./data/geoPageData";
 import { STATIC_PROJECTS } from "./data/projects";
 import {
   SITE_NAME,
@@ -151,32 +152,25 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
   // Country-scoped Service nodes for the two location landing pages. These
   // are the highest-intent pages on the site, and the areaServed cities are
   // exactly what an AI engine matches on for "React developer in Limassol".
+  // The city list comes from geoPageData rather than being written out here.
+  // That module is also what the pages render their visible "Cities I work
+  // with" section from, so a city can never be claimed in areaServed without
+  // also appearing in the page copy.
   const locations = [
-    {
-      path: "/web-development-new-zealand",
-      country: "New Zealand",
-      cities: ["Auckland", "Wellington", "Christchurch"],
-    },
-    {
-      path: "/web-development-cyprus",
-      country: "Cyprus",
-      cities: ["Limassol", "Nicosia", "Larnaca"],
-    },
+    { path: "/web-development-new-zealand", geo: nzGeo },
+    { path: "/web-development-cyprus", geo: cyGeo },
   ];
-  for (const loc of locations) {
-    map[loc.path] = [
+  for (const { path, geo } of locations) {
+    map[path] = [
       {
         "@type": "Service",
-        "@id": `${url(loc.path)}#service`,
-        name: `Web Development Services for ${loc.country} Businesses`,
-        description: `Remote React.js, MERN stack, and full-stack web development for businesses in ${loc.country}, delivered by ${SITE_NAME}.`,
-        url: url(loc.path),
+        "@id": `${url(path)}#service`,
+        name: `Web Development Services for ${geo.country} Businesses`,
+        description: `Remote React.js, MERN stack, and full-stack web development for businesses in ${geo.country}, delivered by ${SITE_NAME}.`,
+        url: url(path),
         serviceType: "Web Development",
         provider: orgRef,
-        areaServed: [
-          { "@type": "Country", name: loc.country },
-          ...loc.cities.map((name) => ({ "@type": "City", name })),
-        ],
+        areaServed: buildAreaServed(geo),
         availableChannel: {
           "@type": "ServiceChannel",
           serviceUrl: url("/contact"),

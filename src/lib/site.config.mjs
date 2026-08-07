@@ -192,6 +192,14 @@ export const NZ_FAQS = [
     answer:
       "Absolutely. I'm happy to work under your standard contract, NDA, or IP assignment terms before any project details are shared.",
   },
+  // Added after Search Console showed "react developers hamilton" pulling
+  // impressions while Hamilton was named nowhere on the site. The cities here
+  // must stay in step with nzGeo.cities in src/data/geoPageData.ts.
+  {
+    question: "Do you work with businesses outside Auckland and Wellington?",
+    answer:
+      "Yes — I work with businesses anywhere in New Zealand, including Hamilton, Tauranga, Dunedin and smaller centres. Because the work is fully remote, your location doesn't change the price, the timeline, or how we communicate. Everything runs through video calls, shared project boards and daily written updates.",
+  },
 ];
 
 export const CYPRUS_FAQS = [
@@ -219,6 +227,13 @@ export const CYPRUS_FAQS = [
     question: "Do you sign contracts and NDAs?",
     answer:
       "Absolutely. I'm happy to work under your standard contract, NDA, or IP assignment terms before any project details are shared.",
+  },
+  // Mirrors the NZ entry above; cities must match cyGeo.cities in
+  // src/data/geoPageData.ts.
+  {
+    question: "Do you work with businesses outside Limassol?",
+    answer:
+      "Yes — I work with businesses across Cyprus, including Nicosia, Larnaca, Paphos and Famagusta. The work is fully remote, so your location doesn't change the price or the timeline. We agree a fixed scope and a written quote before anything starts.",
   },
 ];
 
@@ -331,10 +346,14 @@ export const ROUTES = [
     changefreq: "monthly",
     lastmod: "2026-07-30",
     title: "Web Developer for New Zealand — Fixed Prices from $900",
+    // Names the main centres, because Search Console showed geo queries
+    // ("web developer nicosia", "react developers hamilton") are what this
+    // site actually surfaces for. Price stays $900 to match SERVICE_PACKAGES
+    // and every other page — the numbers must never disagree again.
     description:
-      "Websites and web apps for New Zealand businesses — fixed price from $900, live in 2–3 weeks. Free 30-minute call and a written quote before work starts.",
+      "Websites and web apps for businesses in Auckland, Wellington, Hamilton, Christchurch and across NZ — fixed price from $900, live in 2–3 weeks.",
     keywords:
-      "web developer New Zealand, hire React developer NZ, MERN stack developer Auckland, web development Wellington, freelance developer New Zealand",
+      "web developer New Zealand, hire React developer NZ, MERN stack developer Auckland, web development Wellington, React developer Hamilton, freelance developer New Zealand",
     faqs: NZ_FAQS,
   },
   {
@@ -344,9 +363,9 @@ export const ROUTES = [
     lastmod: "2026-07-30",
     title: "Web Developer in Cyprus — Fixed Prices from $900",
     description:
-      "Websites and web apps for Cyprus businesses in Limassol, Nicosia and Larnaca — fixed price from $900, live in 2–3 weeks. Free call, written quote first.",
+      "Websites and web apps for businesses in Limassol, Nicosia, Larnaca, Paphos and across Cyprus — fixed price from $900, live in 2–3 weeks. Free call first.",
     keywords:
-      "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, fintech web development Cyprus",
+      "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, web developer Paphos, fintech web development Cyprus",
     faqs: CYPRUS_FAQS,
   },
 ];

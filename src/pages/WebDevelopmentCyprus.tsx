@@ -2,6 +2,8 @@ import { Clock, Coins, MessagesSquare, ShieldCheck } from "lucide-react";
 import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
+import { CitiesServed } from "@/components/CitiesServed";
+import { cyGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
@@ -105,7 +107,14 @@ const WebDevelopmentCyprus = () => {
           valueProps={valueProps}
           industries={industries}
           faqs={faqs}
-        />
+        >
+          <CitiesServed
+            heading={cyGeo.heading}
+            intro={cyGeo.intro}
+            cities={cyGeo.cities}
+            note={cyGeo.note}
+          />
+        </LocationHighlights>
         <ServicesSection compactHeader />
         <Pricing />
         <Testimonials />
