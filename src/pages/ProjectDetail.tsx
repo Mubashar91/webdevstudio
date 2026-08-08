@@ -1,34 +1,96 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, Link, Navigate } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
-import { breadcrumbSchema, canonicalPath, SITE_NAME } from "@/lib/seo";
+import {
+  breadcrumbNodeFor,
+  canonicalPath,
+  FOUNDER_NAME,
+  pageGraph,
+  SITE_NAME,
+} from "@/lib/seo";
 import {
   API_BASE_URL,
   findStaticProject,
   normalizeProjectId,
+  projectDemoUrl,
   projectImageUrl,
+  projectPath,
+  projectRepoUrl,
+  projectSchemaNode,
+  projectSlug,
+  teamLabel,
+  timelineLabel,
   type Project,
 } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 import {
   ArrowLeft,
   Github,
   ExternalLink,
-  Calendar,
-  Users,
   Target,
   Code2,
-  Rocket,
-  CheckCircle2,
-  Lightbulb,
+  Wrench,
+  ImageIcon,
+  RotateCcw,
   TrendingUp,
 } from "lucide-react";
+
+/**
+ * One row of the "At a glance" table.
+ *
+ * Rows with no value are dropped rather than rendered empty: the page used to
+ * print "N/A" into a stat card, which is a worse answer than not asking the
+ * question. The gaps are surfaced at build time instead — see
+ * pendingCaseStudyFields() in src/data/projects.ts.
+ */
+const GlanceRow = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <tr className="border-b border-border/50 last:border-0">
+    <th
+      scope="row"
+      className="py-3 pr-6 text-left align-top font-semibold text-sm text-muted-foreground whitespace-nowrap"
+    >
+      {label}
+    </th>
+    <td className="py-3 text-sm text-foreground">{children}</td>
+  </tr>
+);
+
+/** A body section that renders only when it has something true to say. */
+const Prose = ({
+  id,
+  icon: Icon,
+  heading,
+  children,
+}: {
+  id: string;
+  icon: typeof Target;
+  heading: string;
+  children: string | null | undefined;
+}) => {
+  if (!children) return null;
+  return (
+    <section id={id} className="space-y-3">
+      <h2 className="text-2xl font-bold flex items-center gap-3">
+        <Icon className="h-6 w-6 text-primary" />
+        {heading}
+      </h2>
+      <p className="text-muted-foreground leading-relaxed text-base whitespace-pre-line">
+        {children}
+      </p>
+    </section>
+  );
+};
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -88,32 +150,46 @@ const ProjectDetail = () => {
   useSEO({
     title: seoTitle,
     description:
+      project?.subtitle ??
       project?.description ??
       "Project case study from WebDevStudio's web development portfolio.",
-    canonical: id ? canonicalPath(`/projects/${id}`) : undefined,
+    // Canonical follows the project's slug, never the param it was reached
+    // by. Landing on the legacy /projects/s1 must still declare
+    // /projects/expense-sharing-app as the one indexable URL.
+    canonical: project
+      ? canonicalPath(projectPath(project))
+      : id
+        ? canonicalPath(`/projects/${id}`)
+        : undefined,
     ogImage: project?.image ? projectImageUrl(project.image) : undefined,
     ogType: "article",
     noindex: !loading && !project,
+    // pageGraph() carries the Organization and Person nodes, so the
+    // CreativeWork's `creator` reference to #founder actually resolves to a
+    // named human. Emitting the CreativeWork on its own left it attributed to
+    // an @id that existed nowhere on the page after hydration.
     structuredData: project
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            name: project.title,
-            description: project.description,
-            image: projectImageUrl(project.image),
-            url: canonicalPath(`/projects/${project._id}`),
-            author: { "@type": "Organization", name: SITE_NAME },
-            keywords: project.technologies.join(", "),
-          },
-          breadcrumbSchema([
+      ? pageGraph(projectPath(project), [
+          projectSchemaNode(project, {
+            url: canonicalPath,
+            creator: { "@id": `${canonicalPath("/")}#founder` },
+          }),
+          breadcrumbNodeFor([
             { name: "Home", path: "/" },
             { name: "Projects", path: "/projects" },
-            { name: project.title, path: `/projects/${project._id}` },
+            { name: project.title, path: projectPath(project) },
           ]),
-        ]
+        ])
       : undefined,
   });
+
+  // Reached by the pre-slug URL (/projects/s1) with JS running: swap the
+  // address bar for the slug so in-app navigation, sharing and analytics all
+  // settle on one URL. Vercel 301s the same paths for crawlers and non-JS
+  // clients — this is the belt to that pair of braces, not a replacement.
+  if (project && id && projectSlug(project) !== id) {
+    return <Navigate to={projectPath(project)} replace />;
+  }
 
   if (loading) {
     return (
@@ -143,6 +219,12 @@ const ProjectDetail = () => {
     );
   }
 
+  const repoUrl = projectRepoUrl(project);
+  const demoUrl = projectDemoUrl(project);
+  const timeline = timelineLabel(project);
+  const team = teamLabel(project);
+  const screenshots = project.screenshots ?? [];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
@@ -170,51 +252,38 @@ const ProjectDetail = () => {
                 <Badge className="mb-4 bg-primary/90 hover:bg-primary transition-all dark:bg-primary/80 text-white shadow-lg">
                   {project.type}
                 </Badge>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight text-foreground dark:text-white drop-shadow-lg">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight text-foreground dark:text-white drop-shadow-lg">
                   {project.title}
                 </h1>
-                {project.fullDescription && (
-                  <p className="text-lg text-foreground/80 dark:text-gray-200 mb-8 leading-relaxed drop-shadow">
-                    {project.fullDescription}
-                  </p>
+                {/* The subtitle says what it does in the user's words. The old
+                    hero led with fullDescription, which led with the stack. */}
+                <p className="text-lg font-medium text-foreground/90 dark:text-gray-100 drop-shadow">
+                  {project.subtitle ?? project.fullDescription ?? project.description}
+                </p>
+
+                {/* Proof links only. A button that lands on a profile listing
+                    instead of this project's code reads as though the repo
+                    doesn't exist — see projectRepoUrl(). */}
+                {(repoUrl || demoUrl) && (
+                  <div className="flex flex-wrap gap-4">
+                    {repoUrl && (
+                      <Button asChild className="hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 dark:hover:shadow-primary/40 shadow-md">
+                        <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="mr-2 h-4 w-4" />
+                          View the code
+                        </a>
+                      </Button>
+                    )}
+                    {demoUrl && (
+                      <Button variant="outline" asChild className="hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 dark:hover:shadow-accent/40 dark:border-gray-500 dark:text-white shadow-md">
+                        <a href={demoUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Live demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 )}
-
-                <div className="flex flex-wrap gap-4 mb-8">
-                  {project.githubLink && (
-                    <Button asChild className="hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 dark:hover:shadow-primary/40 shadow-md">
-                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        GitHub Profile
-                      </a>
-                    </Button>
-                  )}
-                  {project.demoLink && (
-                    <Button variant="outline" asChild className="hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 dark:hover:shadow-accent/40 dark:border-gray-500 dark:text-white shadow-md">
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  )}
-                </div>
-
-                <div className="grid grid-cols-3 gap-4">
-                  <Card className="p-4 text-center bg-card/70 hover:bg-card/95 border border-border/50 hover:border-primary/60 transition-all duration-300 backdrop-blur-sm dark:bg-black/40 dark:hover:bg-black/60 dark:border-gray-600 dark:hover:border-primary/50 shadow-lg">
-                    <Calendar className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <p className="text-sm text-foreground/70 dark:text-gray-300 mb-1 font-medium">Duration</p>
-                    <p className="font-semibold text-foreground dark:text-white">{project.duration || "N/A"}</p>
-                  </Card>
-                  <Card className="p-4 text-center bg-card/70 hover:bg-card/95 border border-border/50 hover:border-primary/60 transition-all duration-300 backdrop-blur-sm dark:bg-black/40 dark:hover:bg-black/60 dark:border-gray-600 dark:hover:border-primary/50 shadow-lg">
-                    <Users className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <p className="text-sm text-foreground/70 dark:text-gray-300 mb-1 font-medium">Team Size</p>
-                    <p className="font-semibold text-foreground dark:text-white">{project.teamSize || "N/A"}</p>
-                  </Card>
-                  <Card className="p-4 text-center bg-card/70 hover:bg-card/95 border border-border/50 hover:border-primary/60 transition-all duration-300 backdrop-blur-sm dark:bg-black/40 dark:hover:bg-black/60 dark:border-gray-600 dark:hover:border-primary/50 shadow-lg">
-                    <Target className="h-6 w-6 mx-auto mb-2 text-primary" />
-                    <p className="text-sm text-foreground/70 dark:text-gray-300 mb-1 font-medium">My Role</p>
-                    <p className="font-semibold text-xs text-foreground dark:text-white">{project.role || "N/A"}</p>
-                  </Card>
-                </div>
               </div>
 
               <div className="relative animate-in fade-in slide-in-from-right duration-700 delay-200">
@@ -238,46 +307,126 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        <section className="py-12 bg-surface-alt">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-              <TrendingUp className="h-8 w-8 text-primary" />
-              Project Overview
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="p-6 hover:shadow-glow transition-shadow">
-                <Code2 className="h-10 w-10 text-primary mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Tech Stack</h3>
-                <p className="text-muted-foreground">{project.technologies.length}+ Technologies</p>
-              </Card>
-              <Card className="p-6 hover:shadow-glow transition-shadow">
-                <Rocket className="h-10 w-10 text-accent mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Development</h3>
-                <p className="text-muted-foreground">{project.duration || "N/A"} Timeline</p>
-              </Card>
-              <Card className="p-6 hover:shadow-glow transition-shadow">
-                <Users className="h-10 w-10 text-primary mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Team</h3>
-                <p className="text-muted-foreground">{project.teamSize || "N/A"}</p>
-              </Card>
-              <Card className="p-6 hover:shadow-glow transition-shadow">
-                <CheckCircle2 className="h-10 w-10 text-accent mb-4" />
-                <h3 className="font-semibold text-lg mb-2">Status</h3>
-                <p className="text-muted-foreground">Completed</p>
-              </Card>
+        {/* At a glance.
+            Replaces two blocks that said the same thing a few hundred pixels
+            apart: the Duration / Team Size / My Role cards in the hero, and the
+            "Project Overview" row that repeated the timeline, the team and a
+            "6+ Technologies" count. Counting your own technologies is not a
+            credential. */}
+        <section className="py-10 bg-surface-alt">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-xl font-bold mb-4">At a glance</h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <tbody>
+                  {project.context && (
+                    <GlanceRow label="Context">{project.context}</GlanceRow>
+                  )}
+                  {timeline && <GlanceRow label="Timeline">{timeline}</GlanceRow>}
+                  {team && <GlanceRow label="Team">{team}</GlanceRow>}
+                  {project.roleDetail && (
+                    <GlanceRow label="My role">{project.roleDetail}</GlanceRow>
+                  )}
+                  <GlanceRow label="Stack">
+                    {project.technologies.join(" · ")}
+                  </GlanceRow>
+                  {repoUrl && (
+                    <GlanceRow label="Code">
+                      <a
+                        href={repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary underline underline-offset-4"
+                      >
+                        {repoUrl.replace(/^https?:\/\//, "")}
+                      </a>
+                    </GlanceRow>
+                  )}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
 
         <section className="py-12">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-              <Code2 className="h-8 w-8 text-primary" />
-              Technologies Used
+          <div className="container mx-auto px-6 max-w-4xl space-y-10">
+            <Prose id="problem" icon={Target} heading="The problem">
+              {project.problem}
+            </Prose>
+            <Prose id="approach" icon={Code2} heading="The approach">
+              {project.approach}
+            </Prose>
+            {/* The one section that separates a case study from a portfolio
+                tile: a single decision and what it cost. */}
+            <Prose id="hard-part" icon={Wrench} heading="The hard part">
+              {project.hardPart}
+            </Prose>
+
+            {project.outcome && (
+              <section id="outcome" className="rounded-2xl border border-primary/25 bg-primary/5 p-6">
+                <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                  What shipped
+                </h2>
+                <p className="text-foreground/90 leading-relaxed text-base whitespace-pre-line">
+                  {project.outcome}
+                </p>
+              </section>
+            )}
+
+            <Prose
+              id="retrospective"
+              icon={RotateCcw}
+              heading="What I'd do differently"
+            >
+              {project.retrospective}
+            </Prose>
+          </div>
+        </section>
+
+        {screenshots.length > 0 && (
+          <>
+            <Separator />
+            <section className="py-12 bg-surface-alt">
+              <div className="container mx-auto px-6 max-w-5xl">
+                <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
+                  <ImageIcon className="h-6 w-6 text-primary" />
+                  Screenshots
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-8">
+                  {screenshots.map((shot) => (
+                    <figure key={shot.src} className="space-y-3">
+                      <img
+                        src={shot.src}
+                        alt={shot.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="rounded-xl border border-border/60 w-full object-cover shadow-card"
+                      />
+                      <figcaption className="text-sm text-muted-foreground">
+                        {shot.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        <Separator />
+
+        {/* Stack, with no commentary.
+            The paragraph that used to sit here — "cutting-edge technologies and
+            modern development practices to deliver a robust, scalable and
+            maintainable solution" — is true of every project ever built, and
+            promotional filler measurably suppresses AI citation. */}
+        <section className="py-12">
+          <div className="container mx-auto px-6 max-w-4xl">
+            <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+              <Code2 className="h-6 w-6 text-primary" />
+              Stack
             </h2>
-            <p className="text-muted-foreground mb-8 max-w-3xl">
-              This project leverages cutting-edge technologies and modern development practices to deliver a robust, scalable, and maintainable solution.
-            </p>
             <div className="flex flex-wrap gap-3">
               {project.technologies?.map((tech) => (
                 <Badge key={tech} variant="secondary" className="text-sm px-4 py-2">
@@ -288,92 +437,18 @@ const ProjectDetail = () => {
           </div>
         </section>
 
-        {/* Problem → Approach → Result.
-            Renders only for projects that have the narrative filled in, so a
-            case study is either a real story or just its spec sheet — never a
-            page of empty headings. See the fields in src/data/projects.ts. */}
-        {(project.problem || project.approach || project.result) && (
-          <>
-            <Separator />
-            <section className="py-12">
-              <div className="container mx-auto px-6 max-w-4xl">
-                <div className="space-y-10">
-                  {project.problem && (
-                    <div>
-                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
-                        <Target className="h-6 w-6 text-primary" />
-                        The problem
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed text-base">
-                        {project.problem}
-                      </p>
-                    </div>
-                  )}
-                  {project.approach && (
-                    <div>
-                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
-                        <Code2 className="h-6 w-6 text-primary" />
-                        The approach
-                      </h2>
-                      <p className="text-muted-foreground leading-relaxed text-base">
-                        {project.approach}
-                      </p>
-                    </div>
-                  )}
-                  {project.result && (
-                    <div className="rounded-2xl border border-primary/25 bg-primary/5 p-6">
-                      <h2 className="text-2xl font-bold mb-3 flex items-center gap-3">
-                        <TrendingUp className="h-6 w-6 text-primary" />
-                        The result
-                      </h2>
-                      <p className="text-foreground/90 leading-relaxed text-base">
-                        {project.result}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </section>
-          </>
-        )}
-
-        <Separator />
-
-        <section className="py-12 bg-surface-alt">
-          <div className="container mx-auto px-6">
-            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-              <Lightbulb className="h-8 w-8 text-accent" />
-              Key Features & Capabilities
-            </h2>
-            {project.features && project.features.length > 0 && (
-              <div className="grid md:grid-cols-2 gap-6">
-                {project.features.map((feature) => (
-                  <Card key={feature} className="p-6 hover:shadow-glow transition-all duration-300 group">
-                    <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 mt-1 group-hover:scale-110 transition-transform">
-                        <CheckCircle2 className="h-5 w-5 text-white" />
-                      </div>
-                      <p className="text-foreground group-hover:text-primary transition-colors">{feature}</p>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
-
-        <section className="py-16 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 relative overflow-hidden">
-          <div className="container mx-auto px-6 text-center relative z-10">
-            <h2 className="text-4xl font-bold mb-4">Interested in Similar Projects?</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto text-lg">
-              I'm available for freelance work and always excited to collaborate on innovative projects.
+        <section className="py-12 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
+          <div className="container mx-auto px-6 max-w-4xl text-center">
+            <p className="text-lg mb-6">
+              <strong>Built by {FOUNDER_NAME}</strong> — React &amp; MERN
+              developer, {SITE_NAME}.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg">
-                <Link to="/contact">Get in Touch</Link>
+                <Link to="/contact">Book a free 30-min call</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/projects">View More Projects</Link>
+                <Link to="/projects">See all projects</Link>
               </Button>
             </div>
           </div>

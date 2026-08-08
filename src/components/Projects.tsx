@@ -8,6 +8,8 @@ import {
   API_BASE_URL,
   mergeProjects,
   projectImageUrl,
+  projectPath,
+  projectRepoUrl,
   STATIC_PROJECTS,
   type Project,
   type ProjectType,
@@ -137,7 +139,8 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((project, i) => {
               const tc = TYPE[project.type] ?? TYPE.Other;
-              const detailPath = `/projects/${project._id}`;
+              const detailPath = projectPath(project);
+              const repoUrl = projectRepoUrl(project);
               // The first row is above the fold, and on /projects the first
               // card's cover IS the LCP element. Lazy-loading it deferred
               // discovery until layout resolved — a measured ~317ms of pure
@@ -213,16 +216,19 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
                     </div>
 
                     <div className="flex gap-2 pt-4 border-t border-border/35">
-                      {project.githubLink && (
+                      {/* Only a link to THIS project's repo. The six static
+                          case studies all pointed at the GitHub profile, so
+                          the button promised code and delivered a listing. */}
+                      {repoUrl && (
                         <Button size="sm" variant="ghost" className="flex-1 h-11 md:h-9 text-xs font-bold hover:bg-muted/70 gap-1.5 rounded-xl" asChild>
-                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
+                          <a href={repoUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}>
                             <Github className="h-3.5 w-3.5" /> GitHub
                           </a>
                         </Button>
                       )}
                       <Button
                         size="sm"
-                        className={`${project.githubLink ? "flex-1" : "w-full"} h-11 md:h-9 text-xs font-bold shadow-sm shadow-primary/20 gap-1.5 rounded-xl`}
+                        className={`${repoUrl ? "flex-1" : "w-full"} h-11 md:h-9 text-xs font-bold shadow-sm shadow-primary/20 gap-1.5 rounded-xl`}
                         asChild
                       >
                         <Link to={detailPath}>

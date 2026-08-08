@@ -3,7 +3,13 @@ import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
 import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
 import { buildAreaServed, cyGeo, nzGeo } from "./data/geoPageData";
-import { STATIC_PROJECTS } from "./data/projects";
+import {
+  LEGACY_PROJECT_REDIRECTS,
+  STATIC_PROJECTS,
+  pendingCaseStudyFields,
+  projectPath,
+  projectSchemaNode,
+} from "./data/projects";
 import {
   SITE_NAME,
   absoluteUrl,
@@ -31,6 +37,24 @@ function withBrand(title: string): string {
   return full.length <= 62 ? full : title;
 }
 
+/**
+ * Re-exported so scripts/prerender.mjs can check the vercel.json 301s against
+ * the project data — it cannot import the TypeScript module directly.
+ */
+export { LEGACY_PROJECT_REDIRECTS };
+
+/**
+ * Case-study fields still waiting on facts only the owner has, keyed by path.
+ *
+ * Printed by scripts/prerender.mjs after every build. Nothing here can be
+ * filled in from the codebase — the alternative to reporting these is
+ * inventing them.
+ */
+export const PENDING_CASE_STUDY_INPUTS = STATIC_PROJECTS.map((project) => ({
+  path: projectPath(project),
+  missing: pendingCaseStudyFields(project),
+})).filter((entry) => entry.missing.length > 0);
+
 export const DYNAMIC_ROUTES = [
   ...BLOG_POSTS.map((post) => ({
     path: `/blogs/${post.slug}`,
@@ -50,7 +74,7 @@ export const DYNAMIC_ROUTES = [
     faqs: faqsOf(post),
   })),
   ...STATIC_PROJECTS.map((project) => ({
-    path: `/projects/${project._id}`,
+    path: projectPath(project),
     title: withBrand(project.title),
     description: project.description,
     keywords: project.technologies.join(", "),
@@ -101,7 +125,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
               "@type": "CreativeWork",
               name: p.title,
               description: p.description,
-              url: url(`/projects/${p._id}`),
+              url: url(projectPath(p)),
               keywords: p.technologies.join(", "),
               creator: orgRef,
             },
@@ -203,27 +227,13 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
     ];
   }
 
-  // Individual case-study pages.
+  // Individual case-study pages. Built from the same node the React runtime
+  // emits — useSEO() replaces the prerendered JSON-LD wholesale on hydration,
+  // so any field only one of them knew about would vanish once React booted.
+  // `creator` is the Person, not the Organization: a portfolio piece is
+  // attributable to whoever built it.
   for (const p of STATIC_PROJECTS) {
-    map[`/projects/${p._id}`] = [
-      {
-        "@type": "CreativeWork",
-        "@id": `${url(`/projects/${p._id}`)}#project`,
-        name: p.title,
-        description: p.fullDescription ?? p.description,
-        url: url(`/projects/${p._id}`),
-        ...(p.image ? { image: p.image } : {}),
-        keywords: p.technologies.join(", "),
-        creator: orgRef,
-        // CreativeWork has no rich result to lose, but an undated portfolio
-        // gives an AI crawler no way to tell a current build from a five-year-
-        // old one when it decides whether the work is worth citing. updatedAt
-        // is the date of the last real revision to the write-up, which is the
-        // honest available signal — omitted rather than faked when unset.
-        ...(p.updatedAt ? { dateCreated: p.updatedAt } : {}),
-        inLanguage: "en",
-      },
-    ];
+    map[projectPath(p)] = [projectSchemaNode(p, { url, creator: founderRef })];
   }
 
   return map;

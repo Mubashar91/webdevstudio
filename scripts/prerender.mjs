@@ -280,6 +280,65 @@ function renderShell(template) {
   return html;
 }
 
+/**
+ * Fails the build when a case study has a slug but no 301 from its old
+ * /projects/<id> URL.
+ *
+ * The pre-slug URLs are indexed and linked from outside the site, and Vercel
+ * resolves `redirects` before the filesystem — so the redirect is the only
+ * thing standing between an old link and a 404. Keeping the check here means
+ * the data and vercel.json cannot drift apart silently.
+ */
+async function assertLegacyRedirects(pairs) {
+  if (!pairs?.length) return;
+
+  const configPath = join(__dirname, "..", "vercel.json");
+  const config = JSON.parse(await readFile(configPath, "utf8"));
+  const redirects = config.redirects ?? [];
+
+  const missing = pairs.filter(
+    ({ from, to }) =>
+      !redirects.some(
+        (r) => r.source === from && r.destination === to && r.permanent === true
+      )
+  );
+
+  if (missing.length) {
+    throw new Error(
+      `prerender: vercel.json is missing a permanent redirect for:\n` +
+        missing.map(({ from, to }) => `    ${from} → ${to}`).join("\n") +
+        `\n  Add them to the "redirects" array, or the old URLs will 404.`
+    );
+  }
+
+  console.log(`  ✓ vercel.json 301s (${pairs.length} legacy project URLs)`);
+}
+
+/**
+ * Prints the case-study fields that are still `null`.
+ *
+ * Deliberately a report and not an error: these are facts only the person who
+ * built the project has — a completion date, what actually shipped, which part
+ * of a three-person build was theirs. The build cannot supply them and must
+ * not invent them, so the job here is to keep them from going quiet.
+ */
+function reportPendingCaseStudyInputs(pending) {
+  if (!pending?.length) {
+    console.log("\nprerender: all case studies complete — no owner inputs pending.");
+    return;
+  }
+
+  console.log("\n──────────────────────────────────────────────────────────");
+  console.log("  Case studies waiting on facts only you can supply:");
+  for (const { path, missing } of pending) {
+    console.log(`\n  ${path}`);
+    for (const field of missing) console.log(`      · ${field}`);
+  }
+  console.log("\n  These sections don't render while empty — the pages ship");
+  console.log("  without them rather than with filler.");
+  console.log("──────────────────────────────────────────────────────────");
+}
+
 async function main() {
   let template;
   try {
@@ -291,9 +350,19 @@ async function main() {
     process.exit(1);
   }
 
-  let render, DYNAMIC_ROUTES, pageSchema;
+  let render,
+    DYNAMIC_ROUTES,
+    pageSchema,
+    LEGACY_PROJECT_REDIRECTS,
+    PENDING_CASE_STUDY_INPUTS;
   try {
-    ({ render, DYNAMIC_ROUTES, pageSchema } = await import(pathToFileURL(ssrEntry).href));
+    ({
+      render,
+      DYNAMIC_ROUTES,
+      pageSchema,
+      LEGACY_PROJECT_REDIRECTS,
+      PENDING_CASE_STUDY_INPUTS,
+    } = await import(pathToFileURL(ssrEntry).href));
   } catch (err) {
     console.error(
       "prerender: could not load dist-ssr/entry-server.js — run `npm run build:ssr` first.\n",
@@ -307,6 +376,8 @@ async function main() {
   // detail URL, canonical included.
   const allRoutes = [...ROUTES, ...DYNAMIC_ROUTES];
   const schemaByPath = pageSchema(SITE_URL);
+
+  await assertLegacyRedirects(LEGACY_PROJECT_REDIRECTS);
 
   for (const route of allRoutes) {
     let html = renderHead(template, route, schemaByPath[route.path] ?? []);
@@ -369,6 +440,8 @@ async function main() {
   }
 
   console.log(`\nprerender: ${SITE_NAME} — ${ROUTES.length} routes at ${SITE_URL}`);
+
+  reportPendingCaseStudyInputs(PENDING_CASE_STUDY_INPUTS);
 }
 
 main().catch((err) => {

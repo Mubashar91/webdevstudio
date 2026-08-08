@@ -5,7 +5,7 @@ import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
 import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
-import { STATIC_PROJECTS } from "@/data/projects";
+import { projectPath, STATIC_PROJECTS } from "@/data/projects";
 
 const meta = routeMeta("/projects")!;
 
@@ -37,7 +37,7 @@ const Projects = () => {
               "@type": "CreativeWork",
               name: project.title,
               description: project.description,
-              url: canonicalPath(`/projects/${project._id}`),
+              url: canonicalPath(projectPath(project)),
               keywords: project.technologies.join(", "),
               creator: { "@id": `${canonicalPath("/")}#organization` },
             },

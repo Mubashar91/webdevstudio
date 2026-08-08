@@ -1,6 +1,38 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/projects/s1",
+      "destination": "/projects/expense-sharing-app",
+      "permanent": true
+    },
+    {
+      "source": "/projects/s2",
+      "destination": "/projects/hospital-management-system",
+      "permanent": true
+    },
+    {
+      "source": "/projects/s3",
+      "destination": "/projects/software-house-website",
+      "permanent": true
+    },
+    {
+      "source": "/projects/s4",
+      "destination": "/projects/ecommerce-dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/projects/s5",
+      "destination": "/projects/restful-api-service",
+      "permanent": true
+    },
+    {
+      "source": "/projects/s6",
+      "destination": "/projects/portfolio-blog-platform",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/projects/:id",
