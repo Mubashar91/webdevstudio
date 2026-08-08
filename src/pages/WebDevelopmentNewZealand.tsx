@@ -1,9 +1,10 @@
 import { Clock, Coins, MessagesSquare, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
 import { CitiesServed } from "@/components/CitiesServed";
-import { nzGeo } from "@/data/geoPageData";
+import { buildAreaServed, nzGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Pricing } from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
@@ -72,12 +73,11 @@ const WebDevelopmentNewZealand = () => {
         url: canonicalPath("/web-development-new-zealand"),
         serviceType: "Web Development",
         provider: { "@id": `${canonicalPath("/")}#organization` },
-        areaServed: [
-          { "@type": "Country", name: "New Zealand" },
-          { "@type": "City", name: "Auckland" },
-          { "@type": "City", name: "Wellington" },
-          { "@type": "City", name: "Christchurch" },
-        ],
+        // Same builder the prerenderer uses. Hydration replaces the
+        // prerendered JSON-LD wholesale, so a hardcoded list here would have
+        // silently dropped Hamilton, Tauranga and Dunedin — the cities added
+        // precisely because Search Console showed impressions for them.
+        areaServed: buildAreaServed(nzGeo),
         availableChannel: {
           "@type": "ServiceChannel",
           serviceUrl: canonicalPath("/contact"),
@@ -116,7 +116,32 @@ const WebDevelopmentNewZealand = () => {
           />
         </LocationHighlights>
         <ServicesSection compactHeader />
-        <Pricing />
+        <Pricing
+          marketContext={
+            <>
+              <h3 className="text-lg font-bold mb-2">How this compares in the NZ market</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                New Zealand studios typically quote{" "}
+                <strong className="text-foreground">NZ$2,500–$6,000 + GST</strong> for a
+                lead-generating small business site, and under NZ$1,000 usually means a
+                template with no copywriting. A marketing site here starts at USD $900 —
+                roughly NZ$1,500, the bottom of that band rather than below it.
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                As an overseas provider I don't charge NZ GST, and I invoice in NZD if you
+                prefer. The trade-off is honest: you supply the copy and photos. If you need
+                someone to write your service pages and run your ads, a local studio is a
+                different and better-fitting purchase.
+              </p>
+              <Link
+                to="/blogs/website-cost-new-zealand-2026"
+                className="text-primary hover:underline font-medium text-sm"
+              >
+                Full NZ pricing breakdown, band by band →
+              </Link>
+            </>
+          }
+        />
         <Testimonials />
         <CTA />
       </main>

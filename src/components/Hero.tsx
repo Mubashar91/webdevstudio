@@ -6,6 +6,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useScenePointer } from "@/hooks/use-scene-pointer";
 import { CONTACT_EMAIL } from "@/lib/site.config.mjs";
+import { STATIC_PROJECTS } from "@/data/projects";
 
 const socials = [
   { href: "https://github.com/mubasharshahzad",      icon: Github,   label: "GitHub" },
@@ -13,10 +14,22 @@ const socials = [
   { href: `mailto:${CONTACT_EMAIL}`,                 icon: Mail,     label: "Email" },
 ];
 
+/**
+ * Hero stat chips.
+ *
+ * "50+ Projects" and "30+ Clients" were removed: nothing on the site
+ * substantiates either, and they sat in the first viewport where they set the
+ * credibility frame for everything below. See the note in Stats.tsx — the same
+ * reasoning applies, and these were the more prominent copy of the claim.
+ *
+ * What's left is checkable: the timeline on /about dates the practice to 2020,
+ * /projects holds exactly the case studies counted, and the response time is a
+ * commitment repeated on the contact page rather than a statistic.
+ */
 const stats = [
-  { icon: Code2,     value: "5+",  label: "Years" },
-  { icon: Briefcase, value: "50+", label: "Projects" },
-  { icon: Award,     value: "30+", label: "Clients" },
+  { icon: Code2,     value: "5+", label: "Years" },
+  { icon: Briefcase, value: String(STATIC_PROJECTS.length), label: "Case studies" },
+  { icon: Award,     value: "24h", label: "Reply time" },
 ];
 
 /** Objection-handling reassurances placed directly under the primary CTA. */
@@ -164,7 +177,12 @@ export const Hero = () => {
                 <span className="text-white/80 font-semibold">
                   Muhammad Mubashar Shahzad
                 </span>{" "}
-                · 5+ years · 50+ projects delivered
+                {/* "50+ projects delivered" removed: nothing on the site
+                    backs it, and it sat directly beside two claims that are
+                    documented (the dated timeline on /about, the published
+                    fixed prices). Fixed pricing is the stronger differentiator
+                    anyway — it's the thing competitors won't copy. */}
+                · 5+ years · fixed-price projects
               </p>
 
               {/* CTA buttons — the primary action is now booking a call rather

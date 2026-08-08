@@ -8,10 +8,26 @@
  * that hard to fix without hacks.
  */
 
+/**
+ * `text` and list `items` support two inline markers, rendered by
+ * `renderInline()` in BlogDetail: `**bold**` and `[label](/path)`. Everything
+ * else is literal — this is deliberately not a Markdown parser, just the two
+ * things long-form buyer-intent copy actually needs.
+ *
+ * `h3` exists because an SEO audit flagged every post as H2-only, which
+ * flattens the outline crawlers use to work out which sections are
+ * subordinate to which. Numbered sub-points belong at h3 under their parent.
+ *
+ * `table` exists because the same audit found price bands and comparisons
+ * written as prose, and comparison tables are one of the formats AI answer
+ * engines lift most readily.
+ */
 export type ContentBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
   | { type: "list"; items: string[] }
+  | { type: "table"; headers: string[]; rows: string[][]; caption?: string }
   | { type: "code"; lang: string; code: string };
 
 export interface BlogPost {
@@ -956,6 +972,716 @@ const Job = new Schema({
     ],
   },
   {
+    slug: "website-cost-new-zealand-2026",
+    title: "How Much Does a Website Cost in New Zealand in 2026?",
+    excerpt:
+      "Real 2026 NZ website prices: $1,500–$8,000 + GST for most small business sites. What each band buys, what agencies leave out, and how to compare quotes properly.",
+    coverImage:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-07",
+    tags: ["Website Cost", "New Zealand", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Most NZ small business websites land between **$1,500 and $8,000 + GST**, and the number is driven by scope and who writes the words — not by page count. Under $1,000 usually means a template with no copywriting and no tracking. Above $15,000 means an agency team, which is worth it for complex functionality and overkill for a six-page service site. Hosting and maintenance run $39–$99/month on top and almost never appear in the headline quote.",
+      },
+      { type: "h2", text: "How much does a website cost in New Zealand?" },
+      {
+        type: "p",
+        text: "A professional small business website in New Zealand costs between **$1,500 and $8,000 + GST** in 2026, with most service businesses landing in the $2,500–$6,000 range. eCommerce starts around $5,000 and rises quickly with catalogue size and integrations.",
+      },
+      {
+        type: "p",
+        text: "That's a wide range because \"a website\" describes both a four-page site for a plumber and a 200-product store. The rest of this guide explains what moves you between the bands, so you can read a quote properly.",
+      },
+      { type: "h2", text: "What you actually get at each price band" },
+      {
+        type: "table",
+        headers: ["Band", "What it usually is", "Sensible for"],
+        rows: [
+          ["Under $1,000", "Template, no copywriting, no analytics, often offshore", "Testing an idea; a placeholder"],
+          ["$1,500–$3,000", "4–6 pages, responsive, contact form, basic SEO setup", "Sole traders, new service businesses"],
+          ["$3,000–$8,000", "Custom design, written copy, CMS, tracking, proper service-page structure", "Most established NZ small businesses"],
+          ["$8,000–$15,000", "Larger builds, integrations, eCommerce, multiple stakeholders", "Retail, multi-location, booking systems"],
+          ["$15,000+", "Agency team, design system, ongoing strategy", "Complex products, real brand work"],
+        ],
+        caption: "Prices exclude GST, which NZ-based providers add at 15%.",
+      },
+      {
+        type: "p",
+        text: "New Zealand market guides mostly converge on the middle: an experienced local freelancer or small studio for a lead-generating site sits around $2,500–$9,000, which is where most trade and service businesses should be.",
+      },
+      { type: "h2", text: "Why is NZ web design more expensive than what I see online?" },
+      {
+        type: "p",
+        text: "Because NZ pricing reflects NZ wages and a small market. An offshore quote and an Auckland quote of $5,000 are usually not the same product — and the difference is rarely the design.",
+      },
+      {
+        type: "p",
+        text: "What the higher number typically buys that the lower one doesn't:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Copywriting.** Somebody sits down and writes your service pages. This is the single largest hidden cost, and it's what determines whether the site generates enquiries.",
+          "**Strategy and structure.** One page per service, named the way customers search, rather than a single \"Services\" page listing eight things.",
+          "**Tracking.** Analytics, conversion goals, and a way to tell whether the site works.",
+          "**A person who answers.** When something breaks in month seven, someone picks up.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If you take a cheaper quote, take it with eyes open about which of those four you're buying yourself.",
+      },
+      { type: "h2", text: "What actually drives the price up?" },
+      {
+        type: "p",
+        text: "Ranked by how much they move the number:",
+      },
+      { type: "h3", text: "1. Content" },
+      {
+        type: "p",
+        text: "Do you supply the words and photos, or does someone write them? This can swing a quote by thousands on its own, and it's the line item buyers most often forget to ask about.",
+      },
+      { type: "h3", text: "2. Number of distinct page templates" },
+      {
+        type: "p",
+        text: "Templates, not pages. Twenty blog posts share one template. A home page, a service page and a case study page are three separate design and build jobs.",
+      },
+      { type: "h3", text: "3. Integrations" },
+      {
+        type: "p",
+        text: "Booking systems, Xero, CRMs, payment gateways. Each one is real engineering with its own error states and testing, not a plugin toggle.",
+      },
+      { type: "h3", text: "4. eCommerce" },
+      {
+        type: "p",
+        text: "Product management, shipping rules, tax handling and checkout testing. The checkout alone carries more edge cases than most brochure sites have pages.",
+      },
+      { type: "h3", text: "5. Design custom-ness" },
+      {
+        type: "p",
+        text: "A genuinely bespoke design costs more than a well-executed system. Both can look good; only one requires every screen to be drawn from scratch.",
+      },
+      { type: "h2", text: "What are the ongoing costs nobody quotes?" },
+      {
+        type: "p",
+        text: "Budget **$39–$99/month** for professional hosting in NZ, which should include cloud hosting, daily backups, an SSL certificate and reliable uptime. On top of that:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Domain:** roughly $30–$60/year.",
+          "**Maintenance or care plan:** varies enormously; some studios bundle it, others bill hourly at $50–$150/hour for small changes.",
+          "**DIY platforms** (Wix, Squarespace, Shopify) run $20–$60/month — and some bill NZ merchants in US dollars, so there's an exchange-rate cost on top.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Ask for the twelve-month total, not the build price. Two quotes that look $1,000 apart can be identical once a year of hosting and support is included.",
+      },
+      { type: "h2", text: "Should I get the cheapest quote?" },
+      {
+        type: "p",
+        text: "Usually not — but not because cheap is always bad. Because cheap and expensive quotes are often for genuinely different jobs, and comparing the bottom-line numbers compares nothing.",
+      },
+      {
+        type: "p",
+        text: "Get three quotes and compare these, in this order:",
+      },
+      {
+        type: "list",
+        items: [
+          "Who writes the copy?",
+          "Do I own the domain, the hosting account, and the code?",
+          "What happens in month seven when I need a change?",
+          "Is the price fixed, or an estimate that moves?",
+        ],
+      },
+      {
+        type: "p",
+        text: "A $2,500 quote where you own everything and the copy is written for you is better value than a $900 quote where you own a login to somebody else's platform. There's a longer version of this in [how to hire a web developer when you don't know how to code](/blogs/how-to-hire-a-web-developer).",
+      },
+      { type: "h2", text: "How long does a website take in New Zealand?" },
+      {
+        type: "p",
+        text: "A small business website takes **4–6 weeks** from kickoff to launch, assuming content arrives on time. eCommerce and integration-heavy builds run 8–12 weeks.",
+      },
+      {
+        type: "p",
+        text: "The most common cause of overrun isn't development. It's content — the photos, the service descriptions, the team bios. If you want the timeline to hold, have the words ready before the build starts.",
+      },
+      { type: "h2", text: "Where does WebDevStudio sit?" },
+      {
+        type: "p",
+        text: "I build in React and TypeScript rather than WordPress, and I work remotely from Pakistan with NZ clients. Fixed price from **USD $900** for a marketing site and **USD $2,500** for a web application, invoiced in NZD if you prefer. At current rates that puts a marketing site at roughly NZ$1,500 — the bottom of the local band rather than below it.",
+      },
+      {
+        type: "p",
+        text: "I'd rather be straight about the trade-off than pretend there isn't one. At that price you are buying **build quality, not a full-service agency**: you supply the copy and photos, and you get a fast, accessible, well-structured site with a fixed number agreed before anything starts. If you need someone to write your service pages, interview your customers and run your Google Ads, a local studio at $5,000 is a genuinely different and better-fitting purchase.",
+      },
+      {
+        type: "p",
+        text: "If you're weighing that choice specifically, I've written it up properly in [remote developer or local agency](/blogs/remote-developer-vs-local-agency).",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does a website cost for a small business in NZ?" },
+      {
+        type: "p",
+        text: "Most small business websites in New Zealand cost $1,500–$8,000 + GST in 2026, with the majority of service businesses landing between $2,500 and $6,000. The main variables are who writes the content and how many distinct page templates the site needs.",
+      },
+      { type: "h3", text: "Is a $1,000 website worth it?" },
+      {
+        type: "p",
+        text: "It can be, if you know what you're getting: usually a template with no copywriting, no analytics and limited support. That's fine as a placeholder or a test. It's a poor long-term business website, because a site that doesn't generate enquiries is expensive at any price.",
+      },
+      { type: "h3", text: "Do I have to pay GST on a website?" },
+      {
+        type: "p",
+        text: "NZ-based providers charge 15% GST on top of quoted prices, and most guides quote ex-GST. Overseas providers generally don't charge NZ GST. Always confirm whether a quote includes it — it's a 15% difference on the same number.",
+      },
+      { type: "h3", text: "Who owns the website when it's finished?" },
+      {
+        type: "p",
+        text: "You should own the domain, the hosting account and the site itself. Ask this before you pay a deposit. If the answer is that you're licensing a platform, that's a valid arrangement — just make sure you know that's what you bought.",
+      },
+      { type: "h3", text: "How much does it cost to maintain a website in NZ?" },
+      {
+        type: "p",
+        text: "Hosting is $39–$99/month for a professional setup with backups and SSL. Content changes are commonly billed at $50–$150/hour, or bundled into a monthly care plan. Budget for both from year one, not just for the build.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write down your page list and decide who is writing the copy. Those two answers determine most of the number, and having them ready is what turns a range into a fixed quote.",
+      },
+      {
+        type: "p",
+        text: "Book a free 30-minute call and you'll get a fixed written quote — scope and price agreed before any work begins.",
+      },
+    ],
+  },
+  {
+    slug: "website-cost-cyprus-2026",
+    title: "How Much Does a Website Cost in Cyprus in 2026?",
+    excerpt:
+      "Real 2026 Cyprus web design prices: €800–€3,500 for most business sites. What each band buys in Limassol and Nicosia, plus the multilingual cost nobody quotes.",
+    coverImage:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-07",
+    tags: ["Website Cost", "Cyprus", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Most Cyprus business websites cost **€800–€3,500**, with basic brochure sites commonly €1,500–€3,000 and template packages starting around €350–€800. eCommerce and custom platforms run €3,500–€6,000+. The Cyprus-specific multiplier is **multilingual** — EN / GR / RU versions are three sites' worth of content, not one. Hosting and domain run roughly €80–€180/year, and maintenance is billed separately.",
+      },
+      { type: "h2", text: "How much does a website cost in Cyprus?" },
+      {
+        type: "p",
+        text: "A professional business website in Cyprus costs between **€800 and €3,500** in 2026 depending on complexity, page count and how many languages it needs. Basic brochure sites for small businesses typically sit at €1,500–€3,000, while eCommerce and custom platforms can exceed €6,000.",
+      },
+      {
+        type: "p",
+        text: "You will also see offers starting from €199. Those are real, and they're template-based. The difference between €199 and €2,500 is rarely the visual design — it's structure, content, and whether anyone thought about how customers find you.",
+      },
+      { type: "h2", text: "What the price bands buy in Limassol and Nicosia" },
+      {
+        type: "table",
+        headers: ["Band", "What it usually is", "Sensible for"],
+        rows: [
+          ["€199–€450", "Template, 3–5 pages, minimal setup", "A placeholder; testing an idea"],
+          ["€450–€800", "Semi-custom layout, 5–10 pages, on-page SEO, business email", "Small local services, freelancers"],
+          ["€900–€3,500", "Custom design, proper service-page structure, SEO architecture", "Most established Cyprus businesses"],
+          ["€3,500–€6,000", "eCommerce, booking systems, integrations", "Retail, hospitality, clinics"],
+          ["€6,000+", "Marketplaces, complex platforms, multi-stakeholder builds", "Fintech, iGaming, shipping"],
+        ],
+      },
+      {
+        type: "p",
+        text: "The market in Limassol, Nicosia and Paphos has become noticeably more competitive, which is good news as a buyer — but it also means the same brief gets quoted at wildly different numbers by providers doing genuinely different work.",
+      },
+      { type: "h2", text: "What makes Cyprus pricing different from the rest of the EU?" },
+      {
+        type: "p",
+        text: "Three things push a Cyprus quote away from a generic European one.",
+      },
+      { type: "h3", text: "Language" },
+      {
+        type: "p",
+        text: "Many Cyprus businesses need English, Greek and often Russian. Each language needs its own properly structured content — not a translation widget. This is the single most underestimated line item on a Cyprus quote, and it can double a project.",
+      },
+      { type: "h3", text: "International audiences" },
+      {
+        type: "p",
+        text: "Limassol businesses in particular often serve customers who aren't on the island. That changes the copy, the currency handling and sometimes the compliance work.",
+      },
+      { type: "h3", text: "GDPR" },
+      {
+        type: "p",
+        text: "As an EU member state, Cyprus sites need data-protection thinking built in from the start — minimal data collection, secure auth, clear separation of personal data. Retrofitting this is more expensive than doing it at the beginning.",
+      },
+      { type: "h2", text: "Why is multilingual so much more expensive?" },
+      {
+        type: "p",
+        text: "Because a second language isn't a translation of the first — it's a second version of every page that has to be structured for search independently.",
+      },
+      {
+        type: "p",
+        text: "What actually needs doing per language:",
+      },
+      {
+        type: "list",
+        items: [
+          "Translated and **localised** copy — a literal translation of English marketing copy reads badly in Greek",
+          "Its own URL structure and `hreflang` tags so search engines serve the right version",
+          "Its own meta titles and descriptions",
+          "Ongoing maintenance — every content change now happens two or three times",
+        ],
+      },
+      {
+        type: "p",
+        text: "A practical middle path: launch in one language, structure the site so additional languages can be added cleanly, and add the second when you know which one your enquiries actually come in.",
+      },
+      { type: "h2", text: "What are the ongoing costs?" },
+      {
+        type: "list",
+        items: [
+          "**Hosting and domain:** roughly €80–€180/year for a decent server.",
+          "**Maintenance:** €50–€500/month depending on what's included. Usually charged separately from the build.",
+          "**SEO:** commonly €300–€2,000+/month if you engage an agency, and almost never included in a web design quote.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Ask for the first-year total. A €900 build with €200/month maintenance costs more in year one than a €2,500 build with €50/month.",
+      },
+      { type: "h2", text: "How do I compare two very different quotes?" },
+      {
+        type: "p",
+        text: "Compare what's included, not the bottom line. Four questions separate a good €2,500 quote from a bad one:",
+      },
+      {
+        type: "list",
+        items: [
+          "Who writes the content, and in which languages?",
+          "Do I own the domain, the hosting account, and the site files?",
+          "Is SEO structure included, or is that a separate engagement?",
+          "Is this a fixed price or an estimate?",
+        ],
+      },
+      {
+        type: "p",
+        text: "If a price seems dramatically low, the usual explanation is a cheap template — which will look fine on launch day and become a constraint within a year.",
+      },
+      { type: "h2", text: "How long does a website take?" },
+      {
+        type: "p",
+        text: "A simple Cyprus site takes about **three weeks**. An online store or an integration-heavy build should be given at least two months. Add time for each additional language — realistically a week or more per language once content is being written rather than translated.",
+      },
+      { type: "h2", text: "Where does WebDevStudio sit?" },
+      {
+        type: "p",
+        text: "I'm a remote React and MERN developer working with Cyprus clients from Pakistan, with a 2–3 hour time zone gap that gives genuine live overlap most afternoons rather than pure async hand-offs.",
+      },
+      {
+        type: "p",
+        text: "Pricing starts at **USD $900** for a marketing site and **USD $2,500** for a web application, quoted in EUR if you prefer, fixed before work starts. At current rates that's roughly €830 for a marketing site — the bottom of the local band. The honest framing: that's build capacity, not a full-service agency. You supply the copy; I build something fast, accessible and structured properly for search. If you need Greek and Russian copywriting, brand work and ongoing SEO, a local Limassol or Nicosia studio at €2,500+ is a different and more complete purchase.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does a small business website cost in Cyprus?" },
+      {
+        type: "p",
+        text: "A basic business website in Cyprus typically costs €1,500–€3,000, with budget template packages available from €350–€800 and custom or eCommerce builds running €3,500–€6,000+. The biggest variables are the number of languages and whether content is written for you.",
+      },
+      { type: "h3", text: "Is website maintenance included in the price?" },
+      {
+        type: "p",
+        text: "Usually not. Maintenance in Cyprus is generally billed separately at €50–€500 per month covering updates, backups, security checks and support. Confirm what's included before you sign — \"support\" means very different things to different providers.",
+      },
+      { type: "h3", text: "Do I need my website in Greek and Russian?" },
+      {
+        type: "p",
+        text: "It depends entirely on who your customers are. Many Limassol businesses serve international and Russian-speaking markets and genuinely need all three; a Nicosia service business selling locally may only need Greek and English. Adding a language later is straightforward if the site is built with it in mind, so start with the one your enquiries come in.",
+      },
+      { type: "h3", text: "Can I build the website myself with Wix or WordPress?" },
+      {
+        type: "p",
+        text: "Yes, and for a very simple presence it's a reasonable choice at €10–€50/month. The trade-offs are SEO limitations, less customisation, and a ceiling you'll hit if the business grows. It's a good way to test whether a website brings you enquiries before committing to a build.",
+      },
+      { type: "h3", text: "How much does an eCommerce site cost in Cyprus?" },
+      {
+        type: "p",
+        text: "Online stores generally start around €3,500 and rise with catalogue size, payment integrations and shipping rules. Complex platforms with booking systems, CRM integration or marketplace logic exceed €6,000. The technical infrastructure, not the design, is what drives that number.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Decide which languages you actually need on day one, and who is writing them. That single answer moves a Cyprus quote more than any other.",
+      },
+      {
+        type: "p",
+        text: "Book a free 30-minute call and you'll get a fixed written quote — scope and price agreed before any work begins.",
+      },
+    ],
+  },
+  {
+    slug: "remote-developer-vs-local-agency",
+    title: "Remote Developer or Local Agency? An Honest Comparison",
+    excerpt:
+      "When an offshore developer is the right call and when a local agency is worth several times the price — written by a remote developer who'll tell you to hire locally sometimes.",
+    coverImage:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-07",
+    tags: ["Hiring a Developer", "Remote Work", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "I'm a remote developer, so read this knowing which side I'm on. **Hire locally** if you need copywriting, brand work, ongoing marketing, or you're in a regulated industry. **Hire remotely** if you know what you want built, you can supply the content, and the budget is the constraint. The price gap is real and mostly reflects wages and overheads, not quality. The genuine risks of remote are time zones, content and accountability — all manageable, none imaginary.",
+      },
+      { type: "h2", text: "Should I hire a remote developer or a local agency?" },
+      {
+        type: "p",
+        text: "Hire a local agency when you need someone to figure out **what** to build — strategy, copywriting, brand and ongoing marketing. Hire a remote developer when you already know what you want built and need it built well for less.",
+      },
+      {
+        type: "p",
+        text: "That's the honest dividing line, and it isn't about quality. It's about how much of the thinking you're buying versus how much of the building.",
+      },
+      { type: "h2", text: "Why is the price gap so large?" },
+      {
+        type: "p",
+        text: "A New Zealand agency quoting NZ$5,000 and a remote developer quoting US$900 are usually not doing the same job — but the gap is also not primarily about skill.",
+      },
+      {
+        type: "p",
+        text: "What the local price includes that the remote one doesn't:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Wages in a high-cost economy.** An Auckland developer's salary reflects Auckland rents.",
+          "**Overheads.** Office, project managers, sales, account management.",
+          "**Services beyond development.** Copywriting, photography, SEO strategy, ad management.",
+          "**Local presence.** Someone you can meet, and who understands your market from the inside.",
+        ],
+      },
+      {
+        type: "p",
+        text: "What it doesn't include: better code, necessarily. React is React in Auckland and in Lahore.",
+      },
+      {
+        type: "p",
+        text: "**One caution on the very bottom of the market.** In markets where the going rate for a professional site is NZ$2,500–$8,000, quotes of a couple of hundred dollars sit in a band local buyers have been repeatedly warned about: usually a template, usually no copywriting, usually no tracking. Some of that warning is agency positioning; a good part of it is earned by genuinely bad operators. My own fixed price starts at US$900 — roughly NZ$1,500 — which is deliberately not in that band, because the four things below cost real time and I'd rather charge for them than skip them.",
+      },
+      { type: "h2", text: "What a local agency is genuinely better at" },
+      {
+        type: "p",
+        text: "Not marketing — actual advantages:",
+      },
+      { type: "h3", text: "Figuring out what to build" },
+      {
+        type: "p",
+        text: "If you can't yet articulate your services as pages, a good agency does discovery work that a developer taking a brief simply doesn't do.",
+      },
+      { type: "h3", text: "Writing your words" },
+      {
+        type: "p",
+        text: "This is the one people underestimate most. Service page copy that converts is a specialist skill, and it's usually the difference between a site that generates enquiries and one that just exists.",
+      },
+      { type: "h3", text: "Knowing your market" },
+      {
+        type: "p",
+        text: "Local idiom, local competitors, local search behaviour, and what a customer in your industry expects to see.",
+      },
+      { type: "h3", text: "Being accountable in your jurisdiction" },
+      {
+        type: "p",
+        text: "If a contract goes badly, a company registered in your country is easier to pursue than one that isn't. This is a real asset, and I say so as someone it doesn't apply to.",
+      },
+      { type: "h3", text: "Regulated work" },
+      {
+        type: "p",
+        text: "Health, legal and financial services with compliance requirements — the local knowledge is worth paying for.",
+      },
+      { type: "h2", text: "What remote is genuinely better at" },
+      {
+        type: "list",
+        items: [
+          "**Price** — but that's the least interesting advantage.",
+          "**Time zone as an asset.** With NZ specifically, a 7–8 hour gap means work handed off at end of day is often progressed by the next morning. It only works if there's a defined overlap window for calls, so agree one.",
+          "**No layers.** You talk to the person writing the code. Nothing is relayed through an account manager, so less gets lost and decisions are faster.",
+          "**Availability.** A solo developer can usually start next week. Agencies book out.",
+          "**Specific technical depth.** For a React or MERN application, a specialist beats a generalist agency that mostly builds WordPress sites and takes on the occasional app.",
+        ],
+      },
+      { type: "h2", text: "Which should I choose?" },
+      {
+        type: "p",
+        text: "Use this. Be honest on the first two rows — they decide it.",
+      },
+      {
+        type: "table",
+        headers: ["If this is true", "Choose"],
+        rows: [
+          ["I can't describe what I need as a page list yet", "Local agency"],
+          ["I need someone to write my content", "Local agency"],
+          ["I need ongoing marketing, ads, SEO", "Local agency"],
+          ["I'm in a regulated industry", "Local agency"],
+          ["I have the copy and photos ready", "Remote"],
+          ["I know exactly what should be built", "Remote"],
+          ["Budget is the binding constraint", "Remote"],
+          ["I need a React/Node app specifically", "Remote"],
+          ["I want one person, not a team", "Remote"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Rows one and two carry most of the weight. **If nobody has agreed to write your service pages, hiring cheaply doesn't save money — it stalls the project.**",
+      },
+      { type: "h2", text: "What are the real risks of hiring remotely?" },
+      {
+        type: "p",
+        text: "Naming these properly, because the reassuring version is useless:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Time zones.** Async can work well or badly. Badly is a question sent Monday answered Wednesday. Agree a fixed weekly call and a response-time expectation before starting.",
+          "**Content, again.** A remote developer almost certainly won't write your copy. If you can't or won't, this is the wrong choice regardless of price.",
+          "**Accountability.** Cross-border legal recourse is limited in practice. Manage this with milestone payments rather than contracts you'd never enforce.",
+          "**Communication quality.** Not language — precision. Judge it from the first conversation: did they ask clarifying questions, or agree to everything immediately?",
+          "**Continuity.** One person can get ill or take other work. Ask what happens then, and insist the code lives in a repository you own.",
+        ],
+      },
+      { type: "h2", text: "How do I de-risk hiring remotely?" },
+      {
+        type: "p",
+        text: "Four things, in order of usefulness:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Start with a small paid job.** One landing page, or a fix to your existing site. You learn how someone communicates for a fraction of the budget. This single step catches most bad fits.",
+          "**Pay in milestones.** A deposit, then payments tied to delivered work. Never the full amount up front.",
+          "**Own everything from day one.** Domain in your name, hosting in your account, code in a repository you can access. Ask for repo access at the start, not the end.",
+          "**Get one contactable reference.** Not a testimonial on a website — someone you can email.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The full version of that checklist is in [how to hire a web developer when you don't know how to code](/blogs/how-to-hire-a-web-developer).",
+      },
+      { type: "h2", text: "So what would I actually tell you?" },
+      {
+        type: "p",
+        text: "If you're a clinic, a trades business or a consultancy in Auckland or Limassol who can't yet describe your services as a page list, and you have the budget — **hire locally.** You'll get a better outcome and you'll spend less of your own time getting there. Losing that enquiry costs me nothing compared to taking on a project that was never going to work.",
+      },
+      {
+        type: "p",
+        text: "If you know what you need, you have the words ready, and the budget is what's stopping you — remote is a legitimate way to get a genuinely good site built for a fraction of the local price. Just do the four things above rather than trusting anyone's charm, including mine.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Is it safe to hire a web developer from another country?" },
+      {
+        type: "p",
+        text: "Yes, with the same precautions you'd take locally, plus a few extra. Pay in milestones rather than up front, keep the domain and hosting in your own name, get repository access at the start, and run a small paid job before committing to the full project.",
+      },
+      { type: "h3", text: "Why are offshore developers so much cheaper?" },
+      {
+        type: "p",
+        text: "Mostly wages and overheads, not skill. A developer in a lower-cost economy without an office, sales team or account managers can charge a fraction of an agency rate for the same code. What you're usually not buying at that price is copywriting, strategy and local market knowledge.",
+      },
+      { type: "h3", text: "What's the biggest risk of hiring remotely?" },
+      {
+        type: "p",
+        text: "Content. Most remote developers build what you give them and won't write your service pages. If nobody has agreed to write the words, the project stalls after the design is done — and that's a scheduling failure, not a technical one.",
+      },
+      { type: "h3", text: "How do time zones actually work with a remote developer?" },
+      {
+        type: "p",
+        text: "Well, if you plan for them. A large gap (like Pakistan and New Zealand) means overnight progress on handed-off work, but you need a defined overlap window for live calls. A small gap (like Pakistan and Cyprus) gives genuine same-afternoon collaboration. Ask which you'll get before you start.",
+      },
+      { type: "h3", text: "Should I use a freelancer marketplace or hire directly?" },
+      {
+        type: "p",
+        text: "Marketplaces add escrow and dispute resolution, which is real protection, in exchange for fees and a bidding dynamic that rewards the lowest price. Hiring directly gives you a better working relationship and no fees, but you carry the risk yourself — which is why milestone payments and a small trial job matter more.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Answer the first two rows of that table honestly. If both point local, hire local — you'll save money by not starting the wrong project.",
+      },
+      {
+        type: "p",
+        text: "If they point remote, book a free 30-minute call and I'll tell you straight whether what you need is something I should be building.",
+      },
+    ],
+  },
+  {
+    slug: "why-is-my-website-slow",
+    title: "Why Is My Website So Slow? A Non-Technical Guide",
+    excerpt:
+      "Your site is slow for one of seven reasons — and images are usually the first. How to find the cause yourself in ten minutes, free, without technical knowledge.",
+    coverImage:
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=450&fit=crop",
+    category: "React",
+    publishedAt: "2026-08-07",
+    tags: ["Performance", "Core Web Vitals", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "**Images are the cause about half the time** — usually a photo uploaded straight from a phone. Too many plugins, third-party scripts and cheap shared hosting cover most of the rest. You can diagnose it yourself in ten minutes with PageSpeed Insights, free, no account. Test on **mobile**, not desktop. Most slow sites are fixable in hours, not weeks — don't let anyone sell you a rebuild before they've shown you the diagnosis.",
+      },
+      { type: "h2", text: "Why is my website so slow?" },
+      {
+        type: "p",
+        text: "Most slow websites are slow for one of seven reasons: oversized images, too many plugins, third-party scripts, cheap hosting, no caching, a bloated theme, or unoptimised code. Images are the most common single cause, and also the cheapest to fix.",
+      },
+      {
+        type: "p",
+        text: "The important thing to know before you spend money: **slowness is diagnosable.** You do not have to take anyone's word for why your site is slow, and you should be suspicious of a quote that arrives before a diagnosis.",
+      },
+      { type: "h2", text: "How do I find out what's actually wrong?" },
+      {
+        type: "p",
+        text: "Go to **PageSpeed Insights** (Google's free tool, no account needed), paste your URL, and read the **Mobile** tab.",
+      },
+      {
+        type: "p",
+        text: "Three numbers matter, and Google calls them Core Web Vitals:",
+      },
+      {
+        type: "table",
+        headers: ["Metric", "What it measures", "Good"],
+        rows: [
+          ["LCP", "How long until the main thing on screen appears — usually your hero image", "Under 2.5s"],
+          ["INP", "How long until the page responds when someone taps something", "Under 200ms"],
+          ["CLS", "How much the page jumps around while loading", "Under 0.1"],
+        ],
+        caption: "CLS is what causes people to tap the wrong button.",
+      },
+      {
+        type: "p",
+        text: "Underneath the scores, PageSpeed lists specific opportunities in plain-ish English. You don't need to action them yourself — but you now have a list, and anyone quoting you can be asked to address it directly.",
+      },
+      { type: "h2", text: "The seven causes, in the order they're usually to blame" },
+      { type: "h3", text: "1. Images uploaded at full size" },
+      {
+        type: "p",
+        text: "A photo from a modern phone is often 4–6 MB and several thousand pixels wide. Displayed in a 600-pixel-wide slot on a website, the browser still downloads the whole thing.",
+      },
+      {
+        type: "p",
+        text: "Ten images like that is 50 MB. On a phone on mobile data, that's a page that takes fifteen seconds. The fix is resizing images to the size they're actually displayed at and serving them in a modern format. It's the highest-impact, lowest-cost change on most sites, and frequently the only thing that needs doing.",
+      },
+      { type: "h3", text: "2. Too many plugins" },
+      {
+        type: "p",
+        text: "Every plugin adds code that loads on every page — often on pages where it does nothing. A contact form plugin loading its scripts on your blog is pure waste. Sites accumulate these: a plugin gets installed to try something, the idea gets abandoned, the plugin stays.",
+      },
+      { type: "h3", text: "3. Third-party scripts" },
+      {
+        type: "p",
+        text: "Chat widgets, analytics, ad pixels, review embeds, cookie banners, font loaders. Each one is a request to someone else's server, and **you're at the mercy of their speed.** One slow tracking script can hold up your entire page. Worth auditing honestly: is the live chat widget you added two years ago producing enquiries? If not, it's costing you speed for nothing.",
+      },
+      { type: "h3", text: "4. Cheap shared hosting" },
+      {
+        type: "p",
+        text: "On budget shared hosting your site sits on a server with hundreds of others. When one of them has a traffic spike, everyone slows down. If your site is fast at 3am and slow at 2pm, this is a strong suspect. Hosting is one of the few places where spending a little more produces an immediate, measurable difference.",
+      },
+      { type: "h3", text: "5. No caching" },
+      {
+        type: "p",
+        text: "Without caching, your server rebuilds the same page from scratch for every single visitor. Caching stores the finished version and hands it out. It's usually a configuration change rather than a build.",
+      },
+      { type: "h3", text: "6. A bloated theme or page builder" },
+      {
+        type: "p",
+        text: "Multipurpose themes ship with features for every possible use case and load code for all of them whether you use them or not. Drag-and-drop page builders often generate deeply nested markup that browsers work hard to render. This one is genuinely expensive to fix, because the fix is usually a rebuild — be sure it's actually the cause before accepting that diagnosis.",
+      },
+      { type: "h3", text: "7. Unoptimised code" },
+      {
+        type: "p",
+        text: "Everything shipping in one large bundle, no lazy loading, blocking scripts in the page head. Relevant for custom-built sites; less commonly the cause on template sites, where causes 1–6 usually get there first. If you want the developer-level version, I've written up [ten React performance fixes ordered by real-world impact](/blogs/react-performance-tips-2025).",
+      },
+      { type: "h2", text: "Does website speed actually affect my business?" },
+      {
+        type: "p",
+        text: "Yes, in two ways, and the first matters more.",
+      },
+      {
+        type: "p",
+        text: "**People leave.** Slow pages lose visitors before they ever see what you sell — and a visitor who leaves at three seconds costs you the same as one who never arrived.",
+      },
+      {
+        type: "p",
+        text: "**Google notices.** Core Web Vitals are part of Google's page experience signals. Speed alone won't outrank better content, but between two comparable pages it's a tiebreaker.",
+      },
+      {
+        type: "p",
+        text: "For a business site, the first reason is the one to act on. Someone who found you, tapped your link and gave up while it loaded was your warmest possible lead.",
+      },
+      { type: "h2", text: "Test on mobile, not desktop" },
+      {
+        type: "p",
+        text: "Your site probably feels fine to you — you're on a laptop, on wifi, with the site already cached in your browser. Your customer is on a phone, on mobile data, visiting for the first time. That's the experience that counts. PageSpeed Insights shows you both; read the mobile tab.",
+      },
+      { type: "h2", text: "What should I do about it?" },
+      {
+        type: "list",
+        items: [
+          "**Run PageSpeed Insights** on your three most important pages, mobile tab. Free, ten minutes.",
+          "**Fix the images first.** Resize and compress them. This is often the entire problem.",
+          "**Remove what you don't use.** Plugins, chat widgets, tracking scripts you no longer read.",
+          "**Check your hosting** if the site is slow at busy times and fine at quiet ones.",
+          "**Get a quote for the rest** — and make sure the quote references your actual PageSpeed results.",
+        ],
+      },
+      {
+        type: "p",
+        text: "**One caution:** if someone tells you the site needs rebuilding without first showing you a diagnosis, get a second opinion. A rebuild is sometimes the right answer. It shouldn't be the first answer.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How fast should my website load?" },
+      {
+        type: "p",
+        text: "Aim for a Largest Contentful Paint under 2.5 seconds on mobile — that's Google's threshold for \"good\". In practice, anything under three seconds feels fine to a visitor and anything over five loses a meaningful share of them before the page appears.",
+      },
+      { type: "h3", text: "Will making my website faster improve my Google ranking?" },
+      {
+        type: "p",
+        text: "It can help, but it's a tiebreaker rather than a main lever. Core Web Vitals are part of Google's page experience signals, so between two similar pages the faster one has an edge. Speed won't lift a page above better, more relevant content.",
+      },
+      { type: "h3", text: "Why is my website fast on my computer but slow on my phone?" },
+      {
+        type: "p",
+        text: "Two reasons: your computer has more processing power and usually a better connection, and your browser has already cached the site from previous visits. Your first-time mobile visitor has neither advantage. Always judge performance from the mobile test.",
+      },
+      { type: "h3", text: "Do I need to rebuild my website to make it faster?" },
+      {
+        type: "p",
+        text: "Usually not. Most slow sites are fixed by resizing images, removing unused plugins and scripts, and enabling caching — hours of work, not a rebuild. A rebuild is genuinely warranted when a bloated theme or page builder is the root cause, but that should be demonstrated with a diagnosis first.",
+      },
+      { type: "h3", text: "How much does it cost to speed up a website?" },
+      {
+        type: "p",
+        text: "Image and plugin cleanup is typically a few hours' work. Hosting upgrades are an ongoing monthly cost. A full performance rebuild is a project-sized number. Get the diagnosis before the quote — it's the only way to know which of those three you're actually looking at.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Run PageSpeed Insights on your homepage, mobile tab, right now. Whatever it says at the top of the opportunities list is almost certainly your answer.",
+      },
+      {
+        type: "p",
+        text: "If you'd like someone to read the results with you, book a free 30-minute call — and if the fix is an afternoon of image work, I'll tell you that rather than quote you a rebuild.",
+      },
+    ],
+  },
+  {
     slug: "how-to-hire-a-web-developer",
     title: "How to Hire a Web Developer When You Don't Know How to Code",
     excerpt:
@@ -1040,6 +1766,32 @@ const Job = new Schema({
       {
         type: "p",
         text: "I quote fixed prices after a free 30-minute call for exactly this reason: it moves the risk of a bad estimate onto me, where it belongs. You approve the scope and the number, then work begins.",
+      },
+      { type: "h2", text: "What is the total cost in the first twelve months?" },
+      {
+        type: "p",
+        text: "Ask: **\"What will I have paid you, and anyone else, twelve months from today?\"**",
+      },
+      {
+        type: "p",
+        text: "The build price is one line. The real number includes hosting, domain registration, any paid plugins or third-party services, maintenance or a care plan, and the hourly rate for changes outside that plan.",
+      },
+      {
+        type: "p",
+        text: "Two quotes that look $1,000 apart routinely land within $100 of each other over a year — one had hosting bundled and the other didn't. Also ask whether the price is **fixed or an estimate**. Hourly is legitimate for small ongoing changes and a bad way to buy a whole website, because nobody can tell you what it will end up costing. Country-specific numbers are in the [New Zealand](/blogs/website-cost-new-zealand-2026) and [Cyprus](/blogs/website-cost-cyprus-2026) cost guides.",
+      },
+      { type: "h2", text: "What happens if this doesn't work out?" },
+      {
+        type: "p",
+        text: "Ask: **\"If we part ways halfway through, what have I paid for and what do I get to keep?\"**",
+      },
+      {
+        type: "p",
+        text: "This is the question people avoid because it feels like opening a relationship by discussing divorce. Ask it anyway. A professional will have an answer ready, and the answer itself matters less than the fact that one exists.",
+      },
+      {
+        type: "p",
+        text: "Reasonable arrangements look like: work is paid in milestones, you keep whatever is complete at the point you stop, and files and access are handed over within a set number of days.",
       },
       { type: "h2", text: "Four questions to ask on the first call" },
       {
@@ -1132,6 +1884,16 @@ const Job = new Schema({
         type: "p",
         text: "Get two or three quotes and compare what's included, not the totals. Two very different numbers for “the same” project usually means two very different scopes.",
       },
+      { type: "h2", text: "Should I pay a deposit up front?" },
+      {
+        type: "p",
+        text: "A deposit is normal and reasonable — commonly a third to a half. What matters is that payments are tied to milestones rather than dates, so you're paying for delivered work. Avoid paying the full amount before anything is built.",
+      },
+      { type: "h2", text: "What's a reasonable number of revisions to expect?" },
+      {
+        type: "p",
+        text: "Two to three rounds is standard for a fixed-price build. Unlimited revisions sound generous but often mean the scope is vague. What matters more is that revisions are defined — a revision is a change within the agreed design, not a redesign.",
+      },
       { type: "h2", text: "What if I don't know exactly what I want yet?" },
       {
         type: "p",
@@ -1166,10 +1928,15 @@ export function findBlogPost(slug: string): BlogPost | undefined {
  * underneath it. Reading the rendered blocks means the markup is the page text
  * by construction.
  *
- * The shape it looks for is the one all three buyer-intent posts already use:
- * an h2 "Frequently asked questions", then alternating question-h2 / answer-p
- * pairs, ending at the first h2 that isn't a question ("Where to start").
- * Posts without that section get an empty array and no FAQPage node.
+ * It looks for an h2 "Frequently asked questions", then collects
+ * question-heading / answer-paragraph pairs until the section ends.
+ *
+ * Both heading levels are accepted. The three original posts put their
+ * questions at h2; newer posts nest them at h3 under the FAQ h2, which is the
+ * correct hierarchy. The section ends at the first h2 (any h2 — a new
+ * top-level section always closes the FAQ) or the first heading that isn't
+ * phrased as a question. Posts with no FAQ section get an empty array and no
+ * FAQPage node.
  */
 export function faqsOf(post: BlogPost): { question: string; answer: string }[] {
   const start = post.content.findIndex(
@@ -1187,9 +1954,12 @@ export function faqsOf(post: BlogPost): { question: string; answer: string }[] {
   };
 
   for (const block of post.content.slice(start + 1)) {
-    if (block.type === "h2") {
+    if (block.type === "h2" || block.type === "h3") {
       flush();
-      // A heading that isn't phrased as a question closes the FAQ section.
+      current = null;
+      // A heading that isn't a question closes the section. So does any h2
+      // once we've started collecting h3 questions, since that's a new
+      // top-level section rather than another FAQ entry.
       if (!block.text.trim().endsWith("?")) return faqs;
       current = { question: block.text.trim(), answer: [] };
       continue;
@@ -1210,8 +1980,9 @@ const WORDS_PER_MINUTE = 220;
 export function wordCountOf(post: BlogPost): number {
   return post.content
     .flatMap((b) => {
-      if (b.type === "p" || b.type === "h2") return b.text;
+      if (b.type === "p" || b.type === "h2" || b.type === "h3") return b.text;
       if (b.type === "list") return b.items;
+      if (b.type === "table") return [...b.headers, ...b.rows.flat()];
       return []; // code excluded
     })
     .join(" ")

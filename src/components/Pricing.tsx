@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Check, Tag, ArrowRight, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,17 @@ import { SERVICE_PACKAGES } from "@/lib/seo";
 
 interface PricingProps {
   compactHeader?: boolean;
+  /**
+   * Market-specific framing rendered under the header.
+   *
+   * The prices themselves are the same everywhere — they have to be, or the
+   * Offer schema contradicts the page. What differs by market is what those
+   * numbers *mean* next to local rates, and that's the part worth writing
+   * separately. A content audit found ~65-70% of /services was repeated
+   * word-for-word on both location pages; this is where the location pages
+   * earn their own reason to exist rather than being a geo find-and-replace.
+   */
+  marketContext?: ReactNode;
 }
 
 /**
@@ -14,7 +26,7 @@ interface PricingProps {
  * the page and the prices in structured data can never disagree. Mismatched
  * prices are a structured-data policy violation, not just an inconsistency.
  */
-export const Pricing = ({ compactHeader = false }: PricingProps) => {
+export const Pricing = ({ compactHeader = false, marketContext }: PricingProps) => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
 
   return (
@@ -41,6 +53,12 @@ export const Pricing = ({ compactHeader = false }: PricingProps) => {
               Every project starts with a free call and a fixed written quote.
               You approve the scope and the number before any work begins.
             </p>
+          </div>
+        )}
+
+        {marketContext && (
+          <div className="max-w-3xl mx-auto mb-12 rounded-2xl border border-border/50 bg-card/60 p-6 shadow-card">
+            {marketContext}
           </div>
         )}
 

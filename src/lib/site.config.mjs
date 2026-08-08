@@ -280,7 +280,7 @@ export const ROUTES = [
     lastmod: "2026-07-30",
     title: "React & MERN Web Development | WebDevStudio",
     description:
-      "Fast, conversion-focused React, TypeScript and MERN web apps. 5+ years, 50+ projects delivered. Remote development for NZ, Cyprus and worldwide.",
+      "Fast, conversion-focused React, TypeScript and MERN web apps. 5+ years, fixed scope and fixed price. Remote development for NZ, Cyprus and worldwide.",
     keywords:
       "React development agency, MERN stack development, hire React developer, TypeScript web development, Node.js development, remote web developer, WebDevStudio",
   },

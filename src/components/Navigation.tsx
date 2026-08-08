@@ -40,7 +40,16 @@ export const Navigation = () => {
 
   // On home page before scroll: white text on dark hero
   // After scroll or on other pages: normal themed nav
-  const isTransparent = isHome && !scrolled;
+  //
+  // `!open` matters. The transparent state pairs white text with a gradient
+  // that fades to nothing by the bottom of the bar. That's fine for a
+  // single-row header, but the mobile menu expands INTO the transparent part,
+  // so its links were rendering straight over the hero headline with no
+  // background behind either — both illegible where they overlapped. Dropping
+  // out of the transparent state while the menu is open flips the text colour
+  // and the background together, which is the only combination that stays
+  // readable in both themes.
+  const isTransparent = isHome && !scrolled && !open;
 
   return (
     <>
@@ -48,7 +57,10 @@ export const Navigation = () => {
     <nav
       aria-label="Main navigation"
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-400 ${
-        scrolled
+        // `|| open` for the same reason as isTransparent above: an expanded
+        // mobile menu needs a real surface under it, not a gradient that has
+        // already faded to transparent by the time the links start.
+        scrolled || open
           ? "bg-background/92 backdrop-blur-2xl border-b border-border/40 shadow-[0_1px_24px_hsl(0_0%_0%/0.08)]"
           : isHome
           ? "bg-gradient-to-b from-black/45 via-black/15 to-transparent border-b border-white/[0.06]"

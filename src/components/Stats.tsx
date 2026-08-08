@@ -1,6 +1,8 @@
-import { Award, CalendarClock, GitBranch, Users2 } from "lucide-react";
+import { Award, BookOpen, CalendarClock, GitBranch } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { useState, useEffect } from "react";
+import { BLOG_POSTS } from "@/data/blogs";
+import { STATIC_PROJECTS } from "@/data/projects";
 
 /**
  * "5.0 Average Rating" was removed here.
@@ -26,11 +28,28 @@ import { useState, useEffect } from "react";
  * To put a certification tile back: name every credential on /about with its
  * issuing body, then make the number here match that list exactly.
  */
+/**
+ * Every number here resolves to something a visitor can check in one click.
+ *
+ * "30+ Happy Clients" and "50+ Projects Done" were removed for the same reason
+ * as the certifications tile: nothing on the site substantiates them. A round,
+ * unverifiable figure is worth less than no figure, because a visitor who
+ * doubts one number starts discounting the ones that are true — and the honest
+ * assets here (published fixed pricing, a dated work history) are unusual
+ * enough for a freelance site that they're worth protecting.
+ *
+ * The two counts are derived from the actual arrays, so they can't drift as
+ * work is added and they can't overstate: the portfolio and blog pages hold
+ * exactly what these claim.
+ *
+ * To put client or project totals back, they need evidence on the site first —
+ * named testimonials, or case studies covering the count being claimed.
+ */
 const items = [
-  { icon: Users2,        value: "30", suffix: "+", label: "Happy Clients",  sub: "Worldwide" },
-  { icon: GitBranch,     value: "50", suffix: "+", label: "Projects Done",  sub: "Delivered" },
-  { icon: CalendarClock, value: "24", suffix: "h", label: "Response Time",  sub: "Every enquiry" },
-  { icon: Award,         value: "5",  suffix: "+", label: "Years Building", sub: "Since 2020" },
+  { icon: GitBranch,     value: String(STATIC_PROJECTS.length), suffix: "",  label: "Case Studies",  sub: "Written up in full" },
+  { icon: Award,         value: "5",                            suffix: "+", label: "Years Building", sub: "Since 2020" },
+  { icon: CalendarClock, value: "24",                           suffix: "h", label: "Response Time",  sub: "Every enquiry" },
+  { icon: BookOpen,      value: String(BLOG_POSTS.length),      suffix: "",  label: "Articles",       sub: "React, TS & MERN" },
 ];
 
 // Two-tone accent system — alternates the site's primary and accent colors

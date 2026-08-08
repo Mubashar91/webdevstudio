@@ -1,9 +1,10 @@
 import { Clock, Coins, MessagesSquare, ShieldCheck } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
 import { CitiesServed } from "@/components/CitiesServed";
-import { cyGeo } from "@/data/geoPageData";
+import { buildAreaServed, cyGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
@@ -72,12 +73,8 @@ const WebDevelopmentCyprus = () => {
         url: canonicalPath("/web-development-cyprus"),
         serviceType: "Web Development",
         provider: { "@id": `${canonicalPath("/")}#organization` },
-        areaServed: [
-          { "@type": "Country", name: "Cyprus" },
-          { "@type": "City", name: "Limassol" },
-          { "@type": "City", name: "Nicosia" },
-          { "@type": "City", name: "Larnaca" },
-        ],
+        // Same builder the prerenderer uses — see the note on the NZ page.
+        areaServed: buildAreaServed(cyGeo),
         availableChannel: {
           "@type": "ServiceChannel",
           serviceUrl: canonicalPath("/contact"),
@@ -116,7 +113,32 @@ const WebDevelopmentCyprus = () => {
           />
         </LocationHighlights>
         <ServicesSection compactHeader />
-        <Pricing />
+        <Pricing
+          marketContext={
+            <>
+              <h3 className="text-lg font-bold mb-2">How this compares in the Cyprus market</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                Cyprus studios typically quote{" "}
+                <strong className="text-foreground">€1,500–€3,000</strong> for a business
+                site, with eCommerce from €3,500. A marketing site here starts at USD $900 —
+                roughly €830 — quoted in EUR if you prefer, fixed before work starts.
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-3">
+                Two Cyprus-specific things these numbers don't cover. <strong className="text-foreground">Multilingual</strong> is
+                the real multiplier: EN / GR / RU is three versions of every page, each
+                needing its own structure and <code className="text-xs">hreflang</code>, not a
+                translation widget. And as an EU member state, <strong className="text-foreground">GDPR</strong> thinking
+                is cheaper built in at the start than retrofitted.
+              </p>
+              <Link
+                to="/blogs/website-cost-cyprus-2026"
+                className="text-primary hover:underline font-medium text-sm"
+              >
+                Full Cyprus pricing breakdown, including multilingual →
+              </Link>
+            </>
+          }
+        />
         <Testimonials />
         <CTA />
       </main>

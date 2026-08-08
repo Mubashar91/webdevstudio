@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
@@ -14,6 +15,55 @@ import {
 import { faqsOf, findBlogPost, readTimeOf, wordCountOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { CARD_IMAGE, optimizedImage } from "@/lib/images";
+
+/**
+ * Renders the two inline markers post bodies use: `**bold**` and
+ * `[label](/path)`.
+ *
+ * Deliberately not a Markdown library. Long-form buyer-intent copy needs
+ * emphasis on the key phrase of a paragraph and the occasional cross-link to
+ * another post; pulling in a parser and a sanitiser for that would be a lot of
+ * bytes and an XSS surface for two patterns. Anything unmatched renders as
+ * literal text, and nothing here ever sets innerHTML.
+ */
+const INLINE = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g;
+
+function renderInline(text: string): ReactNode[] {
+  return text.split(INLINE).filter(Boolean).map((part, i) => {
+    const bold = /^\*\*([^*]+)\*\*$/.exec(part);
+    if (bold) {
+      return (
+        <strong key={i} className="font-bold text-foreground">
+          {bold[1]}
+        </strong>
+      );
+    }
+
+    const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part);
+    if (link) {
+      const [, label, href] = link;
+      // Internal paths go through the router so navigation stays client-side;
+      // anything else is treated as external and opened safely.
+      return href.startsWith("/") ? (
+        <Link key={i} to={href} className="text-primary hover:underline font-medium">
+          {label}
+        </Link>
+      ) : (
+        <a
+          key={i}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline font-medium"
+        >
+          {label}
+        </a>
+      );
+    }
+
+    return <span key={i}>{part}</span>;
+  });
+}
 
 const BlogDetail = () => {
   const { slug } = useParams();
@@ -170,10 +220,19 @@ const BlogDetail = () => {
                       {block.text}
                     </h2>
                   );
+                case "h3":
+                  return (
+                    <h3
+                      key={i}
+                      className="text-xl md:text-2xl font-bold tracking-tight mt-9 mb-3 scroll-mt-24"
+                    >
+                      {block.text}
+                    </h3>
+                  );
                 case "p":
                   return (
                     <p key={i} className="text-foreground/90 leading-relaxed mb-5">
-                      {block.text}
+                      {renderInline(block.text)}
                     </p>
                   );
                 case "list":
@@ -185,10 +244,58 @@ const BlogDetail = () => {
                             aria-hidden="true"
                             className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0"
                           />
-                          <span>{item}</span>
+                          <span>{renderInline(item)}</span>
                         </li>
                       ))}
                     </ul>
+                  );
+                case "table":
+                  return (
+                    <figure key={i} className="mb-6">
+                      {/* overflow-x-auto on the wrapper, not the page: a wide
+                          price table has to scroll inside its own box or it
+                          widens the whole article on a phone. */}
+                      <div className="overflow-x-auto rounded-xl border border-border/50">
+                        <table className="w-full text-sm border-collapse">
+                          <thead>
+                            <tr className="bg-muted/50">
+                              {block.headers.map((h) => (
+                                <th
+                                  key={h}
+                                  scope="col"
+                                  className="text-left font-bold px-4 py-3 border-b border-border/50 whitespace-nowrap"
+                                >
+                                  {h}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {block.rows.map((row, r) => (
+                              <tr key={r} className="border-b border-border/35 last:border-0">
+                                {row.map((cell, c) => (
+                                  <td
+                                    key={c}
+                                    className={`px-4 py-3 align-top leading-relaxed ${
+                                      c === 0
+                                        ? "font-semibold text-foreground whitespace-nowrap"
+                                        : "text-foreground/90"
+                                    }`}
+                                  >
+                                    {renderInline(cell)}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      {block.caption && (
+                        <figcaption className="mt-2 text-xs text-muted-foreground">
+                          {block.caption}
+                        </figcaption>
+                      )}
+                    </figure>
                   );
                 case "code":
                   return (
