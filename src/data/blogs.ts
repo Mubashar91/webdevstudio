@@ -1910,6 +1910,655 @@ const Job = new Schema({
       },
     ],
   },
+  {
+    slug: "signs-your-website-is-losing-customers",
+    // Shorter than the source H1 ("10 Signs Your Business Website Is Losing
+    // You Customers", 53 chars) so withBrand() can still append the brand
+    // inside the 62-character display limit.
+    title: "10 Signs Your Website Is Losing You Customers",
+    excerpt:
+      "Ten specific, checkable signs that your website is costing you business — each with the test to run and the threshold that counts as a real problem.",
+    coverImage:
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-09",
+    tags: ["Small Business", "Core Web Vitals", "Conversion"],
+    content: [
+      {
+        type: "p",
+        text: "Most failing business websites don't look broken. They look fine on the owner's laptop, load instantly because the browser cached everything weeks ago, and quietly lose customers on other people's phones.",
+      },
+      {
+        type: "p",
+        text: "Below are ten signs, each with a specific test and a threshold. Run them in order. Any one of these can cost you real work.",
+      },
+      { type: "h2", text: "1. It takes more than 2.5 seconds to show anything useful on a phone" },
+      {
+        type: "p",
+        text: "The single most expensive fault, and the one owners are least likely to notice, because your own device has the site cached.",
+      },
+      {
+        type: "p",
+        text: "Google measures loading with Largest Contentful Paint, and the \"good\" threshold is under 2.5 seconds. That's assessed at the 75th percentile of real visitor data — meaning three quarters of your visitors need to be under it, not you on office wifi.",
+      },
+      {
+        type: "p",
+        text: "**Test:** run your homepage through PageSpeed Insights. Read the mobile score, not desktop.",
+      },
+      {
+        type: "p",
+        text: "**Threshold:** over 2.5 seconds is a problem. Over 4 is an emergency. If you want the causes in order of how often they're to blame, that's a separate walkthrough: [why your website is slow](/blogs/why-is-my-website-slow).",
+      },
+      { type: "h2", text: "2. The page jumps around while it loads" },
+      {
+        type: "p",
+        text: "You go to tap a link, an image finishes loading above it, the page shifts, and you tap something else. Every visitor has experienced this and every visitor hates it.",
+      },
+      {
+        type: "p",
+        text: "Google scores this as Cumulative Layout Shift, with a good threshold of under 0.1. The fix is unexciting and reliable: every image, video, iframe and ad slot needs explicit width and height so the browser reserves the space before the content arrives.",
+      },
+      {
+        type: "p",
+        text: "**Test:** PageSpeed Insights reports CLS alongside the loading score.",
+      },
+      {
+        type: "p",
+        text: "**Threshold:** above 0.1 and you're annoying a quarter of your visitors.",
+      },
+      { type: "h2", text: "3. Buttons and taps feel laggy" },
+      {
+        type: "p",
+        text: "The third metric in the same family, and the one sites fail most often. Interaction to Next Paint replaced First Input Delay in March 2024, so any advice still mentioning FID is out of date.",
+      },
+      {
+        type: "p",
+        text: "It shows up as a menu that takes a beat to open, or a form that freezes when you submit. Usually the cause is too much JavaScript competing for the phone's attention.",
+      },
+      {
+        type: "p",
+        text: "**Threshold:** over 200ms at the 75th percentile.",
+      },
+      { type: "h2", text: "4. A stranger can't tell what you do in five seconds" },
+      {
+        type: "p",
+        text: "Open your homepage on a phone. Don't scroll. Hand it to someone who doesn't know your business and ask what the company does.",
+      },
+      {
+        type: "p",
+        text: "If they hesitate, you're losing everyone who arrives from a search result and doesn't already know you. Hero photographs and slogans feel like branding to the person who commissioned them and read as noise to a first-time visitor.",
+      },
+      {
+        type: "p",
+        text: "**Fix:** one plain sentence naming the service, the customer, and the location.",
+      },
+      { type: "h2", text: "5. Your phone number isn't tappable" },
+      {
+        type: "p",
+        text: "Astonishingly common. On mobile, a phone number written as ordinary text means the visitor has to memorise it, leave your site, and open their dialler. A meaningful share simply don't.",
+      },
+      {
+        type: "p",
+        text: "**Test:** open the site on your phone and tap the number. Does it offer to call?",
+      },
+      { type: "p", text: "**Fix:** one line." },
+      {
+        type: "code",
+        lang: "html",
+        code: `<a href="tel:+6491234567">09 123 4567</a>`,
+      },
+      { type: "h2", text: "6. Your contact form fails silently" },
+      {
+        type: "p",
+        text: "Fill in your own form, from a phone, on mobile data, using an address you control. Confirm three things: it arrives, it isn't in spam, and the visitor gets a visible confirmation.",
+      },
+      {
+        type: "p",
+        text: "Broken forms tend to break quietly — an expired plugin, a changed mail setting, a filter that started eating your own notifications. Nothing alerts you. Enquiries just stop, and the natural conclusion is that business is slow.",
+      },
+      {
+        type: "p",
+        text: "**Do this quarterly.** It takes ninety seconds and it's the highest-value ninety seconds on this list.",
+      },
+      { type: "h2", text: "7. Nothing on the site mentions money" },
+      {
+        type: "p",
+        text: "No price list, no range, no starting figure, no typical project size.",
+      },
+      {
+        type: "p",
+        text: "Owners leave pricing off because they fear scaring people away. What actually happens is that visitors assume expensive, and someone who has decided you're out of their budget doesn't enquire to check. You never see the loss, which is exactly why it persists.",
+      },
+      {
+        type: "p",
+        text: "You don't need a full price list. A starting figure or a typical project range filters out the people who were never going to buy and reassures everyone else — the way the bands on my own [services page](/services) are meant to.",
+      },
+      { type: "h2", text: "8. The site looks abandoned" },
+      {
+        type: "p",
+        text: "Visitors look for evidence you're still trading, and they find it in small places:",
+      },
+      {
+        type: "list",
+        items: [
+          "A copyright line showing a year that isn't this one",
+          "A blog whose most recent post is from 2022",
+          "\"Coming soon\" on a page that has said so for two years",
+          "Social links to accounts that stopped posting",
+          "Team photographs of people who left",
+        ],
+      },
+      {
+        type: "p",
+        text: "Any one of these plants the thought *are these people still operating?* — and that thought is enough to send someone to a competitor.",
+      },
+      { type: "h2", text: "9. There's no proof anyone has hired you" },
+      {
+        type: "p",
+        text: "Claims about quality are worth very little. Evidence is worth a lot.",
+      },
+      {
+        type: "p",
+        text: "Missing proof looks like: no reviews, or reviews with no names attached; stock photography instead of your actual work; no case studies; no client names; nothing to indicate anyone has ever paid you.",
+      },
+      {
+        type: "p",
+        text: "**Strongest to weakest:** named recent reviews → photographs of real work → named clients → case studies with an outcome → generic testimonials → adjectives about yourself.",
+      },
+      { type: "h2", text: "10. Visitors can't find the specific thing they came for" },
+      {
+        type: "p",
+        text: "A restaurant site where the menu is a PDF. A trades site where every service lives on one page called \"Services\". A shop with no search box and forty products.",
+      },
+      {
+        type: "p",
+        text: "Every extra step between arrival and the thing they wanted loses a share of visitors. It's also the same structural fault that keeps you out of search results — see [why your website doesn't show up on Google](/blogs/why-website-not-showing-on-google).",
+      },
+      {
+        type: "p",
+        text: "**Test:** pick your three most common customer requests. Time how long it takes to reach each from the homepage on a phone. More than two taps means it's buried.",
+      },
+      { type: "h2", text: "What to do with the list" },
+      {
+        type: "p",
+        text: "You won't fix ten things this month, and you don't need to. They're not equally expensive.",
+      },
+      {
+        type: "table",
+        headers: ["Effort", "Signs", "What it costs"],
+        rows: [
+          ["Free, this week", "6 (test your form), 5 (tap your number), 8 (update anything stale), 4 (the five-second test)", "An hour, no developer"],
+          ["Cheap, this month", "7 (add a price signal), 9 (gather three named reviews), 10 (shorten the path to your top services)", "Your own time"],
+          ["Needs a developer", "1, 2 and 3 — the speed and stability problems", "Real engineering work"],
+        ],
+        caption: "Signs 1–3 have the clearest effect on both rankings and enquiries.",
+      },
+      {
+        type: "p",
+        text: "The order matters. Fixing your site's speed while the contact form is silently swallowing enquiries just means faster delivery of visitors to a dead end.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How do I know if my website is losing customers?" },
+      {
+        type: "p",
+        text: "Run the four free tests first: submit your own contact form from a phone on mobile data, tap your own phone number, check the site for stale content, and hand your homepage to someone who doesn't know your business. Those four catch the majority of silent losses, and none of them needs a developer.",
+      },
+      { type: "h3", text: "How fast should a business website load on mobile?" },
+      {
+        type: "p",
+        text: "Largest Contentful Paint under 2.5 seconds is Google's \"good\" threshold, measured at the 75th percentile of real visitors. Over 4 seconds you are losing a meaningful share of people before the page appears at all. Test on the mobile tab of PageSpeed Insights, not desktop.",
+      },
+      { type: "h3", text: "Should I put prices on my website?" },
+      {
+        type: "p",
+        text: "A starting figure or a range, yes. Without one, visitors assume you are expensive and don't enquire to check — a loss you never see, which is why it goes uncorrected for years. You don't need a full price list to fix it.",
+      },
+      { type: "h3", text: "Why does my website look fine to me but slow to customers?" },
+      {
+        type: "p",
+        text: "Your browser cached the site weeks ago, you're on a laptop, and you're probably on good wifi. A first-time visitor on a mid-range phone on mobile data has none of those advantages. Always judge from field data on the mobile test rather than your own experience of the site.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Test your own contact form today. It takes ninety seconds, it's free, and of everything on this list it is the one most likely to be quietly costing you work right now.",
+      },
+      {
+        type: "p",
+        text: "If you'd like a second opinion on which of the ten apply to your site, [book a free 30-minute call](/contact). If the answer is four free fixes and no developer, that's what I'll tell you.",
+      },
+    ],
+  },
+  {
+    slug: "why-website-not-showing-on-google",
+    title: "Why Your Website Doesn't Show Up on Google",
+    excerpt:
+      "Work through this in order: is your site indexed, blocked, ranking too low, or targeting the wrong words? Each step has a test that takes under a minute.",
+    coverImage:
+      "https://images.unsplash.com/photo-1591696205602-2f950c417cb9?w=800&h=450&fit=crop",
+    category: "SEO",
+    publishedAt: "2026-08-09",
+    tags: ["SEO", "Small Business", "Google Search"],
+    content: [
+      {
+        type: "p",
+        text: "\"My website doesn't show up on Google\" describes at least four completely different problems with completely different fixes. Before spending money on SEO, find out which one you have. The whole diagnosis takes about fifteen minutes.",
+      },
+      {
+        type: "p",
+        text: "Work through these in order. Stop at the first one that's true.",
+      },
+      { type: "h2", text: "Step 1: Is your site on Google at all?" },
+      {
+        type: "p",
+        text: "Type this into Google, using your own domain:",
+      },
+      { type: "code", lang: "text", code: `site:yourbusiness.co.nz` },
+      {
+        type: "p",
+        text: "That asks Google to list every page it knows about on your site.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Results appear** → you're indexed. Skip to Step 3.",
+          "**Nothing at all** → Google doesn't have your site. Continue to Step 2.",
+          "**Some pages, but not the important ones** → partial indexing. Step 2 still applies to the missing pages.",
+        ],
+      },
+      {
+        type: "p",
+        text: "This one search separates \"invisible\" from \"ranking badly\", and those are not remotely the same problem. Most people who think they have an SEO problem are actually at Step 3.",
+      },
+      { type: "h2", text: "Step 2: Are you accidentally blocking Google?" },
+      {
+        type: "p",
+        text: "If nothing came back, something is usually telling search engines to stay away — and more often than not it was switched on deliberately during the build and never switched off.",
+      },
+      { type: "p", text: "**Check the robots file.** Visit:" },
+      { type: "code", lang: "text", code: `yourbusiness.co.nz/robots.txt` },
+      { type: "p", text: "If you see this, you are blocking everything:" },
+      {
+        type: "code",
+        lang: "text",
+        code: `User-agent: *
+Disallow: /`,
+      },
+      {
+        type: "p",
+        text: "**Check for a noindex tag.** Open your homepage, view source, and search for `noindex`. This tag removes a page from search results even when everything else is correct:",
+      },
+      {
+        type: "code",
+        lang: "html",
+        code: `<meta name="robots" content="noindex">`,
+      },
+      {
+        type: "p",
+        text: "**On WordPress**, look in Settings → Reading for a checkbox about discouraging search engines. It gets ticked on staging sites and forgotten at launch. It is responsible for a genuinely embarrassing number of invisible business websites.",
+      },
+      {
+        type: "p",
+        text: "**If the site is brand new**, none of the above may apply — Google may simply not have got to you yet. Set up Google Search Console, submit your sitemap, and expect days to weeks rather than hours.",
+      },
+      { type: "h2", text: "Step 3: You're indexed, but ranking too low to see" },
+      {
+        type: "p",
+        text: "This is where most businesses actually are, and it's a different problem entirely — not invisibility, but position.",
+      },
+      {
+        type: "p",
+        text: "**Test:** search for your exact business name. If you appear, you rank. You just don't rank for the things people search when they don't already know you exist.",
+      },
+      {
+        type: "p",
+        text: "That distinction is everything. Nobody who needs a plumber searches your company name. They search \"emergency plumber [suburb]\". Ranking first for your own name and nowhere for your service is the default state of a new website, not a fault.",
+      },
+      {
+        type: "p",
+        text: "**Confirm it in Search Console** (Performance → Search results, add the \"Position\" column). You'll typically find you're on page three or beyond for the queries that matter — visible in principle, invisible in practice.",
+      },
+      { type: "h2", text: "Step 4: Nothing on your site targets what people search" },
+      { type: "p", text: "Now the diagnosis gets useful." },
+      {
+        type: "p",
+        text: "Most small business sites have a homepage, an About page, a Services page listing eight services in a paragraph each, and a Contact page. Then the owner wonders why they don't rank for any of those eight services.",
+      },
+      {
+        type: "p",
+        text: "Google ranks pages, not businesses. A service mentioned in one sentence on a shared page is competing against sites with a full, dedicated page for that exact service. It loses, reliably.",
+      },
+      {
+        type: "p",
+        text: "**The fix:** one page per service you actually want customers for, each written around the phrase a customer would type. Not \"Commercial Solutions\" but \"Commercial Electrical Wiring in Auckland\".",
+      },
+      {
+        type: "p",
+        text: "**Find the phrases for free:** type your service into Google and read the autocomplete suggestions, the \"People also ask\" box, and the related searches at the bottom of the page. That's Google showing you its own query data at no cost.",
+      },
+      { type: "h2", text: "Step 5: You're competing with the wrong sites" },
+      {
+        type: "p",
+        text: "Search the phrase you want to rank for and look honestly at who holds page one.",
+      },
+      {
+        type: "p",
+        text: "If it's national directories, franchises, and businesses ten times your size, that phrase isn't available to you yet — not because your site is bad, but because ranking there requires years of accumulated authority.",
+      },
+      {
+        type: "p",
+        text: "**What works instead:** go longer and more specific. \"Electrician\" is unwinnable. \"Emergency electrician Papakura\" might be sitting there with nobody competing for it properly. Fewer people search it — but the ones who do are ready to call, and you can actually rank.",
+      },
+      {
+        type: "p",
+        text: "This is the single most useful adjustment a small business can make, and it's counterintuitive enough that most never make it.",
+      },
+      { type: "h2", text: "Step 6: For local businesses, the map results are a separate system" },
+      {
+        type: "p",
+        text: "If customers come to your premises or you serve a local area, the map pack at the top of local searches is a different ranking system from the ordinary blue links.",
+      },
+      {
+        type: "p",
+        text: "It's driven mostly by your Google Business Profile: complete information, correct category, consistent name/address/phone everywhere online, real photographs, and a steady flow of reviews.",
+      },
+      {
+        type: "p",
+        text: "A local business can be invisible in the map pack while ranking respectably in normal results, and vice versa. If your customers are local, this is often worth more than everything above — and it's free.",
+      },
+      { type: "h2", text: "Step 7: Slow sites rank worse" },
+      {
+        type: "p",
+        text: "Once the fundamentals are right, speed becomes a genuine differentiator. Google's page experience signals measure loading, responsiveness and visual stability from real visitor data — LCP under 2.5 seconds, INP under 200 milliseconds, and CLS under 0.1.",
+      },
+      {
+        type: "p",
+        text: "It isn't the strongest factor — content and authority still matter more — but between two comparable pages it can decide which one wins.",
+      },
+      {
+        type: "p",
+        text: "Two practical points people get wrong: the scoring uses field data from real Chrome users at the 75th percentile, so a perfect score in your own browser tools proves nothing if a quarter of real visitors on mid-range phones are slow. And that data updates on a rolling 28-day window, so allow several weeks after a fix before judging whether it worked. If speed turns out to be your problem, [start here](/blogs/why-is-my-website-slow).",
+      },
+      { type: "h2", text: "Step 8: Patience, and what's normal" },
+      {
+        type: "p",
+        text: "SEO does not work on the timescale anyone wants.",
+      },
+      {
+        type: "p",
+        text: "For a new site, expect roughly three months before meaningful movement and around six before it compounds. That isn't a dodge — it's how long it takes to accumulate enough signals. Judging results after four weeks is the most common reason businesses abandon an approach that was working.",
+      },
+      { type: "h2", text: "Quick reference" },
+      {
+        type: "table",
+        headers: ["Symptom", "Diagnosis", "Fix"],
+        rows: [
+          ["`site:` search returns nothing", "Not indexed", "Check robots.txt and noindex, submit sitemap"],
+          ["Only your business name ranks", "Indexed, ranking low", "Dedicated service pages"],
+          ["Page one is national brands", "Query too competitive", "Target longer, more specific phrases"],
+          ["Local customers can't find you", "Map pack, not web results", "Google Business Profile and reviews"],
+          ["Everything is right, still nothing", "Probably too early", "Give it three to six months"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Run this before hiring anyone for SEO. If your problem is a leftover noindex tag, that's a five-minute fix, and it's worth knowing that before you sign up for a monthly retainer.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Why is my website not showing on Google?" },
+      {
+        type: "p",
+        text: "There are four distinct causes and they need different fixes: the site isn't indexed at all, it's actively blocked by a robots.txt rule or a noindex tag, it's indexed but ranking too low to see, or nothing on it targets the phrases people actually search. Run a `site:yourdomain.com` search first — that single test tells you which of the four you have.",
+      },
+      { type: "h3", text: "How do I check if my website is indexed by Google?" },
+      {
+        type: "p",
+        text: "Search `site:yourdomain.com` in Google. If pages come back, you're indexed and your problem is ranking position rather than visibility. If nothing comes back, Google either doesn't know about the site yet or is being told to stay away — check robots.txt and your homepage source for a noindex tag.",
+      },
+      { type: "h3", text: "How long does it take for a new website to appear on Google?" },
+      {
+        type: "p",
+        text: "Indexing can happen within days of submitting a sitemap in Search Console. Ranking is slower: expect around three months before meaningful movement and six before it compounds. Judging results after four weeks is the most common reason people abandon an approach that was working.",
+      },
+      { type: "h3", text: "Why does my business name rank but not my services?" },
+      {
+        type: "p",
+        text: "Because Google ranks pages, not businesses. Your homepage is the obvious answer for your own name, but a service that gets one sentence on a shared services page is competing against sites with a full dedicated page for that exact service — and it loses reliably. One page per service you want customers for is the fix.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Run the `site:` search on your own domain right now. Whichever of the four problems it points to, you'll know within a minute which one you're solving — and that's the difference between fixing it and paying a retainer to find out.",
+      },
+      {
+        type: "p",
+        text: "If you'd like help reading the results, [book a free 30-minute call](/contact), or see how I build sites that get found in the first place on the [services page](/services).",
+      },
+    ],
+  },
+  {
+    slug: "does-my-website-need-a-developer",
+    title: "Does Your Website Need a Developer or Just a Few Fixes?",
+    excerpt:
+      "Not every website problem needs a rebuild. Here's how to tell the difference — what you can fix yourself, what needs a developer, and what needs neither.",
+    coverImage:
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-09",
+    tags: ["Small Business", "Hiring", "Performance"],
+    content: [
+      {
+        type: "p",
+        text: "Someone is going to tell you that you need a new website. That someone usually sells new websites.",
+      },
+      {
+        type: "p",
+        text: "Sometimes they're right. Often the actual problem is four small things, none of which requires a rebuild, and a full redesign would carry every one of them across to the new site.",
+      },
+      {
+        type: "p",
+        text: "Here's how to tell the difference before you spend anything.",
+      },
+      { type: "h2", text: "Start with the symptom, not the solution" },
+      {
+        type: "p",
+        text: "\"My website needs work\" isn't diagnosable. These are:",
+      },
+      {
+        type: "list",
+        items: [
+          "Nobody can find it in search",
+          "People find it but don't get in touch",
+          "It looks dated next to competitors",
+          "It's slow",
+          "You can't update it yourself",
+          "It breaks on phones",
+          "It can't do something your business now needs",
+        ],
+      },
+      {
+        type: "p",
+        text: "Each of those has a different answer, and two of them frequently need no developer at all.",
+      },
+      { type: "h2", text: "Things you can fix yourself, today, for nothing" },
+      {
+        type: "p",
+        text: "Before anything else, rule these out. All are common, all are free, and none needs technical skill.",
+      },
+      {
+        type: "p",
+        text: "**Your contact form is broken.** Submit it from a phone, on mobile data, using an address you control. Confirm it arrives and isn't in spam. Broken forms fail silently — nothing tells you, enquiries just stop.",
+      },
+      {
+        type: "p",
+        text: "**Your phone number isn't tappable on mobile.** Tap it. If it doesn't dial, that's one line of code your host's editor can usually handle.",
+      },
+      {
+        type: "p",
+        text: "**Your content is stale.** Old copyright year, a blog that stopped in 2022, \"coming soon\" pages, staff who left. Visitors read these as *possibly closed*.",
+      },
+      {
+        type: "p",
+        text: "**You're accidentally blocked from Google.** Search `site:yourdomain.com`. If nothing comes back, something is telling search engines to stay away — often a checkbox left on from the build. That's a five-minute fix, not a rebuild, and there's a full walkthrough in [why your website doesn't show up on Google](/blogs/why-website-not-showing-on-google).",
+      },
+      {
+        type: "p",
+        text: "**Nothing on the site mentions price.** Adding a starting figure or a range costs nothing and stops people silently assuming you're unaffordable.",
+      },
+      {
+        type: "p",
+        text: "If your symptom disappeared, stop here. You've saved yourself a project. The longer version of this list is [ten signs your website is losing you customers](/blogs/signs-your-website-is-losing-customers).",
+      },
+      { type: "h2", text: "Things a developer fixes without rebuilding" },
+      {
+        type: "p",
+        text: "The middle category, and the one most under-used — because it's easier to sell a redesign than a repair.",
+      },
+      {
+        type: "p",
+        text: "**Speed problems.** Oversized images, too much JavaScript, render-blocking scripts, missing image dimensions. Real engineering work, but it's surgery on an existing site rather than replacement. A site failing Google's thresholds — LCP under 2.5 seconds, INP under 200 milliseconds, CLS under 0.1 — can usually be brought inside them without touching the design.",
+      },
+      {
+        type: "p",
+        text: "**Mobile layout breakage.** Text overflowing, buttons too small, horizontal scrolling. Usually CSS fixes, not architecture.",
+      },
+      {
+        type: "p",
+        text: "**Missing service pages.** If you rank for nothing because eight services share one page, the answer is more pages — not a new site.",
+      },
+      {
+        type: "p",
+        text: "**Adding one capability.** A booking form, online payments, a quote calculator. These bolt onto most existing sites.",
+      },
+      {
+        type: "p",
+        text: "**Accessibility problems.** Contrast, keyboard navigation, missing labels. Almost always fixable in place, and increasingly a legal consideration as well as a decency one.",
+      },
+      {
+        type: "p",
+        text: "**The rule of thumb:** if the site's structure is sound and specific things are wrong with it, repair. Repair is cheaper, faster, and preserves the search history the site has already built — which a rebuild can easily throw away.",
+      },
+      { type: "h2", text: "Things that genuinely need a rebuild" },
+      {
+        type: "p",
+        text: "Now the honest other side. Some sites shouldn't be repaired.",
+      },
+      {
+        type: "p",
+        text: "**You can't change anything without paying someone.** If updating a phone number needs a developer, the cost isn't the website — it's every small change for the next five years.",
+      },
+      {
+        type: "p",
+        text: "**It's built on something no longer maintained.** An abandoned page builder, an unsupported framework, a platform whose owner vanished. Patching this is money spent on a foundation that will fail anyway.",
+      },
+      {
+        type: "p",
+        text: "**It has security problems that can't be patched.** Outdated software with known vulnerabilities. This is urgent, not aesthetic.",
+      },
+      {
+        type: "p",
+        text: "**Fixing the speed means rewriting it.** Some sites are slow because of one heavy image. Others are slow because they load a twelve-megabyte page builder to display three paragraphs. The second isn't fixable in place.",
+      },
+      {
+        type: "p",
+        text: "**Your business changed.** You sell different things to different people in different places than when the site was built. Restructuring past that is often more work than starting again.",
+      },
+      {
+        type: "p",
+        text: "**Every fix breaks something else.** The clearest signal there is. If repairs keep producing new bugs, the foundation is gone.",
+      },
+      { type: "h2", text: "The test that settles it" },
+      {
+        type: "p",
+        text: "When you're still unsure, one question decides: **is the structure sound, with specific things wrong with it? Or is the structure itself the problem?**",
+      },
+      {
+        type: "p",
+        text: "Specific things wrong → fix them. Structure is the problem → rebuild.",
+      },
+      {
+        type: "p",
+        text: "A useful proxy: **write down every problem, then get a quote for fixing them all.** If that's a meaningful fraction of a new site, rebuild. If it's a small fraction, fix. Any developer worth hiring will tell you which side you're on, including when the answer costs them the larger job.",
+      },
+      { type: "h2", text: "What to ask a developer — and what should worry you" },
+      {
+        type: "p",
+        text: "When you get an assessment, these answers tell you a lot.",
+      },
+      { type: "h3", text: "Good signs" },
+      {
+        type: "list",
+        items: [
+          "They ask what problem you're trying to solve before proposing anything",
+          "They tell you which items you could fix yourself for free",
+          "They can explain why a rebuild is necessary in terms of your business, not the technology",
+          "They ask about your traffic and current rankings before suggesting anything that changes URLs",
+        ],
+      },
+      { type: "h3", text: "Worrying signs" },
+      {
+        type: "list",
+        items: [
+          "\"Rebuild\" arrives before any diagnosis",
+          "The reasoning is that the technology is old, with no explanation of what that costs you",
+          "No mention of preserving your existing search rankings",
+          "A quote before anyone has looked at what's actually wrong",
+        ],
+      },
+      {
+        type: "p",
+        text: "That last one matters more than it sounds. A rebuild that changes your page addresses without redirects can erase years of accumulated search visibility overnight. It's recoverable, but only if someone plans for it — and the plan needs to exist before the build, not after the traffic drops.",
+      },
+      { type: "h2", text: "The short version" },
+      {
+        type: "table",
+        headers: ["Your situation", "What you need"],
+        rows: [
+          ["Form broken, content stale, number not tappable", "Fix it yourself, free"],
+          ["Blocked from Google, no price on the site", "Fix it yourself, free"],
+          ["Slow, mobile layout broken, missing service pages", "Developer, targeted fixes"],
+          ["Need booking or payments added", "Developer, an addition"],
+          ["Can't update anything without paying", "Rebuild"],
+          ["Unmaintained platform, security holes", "Rebuild, and soon"],
+          ["Every fix breaks something else", "Rebuild"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Most websites people describe as \"needing to be redone\" need three of the free items and one afternoon of developer time. Find out which you are before anyone quotes you for a project.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Do I need a new website or just fixes?" },
+      {
+        type: "p",
+        text: "Ask whether the structure is sound with specific things wrong with it, or whether the structure itself is the problem. Specific faults — slow images, broken mobile layout, missing service pages — are repairs. A platform you can't update, can't secure, or that breaks every time it's touched is a rebuild. Get a quote for fixing everything on your list; if it's a small fraction of a new site, repair.",
+      },
+      { type: "h3", text: "How do I know if my website needs to be rebuilt?" },
+      {
+        type: "p",
+        text: "Four signals make a rebuild the honest answer: you can't change anything without paying someone, the platform is no longer maintained, there are security holes that can't be patched, or every fix breaks something else. Age alone is not one of them — \"the technology is old\" is only a reason if someone can say what it costs you.",
+      },
+      { type: "h3", text: "Will a new website hurt my Google rankings?" },
+      {
+        type: "p",
+        text: "It can, badly, if page addresses change without redirects — years of accumulated visibility can go overnight. It's recoverable, but only if the redirect plan exists before the build rather than after the traffic drops. Ask any developer quoting a rebuild how they'll preserve your existing URLs; a good answer is specific, and no answer at all is a warning.",
+      },
+      { type: "h3", text: "What website problems can I fix myself for free?" },
+      {
+        type: "p",
+        text: "Five of them: test your contact form actually delivers, make your phone number tappable on mobile, update stale content and copyright years, check you aren't blocking search engines with a leftover noindex, and put a starting price somewhere on the site. None needs technical skill and together they resolve a surprising share of \"my website needs redoing\".",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Work down the free list first. If your symptom survives all five, you have a real diagnosis to hand a developer — and a much better conversation than \"my website needs work\".",
+      },
+      {
+        type: "p",
+        text: "If you'd like that assessment for nothing, [book a free 30-minute call](/contact). If your site needs four small fixes rather than a project, I'd rather tell you that than sell you a rebuild — and you can see what I do build on the [services page](/services).",
+      },
+    ],
+  },
 ];
 
 export function findBlogPost(slug: string): BlogPost | undefined {
