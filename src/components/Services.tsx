@@ -16,10 +16,19 @@ const services = [
 
 interface ServicesProps {
   compactHeader?: boolean;
+  /**
+   * Set on /services, where this section sits directly under the page header
+   * and its first card row is the LCP element. See `initialVisible` in
+   * use-intersection-observer.tsx for why the reveal has to be skipped there.
+   */
+  aboveFold?: boolean;
 }
 
-export const Services = ({ compactHeader = false }: ServicesProps) => {
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+export const Services = ({ compactHeader = false, aboveFold = false }: ServicesProps) => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.05,
+    initialVisible: aboveFold,
+  });
 
   return (
     <section id="services" className="py-32 relative overflow-hidden">

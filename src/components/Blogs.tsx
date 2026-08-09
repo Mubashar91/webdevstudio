@@ -7,10 +7,15 @@ import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 
 interface BlogsProps {
   compactHeader?: boolean;
+  /** Set on /blogs, where this section opens the page. See `initialVisible`. */
+  aboveFold?: boolean;
 }
 
-export const Blogs = ({ compactHeader = false }: BlogsProps) => {
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+export const Blogs = ({ compactHeader = false, aboveFold = false }: BlogsProps) => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.05,
+    initialVisible: aboveFold,
+  });
   const posts = BLOG_POSTS.slice(0, compactHeader ? BLOG_POSTS.length : 3);
 
   return (

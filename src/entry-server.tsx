@@ -2,6 +2,8 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
 import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
+import { DERIVED_LASTMOD } from "./lib/seo";
+import { schemaImage } from "./lib/images";
 import { buildAreaServed, cyGeo, nzGeo } from "./data/geoPageData";
 import {
   LEGACY_PROJECT_REDIRECTS,
@@ -55,6 +57,14 @@ export const PENDING_CASE_STUDY_INPUTS = STATIC_PROJECTS.map((project) => ({
   missing: pendingCaseStudyFields(project),
 })).filter((entry) => entry.missing.length > 0);
 
+/**
+ * Re-exported for scripts/prerender.mjs, which merges these over ROUTES before
+ * writing the sitemap and the WebPage nodes. Defined in src/lib/seo.ts, not
+ * here, so the React runtime and the build apply one identical value — see the
+ * note there.
+ */
+export { DERIVED_LASTMOD };
+
 export const DYNAMIC_ROUTES = [
   ...BLOG_POSTS.map((post) => ({
     path: `/blogs/${post.slug}`,
@@ -65,7 +75,10 @@ export const DYNAMIC_ROUTES = [
     changefreq: "monthly",
     priority: "0.7",
     ogType: "article",
-    image: post.coverImage,
+    // `image` here only ever reaches <head> — og:image, twitter:image and
+    // WebPage.primaryImageOfPage. The card on the page keeps the 800px URL;
+    // head consumers want >=1200px. See schemaImage() in lib/images.ts.
+    image: schemaImage(post.coverImage),
     // routeGraph() emits FAQPage whenever a route carries FAQs, the same path
     // /services and the location pages already use. The three buyer-intent
     // posts target question-format queries and had the Q&A on the page but no
@@ -82,7 +95,7 @@ export const DYNAMIC_ROUTES = [
     changefreq: "monthly",
     priority: "0.6",
     ogType: "article",
-    image: project.image,
+    image: schemaImage(project.image),
   })),
 ];
 
@@ -146,7 +159,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
           headline: post.title,
           description: post.excerpt,
           url: url(`/blogs/${post.slug}`),
-          image: post.coverImage,
+          image: schemaImage(post.coverImage),
           datePublished: post.publishedAt,
           dateModified: post.updatedAt ?? post.publishedAt,
           keywords: post.tags.join(", "),
@@ -214,7 +227,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
         description: post.excerpt,
         url: url(`/blogs/${post.slug}`),
         mainEntityOfPage: url(`/blogs/${post.slug}`),
-        image: post.coverImage,
+        image: schemaImage(post.coverImage),
         datePublished: post.publishedAt,
         dateModified: post.updatedAt ?? post.publishedAt,
         keywords: post.tags.join(", "),

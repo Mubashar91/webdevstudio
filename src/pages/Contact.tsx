@@ -51,7 +51,7 @@ const Contact = () => {
             note: "Reply within 24 hours · No obligation",
           }}
         />
-        <ContactSection compactHeader />
+        <ContactSection compactHeader aboveFold />
       </main>
       <Footer />
     </div>

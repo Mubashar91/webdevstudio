@@ -10,6 +10,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { Pricing } from "@/components/Pricing";
+import { CYPRUS_EUR_FROM } from "@/lib/site.config.mjs";
 import { useSEO } from "@/hooks/use-seo";
 import {
   breadcrumbNodeFor,
@@ -84,7 +85,11 @@ const WebDevelopmentCyprus = () => {
       faqNodeFor(faqs),
       breadcrumbNodeFor([
         { name: "Home", path: "/" },
-        { name: "Web Development Cyprus", path: "/web-development-cyprus" },
+        // Must match the crumbLabel in site.config.mjs and the visible trail
+        // below — Google reads a breadcrumb that disagrees with its markup as
+        // a mismatch, and hydration replaces the prerendered graph with this
+        // one, so a difference here would silently overwrite the correct label.
+        { name: "Cyprus", path: "/web-development-cyprus" },
       ]),
     ]),
   });
@@ -97,9 +102,10 @@ const WebDevelopmentCyprus = () => {
           title="Web Development for"
           highlight="Cyprus"
           description="Remote React.js & MERN stack development for Cyprus businesses — senior-level execution, real-time working overlap, and EUR/USD pricing."
-          breadcrumbs={[{ label: "Web Development Cyprus" }]}
+          breadcrumbs={[{ label: "Cyprus" }]}
         />
         <LocationHighlights
+          aboveFold
           countryName="Cyprus"
           valueProps={valueProps}
           industries={industries}
@@ -120,8 +126,9 @@ const WebDevelopmentCyprus = () => {
               <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                 Cyprus studios typically quote{" "}
                 <strong className="text-foreground">€1,500–€3,000</strong> for a business
-                site, with eCommerce from €3,500. A marketing site here starts at USD $900 —
-                roughly €830 — quoted in EUR if you prefer, fixed before work starts.
+                site, with eCommerce from €3,500. A marketing site here starts at
+                roughly €{CYPRUS_EUR_FROM} (invoiced as USD $900) — quoted in EUR if you
+                prefer, fixed before work starts.
               </p>
               <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                 Two Cyprus-specific things these numbers don't cover. <strong className="text-foreground">Multilingual</strong> is

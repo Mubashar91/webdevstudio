@@ -57,7 +57,18 @@
     <!-- Analytics and font activation run from src/lib/boot.ts, not inline
          scripts, so the CSP can drop script-src 'unsafe-inline'. -->
 
-    <!-- ── Performance hints ── -->
+    <!-- ── Performance hints ──
+         preconnect, not dns-prefetch. Every hero and card cover comes from
+         images.unsplash.com, and dns-prefetch only resolves DNS — the TCP
+         handshake and TLS negotiation still happened after the browser
+         discovered the <img>. A performance audit measured 5.4s to load a 24KB
+         blog hero for that reason, driving a 6.4s LCP. preconnect completes the
+         handshake during head parsing so the image request starts warm.
+         crossorigin is required: images are fetched anonymously, and a
+         preconnect without it opens a connection the image request can't reuse.
+         dns-prefetch stays as the fallback for browsers that ignore
+         preconnect. -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
   </head>
 

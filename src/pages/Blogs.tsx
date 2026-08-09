@@ -57,7 +57,7 @@ const Blogs = () => {
           description="Practical notes on React, TypeScript, and building scalable MERN applications."
           breadcrumbs={[{ label: "Blog" }]}
         />
-        <BlogsSection compactHeader />
+        <BlogsSection compactHeader aboveFold />
         <CTA />
       </main>
       <Footer />

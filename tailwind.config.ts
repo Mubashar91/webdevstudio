@@ -43,7 +43,15 @@ export default {
         13: "3.25rem",
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        /* 'Jakarta Fallback' is the size-adjusted local face defined in
+           src/index.css. It was in the body rule there but NOT here, so every
+           element carrying Tailwind's own `font-sans` utility fell straight
+           from the webfont to unadjusted system-ui — and those are the elements
+           that reflowed when Plus Jakarta Sans swapped in. A performance audit
+           measured 0.241 CLS on /services from exactly that shift. The two
+           stacks have to stay identical; a fallback that only half the page
+           uses fixes half the layout shift. */
+        sans: ['"Plus Jakarta Sans"', '"Jakarta Fallback"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -27,6 +27,8 @@ import { STATIC_PROJECTS } from "./case-studies";
 import { API_BASE_URL } from "@/lib/api";
 export { API_BASE_URL };
 
+import { schemaImage } from "@/lib/images";
+
 export function normalizeProjectId(id: unknown): string {
   if (typeof id === "string") return id;
   if (id && typeof id === "object" && "$oid" in id) {
@@ -212,7 +214,10 @@ export function projectSchemaNode(
     description: project.subtitle ?? project.fullDescription ?? project.description,
     url: pageUrl,
     mainEntityOfPage: pageUrl,
-    ...(project.image ? { image: project.image } : {}),
+    // schemaImage, not the raw card URL: the card is served at 800px wide and
+    // Google wants >=1200px before it will consider an image for large-image
+    // treatment. Same photo, same crop, larger request.
+    ...(project.image ? { image: schemaImage(project.image) } : {}),
     keywords: project.technologies.join(", "),
     creator: opts.creator,
     ...(project.completedAt ? { dateCreated: project.completedAt } : {}),

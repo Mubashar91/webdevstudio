@@ -36,7 +36,7 @@ const About = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <main id="main-content" className="pt-20">
-        <AboutSection />
+        <AboutSection aboveFold />
         <Stats />
         <Skills />
         <TechStack />

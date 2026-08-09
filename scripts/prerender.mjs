@@ -251,6 +251,24 @@ ${caseStudyLines}
 }
 
 /**
+ * Rewrites the robots meta, and fails the build if the tag isn't there.
+ *
+ * A silent no-op here is the failure mode that matters: both callers below rely
+ * on this to make a 200-status page non-indexable, so a missed match would ship
+ * an indexable blank page without any signal that it had.
+ */
+function setRobots(html, value) {
+  const pattern = /(<meta\s+name="robots"\s+content=")[^"]*(")/;
+  if (!pattern.test(html)) {
+    throw new Error(
+      'prerender: no <meta name="robots"> tag to rewrite. The noindex on ' +
+        "404.html and spa.html depends on it — check seoHead() in vite.config.ts."
+    );
+  }
+  return html.replace(pattern, (_m, open, close) => `${open}${value}${close}`);
+}
+
+/**
  * A real 404 page. Vercel serves dist/404.html for paths that match no file
  * and no rewrite, which — combined with the narrowed rewrite rules in
  * vercel.json — replaces the soft-200 that previously served the full
@@ -259,10 +277,7 @@ ${caseStudyLines}
 function render404(template) {
   let html = template;
   html = html.replace(/<title>[\s\S]*?<\/title>/, () => "<title>Page not found | " + SITE_NAME + "</title>");
-  html = html.replace(
-    /(<meta\s+name="robots"\s+content=")[^"]*(")/,
-    (_m, open, close) => `${open}noindex, follow${close}`
-  );
+  html = setRobots(html, "noindex, follow");
   // A 404 must not assert a canonical URL or carry the homepage entity graph.
   html = html.replace(/\s*<link rel="canonical"[^>]*>/g, "");
   html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
@@ -270,11 +285,27 @@ function render404(template) {
 }
 
 /**
- * A content-free SPA shell: no body markup, no canonical, no JSON-LD.
- * Served only for detail URLs that had no prerendered file at build time.
+ * A content-free SPA shell: no body markup, no canonical, no JSON-LD, and
+ * `noindex`.
+ *
+ * Served only for URLs with no prerendered file — an admin route, or a project
+ * created through the API after this build. Vercel applies `rewrites` after the
+ * filesystem check, so no real prerendered page ever reaches it.
+ *
+ * The `noindex` is the important part. That rewrite cannot tell a genuine
+ * API-created project from a fuzzed URL: both miss the filesystem and both get
+ * this shell with a 200. Without `noindex`, every invalid /projects/<anything>
+ * was an indexable 200 carrying a blank body — a soft-404 duplicate-content
+ * trap, and the exact response GPTBot/ClaudeBot/PerplexityBot received. A real
+ * API project loses nothing here: it isn't in the sitemap either, because it
+ * didn't exist at build time. Rebuild and it gets a prerendered, indexable page.
+ *
+ * /blogs/:slug deliberately has NO such rewrite any more. Every post is static
+ * data and therefore prerendered, so an unmatched blog slug now falls through
+ * to Vercel's 404.html handling and returns a real HTTP 404.
  */
 function renderShell(template) {
-  let html = template;
+  let html = setRobots(template, "noindex, follow");
   html = html.replace(/\s*<link rel="canonical"[^>]*>/g, "");
   html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "");
   return html;
@@ -352,6 +383,7 @@ async function main() {
 
   let render,
     DYNAMIC_ROUTES,
+    DERIVED_LASTMOD,
     pageSchema,
     LEGACY_PROJECT_REDIRECTS,
     PENDING_CASE_STUDY_INPUTS;
@@ -359,6 +391,7 @@ async function main() {
     ({
       render,
       DYNAMIC_ROUTES,
+      DERIVED_LASTMOD,
       pageSchema,
       LEGACY_PROJECT_REDIRECTS,
       PENDING_CASE_STUDY_INPUTS,
@@ -374,7 +407,16 @@ async function main() {
   // Blog posts and project case studies are prerendered too. Without them the
   // SPA rewrite served index.html — the prerendered homepage — for every
   // detail URL, canonical included.
-  const allRoutes = [...ROUTES, ...DYNAMIC_ROUTES];
+  //
+  // DERIVED_LASTMOD overrides the hand-written dates for routes whose real
+  // freshness lives in another module — /blogs is exactly as recent as its
+  // newest post, and the hand-maintained value had drifted ten days behind.
+  const staticRoutes = ROUTES.map((route) =>
+    DERIVED_LASTMOD?.[route.path]
+      ? { ...route, lastmod: DERIVED_LASTMOD[route.path] }
+      : route
+  );
+  const allRoutes = [...staticRoutes, ...DYNAMIC_ROUTES];
   const schemaByPath = pageSchema(SITE_URL);
 
   await assertLegacyRedirects(LEGACY_PROJECT_REDIRECTS);

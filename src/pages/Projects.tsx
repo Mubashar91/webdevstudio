@@ -66,7 +66,7 @@ const Projects = () => {
             note: "Free 30-min call · Fixed quote before work starts",
           }}
         />
-        <ProjectsSection compactHeader />
+        <ProjectsSection compactHeader aboveFold />
         <CTA />
       </main>
       <Footer />

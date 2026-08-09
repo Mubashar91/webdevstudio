@@ -39,16 +39,12 @@
       "destination": "/spa.html"
     },
     {
-      "source": "/blogs/:slug",
+      "source": "/admin",
       "destination": "/spa.html"
     },
     {
-      "source": "/admin",
-      "destination": "/index.html"
-    },
-    {
       "source": "/admin/:path*",
-      "destination": "/index.html"
+      "destination": "/spa.html"
     }
   ],
   "headers": [

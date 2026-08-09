@@ -5,6 +5,7 @@
  * prerender) can import the exact same data the React app uses. This module
  * resolves the runtime site URL and re-exports everything with types.
  */
+import { latestBlogDate } from "../data/blogs";
 import {
   DEFAULT_SITE_URL,
   ROUTES,
@@ -56,16 +57,44 @@ export interface RouteMeta {
   title: string;
   description: string;
   keywords: string;
+  /**
+   * Short name for this route in a breadcrumb. Optional — routes whose title
+   * is already "Something | WebDevStudio" derive a usable crumb from the part
+   * before the pipe. Set it where that would produce the whole marketing title.
+   */
+  crumbLabel?: string;
 }
 
 export const PUBLIC_ROUTES: RouteMeta[] = ROUTES;
+
+/**
+ * `lastmod` for static routes whose real freshness is a function of content in
+ * another module, keyed by path.
+ *
+ * site.config.mjs is plain ESM so the Node build scripts can import it, which
+ * means it cannot read the TypeScript data modules — so a value like this one
+ * had to be hand-maintained there, and duly drifted ten days behind the posts
+ * it described. Derived here instead, and applied by routeMeta() below and by
+ * scripts/prerender.mjs (via the re-export in entry-server.tsx) so the runtime
+ * head and the prerendered head cannot disagree.
+ */
+export const DERIVED_LASTMOD: Record<string, string> = {
+  "/blogs": latestBlogDate(),
+};
 
 export function canonicalPath(path: string): string {
   return absoluteUrl(SITE_URL, path);
 }
 
 export function routeMeta(path: string): RouteMeta | undefined {
-  return findRoute(path);
+  const route = findRoute(path);
+  if (!route) return undefined;
+  // Mirrors DERIVED_LASTMOD in entry-server.tsx, which does the same for the
+  // prerendered HTML. Hydration replaces the prerendered JSON-LD wholesale, so
+  // if only the build applied this the corrected date would survive exactly
+  // until React booted and then revert.
+  const derived = DERIVED_LASTMOD[path];
+  return derived ? { ...route, lastmod: derived } : route;
 }
 
 /** Site-wide entity nodes — include these on every page. */

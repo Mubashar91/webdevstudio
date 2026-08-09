@@ -32,9 +32,15 @@ const FILTERS: { value: ProjectType | "all"; label: string }[] = [
 
 interface ProjectsProps {
   compactHeader?: boolean;
+  /**
+   * Set on /projects, where this section sits directly under the page header
+   * and the first card cover is the LCP element. See `initialVisible` in
+   * use-intersection-observer.tsx for why the reveal has to be skipped there.
+   */
+  aboveFold?: boolean;
 }
 
-export const Projects = ({ compactHeader = false }: ProjectsProps) => {
+export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsProps) => {
   const [filter, setFilter] = useState<ProjectType | "all">("all");
   const [projects, setProjects] = useState<Project[]>(STATIC_PROJECTS);
   // false, not true: STATIC_PROJECTS is already populated on the first render,
@@ -42,7 +48,10 @@ export const Projects = ({ compactHeader = false }: ProjectsProps) => {
   // skeleton cards instead of the portfolio. The API fetch below merges in
   // any additional projects without ever showing a skeleton over real content.
   const [loading, setLoading] = useState(false);
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.05,
+    initialVisible: aboveFold,
+  });
 
   const filtered = filter === "all" ? projects : projects.filter((p) => p.type === filter);
 

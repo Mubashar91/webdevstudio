@@ -14,7 +14,9 @@ import {
 } from "@/lib/seo";
 import { faqsOf, findBlogPost, readTimeOf, wordCountOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { CARD_IMAGE, optimizedImage } from "@/lib/images";
+// schemaImage for <head> (og:image, BlogPosting.image) and optimizedImage for
+// the visible hero — the head wants >=1200px, the page wants the card size.
+import { CARD_IMAGE, optimizedImage, schemaImage } from "@/lib/images";
 
 /**
  * Renders the two inline markers post bodies use: `**bold**` and
@@ -77,7 +79,7 @@ const BlogDetail = () => {
       : `Article Not Found | ${SITE_NAME}`,
     description: post?.excerpt ?? "The requested blog article could not be found.",
     canonical: slug ? canonicalPath(`/blogs/${slug}`) : undefined,
-    ogImage: post?.coverImage,
+    ogImage: schemaImage(post?.coverImage),
     ogType: "article",
     noindex: !post,
     structuredData: post
@@ -87,7 +89,7 @@ const BlogDetail = () => {
             "@id": `${canonicalPath(`/blogs/${post.slug}`)}#article`,
             headline: post.title,
             description: post.excerpt,
-            image: post.coverImage,
+            image: schemaImage(post.coverImage),
             datePublished: post.publishedAt,
             // Google treats a missing dateModified as "never updated".
             // Falling back to publish date is accurate and avoids the gap.

@@ -1,0 +1,319 @@
+{
+  "summary": {
+    "health_score": 67,
+    "business_type": "Agency / solo freelance developer portfolio (content-marketing-driven)",
+    "prior_score": 39,
+    "prior_audit_date": "2026-07-30",
+    "top_findings": [
+      "CRITICAL: vercel.json wildcard rewrites return HTTP 200 for any /blogs/:slug or /projects/:id, serving a blank JS-only shell with 'index, follow' to non-JS crawlers (soft-404 duplicate-content trap)",
+      "HIGH: All 6 case studies still have empty outcome/hardPart/screenshots/repoUrl fields - the site's own hasVerifiableProof() returns false for every project",
+      "HIGH: Testimonials array is still empty (TESTIMONIALS = [])",
+      "HIGH: 'Zero images' is resolved in a way that makes it worse - stock photos now stand in for real project screenshots, risking a misrepresentation read",
+      "HIGH: Scroll-reveal (IntersectionObserver) animation pattern gates above-the-fold LCP elements, costing 1.7-3.5s of LCP on 3 of 4 pages tested",
+      "HIGH: Price inconsistency - /web-development-cyprus headlines '$900 USD' while its own linked blog post quotes '€800-€3,500'"
+    ],
+    "quick_wins": [
+      "Add 'handle: filesystem' before the two vercel.json wildcard rewrites and make the true fallback return 404/noindex",
+      "Fix internal link matrix across the 13 blog posts (pure editing, no new content - 6 of 13 posts are inbound-orphans)",
+      "Exempt above-the-fold content from the scroll-reveal animation (single highest-leverage performance fix)",
+      "Add <link rel=preconnect> to images.unsplash.com and preload the primary webfont weight",
+      "Align Cyprus pricing currency/framing between the geo landing page and its linked blog post",
+      "Add short crumbLabel fields for the two geo-page breadcrumbs instead of deriving from the full marketing title"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 68,
+      "what_works": [
+        "robots.txt live-verified correct: explicit Allow: / for GPTBot, OAI-SearchBot, ChatGPT-User, PerplexityBot, ClaudeBot, Google-Extended, Applebot-Extended; only /admin disallowed",
+        "Prerendering verified live for all real routes - non-JS raw fetch returns full content, is_spa:false",
+        "Full modern security header set (HSTS preload, real CSP, X-Frame-Options, Permissions-Policy)",
+        "Unique titles/descriptions/self-referencing canonicals on every real route",
+        "IndexNow wired into build/deploy"
+      ],
+      "findings": [
+        {
+          "title": "Wildcard route rewrites create a soft-404 duplicate-content trap",
+          "severity": "Critical",
+          "description": "vercel.json rewrites /blogs/:slug and /projects/:id unconditionally to /spa.html for ANY slug/id. Verified live: nonexistent slugs return HTTP 200 with the homepage's title/description, 'index, follow', no canonical, and a blank <div id=\"root\"></div> body - exactly what non-JS AI crawlers receive.",
+          "recommendation": "Add \"handle\": \"filesystem\" before these rewrites in vercel.json so real prerendered pages are served first; make the true fallback return HTTP 404 (or noindex) instead of indexable 200."
+        },
+        {
+          "title": "Double redirect hop from bare HTTP apex",
+          "severity": "Medium",
+          "description": "http://webdevstudio.me/ takes two 308 hops (apex-http -> apex-https -> www-https) instead of one.",
+          "recommendation": "Configure the apex domain alias at Vercel/DNS to redirect straight to https://www.webdevstudio.me/."
+        },
+        {
+          "title": "Dead Google Fonts preconnect for a JS-gated font",
+          "severity": "Low",
+          "description": "Plus Jakarta Sans only loads via a JS-promoted <link rel=preload as=style>; non-JS renders (including the broken spa.html fallback) never see it, making the preconnect hints dead weight for those requests.",
+          "recommendation": "No CWV action required. If brand typography in no-JS snapshots matters, self-host a woff2 subset referenced directly in the prerendered head."
+        },
+        {
+          "title": "Offer/PriceSpecification schema ships placeholder prices",
+          "severity": "Low",
+          "description": "Structured pricing data ($900/$2,500/$1,200-mo) is technically valid but still owner-unconfirmed, per project memory.",
+          "recommendation": "No technical fix needed - flagged for the content/business workstream before pursuing further rich-result eligibility."
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 63,
+      "what_works": [
+        "Blog thinness fully resolved: 13 posts, 850-2,150 words each, real structural depth",
+        "Location pages resolved: 650-750 unique words each with FAQs, cities served, market pricing",
+        "Strong trust engineering on About/Contact (transparent CV note, honeypot spam protection, real contact info)",
+        "Technical accuracy is high throughout (correct CWV thresholds, named tools, real code samples)"
+      ],
+      "findings": [
+        {
+          "title": "Case-study proof gap - all 6 projects unverifiable",
+          "severity": "High",
+          "description": "repoUrl, demoUrl, context, completedAt, roleDetail, and screenshots are null/empty for all 6 projects; outcome is null for 5 of 6. The codebase's own hasVerifiableProof() returns false for every case study.",
+          "recommendation": "Populate at minimum one of {repoUrl, demoUrl, screenshot} plus a numeric outcome per project - this is the single highest-severity credibility risk on the site."
+        },
+        {
+          "title": "Testimonials still empty",
+          "severity": "High",
+          "description": "TESTIMONIALS = [] in src/data/testimonials.ts, zero verified:true entries; section self-hides.",
+          "recommendation": "Collect 2-3 real, verified testimonials - the verified:true mechanism is already built, this is a data-entry gap only."
+        },
+        {
+          "title": "Case-study cover images are generic stock photos, not real work",
+          "severity": "Medium",
+          "description": "19 Unsplash stock-photo usages stand in for actual product screenshots across blog and case-study covers.",
+          "recommendation": "Replace with real application screenshots once available; same category of credibility risk the codebase's own testimonial-fabrication guard already warns against."
+        },
+        {
+          "title": "Case studies missing completedAt / dateCreated",
+          "severity": "Low",
+          "description": "No freshness signal exists for crawlers evaluating portfolio recency - CreativeWork.dateCreated is omitted for all 6 projects.",
+          "recommendation": "Add completedAt per project."
+        }
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 66,
+      "what_works": [
+        "Cost/comparison blog cluster is the strongest on-page cluster on the site (SXO gap score 74/100) - page type matches SERP consensus almost exactly",
+        "/services correctly delegates cost-intent to dedicated blog posts rather than competing directly",
+        "Titles, meta descriptions, and heading hierarchy are clean and unique sitewide"
+      ],
+      "findings": [
+        {
+          "title": "Geo landing pages and /services fail 'Required Elements' for their page type",
+          "severity": "High",
+          "description": "Service Page format is correct, but zero images and zero testimonials on /web-development-new-zealand, /web-development-cyprus, and /services fail the case-study/trust-signal requirement Google's top results for these queries all satisfy.",
+          "recommendation": "Add at least one identifiable client name/logo, a team/founder photo, and populate linked case studies (see Content Quality)."
+        },
+        {
+          "title": "Price inconsistency between Cyprus landing page and its own linked blog post",
+          "severity": "High",
+          "description": "/web-development-cyprus headlines \"$900 USD\" while /blogs/website-cost-cyprus-2026 quotes \"€800-€3,500\" - two different currencies and framings for one price story.",
+          "recommendation": "Align currency and framing between the geo landing page and its linked cost guide before a price-sensitive buyer notices mid-funnel."
+        },
+        {
+          "title": "custom-web-app-cost-2026 missing a comparison table its sibling posts have",
+          "severity": "Low",
+          "description": "Structures its core answer as 'three price bands' but has zero <table> elements, unlike the NZ/Cyprus cost posts.",
+          "recommendation": "Add a pricing table matching the sibling posts' format for scannability/snippet eligibility."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 90,
+      "what_works": [
+        "One connected @graph per route via routeGraph(), verified identical between repo source and deployed site, no drift",
+        "No deprecated types anywhere (no HowTo, no SpecialAnnouncement)",
+        "Organization/Person/WebSite/WebPage/BreadcrumbList/BlogPosting/CreativeWork all pass required and recommended property checks",
+        "Schema prices are internally consistent across every page and FAQ copy",
+        "Privacy-conscious, intentional omissions (no telephone, country-only PostalAddress, no fabricated Review/AggregateRating) are correct, not gaps"
+      ],
+      "findings": [
+        {
+          "title": "Breadcrumb label on geo pages is the full marketing title, not a short crumb name",
+          "severity": "Medium",
+          "description": "breadcrumbNode() derives crumb name from route.title.split('|')[0] - for the two geo pages (no '|' in title) the entire SEO title becomes the breadcrumb label.",
+          "recommendation": "Add an explicit short crumbLabel field per route (e.g. 'New Zealand', 'Cyprus') and use it in breadcrumbNode() with a fallback to title-split for routes that don't set one."
+        },
+        {
+          "title": "WebPage node never references its own BreadcrumbList",
+          "severity": "Medium",
+          "description": "Every non-home route emits a BreadcrumbList but webPageNode() never sets WebPage.breadcrumb to point at it - a missed @id edge in an otherwise carefully cross-referenced graph.",
+          "recommendation": "Give BreadcrumbList a stable @id (${url}#breadcrumb) and add breadcrumb: {\"@id\": ...} to the matching WebPage node."
+        },
+        {
+          "title": "/blogs listing page dateModified understates its own freshness",
+          "severity": "Medium",
+          "description": "WebPage.dateModified for /blogs is hand-maintained at 2026-07-30 while its own blogPost array lists posts dated as recently as 2026-08-09.",
+          "recommendation": "Derive /blogs' lastmod automatically from Math.max() of BLOG_POSTS dates rather than hand-maintaining it."
+        },
+        {
+          "title": "Article/case-study images below Google's recommended width",
+          "severity": "Low",
+          "description": "BlogPosting.image and CreativeWork.image are 800px wide; Google recommends >=1200px for large-image treatment.",
+          "recommendation": "Bump the Unsplash w= param to 1200 next time these are touched."
+        }
+      ]
+    },
+    {
+      "name": "Performance (Core Web Vitals)",
+      "score": 66,
+      "what_works": [
+        "DOM size healthy on every page (271-943 elements)",
+        "CLS excellent on 3 of 4 pages (0.00003-0.0006) thanks to explicit image dimensions and SSR-prerendering",
+        "No render-blocking resources on any page",
+        "/services (no images) achieves the best LCP of the four pages tested, proving the animation pattern - not image weight - is the dominant lever"
+      ],
+      "findings": [
+        {
+          "title": "Scroll-reveal animation gates above-the-fold LCP elements",
+          "severity": "High",
+          "description": "useIntersectionObserver (used in 18 components) starts elements at opacity-0 until a post-hydration observer callback fires. On home/services/projects this adds 1.7-3.5s of pure 'element render delay' to LCP even though content is already in the prerendered DOM.",
+          "recommendation": "Exempt above-the-fold content from the reveal pattern - render it visible immediately or default isVisible=true for the first viewport section."
+        },
+        {
+          "title": "Blog post LCP dominated by a 5.4s third-party image load",
+          "severity": "High",
+          "description": "images.unsplash.com hero image takes 5.4s to load (no preconnect), driving a 6.42s total LCP despite the file being only 24KB.",
+          "recommendation": "Add <link rel=preconnect> to images.unsplash.com; consider self-hosting/proxying hero images through Vercel's image optimization."
+        },
+        {
+          "title": "/services fails CLS (0.241) from a font-load-triggered layout shift",
+          "severity": "Medium",
+          "description": "A decorative background blob shifts when Plus Jakarta Sans swaps in, producing a large-area shift.",
+          "recommendation": "Preload the primary font weight used above the fold and/or use a size-adjusted fallback so text doesn't reflow on font arrival."
+        },
+        {
+          "title": "Elevated TTFB on home (999ms) and blog (1,603ms)",
+          "severity": "Medium",
+          "description": "Well above the <800ms CrUX-good target; services/projects TTFB (287-679ms) is fine, suggesting a route-specific serving issue.",
+          "recommendation": "Confirm these routes are served from static/prerendered output, not a serverless function per request; consider edge caching."
+        },
+        {
+          "title": "Heavy/unused JS inflates TBT (INP risk)",
+          "severity": "Medium",
+          "description": "GTM ships 166-169KB with ~55% unused; app bundle has 37-43% unused bytes on every page load.",
+          "recommendation": "Defer GTM loading; route-split the shared bundle; replace transition-all with explicit property lists."
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 70,
+      "what_works": [
+        "AI crawler access verified live and correctly scoped for all 7 named agents",
+        "Prerendering verified working for AI/non-JS crawlers (not just claimed)",
+        "Strong on-page entity graph (Person/Organization with sameAs to verified-live GitHub/LinkedIn)",
+        "llms.txt present, well-structured, in sync with sitemap (informational value only - ignored by Google Search)",
+        "Direct-answer FAQ framing and real pricing tables aid extraction"
+      ],
+      "findings": [
+        {
+          "title": "Answer passages well below the AI-citation sweet spot",
+          "severity": "Medium",
+          "description": "FAQ answers run 28-52 words and blog H2 sections run 30-96 words, versus the 134-167 word benchmark for optimal AI-citation passage length.",
+          "recommendation": "Add one concrete sentence of specificity (a caveat, a worked example, a number) to each answer - pure content edit."
+        },
+        {
+          "title": "Zero outbound citations in sampled blog posts",
+          "severity": "Medium",
+          "description": "No external links to any source/standard/reference exist in article bodies - weakens the site for Perplexity specifically, which favors sourced content.",
+          "recommendation": "Link claims to primary sources (MDN, web.dev, framework docs) where relevant."
+        },
+        {
+          "title": "No owned video/community presence",
+          "severity": "Medium",
+          "description": "Zero YouTube, Reddit, or Wikipedia signals - YouTube has the strongest AI-citation correlation in the reference dataset (~0.737) vs backlinks (~0.266).",
+          "recommendation": "Even 1-2 short YouTube videos linked from case studies, plus genuine r/webdev or r/reactjs participation, would materially change the current entity-signal profile."
+        },
+        {
+          "title": "No RSL 1.0 licensing file",
+          "severity": "Low",
+          "description": "/rsl.xml and /license.xml both 404.",
+          "recommendation": "Low priority given emerging adoption, but cheap to auto-generate alongside llms.txt."
+        }
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 35,
+      "what_works": [
+        "Image alt-text coverage is 100% on sampled pages",
+        "Homepage, /projects, and blog posts now load real (if generic) hero/thumbnail images, up from zero",
+        "Explicit width/height on every image prevents CLS"
+      ],
+      "findings": [
+        {
+          "title": "Zero real project screenshots - stock photos stand in and risk misrepresentation",
+          "severity": "High",
+          "description": "Every case-study/project image is generic Unsplash stock (hands on paperwork, a hospital lobby, a generic dashboard mockup) - none depict the actual delivered UI. A visitor evaluating technical credibility sees zero evidence of the product itself, and stock photos on branded 'case studies' risk reading as misrepresentation.",
+          "recommendation": "Replace with real screenshots (even low-fi/annotated ones) or fall back to the existing icon-based treatment used on /services rather than stock photography."
+        },
+        {
+          "title": "Homepage and /about have zero images, including no founder headshot",
+          "severity": "Medium",
+          "description": "The About page - the highest-trust placement for a photo - has no headshot of Muhammad Mubashar Shahzad.",
+          "recommendation": "Add a founder headshot to /about."
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Phase 1: Critical Fixes",
+        "timeframe": "Week 1",
+        "items": [
+          "Fix vercel.json soft-404: add \"handle\": \"filesystem\" before the /blogs/:slug and /projects/:id rewrites; make the true fallback return 404/noindex instead of an indexable 200",
+          "Verify the /services and project-detail blank footer/CTA band live in a scrolled browser session - confirm it's a capture artifact, not a real content/contrast bug",
+          "Align Cyprus pricing currency/framing between /web-development-cyprus and /blogs/website-cost-cyprus-2026"
+        ]
+      },
+      {
+        "name": "Phase 2: High-Impact Improvements",
+        "timeframe": "Weeks 2-3",
+        "items": [
+          "Exempt above-the-fold content from the scroll-reveal (IntersectionObserver) animation pattern - highest-leverage performance fix, worth 1.5-3.5s LCP on 3 of 4 pages",
+          "Add preconnect to images.unsplash.com and preload the primary webfont weight used above the fold (fixes both LCP and the /services CLS failure)",
+          "Fix the internal link matrix across the 13 blog posts - pure editing effort, brings all posts to 3+ inbound sibling links and zero orphans",
+          "Populate at least one verifiable proof field (repoUrl, demoUrl, or screenshot) plus a numeric outcome per case study - root cause of the site-wide Trust deficit found in the SXO persona scoring",
+          "Add short crumbLabel fields for the two geo-page breadcrumbs"
+        ]
+      },
+      {
+        "name": "Phase 3: Content & Authority",
+        "timeframe": "Month 2",
+        "items": [
+          "Collect 2-3 real, verified testimonials (mechanism already built)",
+          "Replace stock case-study/blog cover images with real product screenshots as they become available",
+          "Add a founder headshot to /about",
+          "Expand the four content-cluster pillars toward true pillar depth (2,500-4,000 words), prioritizing mern-stack-architecture-guide (~850 words, worst gap) and why-is-my-website-slow (~1,200 words)",
+          "Lengthen thin FAQ/answer passages toward 134-167 words and add outbound citations to blog posts",
+          "Create free/verified profiles on Clutch and DesignRush once case-study proof exists",
+          "Add at least one client name/logo and a team photo to both geo landing pages"
+        ]
+      },
+      {
+        "name": "Phase 4: Monitoring & Iteration",
+        "timeframe": "Ongoing",
+        "items": [
+          "Re-run Lighthouse after the animation-pattern fix to confirm LCP improvement across home/services/projects",
+          "Re-check Common Crawl / re-run backlinks audit once the site accumulates its first referring domains (next quarterly crawl cycle)",
+          "Confirm each new case-study edit bumps only that project's own updatedAt rather than leaving the 2026-08-09 batch date frozen",
+          "Watch geo-page count against the 30-page quality-gate threshold if more country pages are added",
+          "Investigate elevated TTFB on home/blog routes (confirm static serving, not serverless cold starts)"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}

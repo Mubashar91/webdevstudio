@@ -89,6 +89,29 @@ export const POSTAL_ADDRESS = {
  */
 export const PRICE_CURRENCY = "USD";
 
+/**
+ * EUR equivalents of the USD prices, for the Cyprus pages.
+ *
+ * Everything is priced and invoiced in USD, but a Cyprus buyer compares against
+ * local studios quoting EUR. An SEO audit flagged the mismatch: the landing
+ * page headlined "$900 USD" while its own linked cost guide talked in
+ * "€800–€3,500", so the two pages read as two different price stories to a
+ * buyer moving between them mid-funnel.
+ *
+ * The fix is to state both currencies everywhere on that path, derived from one
+ * rate here — hardcoding the converted figures in the route title, the pricing
+ * copy and the blog post gives three numbers that drift apart on the next FX
+ * move, which is the same failure in a new place.
+ *
+ * Rounded to the nearest 10 so it reads as an indication, not a quote: the
+ * invoice is USD. Re-check when EUR/USD moves more than a few percent.
+ */
+export const USD_TO_EUR = 0.92;
+
+export function eurFromUsd(usd) {
+  return Math.round((usd * USD_TO_EUR) / 10) * 10;
+}
+
 export const SERVICE_PACKAGES = [
   {
     id: "landing",
@@ -142,6 +165,15 @@ export const SERVICE_PACKAGES = [
     ],
   },
 ];
+
+/**
+ * The two Cyprus-facing prices in EUR, derived from SERVICE_PACKAGES so they
+ * can never contradict the USD figures on /services. Declared here, after the
+ * packages, because they read from them. See USD_TO_EUR above for why the
+ * Cyprus pages quote both currencies.
+ */
+export const CYPRUS_EUR_FROM = eurFromUsd(SERVICE_PACKAGES[0].priceFrom);
+export const CYPRUS_EUR_APP_FROM = eurFromUsd(SERVICE_PACKAGES[1].priceFrom);
 
 /** Services listed in the OfferCatalog and on the services page. */
 export const SERVICE_TYPES = [
@@ -345,6 +377,8 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-30",
+    // No "|" in this title, so the breadcrumb fallback would use all of it.
+    crumbLabel: "New Zealand",
     title: "Web Developer for New Zealand — Fixed Prices from $900",
     // Names the main centres, because Search Console showed geo queries
     // ("web developer nicosia", "react developers hamilton") are what this
@@ -361,9 +395,14 @@ export const ROUTES = [
     priority: "0.85",
     changefreq: "monthly",
     lastmod: "2026-07-30",
-    title: "Web Developer in Cyprus — Fixed Prices from $900",
-    description:
-      "Websites and web apps for businesses in Limassol, Nicosia, Larnaca, Paphos and across Cyprus — fixed price from $900, live in 2–3 weeks. Free call first.",
+    // Leads with EUR because a Cyprus buyer compares against EUR quotes, and
+    // carries the USD figure alongside it because that is what gets invoiced —
+    // and because /blogs/website-cost-cyprus-2026, which this page links to,
+    // talks entirely in euros. A visitor moving between the two must not meet
+    // two different-looking prices. See CYPRUS_EUR_FROM above.
+    crumbLabel: "Cyprus",
+    title: `Web Developer in Cyprus — Fixed Prices from €${CYPRUS_EUR_FROM}`,
+    description: `Websites and web apps for businesses in Limassol, Nicosia, Larnaca and across Cyprus — fixed price from €${CYPRUS_EUR_FROM} (USD $900), live in 2–3 weeks.`,
     keywords:
       "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, web developer Paphos, fintech web development Cyprus",
     faqs: CYPRUS_FAQS,
@@ -563,6 +602,14 @@ export function webPageNode(siteUrl, route) {
       ? { "@type": "ImageObject", url: route.image, contentUrl: route.image }
       : { "@id": id.logo },
     inLanguage: "en",
+    // Completes the edge the other way. Every non-home route emits a
+    // BreadcrumbList — both here in routeGraph() and from the page components
+    // at runtime — but nothing declared which WebPage it belonged to, leaving
+    // one orphaned node in an otherwise fully cross-referenced graph. Home has
+    // no breadcrumb, which is why this is conditional and not unconditional.
+    ...(route.path === "/"
+      ? {}
+      : { breadcrumb: { "@id": breadcrumbId(base, route.path) } }),
     ...(route.lastmod ? { dateModified: route.lastmod } : {}),
   };
 }
@@ -625,9 +672,23 @@ export function servicesServiceNode(siteUrl) {
   };
 }
 
+/**
+ * Stable @id for a page's BreadcrumbList, so WebPage.breadcrumb can point at
+ * it. The last crumb is always the page itself.
+ */
+function breadcrumbId(siteUrl, path) {
+  return `${absoluteUrl(siteUrl, path)}#breadcrumb`;
+}
+
 export function breadcrumbNode(siteUrl, items) {
+  const self = items[items.length - 1];
+
   return {
     "@type": "BreadcrumbList",
+    // Without an @id this node floated free of the graph: every other node here
+    // is cross-referenced by @id, and the WebPage that owns the breadcrumb had
+    // no way to say so. See webPageNode() for the other half of the edge.
+    "@id": breadcrumbId(siteUrl, self.path),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -670,7 +731,13 @@ export function routeGraph(siteUrl, route, extraNodes = []) {
     nodes.push(
       breadcrumbNode(siteUrl, [
         { name: "Home", path: "/" },
-        { name: route.title.split("|")[0].trim(), path: route.path },
+        // crumbLabel first, falling back to the pre-brand half of the title.
+        // That fallback is fine for titles shaped "Services | WebDevStudio",
+        // but the two geo pages have no "|" — so the split returned the whole
+        // marketing title and the breadcrumb read "Web Developer in Cyprus —
+        // Fixed Prices from €830" instead of "Cyprus". Routes whose title
+        // isn't already a usable crumb set crumbLabel explicitly.
+        { name: crumbLabelFor(route), path: route.path },
       ])
     );
   }
@@ -691,4 +758,15 @@ export function routeGraph(siteUrl, route, extraNodes = []) {
 
 export function findRoute(path) {
   return ROUTES.find((r) => r.path === path);
+}
+
+/**
+ * The short name a route should appear under in a breadcrumb.
+ *
+ * Exported so the page components can label their visible breadcrumb from the
+ * same value the BreadcrumbList schema uses — Google treats a visible trail
+ * that disagrees with the markup as a mismatch.
+ */
+export function crumbLabelFor(route) {
+  return route.crumbLabel ?? route.title.split("|")[0].trim();
 }

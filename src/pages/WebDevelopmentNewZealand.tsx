@@ -87,7 +87,9 @@ const WebDevelopmentNewZealand = () => {
       faqNodeFor(faqs),
       breadcrumbNodeFor([
         { name: "Home", path: "/" },
-        { name: "Web Development New Zealand", path: "/web-development-new-zealand" },
+        // Must match the crumbLabel in site.config.mjs and the visible trail
+        // below — see the note on the Cyprus page.
+        { name: "New Zealand", path: "/web-development-new-zealand" },
       ]),
     ]),
   });
@@ -100,9 +102,10 @@ const WebDevelopmentNewZealand = () => {
           title="Web Development for"
           highlight="New Zealand"
           description="Remote React.js & MERN stack development for New Zealand businesses — senior-level execution, transparent pricing, and a workflow built around your time zone."
-          breadcrumbs={[{ label: "Web Development New Zealand" }]}
+          breadcrumbs={[{ label: "New Zealand" }]}
         />
         <LocationHighlights
+          aboveFold
           countryName="New Zealand"
           valueProps={valueProps}
           industries={industries}

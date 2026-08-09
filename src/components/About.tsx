@@ -60,8 +60,16 @@ const experiences = [
   },
 ];
 
-export const About = () => {
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+interface AboutProps {
+  /** Set on /about, where this section opens the page. See `initialVisible`. */
+  aboveFold?: boolean;
+}
+
+export const About = ({ aboveFold = false }: AboutProps) => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.05,
+    initialVisible: aboveFold,
+  });
 
   return (
     <section id="about" className="py-32 relative overflow-hidden">

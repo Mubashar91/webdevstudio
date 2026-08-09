@@ -76,7 +76,7 @@ const Services = () => {
             </>
           }
         />
-        <ServicesSection compactHeader />
+        <ServicesSection compactHeader aboveFold />
         <Pricing />
         <Process />
         <Testimonials />

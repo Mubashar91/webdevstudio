@@ -30,6 +30,13 @@ interface LocationHighlightsProps {
    * can't place anything between them without a slot.
    */
   children?: ReactNode;
+  /**
+   * Set on both geo landing pages, where the value-prop grid sits directly
+   * under the page header and is the LCP element. Only that first block is
+   * exempted — the FAQ further down keeps its scroll reveal. See
+   * `initialVisible` in use-intersection-observer.tsx.
+   */
+  aboveFold?: boolean;
 }
 
 export const LocationHighlights = ({
@@ -38,8 +45,12 @@ export const LocationHighlights = ({
   industries,
   faqs,
   children,
+  aboveFold = false,
 }: LocationHighlightsProps) => {
-  const [valuesRef, valuesVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [valuesRef, valuesVisible] = useIntersectionObserver({
+    threshold: 0.1,
+    initialVisible: aboveFold,
+  });
   const [faqRef, faqVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (

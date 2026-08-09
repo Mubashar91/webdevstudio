@@ -8,6 +8,12 @@
  * that hard to fix without hacks.
  */
 
+// The Cyprus cost guide quotes prices in EUR while the rest of the site quotes
+// USD. Both come from one rate in site.config.mjs so this post and
+// /web-development-cyprus can't drift into two different price stories — the
+// exact inconsistency an SEO audit found between them.
+import { CYPRUS_EUR_APP_FROM, CYPRUS_EUR_FROM } from "@/lib/site.config.mjs";
+
 /**
  * `text` and list `items` support two inline markers, rendered by
  * `renderInline()` in BlogDetail: `**bold**` and `[label](/path)`. Everything
@@ -241,6 +247,10 @@ const results = useMemo(
         type: "p",
         text: "If you only do three of these: profile first so you know what is actually slow, split your routes, and fix your images. On the projects I take over, those three account for most of the improvement — and the memo work everyone reaches for first usually accounts for almost none of it.",
       },
+      {
+        type: "p",
+        text: "Two things sit either side of this list. When the slowness is in the data layer rather than the browser, it's an architecture problem — [how I structure a MERN app](/blogs/mern-stack-architecture-guide) covers where that work belongs. And if you're touching the component layer anyway, [the TypeScript patterns I use in React](/blogs/typescript-patterns-for-react) rule out a whole class of re-render bug before it's written. If you're not a developer and landed here trying to work out why a site feels slow, [the plain-English version](/blogs/why-is-my-website-slow) is the better starting point.",
+      },
     ],
   },
   {
@@ -406,6 +416,10 @@ const { data: orders, isPending, error } = useOrders("pending");`,
         type: "p",
         text: "None of this is exotic. It is mostly about deciding where things live before the deadline pressure arrives, because that is the moment everything ends up in the route handler.",
       },
+      {
+        type: "p",
+        text: "Two companion pieces: [the TypeScript patterns](/blogs/typescript-patterns-for-react) that keep the boundaries above actually enforced rather than merely documented, and [the React performance work](/blogs/react-performance-tips-2025) that starts to matter once the data layer is doing its job and the remaining cost is in the browser.",
+      },
     ],
   },
   {
@@ -555,6 +569,10 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         type: "p",
         text: "The pattern behind all of these is the same: push type information to the edges of the system — the API boundary, the form, the component contract — and let inference do the work in between. That is where the bugs are, and it is where the annotations earn their keep.",
       },
+      {
+        type: "p",
+        text: "Where these land in a real project is [the MERN architecture guide](/blogs/mern-stack-architecture-guide) — the API boundary in particular is the same seam viewed from the server side. Once the types are holding, [the React performance list](/blogs/react-performance-tips-2025) is the next place worth spending time.",
+      },
     ],
   },
   {
@@ -583,12 +601,34 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
         text: "Most custom web projects fall into one of three shapes. These are my own fixed-price bands, and they're the same numbers on my services page.",
       },
       {
-        type: "list",
-        items: [
-          "Marketing site — from $900, 2–3 weeks: up to about six pages, React and TypeScript, SEO foundations, a contact form, Core Web Vitals tuned",
-          "Web application — from $2,500, 6–10 weeks: a full MERN build, auth and roles, a REST API, a MongoDB schema, an admin dashboard, a deploy pipeline",
-          "Ongoing partner — from $1,200 a month, rolling: dedicated hours, features, code review, performance and accessibility audits",
+        // A table, matching the NZ and Cyprus cost posts. This was a bulleted
+        // list, which the paragraph immediately below already called "that
+        // table" — and price bands in a table are one of the formats AI answer
+        // engines and featured snippets lift most readily.
+        type: "table",
+        headers: ["Band", "From", "Timeline", "What it includes"],
+        rows: [
+          [
+            "Marketing site",
+            "$900",
+            "2–3 weeks",
+            "Up to about six pages, React and TypeScript, SEO foundations, a contact form, Core Web Vitals tuned",
+          ],
+          [
+            "Web application",
+            "$2,500",
+            "6–10 weeks",
+            "A full MERN build, auth and roles, a REST API, a MongoDB schema, an admin dashboard, a deploy pipeline",
+          ],
+          [
+            "Ongoing partner",
+            "$1,200/month",
+            "Rolling",
+            "Dedicated hours, features, code review, performance and accessibility audits",
+          ],
         ],
+        caption:
+          "Fixed-price bands, quoted in USD. Every project is scoped in writing before work starts.",
       },
       {
         type: "p",
@@ -805,6 +845,10 @@ const Job = new Schema({
       },
       {
         type: "p",
+        text: "If you're not yet certain a custom app is the right shape at all, [app or website](/blogs/do-i-need-an-app-or-a-website) settles that first — a much cheaper question to answer than this one. Once you know what you're building, [how to hire a web developer](/blogs/how-to-hire-a-web-developer) covers judging the quotes that come back. For local figures rather than these general bands: [New Zealand](/blogs/website-cost-new-zealand-2026) and [Cyprus](/blogs/website-cost-cyprus-2026).",
+      },
+      {
+        type: "p",
         text: "Book a free 30-minute call and you'll get a fixed written quote — scope and price agreed before any work begins.",
       },
     ],
@@ -964,6 +1008,10 @@ const Job = new Schema({
       {
         type: "p",
         text: "Write down the one thing this needs to do, and who does it. That single sentence is usually enough to settle the app-versus-website question in a few minutes.",
+      },
+      {
+        type: "p",
+        text: "If the answer turns out to be a web app, [what one costs](/blogs/custom-web-app-cost-2026) is the next question, and [what one is actually built from](/blogs/mern-stack-architecture-guide) is the technical version of the same answer. If it's who builds it you're weighing up, [remote developer or local agency](/blogs/remote-developer-vs-local-agency) and [how to hire a web developer](/blogs/how-to-hire-a-web-developer) cover that side of it.",
       },
       {
         type: "p",
@@ -1158,6 +1206,10 @@ const Job = new Schema({
       },
       {
         type: "p",
+        text: "If what you're pricing is closer to a web application than a website, the numbers work differently — [what a custom web app costs](/blogs/custom-web-app-cost-2026) breaks that down. And if you're trying to work out how much of a quote is local market rate rather than scope, the same exercise for [Cyprus](/blogs/website-cost-cyprus-2026) makes a useful comparison: near-identical briefs, very different numbers.",
+      },
+      {
+        type: "p",
         text: "Book a free 30-minute call and you'll get a fixed written quote — scope and price agreed before any work begins.",
       },
     ],
@@ -1287,7 +1339,7 @@ const Job = new Schema({
       },
       {
         type: "p",
-        text: "Pricing starts at **USD $900** for a marketing site and **USD $2,500** for a web application, quoted in EUR if you prefer, fixed before work starts. At current rates that's roughly €830 for a marketing site — the bottom of the local band. The honest framing: that's build capacity, not a full-service agency. You supply the copy; I build something fast, accessible and structured properly for search. If you need Greek and Russian copywriting, brand work and ongoing SEO, a local Limassol or Nicosia studio at €2,500+ is a different and more complete purchase.",
+        text: `Pricing starts at roughly **€${CYPRUS_EUR_FROM}** for a marketing site and **€${CYPRUS_EUR_APP_FROM.toLocaleString("en-US")}** for a web application — invoiced as USD $900 and USD $2,500, or in EUR if you prefer, fixed before work starts. That puts the entry price at the bottom of the local band above. The honest framing: that's build capacity, not a full-service agency. You supply the copy; I build something fast, accessible and structured properly for search. If you need Greek and Russian copywriting, brand work and ongoing SEO, a local Limassol or Nicosia studio at €2,500+ is a different and more complete purchase.`,
       },
       { type: "h2", text: "Frequently asked questions" },
       { type: "h3", text: "How much does a small business website cost in Cyprus?" },
@@ -1319,6 +1371,10 @@ const Job = new Schema({
       {
         type: "p",
         text: "Decide which languages you actually need on day one, and who is writing them. That single answer moves a Cyprus quote more than any other.",
+      },
+      {
+        type: "p",
+        text: "If you're pricing a web application rather than a website, [that's a different cost model](/blogs/custom-web-app-cost-2026) with different drivers. And for a sense of how much of any quote is local market rate rather than scope, the same breakdown for [New Zealand](/blogs/website-cost-new-zealand-2026) is worth a look — comparable briefs, noticeably different numbers.",
       },
       {
         type: "p",
@@ -1516,6 +1572,10 @@ const Job = new Schema({
       },
       {
         type: "p",
+        text: "Worth settling before either: [whether what you need is an app or a website](/blogs/do-i-need-an-app-or-a-website). A good share of the wildly different quotes people show me are answering that question differently, not pricing the same thing differently.",
+      },
+      {
+        type: "p",
         text: "If they point remote, book a free 30-minute call and I'll tell you straight whether what you need is something I should be building.",
       },
     ],
@@ -1674,6 +1734,14 @@ const Job = new Schema({
       {
         type: "p",
         text: "Run PageSpeed Insights on your homepage, mobile tab, right now. Whatever it says at the top of the opportunities list is almost certainly your answer.",
+      },
+      {
+        type: "p",
+        text: "Speed is one symptom of a site quietly underperforming, and [nine others worth checking](/blogs/signs-your-website-is-losing-customers) are usually cheaper to fix than this one. If the real complaint is that nobody is finding the site at all, that's a different diagnosis — [start here instead](/blogs/why-website-not-showing-on-google). And if you're weighing up whether any of it needs paying for, [that line is drawn here](/blogs/does-my-website-need-a-developer).",
+      },
+      {
+        type: "p",
+        text: "For developers: the browser-side detail behind causes 6 and 7 goes further in the React performance list linked above, and the type-level habits that stop a lot of it being written in the first place are in [TypeScript patterns for React](/blogs/typescript-patterns-for-react).",
       },
       {
         type: "p",
@@ -1906,6 +1974,10 @@ const Job = new Schema({
       },
       {
         type: "p",
+        text: "Two decisions sit either side of this one. Before you hire: [is it an app or a website you need](/blogs/do-i-need-an-app-or-a-website) — getting that wrong costs more than any hiring mistake. And while you're choosing: [remote developer or local agency](/blogs/remote-developer-vs-local-agency) is the trade-off most of the five criteria above come down to in practice.",
+      },
+      {
+        type: "p",
         text: "If you'd like to try that conversation with no strings attached: book a free 30-minute call. You'll get honest answers about scope and a fixed written quote, and if your problem doesn't need a developer at all, I'll tell you that too.",
       },
     ],
@@ -2125,6 +2197,10 @@ const Job = new Schema({
       },
       {
         type: "p",
+        text: "If you work through the ten and can't tell which you could handle yourself, [this walks through exactly that line](/blogs/does-my-website-need-a-developer) — which symptoms are a free afternoon and which are a real project.",
+      },
+      {
+        type: "p",
         text: "If you'd like a second opinion on which of the ten apply to your site, [book a free 30-minute call](/contact). If the answer is four free fixes and no developer, that's what I'll tell you.",
       },
     ],
@@ -2329,6 +2405,10 @@ Disallow: /`,
       {
         type: "p",
         text: "Run the `site:` search on your own domain right now. Whichever of the four problems it points to, you'll know within a minute which one you're solving — and that's the difference between fixing it and paying a retainer to find out.",
+      },
+      {
+        type: "p",
+        text: "Two related reads. If the site is being found but nothing comes of it, [ten signs it's losing customers](/blogs/signs-your-website-is-losing-customers) covers what happens after the click. And if you've got the diagnosis but aren't sure it warrants paying anyone, [that line is drawn here](/blogs/does-my-website-need-a-developer).",
       },
       {
         type: "p",
@@ -2555,6 +2635,10 @@ Disallow: /`,
       },
       {
         type: "p",
+        text: "If the symptom you arrived with was speed, [the seven usual causes](/blogs/why-is-my-website-slow) will narrow it further before you talk to anyone. And if the answer here turns out to be yes, you do need someone, [how to hire a web developer](/blogs/how-to-hire-a-web-developer) is the next step — mostly a matter of judging the conversation rather than the code.",
+      },
+      {
+        type: "p",
         text: "If you'd like that assessment for nothing, [book a free 30-minute call](/contact). If your site needs four small fixes rather than a project, I'd rather tell you that than sell you a rebuild — and you can see what I do build on the [services page](/services).",
       },
     ],
@@ -2563,6 +2647,24 @@ Disallow: /`,
 
 export function findBlogPost(slug: string): BlogPost | undefined {
   return BLOG_POSTS.find((post) => post.slug === slug);
+}
+
+/**
+ * The most recent date across all posts, as the /blogs listing's own lastmod.
+ *
+ * The listing page's `lastmod` in site.config.mjs was hand-maintained, and had
+ * drifted a full ten days behind the posts it lists — a schema audit found
+ * WebPage.dateModified saying 2026-07-30 on a page whose own blogPost array
+ * carried entries dated 2026-08-09. The listing is, by definition, exactly as
+ * fresh as its newest post, so nobody should have to remember to bump it.
+ *
+ * Dates are ISO (YYYY-MM-DD), which sorts correctly as a string.
+ */
+export function latestBlogDate(): string {
+  return BLOG_POSTS.reduce((latest, post) => {
+    const date = post.updatedAt ?? post.publishedAt;
+    return date > latest ? date : latest;
+  }, "");
 }
 
 /**

@@ -18,11 +18,16 @@ const contactInfo = [
 
 interface ContactProps {
   compactHeader?: boolean;
+  /** Set on /contact, where this section opens the page. See `initialVisible`. */
+  aboveFold?: boolean;
 }
 
-export const Contact = ({ compactHeader = false }: ContactProps) => {
+export const Contact = ({ compactHeader = false, aboveFold = false }: ContactProps) => {
   const { toast } = useToast();
-  const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.05,
+    initialVisible: aboveFold,
+  });
   const [form, setForm] = useState({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
   /** Honeypot value — always empty for real users. See the hidden field below. */
   const [honeypot, setHoneypot] = useState("");
