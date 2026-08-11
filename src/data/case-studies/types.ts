@@ -111,6 +111,27 @@ export interface Project {
    */
   roleDetail?: string | null;
 
+  /**
+   * Overrides `title` in <head> only — the H1 keeps the plain project name.
+   *
+   * "Hospital Management System" is what the thing is called; "Hospital
+   * Management System — MERN case study" is what someone types when they are
+   * looking for evidence a developer has built one. withBrand() still applies,
+   * so keep it short enough to leave room for the brand.
+   */
+  seoTitle?: string;
+
+  /**
+   * schema.org `applicationCategory` for the SoftwareApplication node hung off
+   * this project's CreativeWork — "HealthApplication", "BusinessApplication",
+   * "DeveloperApplication" and so on.
+   *
+   * Optional because it is a claim about what the software IS, and a wrong
+   * category is worse than none. Set it only where the project genuinely fits
+   * one of schema.org's values.
+   */
+  appCategory?: string | null;
+
   /** Problem → Approach → Hard part → Outcome → Retrospective. */
   problem?: string;
   approach?: string;

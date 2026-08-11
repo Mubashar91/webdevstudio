@@ -3,18 +3,34 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, MessageSquare, Sparkles, CheckCircle2, Clock, RefreshCw, Zap, DollarSign } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
+/**
+ * "Unlimited revisions" was removed from both lists on 2026-08-11.
+ *
+ * This component renders on /services, directly beneath a Marketing Site
+ * package whose own includes list says "2 rounds of revisions" — so the page
+ * contradicted itself within one scroll. /web-development-new-zealand carried
+ * a third version ("unlimited revisions within scope").
+ *
+ * The site also argues against the claim in its own words: the hiring post
+ * says unlimited revisions "often mean the scope is vague". Promising it here
+ * while calling it a red flag there is the kind of detail a careful buyer
+ * notices, and careful buyers are the ones worth winning.
+ *
+ * If the real policy is a fixed number, put that number in SERVICE_PACKAGES
+ * and reference it — a specific promise outsells an unlimited one.
+ */
 const perks = [
   { icon: CheckCircle2, text: "Free consultation" },
   { icon: DollarSign,   text: "Transparent pricing" },
   { icon: Zap,          text: "Quick response" },
-  { icon: RefreshCw,    text: "Unlimited revisions" },
+  { icon: RefreshCw,    text: "Revisions agreed upfront" },
 ];
 
 const details = [
   { label: "Response Time",  value: "< 24 hours" },
   { label: "Project Start",  value: "Within 1 week" },
   { label: "Communication",  value: "Daily updates" },
-  { label: "Revisions",      value: "Unlimited" },
+  { label: "Revisions",      value: "Written into scope" },
 ];
 
 export const CTA = () => {

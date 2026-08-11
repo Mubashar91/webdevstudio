@@ -29,6 +29,7 @@ import {
   SITE_NAME,
   absoluteUrl,
   normalizeSiteUrl,
+  ogImageSize,
   ogImageUrl,
   routeGraph,
 } from "../src/lib/site.config.mjs";
@@ -121,6 +122,36 @@ function renderHead(templateHtml, route, extraSchema = []) {
     html = html.replace(pattern, (_match, open, close) =>
       `${open}${escapeAttr(value)}${close}`
     );
+  }
+
+  // og:image:width / :height / :alt describe whichever image the tag above
+  // now points at, so they have to move with it. They previously did not: the
+  // template's 1200×630 and its site-wide alt text stayed put on all 19 detail
+  // pages while og:image itself was swapped for a 1200×675 cover.
+  //
+  // Dimensions are dropped rather than guessed when the URL doesn't carry
+  // them — see ogImageSize().
+  const size = ogImageSize(pageImage, SITE_URL);
+  for (const [prop, value] of [
+    ["og:image:width", size && String(size.width)],
+    ["og:image:height", size && String(size.height)],
+  ]) {
+    const pattern = new RegExp(`\\s*<meta\\s+property="${prop}"\\s+content="[^"]*"\\s*/?>`);
+    html = html.replace(pattern, () =>
+      value ? `\n    <meta property="${prop}" content="${value}" />` : ""
+    );
+  }
+
+  // A page-specific card needs page-specific alt text; the generic site line
+  // only stays correct where the generic site image does.
+  if (route.image) {
+    for (const attr of ["property", "name"]) {
+      const tag = attr === "property" ? "og:image:alt" : "twitter:image:alt";
+      html = html.replace(
+        new RegExp(`(<meta\\s+${attr}="${tag}"\\s+content=")[^"]*(")`),
+        (_m, open, close) => `${open}${escapeAttr(route.title)}${close}`
+      );
+    }
   }
 
   // Replace all build-time JSON-LD with this route's single connected graph.

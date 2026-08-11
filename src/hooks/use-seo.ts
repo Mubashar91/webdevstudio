@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from "react";
-import { DEFAULT_OG_IMAGE, SITE_NAME } from "@/lib/seo";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { ogImageSize } from "@/lib/site.config.mjs";
 
 interface SEOProps {
   title: string;
@@ -53,6 +54,19 @@ export const useSEO = ({
     setMeta("og:description", description, "property");
     setMeta("og:type", ogType, "property");
     setMeta("og:image", ogImage, "property");
+    // The declared size has to follow the image it describes. Client-side
+    // navigation swaps og:image between routes whose covers are different
+    // heights, so leaving the prerendered numbers in place would announce the
+    // previous page's dimensions for the current page's card. Unknown size
+    // means the tags come off entirely — see ogImageSize().
+    const size = ogImageSize(ogImage, SITE_URL);
+    for (const [prop, value] of [
+      ["og:image:width", size && String(size.width)],
+      ["og:image:height", size && String(size.height)],
+    ] as const) {
+      if (value) setMeta(prop, value, "property");
+      else document.querySelector(`meta[property="${prop}"]`)?.remove();
+    }
     setMeta("og:site_name", SITE_NAME, "property");
     if (canonical) setMeta("og:url", canonical, "property");
 

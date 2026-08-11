@@ -2643,6 +2643,1360 @@ Disallow: /`,
       },
     ],
   },
+  {
+    slug: "website-not-getting-leads",
+    // Kept to 44 characters, leading with the query as it is typed, so
+    // withBrand() can still append " | WebDevStudio" inside Google's ~62
+    // character display limit — same reasoning as the "10 Signs" post above.
+    title: "Why Is My Website Not Getting Leads? 9 Fixes",
+    excerpt:
+      "Traffic but no enquiries? The nine real reasons websites fail to convert, the fix for each one, and the arithmetic that tells you which is costing you money.",
+    coverImage:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop",
+    category: "Business",
+    // Written on this date. If the post ships later, move it — datePublished
+    // is read on first crawl, and a date that disagrees with when the URL
+    // actually appeared is a freshness signal working against you.
+    publishedAt: "2026-08-11",
+    tags: ["Small Business", "Conversion", "Core Web Vitals"],
+    content: [
+      {
+        type: "p",
+        text: "If your website isn't getting leads, it's one of two problems: not enough of the right people arrive, or the right people arrive and leave without doing anything. Those need opposite fixes.",
+      },
+      {
+        type: "p",
+        text: "Buying more traffic for a page that converts nobody is the most expensive mistake on this list, and it's the one I see most often. So the first section is arithmetic, not advice.",
+      },
+      { type: "h2", text: "First: traffic problem or conversion problem?" },
+      {
+        type: "p",
+        text: "Open your analytics and pull last month's two numbers.",
+      },
+      {
+        type: "code",
+        lang: "text",
+        code: `monthly enquiries ÷ monthly unique visitors × 100 = conversion rate`,
+      },
+      {
+        type: "p",
+        text: "A service business with genuine buying-intent traffic should land somewhere around **1–3%**. So 500 visitors ought to produce roughly 5–15 enquiries.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Below about 1%** — conversion problem. Fixing the page is faster and cheaper than buying traffic.",
+          "**At 2% or better, but still too few leads** — traffic problem. The page works; not enough people reach it. That's a content and search spend, not a redesign.",
+          "**Under a couple of hundred visitors a month** — you have both, and not enough data to tell them apart. Start with reason 4 below, because until tracking is right, everything after it is guesswork.",
+        ],
+      },
+      {
+        type: "p",
+        text: "That last case is the honest starting position for most small business sites, and it's why the fixes below are ordered the way they are rather than by how visible they look.",
+      },
+      { type: "h2", text: "1. There's no single obvious next action" },
+      {
+        type: "p",
+        text: "A low-converting homepage usually offers six equally weighted things to do: read about us, view services, download a brochure, follow us on Facebook, call, email. Six choices lands the same way as none.",
+      },
+      {
+        type: "p",
+        text: "Every page needs **one primary action, repeated**. Everything else should look secondary — a text link, not another button competing for the same attention.",
+      },
+      {
+        type: "p",
+        text: "On a long page that primary action should appear at least three times: above the fold, mid-page immediately after your proof, and at the end. Not three different actions. The same one, three times.",
+      },
+      {
+        type: "p",
+        text: "Then make the words specific. \"Submit\" and \"Learn more\" say nothing. \"Get a fixed-price quote\" tells the visitor exactly what happens next and what it commits them to.",
+      },
+      { type: "h2", text: "2. It's slow, and mobile visitors leave before it renders" },
+      {
+        type: "p",
+        text: "Google's Core Web Vitals guidance treats a Largest Contentful Paint under 2.5 seconds as the threshold for a good experience, measured on real mobile connections rather than your desktop fibre ([web.dev on LCP](https://web.dev/articles/lcp)).",
+      },
+      {
+        type: "p",
+        text: "Check it honestly rather than by feel:",
+      },
+      {
+        type: "list",
+        items: [
+          "Run the page through [PageSpeed Insights](https://pagespeed.web.dev/)",
+          "Read the **field data** section, not the lab score — that's real visitors on real phones",
+          "If mobile LCP is above 4 seconds, fix that before you touch copy or design",
+        ],
+      },
+      {
+        type: "p",
+        text: "Three causes account for most of it: hero images shipped at full camera resolution, a page builder loading fifteen plugin stylesheets, and a slideshow nobody asked for.",
+      },
+      {
+        type: "p",
+        text: "The free win is responsive, correctly sized images:",
+      },
+      {
+        type: "code",
+        lang: "html",
+        code: `<img
+  src="/images/hero-1200.webp"
+  srcset="/images/hero-600.webp 600w, /images/hero-1200.webp 1200w"
+  sizes="(max-width: 768px) 100vw, 1200px"
+  width="1200"
+  height="675"
+  loading="eager"
+  decoding="async"
+  alt="Team fitting a commercial kitchen extraction unit"
+/>`,
+      },
+      {
+        type: "p",
+        text: "The explicit width and height matter as much as the srcset. Without them the browser can't reserve space, so the page jumps as each image lands — a separate Core Web Vital, and a separate reason people leave. The full list of causes is in [why your website is slow](/blogs/why-is-my-website-slow).",
+      },
+      { type: "h2", text: "3. The form asks for too much, too early" },
+      {
+        type: "p",
+        text: "Every field costs you submissions. A first-contact form does not need company size, budget range, industry, referral source and a 500-character project description.",
+      },
+      {
+        type: "p",
+        text: "Ask for the minimum that lets you reply: **a name, an email or phone number, and one free-text box.** Qualify on the call — that is what the call is for.",
+      },
+      {
+        type: "p",
+        text: "**A required phone number** is the quietest killer of the lot. Plenty of people won't hand a number to a business they haven't spoken to yet. Make it optional and you keep those enquiries.",
+      },
+      {
+        type: "p",
+        text: "**A CAPTCHA on a low-traffic site** is the second. You're adding friction for every real visitor to stop a bot problem you may not have. A honeypot field does the same job invisibly:",
+      },
+      {
+        type: "code",
+        lang: "html",
+        code: `<div style="position:absolute;left:-9999px" aria-hidden="true">
+  <label for="website_url">Leave this field blank</label>
+  <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off" />
+</div>`,
+      },
+      {
+        type: "code",
+        lang: "js",
+        code: `// Server-side: a real person never sees this field, so a value means a bot.
+if (req.body.website_url) {
+  return res.status(200).json({ ok: true }); // look successful, don't tip it off
+}`,
+      },
+      { type: "h2", text: "4. Nobody is tracking submissions, so nobody knows the form works" },
+      {
+        type: "p",
+        text: "This one costs the most and gets noticed the least. I have opened client sites where the contact form had been failing silently for months — success message showing on screen, email never sending, nobody aware because nobody was measuring.",
+      },
+      {
+        type: "p",
+        text: "Track the submission as an event, and fire it on the server's answer rather than the button click:",
+      },
+      {
+        type: "code",
+        lang: "js",
+        code: `const form = document.querySelector("#contact-form");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = Object.fromEntries(new FormData(form));
+
+  try {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) throw new Error(\`Request failed: \${res.status}\`);
+
+    // Only after the server confirmed it. A click event would have counted
+    // every failed submission as a lead.
+    window.gtag?.("event", "generate_lead", {
+      form_id: "contact-form",
+      page_path: window.location.pathname,
+    });
+
+    form.reset();
+    showSuccess();
+  } catch (err) {
+    console.error("[contact] submit failed", err);
+    showError("Something went wrong — please email us directly.");
+  }
+});`,
+      },
+      {
+        type: "p",
+        text: "Tracking clicks tells you people tried. It does not tell you they succeeded, and the gap between those two numbers is exactly where lost leads hide.",
+      },
+      {
+        type: "p",
+        text: "Then test the whole path monthly: submit your own form from your phone, on mobile data, and confirm the email lands in the inbox you actually read.",
+      },
+      { type: "h2", text: "5. The leads arrive, but they land in spam" },
+      {
+        type: "p",
+        text: "If your form emails claim to come from your domain but are sent by your host's server, mail providers may treat them as forged. Enquiries then sit in a junk folder nobody opens.",
+      },
+      {
+        type: "p",
+        text: "The fix is three DNS records, and it's a one-off job:",
+      },
+      {
+        type: "list",
+        items: [
+          "**SPF** — which servers are allowed to send mail as you",
+          "**DKIM** — cryptographically signs your outgoing mail",
+          "**DMARC** — tells providers what to do when the first two fail",
+        ],
+      },
+      {
+        type: "code",
+        lang: "text",
+        code: `; SPF — one record only, listing every service that sends as you
+example.com.  TXT  "v=spf1 include:_spf.google.com include:sendgrid.net ~all"
+
+; DMARC — start in monitor mode, read the reports, then tighten to quarantine
+_dmarc.example.com.  TXT  "v=DMARC1; p=none; rua=mailto:dmarc@example.com; pct=100"`,
+      },
+      {
+        type: "p",
+        text: "Better still, don't rely on email alone. Write every submission to a database or a sheet as well, so a mail failure costs you a notification rather than a lead.",
+      },
+      { type: "h2", text: "6. The copy talks about you instead of the visitor's problem" },
+      {
+        type: "p",
+        text: "Read the first sentence on your homepage. If it opens with your company name, how long you've been trading, or the word \"welcome\", you've spent your most valuable line on something nobody was searching for.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Weak:** \"Established in 2011, Acme Ltd is a family-owned provider of quality plumbing solutions.\"",
+          "**Strong:** \"Burst pipe or blocked drain in Hamilton? We'll be there today, and you'll know the price before we start.\"",
+        ],
+      },
+      {
+        type: "p",
+        text: "Same business, same facts. The second one answers where, when and how much — the three things every buyer checks silently before they get in touch.",
+      },
+      { type: "h2", text: "7. There's no proof, so there's no reason to believe you" },
+      {
+        type: "p",
+        text: "Claims convert nobody. Evidence converts. Roughly in order of power:",
+      },
+      {
+        type: "list",
+        items: [
+          "A named case study with a before-and-after number",
+          "Reviews carrying the reviewer's full name and business",
+          "Logos of clients you have genuinely worked with",
+          "Photographs of real work, not stock images",
+          "Certifications, insurance, trade memberships",
+        ],
+      },
+      {
+        type: "p",
+        text: "Three specific named reviews beat thirty anonymous five-star ratings. And put the proof next to the call to action, not on a testimonials page nobody visits — it has to be in front of the person at the moment they decide.",
+      },
+      { type: "h2", text: "8. You're ranking for the wrong searches" },
+      {
+        type: "p",
+        text: "Sometimes the traffic is real and the page is fine — the visitors are simply the wrong ones. Someone searching \"how to unblock a drain yourself\" will not hire you, however good the page is.",
+      },
+      {
+        type: "p",
+        text: "Check Google Search Console: **Performance → Queries**, sorted by impressions. If your top queries are informational — \"how to\", \"what is\", \"DIY\" — you're attracting readers rather than buyers.",
+      },
+      {
+        type: "p",
+        text: "The fix is a service page written for commercial-intent phrasing: the words people use once they've decided to pay someone. One page per service per location, each genuinely different from the others. If you're not appearing at all rather than appearing for the wrong things, that's a different problem — [why your website doesn't show up on Google](/blogs/why-website-not-showing-on-google) covers it.",
+      },
+      { type: "h2", text: "9. Local buyers can't tell whether you're local" },
+      {
+        type: "p",
+        text: "For any business serving an area, visitors are scanning for two things: are you near me, and can I call you now. Bury the phone number in the footer and you've lost them before they find it.",
+      },
+      {
+        type: "p",
+        text: "Put your service area, phone number and hours in visible text, then mark them up so search engines and AI assistants can read the same facts:",
+      },
+      {
+        type: "code",
+        lang: "js",
+        code: `{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Acme Plumbing",
+  "url": "https://example.com",
+  "telephone": "+64-7-555-0100",
+  "areaServed": ["Hamilton", "Cambridge", "Te Awamutu"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "12 Example Street",
+    "addressLocality": "Hamilton",
+    "addressRegion": "Waikato",
+    "postalCode": "3204",
+    "addressCountry": "NZ"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "07:30",
+    "closes": "17:00"
+  }]
+}`,
+      },
+      {
+        type: "p",
+        text: "Validate it with Google's [Rich Results Test](https://search.google.com/test/rich-results), and keep every detail identical to your Google Business Profile. Details that disagree undermine both.",
+      },
+      { type: "h2", text: "What each fix actually takes" },
+      {
+        type: "table",
+        headers: ["Fix", "Effort", "Who can do it"],
+        rows: [
+          ["Tracking and email deliverability (4, 5)", "About a day", "Needs someone technical"],
+          ["Speed (2)", "1–3 days", "Needs someone technical"],
+          ["Form and call to action (1, 3)", "About a day", "Doable in-house on most platforms"],
+          ["Copy and proof (6, 7)", "1–2 weeks", "Mostly your time gathering material"],
+          ["Search intent and local signals (8, 9)", "Ongoing", "Either"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Most of this list is hours rather than budget, and more than half of it is work you can do yourself.",
+      },
+      { type: "h2", text: "The order to fix these in" },
+      {
+        type: "p",
+        text: "Each step tells you whether the next one is necessary, which is why the order matters more than the list:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Tracking and deliverability** (4, 5) — without these, everything after is guesswork",
+          "**Speed** (2) — the single biggest lever on mobile",
+          "**Form and call to action** (1, 3) — the cheapest wins on the list",
+          "**Copy and proof** (6, 7) — mostly your time",
+          "**Search intent and local signals** (8, 9) — ongoing, slowest to show",
+        ],
+      },
+      {
+        type: "p",
+        text: "Then give it a full month after the first three before you judge the result. Lead volume is noisy; one week tells you nothing at all.",
+      },
+      { type: "h2", text: "When you don't need to hire anyone" },
+      {
+        type: "p",
+        text: "Worth saying plainly, because a good share of this list is genuinely DIY.",
+      },
+      {
+        type: "p",
+        text: "**Reasons 1, 3, 6 and 7 are copy and form changes.** On Squarespace, Shopify or a reasonable WordPress theme you can do all four yourself this week. Don't pay someone for that.",
+      },
+      {
+        type: "p",
+        text: "**Reasons 2, 4 and 5 are where it gets technical** — event tracking that fires on real success, DNS records, and performance work that survives your next theme update. Guessing here is how a site ends up reporting successful submissions while the enquiries quietly vanish.",
+      },
+      {
+        type: "p",
+        text: "**A rebuild is only justified when the platform itself blocks the fixes** — usually a page builder you cannot get under four seconds, or a host whose mail you cannot configure. If someone quotes you a new site before they've run your numbers, get a second opinion. [Does your website need a developer or just a few fixes?](/blogs/does-my-website-need-a-developer) is the longer version of that judgement call, and [how to hire a web developer](/blogs/how-to-hire-a-web-developer) covers what to ask if the answer is yes.",
+      },
+      {
+        type: "p",
+        text: "If it does turn out to be structural, the two decisions that follow are which platform and what it should cost: [WordPress vs Wix vs Custom](/blogs/wordpress-vs-wix-vs-custom-website) and [website redesign cost in New Zealand](/blogs/website-redesign-cost-new-zealand).",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How many leads should a small business website get per month?" },
+      {
+        type: "p",
+        text: "It depends on traffic, not on the site alone. At a healthy 1–3% conversion rate, 500 monthly visitors should produce roughly 5–15 enquiries. Below 1%, fix the page before you buy traffic — more visitors to a page that converts nobody just costs more.",
+      },
+      { type: "h3", text: "My website gets visitors but no enquiries — what should I check first?" },
+      {
+        type: "p",
+        text: "Check the form actually works, and that submissions are tracked. Submit it yourself from a phone on mobile data and confirm the email arrives in your inbox rather than in spam. Silent form failures are far more common than most owners expect, and nothing announces them.",
+      },
+      { type: "h3", text: "Is a slow website really costing me leads?" },
+      {
+        type: "p",
+        text: "Yes, particularly on mobile. Google's Core Web Vitals guidance puts a good Largest Contentful Paint under 2.5 seconds. Well above that, a share of visitors leave before the page renders, so your copy and your call to action are never read at all.",
+      },
+      { type: "h3", text: "Do I need a new website to get more leads?" },
+      {
+        type: "p",
+        text: "Usually not. Tracking, speed, a simpler form and clearer copy fix most lead problems on an existing site for a fraction of what a rebuild costs. A rebuild is justified when the platform itself blocks those fixes — not because the site looks dated.",
+      },
+      { type: "h3", text: "How long before I see more leads after fixing this?" },
+      {
+        type: "p",
+        text: "Allow a month of data after the quick wins. Conversion changes show up within weeks, because they affect people already arriving. Changes driven by search intent take months, because they depend on rankings moving first.",
+      },
+      { type: "h3", text: "Can I fix this myself or should I hire someone?" },
+      {
+        type: "p",
+        text: "The copy, proof and form work is genuinely DIY on any mainstream platform. Tracking, email deliverability and performance are where self-diagnosis usually goes wrong — those three are worth a second pair of eyes.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Do the arithmetic at the top first. It takes five minutes and it decides whether you're fixing a page or buying traffic — and getting that one call wrong is what makes the rest expensive.",
+      },
+      {
+        type: "p",
+        text: "If you'd rather not diagnose it alone, [send me your URL](/contact) with last month's visitor and enquiry counts and I'll tell you which of the nine are actually costing you leads. No charge for the diagnosis, and you can see the kind of work it leads to on the [projects page](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "website-redesign-cost-new-zealand",
+    // 43 chars, so withBrand() still fits the brand inside 62.
+    title: "Website Redesign Cost in New Zealand (2026)",
+    excerpt:
+      "What a redesign really costs in NZ, tier by tier and excluding GST — the seven things that move the number, and when a redesign is the wrong spend entirely.",
+    coverImage:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Website Cost", "New Zealand", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "A website redesign in New Zealand runs from about **$2,000 for a light refresh** to **$30,000–$50,000+** for a large custom rebuild. Most SMEs land somewhere in **$5,000–$15,000**. Freelancers and small studios quote the low-to-mid end; city agencies quote the top end for comparable scope.",
+      },
+      {
+        type: "p",
+        text: "All figures below are NZD and **exclude GST**, because that is how most New Zealand providers quote. Add 15% when you're forecasting the actual cash cost.",
+      },
+      { type: "h2", text: "What NZ providers actually charge in 2026" },
+      {
+        type: "table",
+        headers: ["Tier", "Typical price (NZD, ex GST)", "What it is", "Who it suits"],
+        rows: [
+          ["Refresh", "$2,000 – $5,000", "New theme restyled, existing content and structure carried over", "Sole traders, 3–8 page brochure sites"],
+          ["Standard redesign", "$5,000 – $15,000", "Custom design, new page structure, some new copy, CMS, on-page SEO, integrations", "Most SMEs — the volume band"],
+          ["Full rebuild", "$15,000 – $30,000", "New information architecture, new copy, platform migration, custom functionality", "Established, lead-critical sites"],
+          ["Complex or eCommerce", "$30,000 – $50,000+", "Large catalogues, portals, memberships, ERP integrations", "Multi-product retail, enterprise"],
+        ],
+        caption: "NZD, excluding GST. Ranges cross-checked against NZ providers publishing 2026 figures.",
+      },
+      {
+        type: "p",
+        text: "Those bands are not invented. One Auckland studio puts the most common bracket for a quality marketing website at [$4,000–$15,000](https://kingtide.nz/blog/website-design-auckland-cost); another quotes redesigns at [$12,000–$50,000](https://www.skyrocket.co.nz/learn/website-redesign-cost-nz) depending on how much structure is rethought; a third prices a 5–8 page small business site at [$3,990–$8,000 + GST](https://www.fueldesign.co.nz/blog/how-much-does-a-website-cost-in-new-zealand-2026-pricing-guide/); a fourth puts the sweet spot for most Auckland small businesses at [$5,000–$12,000](https://horntech.co.nz/blog/web-design-cost-nz-2026/).",
+      },
+      {
+        type: "p",
+        text: "Read those side by side and the spread stops looking like a quality gap. The same Auckland studio is explicit about it: CBD agencies typically quote **$15,000–$30,000+** for projects lower-overhead providers deliver for **$4,000–$8,000**, and the difference is overhead rather than capability — offices, account managers, and the layers between you and whoever writes the code.",
+      },
+      {
+        type: "p",
+        text: "One reconciliation, since this site publishes both numbers: [what a website costs in New Zealand](/blogs/website-cost-new-zealand-2026) puts most new small business builds at $1,500–$8,000. That's the same market seen from the other end — small brochure builds, where a refresh here at $2,000–$5,000 lines up exactly. The higher redesign bands describe projects that change structure, copy or platform, which is a different job from putting up five pages.",
+      },
+      {
+        type: "p",
+        text: "Comparing quotes right now? [The questions worth asking](/blogs/how-to-choose-a-website-developer) will tell you more than the totals will.",
+      },
+      { type: "h2", text: "Is a redesign cheaper than a new website?" },
+      {
+        type: "p",
+        text: "Usually — but by **20–40%**, not half.",
+      },
+      {
+        type: "p",
+        text: "The saving comes from work you aren't repeating: brand, existing content, product photography, and a live site whose analytics already tell you what works. What doesn't disappear is the build. Rewriting a front end takes roughly the same hours whether the design is brand new or refined.",
+      },
+      {
+        type: "p",
+        text: "And the saving evaporates entirely if you **change platform at the same time**. WordPress to Webflow, or Wix to custom, means full content migration, URL mapping and a redirect plan stacked on top of the design work — new-build prices, with the added constraint of preserving rankings you already have.",
+      },
+      { type: "h2", text: "The seven things that actually move the number" },
+      { type: "h3", text: "1. Unique templates, not total pages" },
+      {
+        type: "p",
+        text: "Ten pages using three layouts is a small job. Six pages using six layouts is a bigger one. Ask any provider how many **unique templates** they're building — that number drives the hours far more than the page count does.",
+      },
+      { type: "h3", text: "2. Who writes the copy" },
+      {
+        type: "p",
+        text: "The most underestimated line item on every quote. Supply final, signed-off copy and you save real money; provider-written copy adds roughly **$150–$400 per page**. Be honest with yourself about which you'll actually do — redesigns run late waiting on client content far more often than on developer capacity.",
+      },
+      { type: "h3", text: "3. Template versus custom design" },
+      {
+        type: "p",
+        text: "A restyled premium theme is fast, cheap, and looks like several thousand other sites. A custom design is drawn around your actual services and buyers. The difference in build cost is **$3,000–$8,000**; the difference in conversion is the entire reason to redesign at all.",
+      },
+      { type: "h3", text: "4. Integrations" },
+      {
+        type: "p",
+        text: "Each system — Xero, a booking engine, a CRM, a payment gateway, an inventory feed — is discrete work with its own testing and its own failure modes. Budget **$500–$2,500 each**. \"It has an API\" is not the same sentence as \"it's a two-hour job\".",
+      },
+      { type: "h3", text: "5. Content migration and redirects" },
+      {
+        type: "p",
+        text: "Forty blog posts with existing rankings means mapping every old URL to a new one with 301 redirects. Skip it and you lose visibility you spent years earning. Budget **$500–$2,000** of unglamorous, essential work — and check for it explicitly, because it's the line most commonly missing from a cheap quote.",
+      },
+      {
+        type: "p",
+        text: "It isn't complicated work, which is exactly why its absence is hard to forgive. On most modern hosts it's a config file:",
+      },
+      {
+        type: "code",
+        lang: "js",
+        code: `// vercel.json — one entry per old URL, permanent, no chains
+{
+  "redirects": [
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/blog/:slug", "destination": "/blogs/:slug", "permanent": true }
+  ]
+}`,
+      },
+      {
+        type: "p",
+        text: "Two rules make it work: every redirect points at the closest equivalent page rather than dumping everyone on the homepage, and no redirect points at another redirect. Ask to see the map before launch, not after the traffic drops.",
+      },
+      { type: "h3", text: "6. Accessibility and performance targets" },
+      {
+        type: "p",
+        text: "\"Fast and accessible\" is not free. WCAG 2.1 AA and good Core Web Vitals on real devices add testing and remediation time. Worth paying for — but ask for it explicitly rather than assuming it's included, because \"fast\" is not a target and Core Web Vitals thresholds are.",
+      },
+      { type: "h3", text: "7. Scope creep after design sign-off" },
+      {
+        type: "p",
+        text: "The most common cause of overrun on both sides. Some providers absorb changes and quietly resent them; others issue variations. Neither is wrong — ask which, before you sign, so nobody is surprised in week six.",
+      },
+      { type: "h2", text: "What you get at each price point" },
+      {
+        type: "p",
+        text: "**$2,000–$5,000** — a themed site carrying your branding, responsive, 5–8 pages, contact form, basic on-page SEO. Content largely yours to write. Good value when your content is strong and the site simply looks dated.",
+      },
+      {
+        type: "p",
+        text: "**$5,000–$15,000** — custom design across several templates, navigation restructured around how people actually buy from you, an editable CMS, integrations, proper redirect mapping, performance work, and copy support. This is where a redesign stops being a facelift and starts being an investment.",
+      },
+      {
+        type: "p",
+        text: "**$15,000+** — all of the above plus research, new information architecture, full copywriting, custom functionality and a longer discovery phase. Justified when the site is a primary revenue channel and a single percentage point of conversion is worth thousands a month.",
+      },
+      { type: "h2", text: "When a redesign is the wrong spend" },
+      {
+        type: "p",
+        text: "Bluntly, because this one costs people real money: **most sites that \"aren't working\" don't need a redesign.** Three checks before you spend anything.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Is anyone arriving?** At 60 visitors a month, a beautiful new site gets the same 60 visitors. That's a search visibility problem, and $3,000 of content work will outperform $12,000 of design every time.",
+          "**Does it convert what it already gets?** Run the arithmetic in [why your website isn't getting leads](/blogs/website-not-getting-leads). If you're already at 2% or better, design is not your bottleneck.",
+          "**Is the content the actual problem?** A structurally sound site with vague copy improves more from a rewrite than a redesign. Copy is cheaper, faster, and testable within a week.",
+        ],
+      },
+      {
+        type: "p",
+        text: "A redesign is the right call when the platform blocks you from fixing things, when the site can't be made fast, when nobody can edit it without a developer, when the structure no longer matches the services you sell, or when it is visibly a decade behind your competitors.",
+      },
+      { type: "h2", text: "The costs that aren't in the quote" },
+      {
+        type: "list",
+        items: [
+          "**Hosting** — $20–$100/month",
+          "**Domain renewal** — $25–$50/year for a .co.nz",
+          "**Maintenance and support** — $50–$300/month",
+          "**Premium plugin licences** — $200–$800/year on a typical WordPress build, rarely mentioned at the point of sale",
+          "**Stock photography** — $0 on free tiers, $50–$500+ licensed",
+          "**GST** — 15%, on top of every quoted price above",
+        ],
+      },
+      {
+        type: "p",
+        text: "The full recurring picture is in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz), including what a maintenance plan should contain before it's worth paying for.",
+      },
+      { type: "h2", text: "How to get a quote you can actually compare" },
+      {
+        type: "p",
+        text: "Send every provider the identical brief:",
+      },
+      {
+        type: "list",
+        items: [
+          "Your current site URL, and the specific problems with it",
+          "Approximate page count and how many unique layouts you expect",
+          "Who is writing the copy — you or them",
+          "Every integration required, named",
+          "Your launch deadline, and what is driving it",
+          "Your budget range — withholding it doesn't get you a better price, it gets you a quote for the wrong scope",
+        ],
+      },
+      {
+        type: "p",
+        text: "Then ask for each quote itemised into design, build, content, migration and testing. Two quotes with the same total can hide completely different amounts of work, and the only place you'll see it is line by line.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does a website redesign cost in NZ in 2026?" },
+      {
+        type: "p",
+        text: "Most New Zealand businesses pay $5,000–$15,000 + GST. Light refreshes start near $2,000, and full rebuilds with new architecture, new copy and a platform migration run $15,000–$50,000+. Published NZ provider guides put the common bracket at $4,000–$15,000, which is the same band read from the other end.",
+      },
+      { type: "h3", text: "Is a redesign cheaper than building a new website?" },
+      {
+        type: "p",
+        text: "Typically 20–40% cheaper, because branding, content and analytics already exist and don't need recreating. That saving disappears if you change platform at the same time, since content migration, URL mapping and redirects then have to be done as well.",
+      },
+      { type: "h3", text: "Do I need a redesign or just better content?" },
+      {
+        type: "p",
+        text: "If your site already converts at around 2% and simply gets too few visitors, the problem is traffic and content rather than design. Check your conversion rate before you commit to a redesign — the arithmetic takes five minutes and can save you five figures.",
+      },
+      { type: "h3", text: "Why do NZ website quotes vary so much for the same brief?" },
+      {
+        type: "p",
+        text: "Mostly overhead and hidden scope. Larger agencies carry more salaried staff between you and the build, and NZ providers themselves put the same work at $15,000–$30,000+ agency-side against $4,000–$8,000 from lower-overhead providers. The rest of the variation hides in who writes the copy, how many unique templates are built, and whether redirect mapping is included at all.",
+      },
+      { type: "h3", text: "Does a NZ website quote include GST?" },
+      {
+        type: "p",
+        text: "Usually not. Most New Zealand providers quote excluding GST, so add 15% when you're forecasting actual cash cost. If a quote doesn't say either way, ask — on a $12,000 project that ambiguity is $1,800.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Work out which of the three checks above applies to you before you request a single quote. If it turns out you do need the work, write the brief in this post's last section and send the same one to everybody — it's the only way the numbers you get back mean anything.",
+      },
+      {
+        type: "p",
+        text: "If you're mid-comparison right now, send me the brief you're sending everyone else and I'll tell you whether the scope makes sense and what a fair number looks like for it — including when I think you'd be better served elsewhere. [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "wordpress-vs-wix-vs-custom-website",
+    title: "WordPress vs Wix vs Custom: How to Choose",
+    excerpt:
+      "An honest comparison of WordPress, Wix and custom builds — three-year cost of ownership, speed, SEO control, lock-in, and what changing your mind later costs.",
+    coverImage:
+      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Website Platform", "WordPress", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Choose **Wix** if you need something online this month, you'll maintain it yourself, and the site isn't your main sales channel. Choose **WordPress** if you publish content regularly and want a large plugin ecosystem. Choose **custom** when the site has to do something specific — speed, an application, an integration — that platforms make you fight for.",
+      },
+      {
+        type: "p",
+        text: "The comparison that actually decides this isn't features. It's what you'll have paid by year three, and how hard it is to leave.",
+      },
+      { type: "h2", text: "The three-year cost of ownership" },
+      {
+        type: "p",
+        text: "Sticker price hides the real number. A typical small business site over three years, using published 2026 NZ market ranges:",
+      },
+      {
+        type: "table",
+        headers: ["", "Wix (DIY)", "WordPress (built for you)", "Custom build"],
+        rows: [
+          ["Build", "$0–$1,000 (your time)", "$3,000–$15,000", "$5,000–$25,000+"],
+          ["Platform / hosting per year", "$300–$700", "$250–$1,200", "$100–$600"],
+          ["Plugin / licence renewals", "Included", "$200–$800/yr", "Usually $0"],
+          ["Maintenance and updates", "You", "$600–$3,600/yr", "$0–$2,400/yr"],
+          ["Rough 3-year total", "$900–$3,100", "$6,150–$31,800", "$5,300–$34,000"],
+        ],
+        caption: "Indicative NZD, excluding GST. Build ranges vary widely by scope — see the NZ cost guides linked below.",
+      },
+      {
+        type: "p",
+        text: "Two things stand out. Wix is the cheapest and it isn't close — if budget is the binding constraint, that's your answer and the rest of this post is optional reading. And the WordPress and custom bands overlap almost entirely, which means that choice is about fit rather than money.",
+      },
+      {
+        type: "p",
+        text: "Where the table misleads: it prices the site, not the outcome. A $900 site producing two enquiries a month is more expensive than a $15,000 site producing twenty. Run that arithmetic for your own business before you optimise for the cheapest row — [what a website costs in New Zealand](/blogs/website-cost-new-zealand-2026) has the build-side detail.",
+      },
+      { type: "h2", text: "Speed: what each platform lets you control" },
+      {
+        type: "p",
+        text: "**Wix** ships a substantial JavaScript runtime with every page. It has improved a great deal and a well-built Wix site can pass Core Web Vitals — but you're working inside their rendering pipeline. You can compress images and remove apps. You cannot change how the platform builds the page.",
+      },
+      {
+        type: "p",
+        text: "**WordPress** can be very fast or catastrophically slow, and it comes down entirely to what's installed. A lean theme with caching performs well. The same site with a visual builder, a slider, five analytics scripts and thirty plugins commonly ships 2–4MB per page, because every plugin adds its CSS and JS to every page whether or not that page uses it.",
+      },
+      {
+        type: "p",
+        text: "**Custom** is the only option where you decide exactly what ships to each page:",
+      },
+      {
+        type: "code",
+        lang: "tsx",
+        code: `// The pricing calculator's bundle downloads only for people who visit /pricing
+import { lazy, Suspense } from "react";
+
+const PricingCalculator = lazy(() => import("./PricingCalculator"));
+
+export default function PricingPage() {
+  return (
+    <Suspense fallback={<CalculatorSkeleton />}>
+      <PricingCalculator />
+    </Suspense>
+  );
+}`,
+      },
+      {
+        type: "p",
+        text: "On a platform site, that calculator's code loads on your homepage too. On a custom build it loads for the people who asked for it.",
+      },
+      {
+        type: "p",
+        text: "Being fair about this: **most small business sites do not need that control.** Eight pages of text and images will hit good Core Web Vitals on a tidy Wix site or a well-configured WordPress install. Performance decides the platform when you have heavy interactive features, large catalogues, or a mobile-first audience on poor connections. Measure before you assume — run your current site through [PageSpeed Insights](https://pagespeed.web.dev/) and read the field data, not the lab score.",
+      },
+      { type: "h2", text: "SEO: smaller differences than the marketing suggests" },
+      {
+        type: "p",
+        text: "All three can rank. Google awards no points for platform.",
+      },
+      {
+        type: "p",
+        text: "**All three give you** custom titles and meta descriptions, custom URLs, alt text, sitemaps, robots.txt, canonicals and structured data. That's the majority of on-page technical SEO, and it's table stakes everywhere now.",
+      },
+      {
+        type: "p",
+        text: "**WordPress pulls ahead** on the technical SEO plugin ecosystem, bulk metadata editing across hundreds of pages, and the plain fact that any consultant you hire already knows it.",
+      },
+      {
+        type: "p",
+        text: "**Wix limits you** on fine-grained redirect logic at scale, response headers, and some markup control. Irrelevant on a twelve-page brochure site. A daily annoyance on a 400-page content site.",
+      },
+      {
+        type: "p",
+        text: "**Custom wins** on rendering strategy, response headers, and generating schema from the same data the page renders — so the markup can't drift away from what's visible:",
+      },
+      {
+        type: "code",
+        lang: "ts",
+        code: `// One source of truth: the page copy and the structured data read the same object
+export function generateMetadata({ params }) {
+  const service = getService(params.slug);
+  return {
+    title: \`\${service.name} | WebDevStudio\`,
+    description: service.summary,
+    alternates: { canonical: \`https://example.com/services/\${params.slug}\` },
+  };
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: service.name,
+  description: service.summary,
+  provider: { "@type": "Organization", name: "WebDevStudio" },
+  areaServed: ["NZ", "CY"],
+};`,
+      },
+      {
+        type: "p",
+        text: "The honest summary: platform is maybe 10% of SEO outcomes. Content quality, intent match and internal linking are the other 90%, and they're identical on all three.",
+      },
+      { type: "h2", text: "Ownership and lock-in, the part nobody asks about until it matters" },
+      {
+        type: "p",
+        text: "**Wix — you're renting.** The site cannot be exported and re-hosted in any usable form. Content can be copied out page by page; the site itself cannot come with you. Outgrow Wix and you rebuild from scratch. Check who registered your domain too: if it was created inside a Wix plan, confirm it's transferable and in your name.",
+      },
+      {
+        type: "p",
+        text: "**Self-hosted WordPress — you own the files and the database.** You can move hosts in an afternoon. This is the platform's strongest argument and it is entirely real.",
+      },
+      {
+        type: "p",
+        text: "**Custom — you own the source and the repository.** Any competent developer can pick it up, provided it's mainstream tooling and documented. A custom site on an obscure framework with no README is its own form of lock-in, and a worse one than Wix — at least Wix will still be running next year.",
+      },
+      {
+        type: "p",
+        text: "Before signing with anyone, on any platform, get it in writing that **you own the domain, the hosting account, the repository and the content**. More on that in [how to choose a website developer](/blogs/how-to-choose-a-website-developer).",
+      },
+      { type: "h2", text: "Maintenance burden" },
+      {
+        type: "p",
+        text: "**Wix** — near zero. The platform updates itself. Genuinely excellent, and the reason it suits time-poor owners better than any amount of feature comparison suggests.",
+      },
+      {
+        type: "p",
+        text: "**WordPress** — ongoing and non-optional. Outdated plugins are the most common route into a hacked WordPress site. Either you do this monthly or you pay someone to:",
+      },
+      {
+        type: "code",
+        lang: "text",
+        code: `# A minimal monthly WordPress routine — export a backup first, always
+wp db export backup-$(date +%F).sql
+wp plugin update --all
+wp theme update --all
+wp core update
+wp core verify-checksums   # flags modified core files, a common malware signal`,
+      },
+      {
+        type: "p",
+        text: "**Custom** — low, but not zero. Dependencies need updating and frameworks ship major versions, but there is far less installed to patch. A well-built custom site can sit a year untouched without becoming insecure. A WordPress site cannot.",
+      },
+      {
+        type: "p",
+        text: "Real annual figures for all three are in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz).",
+      },
+      { type: "h2", text: "Migration: what changing your mind costs" },
+      {
+        type: "list",
+        items: [
+          "**Wix to WordPress or custom** — effectively a rebuild. Content copied manually, design recreated, and a complete redirect map needed to protect your rankings. Budget close to new-build cost.",
+          "**WordPress to custom** — much easier. The database is accessible, and WordPress can run headless, serving content to a custom front end via its REST API. A common, low-risk middle path.",
+          "**Custom to anything** — depends entirely on how it was built. Standard framework and a clean data model, straightforward. Bespoke everything with no documentation, expensive.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Whichever direction you go, the redirect map is what protects the search equity you've already built. Never let it be the line item cut to win a quote.",
+      },
+      { type: "h2", text: "The decision, in one table" },
+      {
+        type: "table",
+        headers: ["If this is true of you", "Build it on"],
+        rows: [
+          ["Budget under ~$1,500 total, and the site isn't your main sales channel", "Wix"],
+          ["Live in days, maintained by you", "Wix"],
+          ["You publish blog or resource content weekly", "WordPress"],
+          ["You want a large plugin ecosystem and easy access to developers who know it", "WordPress"],
+          ["An online store with a standard catalogue", "WordPress + WooCommerce, or Shopify"],
+          ["App-like features, dashboards, or user accounts", "Custom"],
+          ["Mobile speed is a competitive advantage in your market", "Custom"],
+          ["Integrations with systems that have no plugin", "Custom"],
+          ["You've been burned by plugin conflicts or a hack", "Custom"],
+        ],
+      },
+      {
+        type: "p",
+        text: "One honest disqualifier: if nobody in your business will ever update the site and you don't want a maintenance retainer, **don't choose WordPress**. The unmaintained WordPress site is the single most common broken website anyone gets asked to rescue.",
+      },
+      { type: "h2", text: "What I'd tell you if you called me" },
+      {
+        type: "p",
+        text: "Most people asking this question have already decided they want better than what they've got, and are looking for permission. So, plainly: if your current site is a Wix page that's been fine for three years and your leads come from word of mouth, keep it and spend the money on content instead.",
+      },
+      {
+        type: "p",
+        text: "If the site is your main sales channel and it's slow, unmaintained, or you can't edit it without calling someone — that's a real problem worth real money, and the platform choice above is the first decision rather than the last.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Should I use Wix or hire a developer?" },
+      {
+        type: "p",
+        text: "Use Wix if your budget is under about $1,500, you'll maintain the site yourself, and it isn't your main sales channel. Hire a developer when the site needs custom functionality, real speed, integrations, or when the enquiries you're losing cost more than the build would.",
+      },
+      { type: "h3", text: "Is WordPress better than Wix for SEO?" },
+      {
+        type: "p",
+        text: "Marginally, and only at scale. Both support custom metadata, URLs, sitemaps and structured data. WordPress gives more control over bulk editing and redirect logic, which matters on large content sites and rarely on a ten-page brochure site. Platform is roughly 10% of SEO outcomes; content and intent match are the rest.",
+      },
+      { type: "h3", text: "Do I own my website if I build it on Wix?" },
+      {
+        type: "p",
+        text: "You own your content and your domain, but not the site in any portable form. Wix sites can't be exported and re-hosted, so moving off means rebuilding. Self-hosted WordPress and custom builds are both fully portable — you can take the files, the database or the repository with you.",
+      },
+      { type: "h3", text: "Is a custom website worth it for a small business?" },
+      {
+        type: "p",
+        text: "When the site does something a platform makes difficult: app-like features, unusual integrations, or performance as a genuine competitive edge. For a straightforward brochure site, well-built WordPress or Wix delivers the same commercial result for less money.",
+      },
+      { type: "h3", text: "Can I move my website from Wix to WordPress?" },
+      {
+        type: "p",
+        text: "Yes, but treat it as a rebuild rather than a migration. Content transfers manually, the design is recreated, and you'll need a complete 301 redirect map so you don't lose the rankings the old URLs earned.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Answer two questions before you look at any platform: what does the site have to do that your current one can't, and who is going to maintain it? Those two answers eliminate at least one of the three options every time, usually more.",
+      },
+      {
+        type: "p",
+        text: "Not sure which of the three you need? Tell me what the site has to do and who it's for, and I'll tell you straight — including when the answer is \"stay on Wix and spend it on content\". [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "how-to-choose-a-website-developer",
+    // 47 chars — withBrand() lands on exactly 62, the limit it allows.
+    title: "How to Choose a Website Developer: 12 Questions",
+    excerpt:
+      "The checks that separate a good web developer from an expensive one: how to audit their live work in ten minutes, 12 questions to send in writing, and the ownership clause most contracts leave out.",
+    coverImage:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-11",
+    tags: ["Hiring a Developer", "Small Business", "New Zealand"],
+    content: [
+      {
+        type: "p",
+        text: "Judge a developer on three things: evidence they've shipped comparable work that's still live, a written fixed scope you can hold them to, and clear ownership terms giving you the domain, the code and the hosting. Portfolio screenshots, team size and a polished sales deck predict very little.",
+      },
+      {
+        type: "p",
+        text: "This post is the checklist — the specific things to open, run and ask, in order. If what you want instead is how to read the conversation when you don't know how to code, [how to hire a web developer](/blogs/how-to-hire-a-web-developer) covers the judgement side and pairs with this one.",
+      },
+      { type: "h2", text: "Step 1 — Write down what the site has to do, in business terms" },
+      {
+        type: "p",
+        text: "Not \"modern and professional\". Specifics somebody could measure:",
+      },
+      {
+        type: "list",
+        items: [
+          "\"Generate at least 10 qualified enquiries a month from Auckland and Waikato\"",
+          "\"Let customers book a service slot without phoning us\"",
+          "\"Let our office manager add a service page without calling a developer\"",
+        ],
+      },
+      {
+        type: "p",
+        text: "This one page is the most valuable thing you'll produce in the whole process. It's how you compare quotes, how you spot someone selling you a bigger project than you need, and what a good developer will push back on before quoting. **If nobody asks to see it, that tells you something.**",
+      },
+      { type: "h2", text: "Step 2 — Freelancer, small studio, or agency" },
+      {
+        type: "table",
+        headers: ["", "Best for", "Watch out for"],
+        rows: [
+          ["Freelancer / solo developer", "Sites and apps up to mid-complexity, direct access to whoever builds it, lower cost", "Single point of failure — illness, holidays, other clients. Ask about capacity and handover."],
+          ["Small studio (2–8 people)", "Projects needing design, development and strategy together", "Whether the person who sold you the project is the person doing the work"],
+          ["Agency (10+ people)", "Large multi-channel programmes, brand work, ongoing paid media", "Overhead you may not need for a business website"],
+        ],
+      },
+      {
+        type: "p",
+        text: "The price gap is mostly structural rather than a quality difference. One Auckland studio publishing its own numbers is direct about it: CBD agencies typically quote [$15,000–$30,000+ for projects lower-overhead providers deliver for $4,000–$8,000](https://kingtide.nz/blog/website-design-auckland-cost), and the difference is offices and account layers rather than capability. Pay agency rates when you genuinely need agency breadth.",
+      },
+      { type: "h2", text: "Step 3 — Audit their live work, not their portfolio images" },
+      {
+        type: "p",
+        text: "Ten minutes of this eliminates most of the field, and none of it requires technical knowledge.",
+      },
+      { type: "h3", text: "1. Ask for three live URLs" },
+      {
+        type: "p",
+        text: "From the last two years, in a category like yours. Mockups only, or links that 404? That's your answer, and it arrived cheaply.",
+      },
+      { type: "h3", text: "2. Open each one on your phone, on mobile data" },
+      {
+        type: "p",
+        text: "Not on wifi. Mobile data is how a real customer arrives, and it's where a heavy site stops being an abstract complaint.",
+      },
+      { type: "h3", text: "3. Run each through PageSpeed Insights" },
+      {
+        type: "p",
+        text: "Use [PageSpeed Insights](https://pagespeed.web.dev/) and read the mobile field data. You aren't looking for perfect scores — you're checking they don't ship 4MB homepages to people on a phone.",
+      },
+      { type: "h3", text: "4. View source and look for three things" },
+      {
+        type: "p",
+        text: "You don't need to read code. Look for alt text on images, and a title and meta description that aren't the theme's defaults. A well-built page's head is short and specific:",
+      },
+      {
+        type: "code",
+        lang: "html",
+        code: `<!-- Specific to this page. If every page shares one title, nobody set them. -->
+<title>Emergency Plumber in Hamilton — On Site Today</title>
+<meta name="description" content="24/7 emergency plumbing across Hamilton and Waikato. Fixed prices quoted before we start." />
+<link rel="canonical" href="https://example.co.nz/services/emergency-plumbing" />
+
+<!-- Real alt text describes the image. "image1.jpg" is a tell. -->
+<img src="/img/team-van.webp" width="1200" height="675"
+     alt="Two plumbers unloading equipment from a branded van" />`,
+      },
+      { type: "h3", text: "5. Tab through with your keyboard" },
+      {
+        type: "p",
+        text: "Press Tab repeatedly from the top of the page. If you can't reach the navigation and the contact form with the keyboard alone, they don't build accessibly — whatever the proposal claims.",
+      },
+      { type: "h3", text: "6. Ask for one client reference you can phone" },
+      {
+        type: "p",
+        text: "Then ask that client exactly one question: what went wrong, and how was it handled? Every project has a problem. The handling is the signal, and a reference who can answer it specifically is worth more than five written testimonials.",
+      },
+      {
+        type: "p",
+        text: "If they build applications rather than brochure sites, ask for a public repository or a code sample as well. A developer who can't show code in any form is a strange thing to hire for a coding job.",
+      },
+      { type: "h2", text: "Step 4 — Send these 12 questions in writing" },
+      {
+        type: "p",
+        text: "In writing, so you can compare answers side by side. The wording of a bad answer is usually more revealing than its content.",
+      },
+      { type: "h3", text: "On scope and money" },
+      {
+        type: "list",
+        items: [
+          "**What exactly is included, itemised** — design, build, content, migration, testing? A single-line total can't be compared with anything.",
+          "**What is explicitly not included?** Good providers answer this fast and specifically. Vagueness here is where variation invoices are born.",
+          "**What happens when I ask for something outside scope mid-project?** Absorbed, quoted as a variation, or billed hourly — there's no wrong answer, only knowing in advance.",
+          "**What's the payment schedule?** Halves or thirds against milestones is normal. Payment in full up front, to someone you've never worked with, is not.",
+        ],
+      },
+      { type: "h3", text: "On ownership — the ones people forget" },
+      {
+        type: "list",
+        items: [
+          "**Who owns the domain, and whose name is on the registration?** It must be yours. Domains registered in a provider's name are the most common hostage situation in this industry.",
+          "**Who owns the code and the repository when we're finished?** Full access to source control, not a zip file emailed at handover.",
+          "**If we part ways, what do I walk away with?** Get the specific list: domain, hosting credentials, repository, CMS admin, analytics property, design files.",
+        ],
+      },
+      { type: "h3", text: "On what happens after launch" },
+      {
+        type: "list",
+        items: [
+          "**Who fixes it if something breaks in week three?** Is there a warranty period? Most reasonable providers include 30 days of bug fixes on their own work.",
+          "**What are the ongoing costs, all of them?** NZ ranges run roughly $20–$100/month for hosting and $50–$300/month for maintenance — the full picture is in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz).",
+          "**Can my team edit content without you?** Ask for a demo of the actual editing interface before you sign. \"Yes, it's easy\" is not a demo.",
+        ],
+      },
+      { type: "h3", text: "On process" },
+      {
+        type: "list",
+        items: [
+          "**What do you need from me, and by when?** The right answer names content, images, brand assets and feedback deadlines. Projects run late waiting on client content far more often than on developer capacity.",
+          "**What's your communication rhythm?** A weekly update, a named channel, an expected response time. Three weeks of silence mid-project is the most common complaint about web work, and the most preventable.",
+        ],
+      },
+      { type: "h2", text: "Step 5 — Read the proposal for what's missing" },
+      {
+        type: "p",
+        text: "Cheap quotes usually aren't cheap because someone is being generous with you. Scan specifically for:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Redirect mapping** — 301s from old URLs to new ones. Omitting this can cost years of accumulated search visibility on launch day.",
+          "**Testing** — which browsers and which devices, stated explicitly?",
+          "**Accessibility** — is WCAG 2.1 AA named, or is it assumed you won't ask?",
+          "**Performance targets** — \"fast\" is not a target. Core Web Vitals thresholds are.",
+          "**Content responsibility** — who writes it, page by page.",
+          "**Training and handover** — a recorded walkthrough of your CMS is worth more than a PDF nobody opens.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Two quotes with identical totals can differ by weeks of work in those six lines alone. For what the totals themselves should look like, [website redesign cost in New Zealand](/blogs/website-redesign-cost-new-zealand) has the current bands.",
+      },
+      { type: "h2", text: "Step 6 — The red flags" },
+      {
+        type: "p",
+        text: "Any one of these is a conversation. Two or more, walk away.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Guarantees a #1 Google ranking.** Nobody can promise this. It signals either dishonesty or inexperience, and both are expensive.",
+          "**Won't put scope in writing.** \"We'll figure it out as we go\" means you'll pay for it as you go.",
+          "**Registers the domain in their own name.** Non-negotiable. It's yours.",
+          "**Their own site is slow, broken, or three years stale.** It's the one piece of work they controlled completely.",
+          "**Quotes five figures without asking about your business.** They're quoting a template, and you're the one who'll discover what it doesn't cover.",
+          "**Can't name the platform they'd use, or why.** \"Whatever you prefer\" is an absence of opinion, not flexibility.",
+          "**Pressure tactics** — a price expiring Friday on a three-month project.",
+          "**No contract.** Even a single page covering scope, price, timeline, ownership and payment protects you both.",
+        ],
+      },
+      { type: "h2", text: "What good actually looks like" },
+      {
+        type: "p",
+        text: "The developer worth hiring does things that feel slightly uncomfortable at the sales stage. They ask what the site should achieve commercially before they'll quote. They tell you when a cheaper option serves you better, and mean it. They name what they're not good at. They write a scope that constrains them as much as it constrains you. And they ask about content deadlines early, because they've been burned by that before.",
+      },
+      {
+        type: "p",
+        text: "Someone who agrees with everything in a sales call will agree with everything during the project too — including the changes that quietly double the scope.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "What questions should I ask a web developer before hiring?" },
+      {
+        type: "p",
+        text: "Ask for an itemised scope, what's explicitly excluded, how out-of-scope requests are handled, who owns the domain and the code, what happens if something breaks after launch, what all the ongoing costs are, and whether your team can edit content without them. Send them in writing so the answers can be compared side by side.",
+      },
+      { type: "h3", text: "Should I hire a freelancer or an agency for my website?" },
+      {
+        type: "p",
+        text: "Hire a freelancer or small studio for straightforward business sites and mid-complexity applications. NZ providers themselves put the same work at $15,000–$30,000+ agency-side against $4,000–$8,000 from lower-overhead providers, and describe the gap as overhead rather than quality. Choose an agency when you need brand strategy, multi-channel campaigns, or genuine team depth.",
+      },
+      { type: "h3", text: "Who owns the code when you hire a web developer?" },
+      {
+        type: "p",
+        text: "You should, and it has to be stated in writing before work starts. Confirm you'll receive the domain registered in your name, full repository access, hosting credentials, CMS admin and the analytics property. A zip file emailed at handover is not repository access.",
+      },
+      { type: "h3", text: "How do I know if a web developer is any good?" },
+      {
+        type: "p",
+        text: "Check three sites they built recently: load them on mobile data, run them through PageSpeed Insights, and try navigating with only the keyboard. Then phone one past client and ask what went wrong and how it was handled. That's ten minutes and it outperforms any portfolio page.",
+      },
+      { type: "h3", text: "What are the biggest red flags when hiring a web developer?" },
+      {
+        type: "p",
+        text: "A guaranteed #1 Google ranking, no written scope, registering your domain in their name, a slow or outdated site of their own, and quoting a large project without asking anything about your business. Any one warrants a question; two or more warrants walking away.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write the one-page brief from Step 1 first. Everything else in this post gets easier once it exists, and the people worth hiring will ask for it unprompted.",
+      },
+      {
+        type: "p",
+        text: "If you're at the quoting stage, bring me that brief and I'll tell you honestly whether the scope makes sense — including if I think you'd be better served elsewhere. [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "annual-website-maintenance-costs-nz",
+    title: "Annual Website Maintenance Costs in NZ (2026)",
+    excerpt:
+      "What a NZ website costs to keep running each year — hosting, domain, SSL, plugins, updates and support — with three annual budgets and what a plan must include.",
+    coverImage:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Maintenance", "Website Cost", "New Zealand"],
+    content: [
+      {
+        type: "p",
+        text: "Annual website maintenance in New Zealand costs roughly **$400–$1,500 a year** for a small brochure site you look after yourself, **$2,000–$4,000** for a typical business site on a maintenance plan, and **$6,000–$12,000+** for eCommerce or content-heavy sites with active support.",
+      },
+      {
+        type: "p",
+        text: "All figures NZD, excluding GST. A website is closer to a vehicle than a painting — the ongoing number is not optional, and leaving it out of the original decision is how people end up surprised.",
+      },
+      { type: "h2", text: "The line items, with real 2026 NZ ranges" },
+      {
+        type: "table",
+        headers: ["Cost", "Typical NZ range", "Notes"],
+        rows: [
+          ["Domain (.co.nz or .nz)", "$25–$50/year", "Check what your registrar actually bills — some charge well above this"],
+          ["Hosting", "$20–$100/month ($240–$1,200/yr)", "Shared at the low end, managed or cloud at the top"],
+          ["SSL certificate", "$0", "Free via Let's Encrypt, included in essentially all modern hosting"],
+          ["Premium plugin licences", "$200–$800/year", "WordPress mainly, and rarely mentioned at the point of sale"],
+          ["Maintenance and updates", "$50–$300/month ($600–$3,600/yr)", "Updates, backups, security monitoring, minor edits"],
+          ["Ad-hoc developer work", "$80–$150/hour", "Anything outside a retainer"],
+          ["Content and SEO", "$500–$2,000/month", "Not maintenance — growth spend, budget it separately"],
+        ],
+        caption: "NZD, excluding GST.",
+      },
+      {
+        type: "p",
+        text: "These aren't estimates pulled from the air. NZ providers publishing 2026 pricing put hosting at [$20–$100 per month and maintenance at $50–$300 per month](https://www.lucidmedia.co.nz/blog/website-cost-new-zealand-2026-pricing-guide), domains at [around $25 a year](https://www.kiwiwebdesign.co.nz/affordable-web-design-auckland/website-cost-new-zealand-small-business/), and premium plugin licences at [$200–$800 a year](https://alpinestudio.co.nz/blog/website-cost-nz-2026/). Managed NZ hosting specifically tends to sit around $39–$99/month, which is the band quoted in [what a website costs in New Zealand](/blogs/website-cost-new-zealand-2026).",
+      },
+      {
+        type: "p",
+        text: "**One red line worth naming:** if a provider charges you separately for an SSL certificate in 2026, question it. Free certificates are standard and included nearly everywhere, and NZ studios say the same thing in their own pricing guides.",
+      },
+      { type: "h2", text: "Three realistic annual budgets" },
+      {
+        type: "p",
+        text: "These are illustrative budgets assembled from the published ranges above — not invoices from named clients.",
+      },
+      { type: "h3", text: "A — Sole trader, 5-page brochure site, DIY upkeep" },
+      {
+        type: "table",
+        headers: ["Item", "Annual"],
+        rows: [
+          ["Domain", "$35"],
+          ["Hosting (shared, $25/mo)", "$300"],
+          ["SSL", "$0"],
+          ["Plugins", "$150"],
+          ["Your own time (~1 hr/month)", "—"],
+          ["Total", "~$485/year"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Viable if you are genuinely disciplined about updates and backups. Most people aren't, and the failure mode is silent — you find out when the site goes down or a browser starts flagging it as insecure.",
+      },
+      { type: "h3", text: "B — Established SME, 15-page site, provider on a plan" },
+      {
+        type: "table",
+        headers: ["Item", "Annual"],
+        rows: [
+          ["Domain", "$40"],
+          ["Managed hosting ($60/mo)", "$720"],
+          ["Plugin licences", "$450"],
+          ["Maintenance plan ($120/mo)", "$1,440"],
+          ["Occasional developer work (~6 hrs)", "$700"],
+          ["Total", "~$3,350/year"],
+        ],
+      },
+      {
+        type: "p",
+        text: "This is the common band, and it matches the widely quoted NZ guidance of [$2,000–$4,000 per year](https://horntech.co.nz/blog/web-design-cost-nz-2026/) for hosting and maintenance on a standard business site.",
+      },
+      { type: "h3", text: "C — eCommerce or content-heavy" },
+      {
+        type: "table",
+        headers: ["Item", "Annual"],
+        rows: [
+          ["Domain", "$40"],
+          ["Cloud hosting ($150/mo)", "$1,800"],
+          ["Platform and app fees", "$1,200–$4,800"],
+          ["Plugin and app licences", "$800"],
+          ["Support retainer ($400/mo)", "$4,800"],
+          ["Total", "~$8,600–$12,200/year"],
+        ],
+      },
+      {
+        type: "p",
+        text: "At this level maintenance stops being overhead and becomes operational cost, because every hour of downtime has a revenue number attached to it.",
+      },
+      { type: "h2", text: "What a maintenance plan should actually include" },
+      {
+        type: "p",
+        text: "\"Maintenance\" means wildly different things to different providers. Get the inclusions in writing:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Core, theme and plugin updates** — monthly at minimum, applied to staging first",
+          "**Off-site backups** — daily, retained 30+ days, stored somewhere other than the same server",
+          "**A tested restore** — backups nobody has ever restored aren't backups. Ask when they last tested one.",
+          "**Uptime monitoring** that alerts a human",
+          "**Security scanning** and malware monitoring",
+          "**SSL renewal** and expiry monitoring",
+          "**Performance checks** — Core Web Vitals reviewed quarterly, not once at launch",
+          "**A defined allowance of content changes** — stated in hours, not as \"minor updates\"",
+          "**A response-time commitment**",
+        ],
+      },
+      {
+        type: "p",
+        text: "A plan without a stated backup retention period and a stated response time is a hosting invoice wearing a maintenance label. Those two lines are the ones providers leave vague, and they're the two that matter at 9am on the day something breaks.",
+      },
+      { type: "h2", text: "Why WordPress costs more to maintain" },
+      {
+        type: "p",
+        text: "Platform choice sets your maintenance bill more than any other decision you make — more than page count, more than design, more than who built it.",
+      },
+      {
+        type: "p",
+        text: "**WordPress** carries the highest burden. Every plugin is third-party code running on your site and a potential way in, and outdated plugins are the leading cause of compromised sites. The minimum monthly routine looks like this:",
+      },
+      {
+        type: "code",
+        lang: "text",
+        code: `# Never update without a backup and a staging pass first
+wp db export backups/pre-update-$(date +%F).sql
+wp plugin list --update=available --format=table   # see what's changing before it changes
+wp plugin update --all
+wp core update
+wp core verify-checksums                           # flags modified core files
+wp cache flush`,
+      },
+      {
+        type: "p",
+        text: "Run it on staging, confirm the site still loads and the contact form still sends, then repeat on production. Skipping the staging pass is how a plugin update takes down a checkout on a Friday afternoon.",
+      },
+      {
+        type: "p",
+        text: "**Wix and hosted builders** carry near-zero maintenance. That's a genuine advantage and it's worth real money — you pay for it in the subscription and in the lack of portability.",
+      },
+      {
+        type: "p",
+        text: "**Custom builds** sit in between. Fewer moving parts, because you only install what you actually use, but dependencies still need updating. Automate the checking so upkeep becomes reviewing a pull request rather than remembering to look:",
+      },
+      {
+        type: "code",
+        lang: "text",
+        code: `# .github/dependabot.yml — opens PRs for outdated dependencies, weekly
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5`,
+      },
+      {
+        type: "p",
+        text: "The full platform comparison, including three-year cost of ownership, is in [WordPress vs Wix vs Custom](/blogs/wordpress-vs-wix-vs-custom-website).",
+      },
+      { type: "h2", text: "What actually happens when you skip maintenance" },
+      {
+        type: "p",
+        text: "This isn't theoretical. It's a standard sequence, and it runs about eighteen months.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Months 1–6:** nothing visible. Updates queue up. Confidence grows that maintenance was a sales pitch after all.",
+          "**Months 6–12:** small breakages. A form stops emailing. A gallery renders oddly on a new iOS version. Nobody notices, because nobody is monitoring, and enquiries quietly drop.",
+          "**Months 12–18:** a plugin with a published vulnerability gets exploited, or a PHP upgrade breaks an outdated theme. The site goes down, starts serving spam links, or gets flagged as unsafe.",
+          "**Recovery:** emergency work at hourly rates, restoration from whatever backup exists, and weeks of rebuilding search visibility if the site was blacklisted.",
+        ],
+      },
+      {
+        type: "p",
+        text: "An emergency recovery routinely costs more than several years of a plan. That's the entire economic argument, and it's why every provider pushes retainers — they have all cleaned up the alternative.",
+      },
+      { type: "h2", text: "How to reduce the bill without creating risk" },
+      {
+        type: "list",
+        items: [
+          "**Cut the plugin count.** Every plugin removed is a licence saved and an entry point closed. Most WordPress sites can drop a third of theirs with no functional loss.",
+          "**Match the platform to actual needs.** Running WordPress for a five-page brochure site means paying WordPress maintenance for functionality you never use.",
+          "**Learn your own content edits.** Ask for a recorded CMS walkthrough at handover. Paying an hourly rate to change a phone number is entirely avoidable.",
+          "**Pay annually where it's discounted.** Hosting is often 10–20% cheaper billed yearly.",
+          "**Consolidate providers.** Three places means three renewal dates and three people to chase when something breaks.",
+        ],
+      },
+      {
+        type: "p",
+        text: "What not to cut: backups, updates, and SSL. Those three are what turn a $300 problem into a $3,000 one.",
+      },
+      { type: "h2", text: "The budgeting rule of thumb" },
+      {
+        type: "p",
+        text: "Set aside **15–20% of your original build cost per year**. An $8,000 site should have roughly $1,200–$1,600 behind it annually. It's the same principle as a maintenance reserve on any other business asset, and it's the number most people leave out when they're comparing build quotes.",
+      },
+      {
+        type: "p",
+        text: "Still at the build or rebuild stage? [Website redesign cost in New Zealand](/blogs/website-redesign-cost-new-zealand) covers the upfront side, including which line items cheap quotes leave out.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does website maintenance cost per year in NZ?" },
+      {
+        type: "p",
+        text: "Around $400–$1,500 a year for a small self-managed brochure site, $2,000–$4,000 for a typical business site on a plan, and $6,000–$12,000+ for eCommerce or content-heavy sites. Hosting runs $20–$100 a month and maintenance plans $50–$300 a month, both excluding GST.",
+      },
+      { type: "h3", text: "What is included in a website maintenance plan?" },
+      {
+        type: "p",
+        text: "A proper plan includes monthly updates applied via staging, daily off-site backups with tested restores, uptime monitoring, security scanning, SSL renewal, quarterly performance checks, a defined allowance of content edits stated in hours, and a committed response time. If the backup retention period and response time aren't written down, it isn't a maintenance plan.",
+      },
+      { type: "h3", text: "Do I really need a website maintenance plan?" },
+      {
+        type: "p",
+        text: "On WordPress or any plugin-based platform, effectively yes — outdated plugins are the leading cause of compromised sites, and an emergency recovery typically costs more than several years of a plan. Hosted builders like Wix need far less, because the platform patches itself.",
+      },
+      { type: "h3", text: "How much does a .co.nz domain cost per year?" },
+      {
+        type: "p",
+        text: "Usually $25–$50, though some providers charge considerably more. Check who the domain is registered to while you're looking — it should be in your business name, not your developer's.",
+      },
+      { type: "h3", text: "Should I pay for an SSL certificate separately?" },
+      {
+        type: "p",
+        text: "No. Free certificates via Let's Encrypt are standard and included in essentially all modern hosting. A separate SSL line on a 2026 invoice is worth questioning, and NZ studios say so in their own published pricing.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Add up what you currently pay across hosting, domain, plugins and support, then compare it against the three budgets above. If you're paying band B money for band A service — no backups you've tested, no monitoring, no response time — that's the conversation to have with your provider this week.",
+      },
+      {
+        type: "p",
+        text: "Inherited a site nobody has touched in two years? Send me the URL and I'll tell you what state it's actually in: what's outdated, what's exposed, and what it would take to make it safe. No charge for the look. [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
 ];
 
 export function findBlogPost(slug: string): BlogPost | undefined {

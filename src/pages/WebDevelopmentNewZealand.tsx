@@ -47,7 +47,10 @@ const valueProps = [
     icon: ShieldCheck,
     title: "Reliable, Contract-Based Delivery",
     description:
-      "NDAs, fixed milestones, and unlimited revisions within scope — built for teams who need dependable remote execution.",
+      // "unlimited revisions within scope" removed — see the note in CTA.tsx.
+      // Three different revision promises across two pages is worse than one
+      // modest promise everywhere.
+      "NDAs, fixed milestones, and a revision allowance written into the quote — built for teams who need dependable remote execution.",
   },
 ];
 

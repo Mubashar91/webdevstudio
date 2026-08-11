@@ -2,7 +2,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { AppProviders, AppRoutes } from "./App";
 import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
-import { DERIVED_LASTMOD } from "./lib/seo";
+import { DERIVED_LASTMOD, withBrand } from "./lib/seo";
 import { schemaImage } from "./lib/images";
 import { buildAreaServed, cyGeo, nzGeo } from "./data/geoPageData";
 import {
@@ -28,17 +28,6 @@ import {
  * `canonical` pointing at "/", declaring all nine pages duplicates of the home
  * page.
  */
-/**
- * Appends " | WebDevStudio" only when the result still fits Google's ~62
- * character display limit. Past that the brand is truncated anyway, and it
- * costs characters that the actual headline needs — so long article titles
- * stand on their own.
- */
-function withBrand(title: string): string {
-  const full = `${title} | ${SITE_NAME}`;
-  return full.length <= 62 ? full : title;
-}
-
 /**
  * Re-exported so scripts/prerender.mjs can check the vercel.json 301s against
  * the project data — it cannot import the TypeScript module directly.
@@ -88,7 +77,7 @@ export const DYNAMIC_ROUTES = [
   })),
   ...STATIC_PROJECTS.map((project) => ({
     path: projectPath(project),
-    title: withBrand(project.title),
+    title: withBrand(project.seoTitle ?? project.title),
     description: project.description,
     keywords: project.technologies.join(", "),
     lastmod: project.updatedAt,

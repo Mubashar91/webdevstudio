@@ -223,6 +223,35 @@ export function projectSchemaNode(
     ...(project.completedAt ? { dateCreated: project.completedAt } : {}),
     ...(project.updatedAt ? { dateModified: project.updatedAt } : {}),
     ...(repo ? { codeRepository: repo } : {}),
+    // A CreativeWork says "something was made"; the SoftwareApplication says
+    // what kind of software it is, which is the part an answer engine matches
+    // on for "hospital management system" style queries. Only emitted where
+    // appCategory is set — see the note on the field.
+    ...(project.appCategory
+      ? {
+          about: {
+            "@type": "SoftwareApplication",
+            name: project.title,
+            applicationCategory: project.appCategory,
+            operatingSystem: "Web",
+            ...(schemaLanguages(project).length
+              ? { programmingLanguage: schemaLanguages(project) }
+              : {}),
+          },
+        }
+      : {}),
     inLanguage: "en",
   };
+}
+
+/**
+ * The entries in `technologies` that are actually programming languages.
+ *
+ * Filtered rather than hand-listed so the schema can't claim a language the
+ * page's own stack line doesn't show — React and Tailwind are not languages,
+ * and listing them as such is the kind of detail a technical reader notices.
+ */
+function schemaLanguages(project: Project): string[] {
+  const languages = ["TypeScript", "JavaScript", "Python", "Go", "Java", "PHP"];
+  return project.technologies.filter((tech) => languages.includes(tech));
 }

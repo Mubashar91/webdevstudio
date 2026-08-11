@@ -36,6 +36,22 @@ export const CONTACT_EMAIL: string = CONFIG_CONTACT_EMAIL;
 export const PRICE_CURRENCY: string = CONFIG_PRICE_CURRENCY;
 export const DEFAULT_OG_IMAGE: string = ogImageUrl(SITE_URL);
 
+/**
+ * Appends " | WebDevStudio" only when the result still fits Google's ~62
+ * character display limit. Past that the brand is truncated anyway, and it
+ * costs characters that the actual headline needs — so long article titles
+ * stand on their own.
+ *
+ * Lives here rather than in entry-server.tsx because the build and the
+ * hydrated runtime both need it: ProjectDetail was assembling its own
+ * `${title} | ${SITE_NAME}` with no length rule, so hydration could replace a
+ * prerendered standalone title with a branded one Google would truncate.
+ */
+export function withBrand(title: string): string {
+  const full = `${title} | ${SITE_NAME}`;
+  return full.length <= 62 ? full : title;
+}
+
 export interface ServicePackage {
   id: string;
   name: string;
@@ -45,6 +61,8 @@ export interface ServicePackage {
   timeline: string;
   featured: boolean;
   includes: string[];
+  /** Slug of the case study rendered as this package's proof link. */
+  proofSlug?: string;
 }
 
 export const SERVICE_PACKAGES: ServicePackage[] = CONFIG_SERVICE_PACKAGES;

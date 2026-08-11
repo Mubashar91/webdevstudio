@@ -121,6 +121,12 @@ export const SERVICE_PACKAGES = [
     unit: "project",
     timeline: "2–3 weeks",
     featured: false,
+    // Case study demonstrating this package. A price with a worked example
+    // beside it answers "what do I actually get for $900" better than any
+    // extra bullet; a price on its own asks the reader to take it on faith.
+    // Omitted rather than forced where no honest example exists — see the
+    // retainer below.
+    proofSlug: "software-house-website",
     includes: [
       "Up to 6 responsive pages",
       "React + TypeScript build",
@@ -138,6 +144,7 @@ export const SERVICE_PACKAGES = [
     unit: "project",
     timeline: "6–10 weeks",
     featured: true,
+    proofSlug: "hospital-management-system",
     includes: [
       "Full MERN stack build",
       "Authentication & role-based access",
@@ -175,15 +182,21 @@ export const SERVICE_PACKAGES = [
 export const CYPRUS_EUR_FROM = eurFromUsd(SERVICE_PACKAGES[0].priceFrom);
 export const CYPRUS_EUR_APP_FROM = eurFromUsd(SERVICE_PACKAGES[1].priceFrom);
 
-/** Services listed in the OfferCatalog and on the services page. */
-export const SERVICE_TYPES = [
-  "React.js Development",
-  "MERN Stack Development",
-  "Node.js Backend Development",
-  "TypeScript Development",
-  "Responsive Web Design",
-  "Web Performance Optimization",
-];
+/**
+ * REMOVED 2026-08-11 — `SERVICE_TYPES` was dead.
+ *
+ * Its comment claimed it fed "the OfferCatalog and the services page". Neither
+ * was true: the OfferCatalog is built from SERVICE_PACKAGES below, and the
+ * services page renders its own list. Nothing in the repo imported it, so the
+ * six technology-named strings here were an unmaintained third opinion about
+ * what this business sells — and the kind of thing someone later "fixes" the
+ * page from.
+ *
+ * The live service list now lives in components/Services.tsx, named by
+ * outcome rather than technology, with each card carrying the case study that
+ * proves it. If those names ever need to reach structured data, lift them from
+ * there rather than re-typing them here.
+ */
 
 /**
  * Location-page FAQs.
@@ -423,6 +436,32 @@ export function absoluteUrl(siteUrl, path) {
 
 export function ogImageUrl(siteUrl) {
   return `${normalizeSiteUrl(siteUrl)}/og-image.png`;
+}
+
+/** Real pixel size of the generated og-image.png — see scripts/generate-og-image.mjs. */
+export const DEFAULT_OG_IMAGE_SIZE = { width: 1200, height: 630 };
+
+/**
+ * Dimensions to declare for an og:image, or `null` when they can't be known.
+ *
+ * index.html hardcodes 1200×630, which is right for the generated site card
+ * and wrong for every detail page: the prerenderer swaps og:image for the
+ * route's own cover (schemaImage() → w=1200&h=675) but left the declared
+ * height at 630. Facebook, LinkedIn and Slack all pre-allocate the card from
+ * the declared numbers, so a 675px image announced as 630px is cropped or
+ * letterboxed by the consumer before anyone sees it.
+ *
+ * Unsplash carries its size in the query string, so the real numbers are
+ * readable from the URL. Anything else — a local screenshot, another CDN —
+ * returns null, and the caller drops the tags rather than declaring a size it
+ * is guessing at. No dimensions is a supported case; wrong dimensions is not.
+ */
+export function ogImageSize(url, siteUrl) {
+  if (!url) return null;
+  const w = /[?&]w=(\d+)/.exec(url);
+  const h = /[?&]h=(\d+)/.exec(url);
+  if (w && h) return { width: Number(w[1]), height: Number(h[1]) };
+  return url === ogImageUrl(siteUrl) ? DEFAULT_OG_IMAGE_SIZE : null;
 }
 
 /* ── Schema.org graph ──────────────────────────────────────────────────── */

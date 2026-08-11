@@ -1,9 +1,19 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Check, Tag, ArrowRight, ShieldCheck } from "lucide-react";
+import { Check, Tag, ArrowRight, ShieldCheck, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { SERVICE_PACKAGES } from "@/lib/seo";
+import { STATIC_PROJECTS } from "@/data/projects";
+
+/** Resolves a package's `proofSlug` against real case-study data — see the
+ *  matching helper in components/Services.tsx for why this throws. */
+const proofOf = (slug?: string) => {
+  if (!slug) return null;
+  const project = STATIC_PROJECTS.find((p) => p.slug === slug);
+  if (!project) throw new Error(`Pricing: no case study with slug "${slug}"`);
+  return { href: `/projects/${slug}`, title: project.title };
+};
 
 interface PricingProps {
   compactHeader?: boolean;
@@ -139,6 +149,27 @@ export const Pricing = ({ compactHeader = false, marketContext }: PricingProps) 
                   </li>
                 ))}
               </ul>
+
+              {/* Proof sits above the CTA, not below it: the reader's question
+                  at the moment they see a price is whether the person quoting
+                  it has built the thing, and it has to be answered before the
+                  button rather than after it. */}
+              {proofOf(pkg.proofSlug) && (
+                <Link
+                  to={proofOf(pkg.proofSlug)!.href}
+                  className="mb-4 flex items-start gap-2 rounded-xl border border-border/50
+                    bg-surface-alt/60 px-3.5 py-3 text-xs leading-snug
+                    hover:border-primary/30 transition-colors group/proof"
+                >
+                  <Layers className="h-4 w-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span className="text-muted-foreground">
+                    Built this way:{" "}
+                    <span className="font-bold text-foreground/90 group-hover/proof:text-primary transition-colors">
+                      {proofOf(pkg.proofSlug)!.title}
+                    </span>
+                  </span>
+                </Link>
+              )}
 
               <Button
                 asChild

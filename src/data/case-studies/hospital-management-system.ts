@@ -5,10 +5,15 @@ export const hospitalManagementSystem: CaseStudy = {
   _id: "s2",
   slug: "hospital-management-system",
   title: "Hospital Management System",
+  // 41 chars, so withBrand() still fits " | WebDevStudio" inside 62. The H1
+  // keeps the plain name; this only changes <head>.
+  seoTitle: "Hospital Management System — MERN case study",
   subtitle:
     "One patient record, three staff roles, and no double-booked appointments",
+  // Doubles as the meta description, so it stays inside ~155 characters and
+  // leads with the two decisions the page is actually about.
   description:
-    "Hospital platform where role-based access is enforced server-side, so the UI only ever hides what the API already refuses. Patient records, scheduling, and staff workflows in one system.",
+    "A hospital platform where reception, doctors and administrators share one patient record — permissions enforced at the API, appointments validated at write time.",
   fullDescription:
     "Patient registration, appointment scheduling and staff workflows behind one permission model — reception, doctors and administrators see the same record shaped by what their role is allowed to read.",
   image:
@@ -33,13 +38,16 @@ export const hospitalManagementSystem: CaseStudy = {
   repoUrl: null,
   demoUrl: null,
   type: "MERN",
+  appCategory: "HealthApplication",
   context: null,
   timelineMonths: 5,
   completedAt: null,
   teamSize: 4,
   roleDetail: null,
   problem:
-    "Hospital software fails on permissions before it fails on features. Reception, doctors and administrators need the same patient record to show different things, and appointment scheduling has to hold up when two people book the same slot.",
+    "Hospital software fails on permissions before it fails on features. Reception, doctors and administrators all need the same patient record, but each needs it to show something different — and getting that wrong is not a UI bug, it is a records breach.\n\n" +
+    "The second failure point is scheduling. The moment two people can book the same slot, staff stop trusting the calendar and go back to paper — and a calendar nobody trusts is worse than no calendar, because it still has to be maintained.\n\n" +
+    "So two requirements were fixed before any feature work started: every role sees exactly what its role permits and no more, and two concurrent bookings for the same practitioner and slot can never both succeed.",
   // "The UI only ever hides what the API already refuses" stays word for word.
   // It names a specific failure mode — client-side-only authorisation — and
   // the correct fix, in one clause. It is the best sentence on the site.
@@ -54,7 +62,9 @@ export const hospitalManagementSystem: CaseStudy = {
   //   · an optimistic version check on the slot
   // Only you know which. Replace the "validated against" clause with it.
   approach:
-    "Role-based access control was designed first and enforced server-side, so the UI only ever hides what the API already refuses. Appointments are validated against the practitioner's calendar at write time rather than in the client, and patient records are indexed on the fields staff actually search by.",
+    "Role-based access control was designed first and enforced server-side, so the UI only ever hides what the API already refuses. Removing the client-side check by hand gets you a 403, not a patient record — a hidden button is a convenience, never a security boundary.\n\n" +
+    "Appointments are validated against the practitioner's calendar at write time rather than in the client. A client-side availability check is a display optimisation: it cannot arbitrate between two requests that arrive in the same second, because each was rendered from a calendar that was accurate when it loaded and stale by the time it was submitted. Putting the decision at the write boundary makes the calendar the single source of truth about what is actually booked.\n\n" +
+    "Patient records are indexed on the fields staff actually search by — not on every field, which inflates the cost of every write, and not on the defaults, which miss how reception really looks somebody up with a patient standing at the counter.",
   hardPart: null,
   // Also missing and conspicuous for a system holding medical records: one
   // sentence on data protection. Encryption at rest, audit logging of record

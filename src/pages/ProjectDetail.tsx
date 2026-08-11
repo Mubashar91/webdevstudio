@@ -9,6 +9,7 @@ import {
   FOUNDER_NAME,
   pageGraph,
   SITE_NAME,
+  withBrand,
 } from "@/lib/seo";
 import {
   API_BASE_URL,
@@ -27,7 +28,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CARD_IMAGE, optimizedImage } from "@/lib/images";
+import { CARD_IMAGE, optimizedImage, schemaImage } from "@/lib/images";
 import {
   ArrowLeft,
   Github,
@@ -141,17 +142,23 @@ const ProjectDetail = () => {
     fetchProject();
   }, [id]);
 
+  // withBrand + seoTitle, so the hydrated <head> matches what the prerenderer
+  // wrote for this route rather than quietly rebuilding a different title.
   const seoTitle = project
-    ? `${project.title} | ${SITE_NAME}`
+    ? withBrand(project.seoTitle ?? project.title)
     : loading
       ? "Loading Project…"
       : "Project Not Found";
 
   useSEO({
     title: seoTitle,
+    // `description` first, not `subtitle`: subtitle is a hero line written to
+    // be read at 60-odd characters, and preferring it here meant hydration
+    // replaced the build's full meta description with a third of one. The
+    // prerenderer uses project.description — these two have to agree.
     description:
-      project?.subtitle ??
       project?.description ??
+      project?.subtitle ??
       "Project case study from WebDevStudio's web development portfolio.",
     // Canonical follows the project's slug, never the param it was reached
     // by. Landing on the legacy /projects/s1 must still declare
@@ -161,7 +168,11 @@ const ProjectDetail = () => {
       : id
         ? canonicalPath(`/projects/${id}`)
         : undefined,
-    ogImage: project?.image ? projectImageUrl(project.image) : undefined,
+    // schemaImage(), matching BlogDetail and the prerendered head. This was
+    // passing the raw card URL, so hydration quietly swapped the 1200px social
+    // card the build wrote for the 800px one — under Google's threshold for
+    // large-image treatment, and a different image than the crawler was told.
+    ogImage: project?.image ? schemaImage(projectImageUrl(project.image)) : undefined,
     ogType: "article",
     noindex: !loading && !project,
     // pageGraph() carries the Organization and Person nodes, so the
@@ -224,6 +235,13 @@ const ProjectDetail = () => {
   const timeline = timelineLabel(project);
   const team = teamLabel(project);
   const screenshots = project.screenshots ?? [];
+
+  // The hero renders in a half-width column on desktop and full width on a
+  // phone, so on any 2x display the 800px card is upscaled. schemaImage() is
+  // the same crop re-requested at 1200 — offered as a second candidate rather
+  // than swapped in, so small screens still download the small file.
+  const cover = projectImageUrl(project.image);
+  const coverLarge = schemaImage(cover);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -291,8 +309,20 @@ const ProjectDetail = () => {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-black/10 to-black/20 dark:from-black/60 dark:via-black/30 dark:to-black/50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
                     <img
-                      src={optimizedImage(projectImageUrl(project.image))}
-                      alt={`${project.title} — illustrative cover image`}
+                      src={optimizedImage(cover)}
+                      {...(coverLarge && coverLarge !== cover
+                        ? {
+                            srcSet: `${optimizedImage(cover)} 800w, ${optimizedImage(coverLarge)} 1200w`,
+                            sizes: "(min-width: 1024px) 50vw, 100vw",
+                          }
+                        : {})}
+                      /* Empty alt, deliberately: this is a stock photograph
+                         that says nothing about the project, and the old text
+                         ("— illustrative cover image") announced exactly that
+                         to anyone using a screen reader. Decorative images
+                         take an empty alt. When a real screenshot replaces it,
+                         describe what the screenshot shows. */
+                      alt=""
                       width={CARD_IMAGE.width}
                       height={CARD_IMAGE.height}
                       loading="eager"
@@ -434,6 +464,21 @@ const ProjectDetail = () => {
                 </Badge>
               ))}
             </div>
+
+            {/* The return path. /services links out to these case studies as
+                proof; without a link back, a reader who arrives here from
+                search has no route to the thing that's actually for sale, and
+                the page dead-ends at "interesting". */}
+            <p className="mt-6 text-sm text-muted-foreground">
+              Work like this is quoted under{" "}
+              <Link
+                to="/services"
+                className="text-primary font-semibold hover:underline underline-offset-4"
+              >
+                web development services
+              </Link>
+              , with fixed prices agreed before anything starts.
+            </p>
           </div>
         </section>
 

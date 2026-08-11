@@ -1,17 +1,95 @@
 import { Button } from "@/components/ui/button";
-import { Code, Database, Globe, Smartphone, Zap, Paintbrush, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
+import { BarChart3, Code, Database, FileText, Globe, Zap, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Link } from "react-router-dom";
+import { STATIC_PROJECTS } from "@/data/projects";
 
-// Two-tone accent system — alternates the site's primary and accent colors
-// instead of a different hue per card, to keep the palette disciplined.
+/**
+ * Resolves a card's proof link against the real case-study data.
+ *
+ * Hardcoding "/projects/hospital-management-system" here would work until
+ * someone renamed a slug, at which point the services page would quietly link
+ * into a 404 — the one page where a broken proof link costs an enquiry.
+ * Throwing at module load makes that a failed build instead, and the
+ * prerenderer executes this module, so a bad slug can't reach production.
+ */
+const proofOf = (slug: string) => {
+  const project = STATIC_PROJECTS.find((p) => p.slug === slug);
+  if (!project) {
+    throw new Error(`Services: no case study with slug "${slug}"`);
+  }
+  return { href: `/projects/${slug}`, title: project.title };
+};
+
+/**
+ * Named by outcome, not by technology.
+ *
+ * These read "React Development", "Backend Solutions", "Responsive Design" —
+ * which is what the work IS, not what anyone buys. Nobody with a budget
+ * searches for "responsive design"; they search for the thing they need built.
+ * The stack still appears, one line down, where it reassures a technical
+ * reader without being the headline for a non-technical one.
+ *
+ * Every card carries a case study. That's the harder half of the change: a
+ * service claim next to a link proving the claim answers "can he actually
+ * build this?" in the same eyeful, and it wires /services into /projects
+ * instead of dead-ending at the contact form.
+ */
 const services = [
-  { icon: Globe,      title: "Full-Stack Development",    description: "End-to-end web application development using the MERN stack — from database design to polished, responsive frontends.", features: ["Custom Web Apps", "RESTful APIs", "Database Design", "Cloud Deployment"],       iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary" },
-  { icon: Code,       title: "React Development",         description: "Modern, performant React applications with hooks, context, and state management. TypeScript expertise included.",         features: ["SPA Development", "Component Libraries", "State Management", "Performance"],    iconBg: "bg-accent/10",  iconColor: "text-accent",  accentBar: "bg-accent" },
-  { icon: Database,   title: "Backend Solutions",         description: "Scalable Node.js backends with Express, authentication, and database integration. Secure and maintainable code.",         features: ["API Development", "Authentication", "Database Integration", "Architecture"],    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary" },
-  { icon: Smartphone, title: "Responsive Design",         description: "Mobile-first, pixel-perfect interfaces that work seamlessly across all devices with modern CSS and animations.",          features: ["Mobile-First Design", "CSS/Tailwind", "Animations", "Cross-Browser Testing"],  iconBg: "bg-accent/10",  iconColor: "text-accent",  accentBar: "bg-accent" },
-  { icon: Zap,        title: "Performance Optimization",  description: "Speed up your applications with code splitting, lazy loading, and best practices for optimal user experience.",           features: ["Code Optimization", "Bundle Reduction", "Caching Strategies", "SEO"],          iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary" },
-  { icon: Paintbrush, title: "UI/UX Implementation",      description: "Transform designs into pixel-perfect, interactive interfaces with attention to detail and user experience.",              features: ["Design Implementation", "Interactive Elements", "Accessibility", "Systems"],    iconBg: "bg-accent/10",  iconColor: "text-accent",  accentBar: "bg-accent" },
+  {
+    icon: Globe,
+    title: "Business & Marketing Websites",
+    description:
+      "Fast, credible sites for service businesses — built to load in under two seconds on a phone and to rank for the services they sell.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "SEO & schema markup"],
+    proof: proofOf("software-house-website"),
+    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
+  },
+  {
+    icon: Code,
+    title: "Custom Web Applications",
+    description:
+      "Data-driven applications with real user roles and real workflows — most recently a hospital platform where reception, doctors and administrators share one patient record.",
+    stack: ["React", "TypeScript", "Node.js", "MongoDB"],
+    proof: proofOf("hospital-management-system"),
+    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
+  },
+  {
+    icon: BarChart3,
+    title: "Dashboards & Internal Tools",
+    description:
+      "Admin panels and reporting screens for the people who run the business — order, inventory and payment views that stay readable as the numbers move.",
+    stack: ["React", "Node.js", "Socket.io", "MongoDB"],
+    proof: proofOf("ecommerce-dashboard"),
+    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
+  },
+  {
+    icon: Database,
+    title: "APIs & Backend Development",
+    description:
+      "REST APIs, authentication and database schema design — the half of a product nobody notices until it's slow or it leaks something it shouldn't.",
+    stack: ["Node.js", "Express", "MongoDB", "REST"],
+    proof: proofOf("restful-api-service"),
+    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
+  },
+  {
+    icon: Zap,
+    title: "Performance & Core Web Vitals",
+    description:
+      "Fixing LCP, INP and CLS on a site you already have, measured on real mobile connections rather than a desktop lab score.",
+    stack: ["Core Web Vitals", "Lighthouse", "Bundle analysis", "Caching"],
+    proof: proofOf("software-house-website"),
+    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
+  },
+  {
+    icon: FileText,
+    title: "Content & Publishing Platforms",
+    description:
+      "Blogs, portfolios and content sites where publishing a post means writing a file — not editing components or holding a deploy pipeline in your head.",
+    stack: ["Next.js", "MDX", "React", "TypeScript"],
+    proof: proofOf("portfolio-blog-platform"),
+    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
+  },
 ];
 
 interface ServicesProps {
@@ -91,15 +169,30 @@ export const Services = ({ compactHeader = false, aboveFold = false }: ServicesP
                   {svc.description}
                 </p>
 
-                {/* Features */}
+                {/* Stack — reassurance for a technical reader, one level down
+                    from the outcome the card leads with. */}
                 <ul className="space-y-3 pt-5 border-t border-border/40">
-                  {svc.features.map(f => (
-                    <li key={f} className="flex items-center gap-3 text-xs text-muted-foreground">
+                  {svc.stack.map(item => (
+                    <li key={item} className="flex items-center gap-3 text-xs text-muted-foreground">
                       <CheckCircle2 className={`h-4 w-4 ${svc.iconColor} opacity-70 flex-shrink-0`} />
-                      {f}
+                      {item}
                     </li>
                   ))}
                 </ul>
+
+                {/* Proof. The whole point of the card: a claim and the thing
+                    that backs it, without a second click to find out. */}
+                <Link
+                  to={svc.proof.href}
+                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold
+                    text-primary hover:underline underline-offset-4 group/proof"
+                >
+                  <span>
+                    Case study:{" "}
+                    <span className="font-bold">{svc.proof.title}</span>
+                  </span>
+                  <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 group-hover/proof:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
           ))}
