@@ -28,6 +28,8 @@ import { API_BASE_URL } from "@/lib/api";
 export { API_BASE_URL };
 
 import { schemaImage } from "@/lib/images";
+import { SITE_URL } from "@/lib/seo";
+import { ogImageSize } from "@/lib/site.config.mjs";
 
 export function normalizeProjectId(id: unknown): string {
   if (typeof id === "string") return id;
@@ -214,10 +216,18 @@ export function projectSchemaNode(
     description: project.subtitle ?? project.fullDescription ?? project.description,
     url: pageUrl,
     mainEntityOfPage: pageUrl,
+    // These are case studies, not blog posts or products. Saying so costs one
+    // line and tells an answer engine what kind of page it is looking at.
+    genre: "Case Study",
     // schemaImage, not the raw card URL: the card is served at 800px wide and
     // Google wants >=1200px before it will consider an image for large-image
     // treatment. Same photo, same crop, larger request.
-    ...(project.image ? { image: schemaImage(project.image) } : {}),
+    //
+    // Emitted as an ImageObject with declared dimensions where the URL carries
+    // them, because a bare string makes a consumer fetch the file to discover
+    // whether it clears the 1200px bar. Falls back to the plain URL when the
+    // size can't be read rather than asserting one — same rule as og:image.
+    ...(project.image ? { image: schemaImageNode(project.image) } : {}),
     keywords: project.technologies.join(", "),
     creator: opts.creator,
     ...(project.completedAt ? { dateCreated: project.completedAt } : {}),
@@ -242,6 +252,19 @@ export function projectSchemaNode(
       : {}),
     inLanguage: "en",
   };
+}
+
+/**
+ * A project image as an ImageObject with real dimensions, or the plain URL
+ * when they can't be determined. See the call site for why.
+ */
+function schemaImageNode(image: string): object | string {
+  const url = schemaImage(image);
+  if (!url) return image;
+  const size = ogImageSize(url, SITE_URL);
+  return size
+    ? { "@type": "ImageObject", url, width: size.width, height: size.height }
+    : url;
 }
 
 /**

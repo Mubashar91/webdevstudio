@@ -9,8 +9,9 @@ import {
   breadcrumbNodeFor,
   canonicalPath,
   faqNodeFor,
-  pageGraph,
+  pageGraphFor,
   SITE_NAME,
+  withBrand,
 } from "@/lib/seo";
 import { faqsOf, findBlogPost, readTimeOf, wordCountOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
@@ -74,16 +75,30 @@ const BlogDetail = () => {
   const faqs = post ? faqsOf(post) : [];
 
   useSEO({
-    title: post
-      ? `${post.title} | ${SITE_NAME}`
-      : `Article Not Found | ${SITE_NAME}`,
+    // withBrand, matching the prerendered <title>. Building the branded title
+    // by hand here skipped the 62-character rule, so a long post shipped a
+    // standalone title in the static HTML and gained " | WebDevStudio" the
+    // moment React hydrated.
+    title: post ? withBrand(post.title) : `Article Not Found | ${SITE_NAME}`,
     description: post?.excerpt ?? "The requested blog article could not be found.",
     canonical: slug ? canonicalPath(`/blogs/${slug}`) : undefined,
     ogImage: schemaImage(post?.coverImage),
     ogType: "article",
     noindex: !post,
     structuredData: post
-      ? pageGraph("/blogs", [
+      ? pageGraphFor(
+          {
+            // This page's own identity, not the listing's — see pageGraphFor.
+            // These four fields mirror DYNAMIC_ROUTES in entry-server.tsx
+            // exactly, so the prerendered graph and this one describe the same
+            // page.
+            path: `/blogs/${post.slug}`,
+            title: withBrand(post.title),
+            description: post.excerpt,
+            image: schemaImage(post.coverImage),
+            lastmod: post.updatedAt ?? post.publishedAt,
+          },
+          [
           {
             "@type": "BlogPosting",
             "@id": `${canonicalPath(`/blogs/${post.slug}`)}#article`,
@@ -119,10 +134,11 @@ const BlogDetail = () => {
             { name: "Blog", path: "/blogs" },
             { name: post.title, path: `/blogs/${post.slug}` },
           ]),
-          // Mirrors the FAQPage the prerenderer emits for posts with an
-          // on-page FAQ section, so hydration doesn't drop it.
-          ...(faqs.length ? [faqNodeFor(faqs)] : []),
-        ])
+            // Mirrors the FAQPage the prerenderer emits for posts with an
+            // on-page FAQ section, so hydration doesn't drop it.
+            ...(faqs.length ? [faqNodeFor(faqs)] : []),
+          ]
+        )
       : undefined,
   });
 

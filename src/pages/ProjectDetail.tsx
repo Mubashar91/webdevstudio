@@ -7,7 +7,7 @@ import {
   breadcrumbNodeFor,
   canonicalPath,
   FOUNDER_NAME,
-  pageGraph,
+  pageGraphFor,
   SITE_NAME,
   withBrand,
 } from "@/lib/seo";
@@ -180,17 +180,31 @@ const ProjectDetail = () => {
     // named human. Emitting the CreativeWork on its own left it attributed to
     // an @id that existed nowhere on the page after hydration.
     structuredData: project
-      ? pageGraph(projectPath(project), [
-          projectSchemaNode(project, {
-            url: canonicalPath,
-            creator: { "@id": `${canonicalPath("/")}#founder` },
-          }),
-          breadcrumbNodeFor([
-            { name: "Home", path: "/" },
-            { name: "Projects", path: "/projects" },
-            { name: project.title, path: projectPath(project) },
-          ]),
-        ])
+      ? pageGraphFor(
+          {
+            // pageGraph() looked this path up in ROUTES, which has no entry
+            // for a case study — so findRoute() returned undefined and the
+            // hydrated graph shipped with no WebPage node at all, leaving the
+            // BreadcrumbList orphaned. pageGraphFor() builds it from the
+            // project's own fields, mirroring DYNAMIC_ROUTES.
+            path: projectPath(project),
+            title: withBrand(project.seoTitle ?? project.title),
+            description: project.description,
+            image: schemaImage(projectImageUrl(project.image)),
+            lastmod: project.updatedAt,
+          },
+          [
+            projectSchemaNode(project, {
+              url: canonicalPath,
+              creator: { "@id": `${canonicalPath("/")}#founder` },
+            }),
+            breadcrumbNodeFor([
+              { name: "Home", path: "/" },
+              { name: "Projects", path: "/projects" },
+              { name: project.title, path: projectPath(project) },
+            ]),
+          ]
+        )
       : undefined,
   });
 
@@ -478,6 +492,27 @@ const ProjectDetail = () => {
                 web development services
               </Link>
               , with fixed prices agreed before anything starts.
+            </p>
+
+            {/* Related reading. A visitor who has just read a case study is
+                usually mid-decision on cost or on who to hire — these are the
+                two questions that follow, and answering them here keeps the
+                reader on the site instead of back on Google. */}
+            <p className="mt-2 text-sm text-muted-foreground">
+              Related:{" "}
+              <Link
+                to="/blogs/custom-web-application-cost"
+                className="text-primary hover:underline underline-offset-4"
+              >
+                what a custom web application costs
+              </Link>{" "}
+              ·{" "}
+              <Link
+                to="/blogs/how-to-choose-a-web-development-company"
+                className="text-primary hover:underline underline-offset-4"
+              >
+                how to choose a web development company
+              </Link>
             </p>
           </div>
         </section>

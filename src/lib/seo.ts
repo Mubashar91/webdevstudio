@@ -162,6 +162,45 @@ export function pageGraph(
   return buildGraph(nodes);
 }
 
+/**
+ * pageGraph() for pages that aren't in ROUTES — blog posts and case studies,
+ * whose metadata lives in their own data module.
+ *
+ * Fixes a Search Console error reported 2026-08-11: "Breadcrumbs — missing
+ * field itemListElement", on /blogs/mern-stack-architecture-guide and
+ * /blogs/typescript-patterns-for-react.
+ *
+ * The cause was `pageGraph("/blogs", …)` on an article page. findRoute() then
+ * returned the LISTING route, so the hydrated graph carried the listing's
+ * WebPage node — wrong url, wrong name, wrong description for the URL it was
+ * sitting on — and that node's `breadcrumb` pointed at
+ * `/blogs#breadcrumb`, while the BreadcrumbList actually in the graph was
+ * `/blogs/<slug>#breadcrumb`. A reference to an @id that appears nowhere makes
+ * Google materialise the referenced node from the reference alone: a
+ * BreadcrumbList with an @id and no itemListElement, which is exactly what it
+ * flagged as invalid.
+ *
+ * The prerendered HTML was always correct; this only appeared after Googlebot
+ * rendered the page and useSEO() replaced the build's graph with this one —
+ * which is why the two graphs must be built from the same fields.
+ */
+export function pageGraphFor(
+  route: {
+    path: string;
+    title: string;
+    description: string;
+    image?: string;
+    lastmod?: string;
+  },
+  extraNodes: object[] = []
+): object {
+  return buildGraph([
+    ...organizationGraph(SITE_URL),
+    webPageNode(SITE_URL, route),
+    ...extraNodes,
+  ]);
+}
+
 /** Bare breadcrumb node (no @context) for embedding inside pageGraph. */
 export function breadcrumbNodeFor(
   items: { name: string; path: string }[]

@@ -3997,6 +3997,896 @@ updates:
       },
     ],
   },
+  {
+    slug: "website-vs-social-media",
+    title: "Website vs Social Media: Why You Need Both",
+    excerpt:
+      "Why a business website still beats relying on social alone — what you don't own on a platform, what each channel is actually good at, and how they work together.",
+    coverImage:
+      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Small Business", "Marketing", "Conversion"],
+    content: [
+      {
+        type: "p",
+        text: "\"I already have Instagram and a Facebook page — why do I need a website?\" It's a fair question. Social is free, everyone is already there, and a website costs money.",
+      },
+      {
+        type: "p",
+        text: "But the framing is a trap. It isn't either/or, and treating your social profiles as a replacement for a website is one of the riskier bets a small business can make — for one reason that has nothing to do with design or features.",
+      },
+      { type: "h2", text: "The core problem: you don't own your social media" },
+      {
+        type: "p",
+        text: "On social media you are a tenant, not an owner. The platform owns the audience, the reach, and — in every practical sense — the content. That means three things:",
+      },
+      {
+        type: "list",
+        items: [
+          "**The rules change overnight.** Reach algorithms shift constantly, and the audience you spent years building can be throttled to a fraction of your followers without warning and without recourse.",
+          "**Accounts get suspended.** Sometimes by mistake, sometimes with no meaningful appeal, and every follower and post can go with it.",
+          "**Platforms decline.** Audiences migrate and networks fade. If your entire presence lives on one, its decline is your decline.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Your website is the opposite: a domain, content and audience data you own outright. No algorithm decides who sees it and nobody can suspend it on a whim. Rented versus owned is the whole argument, and everything below is a consequence of it.",
+      },
+      { type: "h2", text: "What a website does that social can't" },
+      { type: "h3", text: "It's your credibility check" },
+      {
+        type: "p",
+        text: "People who find you on social routinely search for your website before they buy, specifically to confirm you're a real business. In 2026, no website reads the way no phone number would have read thirty years ago — not a deliberate choice, just a gap someone else's competitor doesn't have.",
+      },
+      { type: "h3", text: "It's built to convert, not to hold attention" },
+      {
+        type: "p",
+        text: "Social feeds are designed to keep people on the platform, scrolling. That is the product. Your website is designed around your goals instead: one clear action per page, service pages, a booking flow, a checkout. It's the only sales tool in your stack that isn't optimised for somebody else's ad revenue.",
+      },
+      { type: "h3", text: "It's what shows up in a search" },
+      {
+        type: "p",
+        text: "When somebody searches for your service and your town, a website can rank for it. Social profiles rarely surface for those searches, and when they do they don't present the offer the way a purpose-built page does. Search traffic is people actively looking to buy — the highest-intent audience you'll ever get, and social alone leaves you invisible to it.",
+      },
+      { type: "h3", text: "It's structured, and it keeps" },
+      {
+        type: "p",
+        text: "A website holds service pages, prices, case studies, FAQs and a blog, organised so somebody researching you finds what they need. Social posts are ephemeral by design: a good post is buried within days, and there's no structure at all for a buyer doing homework before they call you.",
+      },
+      { type: "h2", text: "What social does that a website can't" },
+      {
+        type: "p",
+        text: "This isn't an argument against social. It's an argument against relying on it alone, and the distinction matters because social is genuinely better than a website at several things:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Discovery** — it puts you in front of people who were never searching for you",
+          "**Reach** — one post can travel further than a year of your website traffic",
+          "**Real-time contact** — comments and DMs happen where people already are",
+          "**Personality** — behind-the-scenes content builds trust that a services page can't",
+          "**No build required** — you can start today, for nothing",
+        ],
+      },
+      {
+        type: "p",
+        text: "Social is an excellent top-of-funnel engine. Its weakness is everything after the discovery, which is exactly where a website takes over.",
+      },
+      { type: "h2", text: "The setup that works: both, doing different jobs" },
+      {
+        type: "list",
+        items: [
+          "**Social attracts.** It's where people first come across you, through content, ads and shares.",
+          "**The website converts.** You send that attention somewhere structured, credible and built around one action.",
+          "**The website owns the relationship.** Email addresses and enquiries land somewhere a platform can't take away.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Social is the window on a busy street; the website is the shop. The window pulls people in, the shop is where business actually happens — and where you hold the keys. If the shop isn't converting the people the window sends, that's a separate and very fixable problem: [why your website isn't getting leads](/blogs/website-not-getting-leads) works through the nine usual causes.",
+      },
+      { type: "h2", text: "The test that settles it" },
+      {
+        type: "p",
+        text: "Imagine your main platform banned your account tomorrow, or shut down entirely.",
+      },
+      {
+        type: "list",
+        items: [
+          "**If your business survives** — because customers can still find you on Google, reach your site and contact you directly — you've built on ground you own.",
+          "**If your business effectively disappears** with the account, you built on rented land, and the landlord just changed the locks.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Every business should be able to answer that the first way. A website is what makes the first answer possible, and it's the only thing that does.",
+      },
+      { type: "h2", text: "\"But I'm just a small local business\"" },
+      {
+        type: "p",
+        text: "Small and local is where a website earns its keep fastest. Local customers search constantly — a service and a suburb, \"open now\", \"near me\" — and those searches go to websites, not profiles.",
+      },
+      {
+        type: "p",
+        text: "It doesn't need to be expensive. It needs to exist, load fast on a phone, and say what you do, where you work and how to reach you. A focused five-page site does that, and it keeps doing it while you sleep. What that costs is set out on the [services page](/services) — and if you're weighing it against a rebuild, [does your website need a developer or just a few fixes](/blogs/does-my-website-need-a-developer) is the honest version of that question.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Do I need a website if I have social media?" },
+      {
+        type: "p",
+        text: "Yes, because they do different jobs. Social is where people discover you; a website is where they check you're real, find what they need, and get in touch. It's also the only part of your online presence you own — a suspended account or an algorithm change can't take it away.",
+      },
+      { type: "h3", text: "Can a Facebook page replace a business website?" },
+      {
+        type: "p",
+        text: "Not safely. A Facebook page can't rank properly for the searches that produce buyers, can't be structured around your services, and can be restricted or removed by a platform whose decisions you have no say in. It's a good front door and a poor foundation.",
+      },
+      { type: "h3", text: "Is social media better than a website for getting customers?" },
+      {
+        type: "p",
+        text: "Better at discovery, worse at conversion. Social puts you in front of people who weren't looking for you; a website converts people who were. Businesses that do well run both and send the traffic one way — social to site, not the reverse.",
+      },
+      { type: "h3", text: "What happens to my customers if my social account is banned?" },
+      {
+        type: "p",
+        text: "If your only presence is that account, they lose the ability to find you and you lose the ability to contact them. If you've been sending people to a website and collecting enquiries or emails there, you still have both. That's the practical reason the ownership argument matters.",
+      },
+      { type: "h3", text: "How much of my marketing should be website versus social?" },
+      {
+        type: "p",
+        text: "Treat them as sequential rather than competing. Social does the reaching, the website does the converting, and the split of your effort follows whichever is currently the weaker link. Plenty of traffic and no enquiries is a website problem; a good website nobody visits is a social and search problem.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "If you're running on social alone, the first version doesn't have to be ambitious. A handful of pages that load fast, say what you do, and give people a way to contact you will outperform a profile for every buyer who was actually ready to spend.",
+      },
+      {
+        type: "p",
+        text: "If you'd like to know what that would take for your business — or whether you need one at all yet — [get in touch](/contact), and you can see what I build on the [projects page](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "business-website-cost-2026",
+    title: "How Much Does a Business Website Cost in 2026?",
+    excerpt:
+      "A 2026 breakdown of business website costs in USD — templates, custom builds and web apps — with real price bands and what actually drives the number.",
+    coverImage:
+      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Website Cost", "Small Business", "Hiring"],
+    content: [
+      {
+        type: "p",
+        text: "The honest answer is anywhere from $0 to $150,000+. That range is useless to you, so this breaks the cost into tiers you can map to your own situation — with real numbers, what sits behind each price, and where people quietly overpay.",
+      },
+      {
+        type: "p",
+        text: "Figures here are USD and describe the international market. If you're buying in New Zealand, [what a website costs in New Zealand](/blogs/website-cost-new-zealand-2026) has the local numbers in NZD excluding GST, and my own fixed prices are on the [services page](/services) — they sit below the market bands below, because a solo developer carries none of the overhead those bands are averaging.",
+      },
+      { type: "h2", text: "The short answer: five price tiers" },
+      {
+        type: "table",
+        headers: ["Tier", "Typical 2026 cost", "Who it's for"],
+        rows: [
+          ["DIY builder (Wix, Squarespace)", "$0–$500/yr", "Solo founders testing an idea"],
+          ["Template + customisation", "$500–$3,000", "Small businesses that need to look credible fast"],
+          ["Semi-custom (freelancer)", "$3,000–$12,000", "Established SMBs wanting a distinct, fast site"],
+          ["Fully custom (freelancer or studio)", "$12,000–$40,000", "Brands with specific UX, integrations or content needs"],
+          ["Custom web application", "$30,000–$150,000+", "Businesses where the site is the product"],
+        ],
+        caption: "USD, international market rates.",
+      },
+      {
+        type: "p",
+        text: "Most small-to-mid businesses land in the **$3,000–$12,000** band, and that's the tier worth the most attention, because it's where the \"cheap versus worth it\" decision actually gets made.",
+      },
+      { type: "h2", text: "What you're actually paying for" },
+      {
+        type: "p",
+        text: "Price isn't driven by page count. It's driven by four things:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Design originality** — a template costs a tenth of a bespoke design, because somebody already did the hard part.",
+          "**Custom functionality** — booking systems, member logins, dashboards and integrations are where the hours pile up.",
+          "**Content** — copywriting, photography and structured data are often the hidden half of a budget.",
+          "**Who does the work** — a solo senior developer, a small studio and a forty-person agency price the same site very differently.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Keep those four in mind and every quote you receive suddenly makes sense.",
+      },
+      { type: "h2", text: "Tier 1: DIY website builders — $0 to $500 a year" },
+      {
+        type: "p",
+        text: "Wix, Squarespace, Framer and Shopify let you ship a site with no developer. In 2026 a polished Squarespace business site runs roughly **$16–$49 a month**, plus a domain at $12–$20 a year.",
+      },
+      {
+        type: "p",
+        text: "**When it's the right call:** you're validating an idea, you have more time than money, and the site is a brochure rather than a machine.",
+      },
+      {
+        type: "p",
+        text: "**The catch:** you own the content, not the platform. Performance, SEO control and custom behaviour are capped by what the builder allows. Businesses routinely outgrow this tier within 12–24 months and pay again to migrate off it — so if you already know you'll need custom features, skipping this tier saves you a rebuild. The trade-offs in full are in [WordPress vs Wix vs Custom](/blogs/wordpress-vs-wix-vs-custom-website).",
+      },
+      { type: "h2", text: "Tier 2: Template plus customisation — $500 to $3,000" },
+      {
+        type: "p",
+        text: "Here a developer or designer takes a premium theme — WordPress, Webflow, Shopify — and adapts it to your brand: your colours, your copy, your logo, a few layout changes. You get something that looks intentional without paying for original design.",
+      },
+      {
+        type: "p",
+        text: "What drives the price up inside this tier is custom copy, professional photos, and any plugin that touches payments or bookings. A five-page WordPress site on a customised theme with your own content is a solid **$1,500–$3,000** job in 2026.",
+      },
+      {
+        type: "p",
+        text: "**The honest trade-off:** template sites can look seen-before, and heavy plugin stacks get slow and fragile over time. Budget for maintenance from the start — [annual website maintenance costs](/blogs/annual-website-maintenance-costs-nz) covers what that actually runs to.",
+      },
+      { type: "h2", text: "Tier 3: Semi-custom sites — $3,000 to $12,000" },
+      {
+        type: "p",
+        text: "This is the band most established small and mid-sized businesses should be in. You get a custom design built to your brand, hand-coded or built on a modern stack, fast load times, real SEO structure, and one or two genuinely custom features — a booking flow, a filterable portfolio, a lightweight CRM hook.",
+      },
+      {
+        type: "p",
+        text: "What the money buys that Tier 2 doesn't:",
+      },
+      {
+        type: "list",
+        items: [
+          "A design nobody else has",
+          "Performance that passes Core Web Vitals, which affects both conversion and ranking",
+          "Clean, accessible, maintainable code you actually own",
+          "Direct access to the person building it, with no account manager in the middle",
+        ],
+      },
+      {
+        type: "p",
+        text: "A realistic 2026 range: a **7–12 page semi-custom marketing site with one or two custom features lands around $4,000–$9,000**. Add e-commerce or a login area and you move toward the top of the band.",
+      },
+      { type: "h2", text: "Tier 4: Fully custom sites — $12,000 to $40,000" },
+      {
+        type: "p",
+        text: "At this tier everything is bespoke: a custom design system, custom animation, complex content architecture, multiple integrations across CRM, email, analytics and payments, and often a headless CMS so your team edits content without touching code.",
+      },
+      {
+        type: "p",
+        text: "**Who needs it:** brands where the website is a primary sales and credibility engine, businesses with large or frequently changing content, and companies with specific compliance or accessibility requirements.",
+      },
+      {
+        type: "p",
+        text: "This is where agency and freelancer pricing diverge most. A mid-size agency might quote **$35,000–$60,000** for the same scope a senior solo developer or small studio delivers for **$15,000–$30,000** — largely because you're paying for overhead rather than extra quality. That isn't a knock on agencies; it's just what you're buying.",
+      },
+      { type: "h2", text: "Tier 5: Custom web applications — $30,000 to $150,000+" },
+      {
+        type: "p",
+        text: "When your \"website\" is really software — a customer portal, a booking-and-payments platform, a dashboard, a SaaS product — you've crossed from website into application, and pricing changes entirely. There's a full breakdown in [custom web application cost](/blogs/custom-web-application-cost).",
+      },
+      {
+        type: "p",
+        text: "Ballpark: a focused MVP runs **$30,000–$70,000**, and a production-grade multi-user platform with auth, roles, billing and integrations runs **$80,000–$150,000+**. The variable isn't design — it's the number of user flows, the data complexity, and how much has to be genuinely custom rather than assembled from existing services.",
+      },
+      { type: "h2", text: "The costs nobody quotes you upfront" },
+      {
+        type: "p",
+        text: "The build is a one-time number. The site is an ongoing one. Budget for:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Domain** — around $12–$20 a year",
+          "**Hosting** — $0–$20 a month for a marketing site on Vercel, Netlify or managed WordPress; more for applications",
+          "**SSL certificate** — usually free via Let's Encrypt, and normally bundled",
+          "**Maintenance** — $50–$500 a month depending on complexity: updates, security patches, backups, small changes",
+          "**Content updates** — either your time or a retainer",
+        ],
+      },
+      {
+        type: "p",
+        text: "The common mistake is spending $8,000 on a good site and then letting it rot because nobody budgeted the $100 a month to keep it healthy. Plan for the second year on day one.",
+      },
+      { type: "h2", text: "Freelancer vs agency vs DIY" },
+      {
+        type: "list",
+        items: [
+          "**DIY builder** — cheapest upfront, most expensive in your time, hardest to scale",
+          "**Agency** — most process and hand-holding, highest price, slowest, and you rarely talk to whoever is actually building",
+          "**Solo senior developer or small studio** — direct communication, comparable output, roughly half the price, with the trade-off that you're working with one person's bandwidth",
+        ],
+      },
+      {
+        type: "p",
+        text: "For most SMBs the solo route hits the best value-to-quality ratio, provided the developer is genuinely senior and communicates well. Verifying that is its own job — [how to choose a web development company](/blogs/how-to-choose-a-web-development-company) is the checklist.",
+      },
+      { type: "h2", text: "How to set your budget" },
+      {
+        type: "list",
+        items: [
+          "**Decide what the site must do** — brochure, lead generation, e-commerce or application. That picks your tier.",
+          "**Count the custom features.** Each real feature — booking, login, payments, dashboard — adds cost. Static pages barely do.",
+          "**Add 15–20% for content and photography** if you don't already have it.",
+          "**Add year-one running costs** — hosting plus maintenance.",
+          "**Get two or three quotes** and compare scope, not price. A $4,000 quote and a $9,000 quote are usually building two different things.",
+        ],
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does a small business website cost in 2026?" },
+      {
+        type: "p",
+        text: "Most small businesses pay $3,000–$12,000 for a well-built semi-custom site, plus a few hundred dollars a year to run it. Template work sits at $500–$3,000, and DIY builders run $0–$500 a year. Below $500 you're buying a template with no copywriting and no tracking.",
+      },
+      { type: "h3", text: "Why do website quotes vary so much for the same brief?" },
+      {
+        type: "p",
+        text: "Four things move the number: how original the design is, how much custom functionality is involved, who writes the content, and who does the work. A forty-person agency and a solo senior developer price identical scope very differently, and most of that gap is overhead rather than quality.",
+      },
+      { type: "h3", text: "Is a cheap website worth it?" },
+      {
+        type: "p",
+        text: "It is if your site is genuinely a brochure and you know that's all you need. It isn't if you'll need custom features within a year, because you'll pay twice — once for the cheap build and again for the migration off it. Buy the tier your goals need, not the one a salesperson talks you into.",
+      },
+      { type: "h3", text: "What ongoing costs should I expect after launch?" },
+      {
+        type: "p",
+        text: "A domain at $12–$20 a year, hosting from nothing to $20 a month for a marketing site, and maintenance at $50–$500 a month depending on complexity. SSL should be free. Budget roughly 15–20% of the build cost annually and you won't be caught out.",
+      },
+      { type: "h3", text: "Should I hire a freelancer or an agency?" },
+      {
+        type: "p",
+        text: "A senior freelancer or small studio for most business sites and focused applications; an agency when you genuinely need brand strategy, multi-channel campaigns or team depth. The freelancer route trades capacity for cost and directness, not quality.",
+      },
+      { type: "h2", text: "The bottom line" },
+      {
+        type: "p",
+        text: "In 2026 a credible small business website costs most companies **$3,000–$12,000** to build well, plus a few hundred a year to run. Go cheaper only if the site is genuinely just a brochure; go more custom only when a real feature or brand requirement demands it.",
+      },
+      {
+        type: "p",
+        text: "If you want a straight answer on which tier fits your business and a fixed-scope, fixed-price quote, [get in touch](/contact) — and you can see what the work looks like on the [projects page](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "signs-your-business-needs-a-new-website",
+    title: "10 Signs Your Business Needs a New Website",
+    excerpt:
+      "Ten signs your business needs a new website in 2026 — from slow load times to mobile failures — each with a test you can run yourself in ten minutes.",
+    coverImage:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Small Business", "Core Web Vitals", "Website Redesign"],
+    content: [
+      {
+        type: "p",
+        text: "Most businesses keep a website years past its expiry date — not because it's working, but because replacing it feels like a hassle. Meanwhile a dated site quietly costs leads, ranking and credibility every day.",
+      },
+      {
+        type: "p",
+        text: "Here are ten signs, each with a plain test you can run yourself in the next ten minutes. Nearly every rebuild client hits three or more before they call. Four or more and it's time.",
+      },
+      { type: "h2", text: "1. It's slow to load" },
+      {
+        type: "p",
+        text: "Speed is the single biggest silent conversion killer. Users expect a page to be usable in **under 2.5 seconds**, every extra second measurably increases bounce rate, and Google uses Core Web Vitals as a ranking signal.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** run your homepage through [PageSpeed Insights](https://pagespeed.web.dev/). A mobile score below 50, or a Largest Contentful Paint over 2.5 seconds, is a sign — and usually a symptom of a bloated theme or unoptimised images. [Why your website is slow](/blogs/why-is-my-website-slow) covers the usual causes.",
+      },
+      { type: "h2", text: "2. It doesn't work properly on mobile" },
+      {
+        type: "p",
+        text: "More than half of web traffic is mobile, and Google indexes the mobile version of your site first. If yours was built before responsive design was standard — or was only ever checked on a desktop — it's failing the majority of your visitors.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** open the site on your phone. Do you have to pinch-zoom? Do buttons sit too close together? Does the menu break? Any yes means you're losing mobile customers before they read a word.",
+      },
+      { type: "h2", text: "3. It looks like it was built a decade ago" },
+      {
+        type: "p",
+        text: "Design dates faster than content. Tiny text, cramped layouts, stock photos everyone has seen, gradients and bevels from a past era — these make visitors quietly question whether your business is current. Design is a proxy for trust.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** put your homepage next to your two best competitors. If yours looks like the oldest of the three, prospects are making the same comparison and drawing conclusions from it.",
+      },
+      { type: "h2", text: "4. It's not bringing in leads or sales" },
+      {
+        type: "p",
+        text: "A website has a job. If yours gets traffic but no calls, form fills or purchases, it's a brochure that doesn't sell. The usual culprits are no clear call to action, buried contact details, weak landing pages, and no trust signals at all.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** can a first-time visitor tell what you do, why you're credible, and how to contact you — in under ten seconds, without scrolling? If not, no ad budget will fix it. [Why your website isn't getting leads](/blogs/website-not-getting-leads) works through the nine causes in order.",
+      },
+      { type: "h2", text: "5. You can't update it yourself" },
+      {
+        type: "p",
+        text: "If changing a phone number or adding a post means emailing a developer and waiting three days, the site is a liability. Modern builds ship with a CMS your team can edit safely without touching code.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** try to update one piece of text right now. If you can't, or you're afraid you'll break something, you've outgrown the current build.",
+      },
+      { type: "h2", text: "6. It isn't secure" },
+      {
+        type: "p",
+        text: "If the address bar says \"Not Secure\", you're actively repelling customers and being penalised by Google. HTTPS has been the baseline for years, and its absence signals neglect of everything else too.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** look at your URL. Does it start with https and show a padlock? No padlock is an immediate red flag, especially if you collect any form data at all.",
+      },
+      { type: "h2", text: "7. Bounce rate is high and time on site is low" },
+      {
+        type: "p",
+        text: "If analytics show most visitors leaving within seconds, the site is making a bad first impression through speed, confusion or irrelevance. People arrive, don't find what they expected, and go.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** check your analytics. A bounce rate consistently above roughly 70% on key pages, paired with average sessions under 30 seconds, says the site isn't holding attention long enough to convert anyone.",
+      },
+      { type: "h2", text: "8. It doesn't reflect what your business does now" },
+      {
+        type: "p",
+        text: "Businesses evolve and websites often don't. If yours still pushes a service you've dropped, omits your best new offering, or targets a market you've moved past, it's misdirecting the exact prospects you want.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** read your homepage as a stranger. Does it describe the business you run today, or the one you ran three years ago? A mismatch confuses visitors and search engines equally.",
+      },
+      { type: "h2", text: "9. It's a nightmare to maintain" },
+      {
+        type: "p",
+        text: "Sites built on sprawling plugin stacks and abandoned themes decay. Plugins conflict, updates break layouts, and every fix risks a new bug. If your developer sighs whenever you request a change, the build is the problem — not the request.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** how often does something break on its own — a form stops sending, a layout shifts, a page 404s? Recurring breakage means the foundation is unstable, and patching costs more over time than rebuilding clean.",
+      },
+      { type: "h2", text: "10. It's invisible on Google" },
+      {
+        type: "p",
+        text: "If you don't appear when people search your service and your city, the site isn't doing SEO's basic job. Older sites frequently lack the technical foundations search engines now expect: clean semantic structure, fast performance, structured data, proper meta tags and a logical internal link map.",
+      },
+      {
+        type: "p",
+        text: "**Test it yourself:** search your service plus your city in an incognito window. Nowhere on page one while competitors are? That's foundational, not a plugin you can bolt on — and [why your website doesn't show up on Google](/blogs/why-website-not-showing-on-google) explains what to check first.",
+      },
+      { type: "h2", text: "Redesign or rebuild? How to tell" },
+      {
+        type: "p",
+        text: "Not every failing site needs to be torn down. The rule of thumb:",
+      },
+      {
+        type: "list",
+        items: [
+          "**A redesign** — a new look on the same foundation — makes sense if the site is only dated visually but is fast, secure, mobile-friendly and editable.",
+          "**A rebuild** — a new foundation — is right when the problems are structural: slow, insecure, unmaintainable, or built on a stack that can't support what you need next.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Most sites hitting four or more of the signs above need a rebuild, because the issues live in the foundation rather than the paint. Spending redesign money on a broken foundation just buys a prettier version of the same problems. [Does your website need a developer or just a few fixes](/blogs/does-my-website-need-a-developer) takes that decision apart properly, and [website redesign cost in New Zealand](/blogs/website-redesign-cost-new-zealand) has the numbers.",
+      },
+      { type: "h2", text: "What a modern rebuild fixes at once" },
+      {
+        type: "list",
+        items: [
+          "**Fast by default** — modern frameworks and optimised assets hit Core Web Vitals without heroics",
+          "**Mobile-first** — designed for the phone, scaled up to desktop",
+          "**Secure** — HTTPS, current dependencies, no abandoned plugins",
+          "**Editable** — a CMS your team can actually use",
+          "**Findable** — semantic HTML, structured data and SEO structure built in from the start",
+        ],
+      },
+      {
+        type: "p",
+        text: "The point isn't chasing trends. It's building on a foundation that won't hit these same ten signs again in two years.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How do I know if my business needs a new website?" },
+      {
+        type: "p",
+        text: "Run the ten tests above. One or two signs is a repair job; four or more usually means the problems are structural and a rebuild is cheaper than patching. Speed, mobile and security failures matter more than how dated the design looks.",
+      },
+      { type: "h3", text: "How often should a business website be redesigned?" },
+      {
+        type: "p",
+        text: "There's no fixed interval, and age alone isn't a reason. A fast, secure, editable site that still describes your current business can run for years. Rebuild when the foundation stops supporting what you need, not on a schedule.",
+      },
+      { type: "h3", text: "Is a slow website really losing me customers?" },
+      {
+        type: "p",
+        text: "Yes. Google treats a Largest Contentful Paint under 2.5 seconds as the good threshold, and every extra second measurably raises bounce rate on mobile. Visitors leaving before the page renders never read your copy or see your call to action.",
+      },
+      { type: "h3", text: "Should I redesign or rebuild my website?" },
+      {
+        type: "p",
+        text: "Redesign if the site is only dated visually but is fast, secure, mobile-friendly and editable. Rebuild when the problems are structural — performance you can't fix, a platform you can't secure, or a stack that can't support what's next.",
+      },
+      { type: "h3", text: "What does it cost to replace a business website?" },
+      {
+        type: "p",
+        text: "Most small businesses land between $3,000 and $12,000 for a well-built replacement, depending on how custom the design is and how much functionality is involved. A light refresh on a sound foundation costs considerably less.",
+      },
+      { type: "h2", text: "The bottom line" },
+      {
+        type: "p",
+        text: "Your website is often the first and sometimes only impression a prospect gets. If it's slow, dated, insecure, invisible or not converting, it isn't a neutral asset — it's a leak. Four or more red flags means the site is costing you more than a rebuild would.",
+      },
+      {
+        type: "p",
+        text: "If you want an honest assessment of whether yours needs a redesign or a full rebuild, [send me the URL](/contact) and I'll tell you straight — including when the answer is neither.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-choose-a-web-development-company",
+    title: "How to Choose a Web Development Company",
+    excerpt:
+      "How to choose a web development company that won't waste your budget — the questions that reveal quality, the red flags, and freelancer vs studio vs agency.",
+    coverImage:
+      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-11",
+    tags: ["Hiring a Developer", "Small Business", "Web Development"],
+    content: [
+      {
+        type: "p",
+        text: "Choosing the wrong web development company costs you twice: once in wasted budget, and again in the rebuild you'll pay somebody else to do. Most businesses pick on price or a slick pitch, then find out too late that the code is a mess or the developer has vanished.",
+      },
+      {
+        type: "p",
+        text: "This is the practical process — the questions to ask, the red flags to spot, and how to decide between a freelancer, a studio and a large agency. I'm on the other side of these conversations constantly, so this includes the parts most vendors would rather you didn't ask about.",
+      },
+      { type: "h2", text: "First, get clear on what you actually need" },
+      {
+        type: "p",
+        text: "Before you talk to anyone, write down three things. This alone filters out half your bad-fit vendors:",
+      },
+      {
+        type: "list",
+        items: [
+          "**The goal.** A brochure site, a lead-generation machine, an e-commerce store or a web application — each needs a different kind of builder.",
+          "**The budget range.** Even a rough band lets vendors self-select. Vagueness here invites padded quotes.",
+          "**The timeline and your involvement.** Do you need it in six weeks? Will you supply content, or do you need that written too?",
+        ],
+      },
+      {
+        type: "p",
+        text: "A vendor's first questions back to you are a signal in themselves. Good ones dig into your goals and your users before quoting. Bad ones quote a number before understanding the job.",
+      },
+      { type: "h2", text: "The questions that actually reveal quality" },
+      {
+        type: "p",
+        text: "Anyone can say they're good. These surface whether they are:",
+      },
+      {
+        type: "list",
+        items: [
+          "**\"Can I see three live sites you built, and speak to those clients?\"** Live sites, not mockups. One real reference call tells you more than any portfolio page.",
+          "**\"Who specifically will write my code?\"** At agencies the person who sells is rarely the person who builds. Know who's doing the work and how senior they are.",
+          "**\"What's your stack, and why?\"** You don't need to follow the answer fully, but a good developer can explain their choices in plain language. Evasiveness is a flag.",
+          "**\"Will I own the code and all the accounts?\"** The correct answer is an immediate, unambiguous yes.",
+          "**\"What happens after launch?\"** Maintenance, bug fixes and support should be defined before you sign, not improvised afterwards.",
+          "**\"How do you handle changes to scope?\"** A clear change process protects both sides. \"We'll figure it out\" protects neither.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Take notes on how they answer, not only what they answer. Confidence backed by specifics is what you want; vague reassurance is what you're screening out.",
+      },
+      { type: "h2", text: "Red flags to walk away from" },
+      {
+        type: "list",
+        items: [
+          "**A price with no scope.** \"$2,000 for a website\" means nothing without page count, features and content. Cheap-and-vague becomes expensive-and-disappointing.",
+          "**No portfolio of live, working sites.** If they can't show real work at real URLs, there's a reason.",
+          "**They won't let you own your code, domain or hosting.** Some vendors lock clients in by keeping ownership hostage. This one is non-negotiable.",
+          "**A guaranteed #1 Google ranking.** Nobody can promise this. Anyone who does is either lying or about to use tactics that get you penalised.",
+          "**Poor communication before you've paid.** If they're slow or dismissive during the sales phase, when they should be at their most attentive, it only gets worse later.",
+          "**No contract, or a vague one.** Scope, price, timeline, ownership and support all have to be in writing.",
+        ],
+      },
+      { type: "h2", text: "The ownership question, in detail" },
+      {
+        type: "p",
+        text: "This deserves its own section because it's where businesses get trapped. When the project ends, you should walk away owning:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Your domain name** — registered in your account, not the vendor's",
+          "**Your hosting** — or at minimum full admin access and the ability to migrate",
+          "**Your source code** — the actual files, handed over, with no licence that lets anyone revoke your site",
+          "**Your content and assets** — copy, images, everything",
+        ],
+      },
+      {
+        type: "p",
+        text: "A vendor who resists any of these is building a dependency rather than a website. A good developer wants you to own your work, because it means the relationship continues by choice instead of by lock-in.",
+      },
+      { type: "h2", text: "Freelancer vs studio vs agency" },
+      {
+        type: "p",
+        text: "There's no universally best option — only the right fit for your project size and how much hand-holding you want.",
+      },
+      { type: "h3", text: "Solo freelancer or senior developer" },
+      {
+        type: "p",
+        text: "**Best for** small-to-mid business sites, semi-custom to custom builds, and anyone who values talking directly to whoever is building. **Pros:** direct communication, roughly half an agency's price for the same output, fast decisions. **Cons:** one person's bandwidth — check they're genuinely senior and reliable rather than simply cheap.",
+      },
+      { type: "h3", text: "Small studio of two to eight people" },
+      {
+        type: "p",
+        text: "**Best for** projects needing a mix of design, development and content with more capacity than a solo. **Pros:** broader skillset, some redundancy, still relatively direct. **Cons:** higher cost than a solo, and quality varies widely between studios.",
+      },
+      { type: "h3", text: "Large agency" },
+      {
+        type: "p",
+        text: "**Best for** enterprise projects, complex applications, and companies that need heavy process and account management. **Pros:** deep bench, formal process, can absorb very large scope. **Cons:** most expensive by a wide margin, slowest, and you rarely deal with your developers directly.",
+      },
+      {
+        type: "p",
+        text: "For most small and mid-sized businesses a senior solo developer or small studio delivers comparable work at a fraction of the price, with capacity rather than quality as the trade-off. Verifying seniority is what the questions above are for.",
+      },
+      { type: "h2", text: "How to compare quotes fairly" },
+      {
+        type: "p",
+        text: "When two quotes differ by thousands, they're almost never quoting the same thing. Compare on:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Scope** — exact pages, features and integrations included",
+          "**Content** — is copywriting and imagery included, or yours to supply?",
+          "**Revisions** — how many rounds before extra charges apply",
+          "**Timeline** — a realistic date, with milestones",
+          "**Post-launch** — what support is included and what costs extra",
+          "**Ownership** — confirmed in writing",
+        ],
+      },
+      {
+        type: "p",
+        text: "Line them up side by side and the expensive quote often turns out to be the complete one, while the cheap quote quietly excludes half the work. Judge total value, not the headline number — [what a business website costs](/blogs/business-website-cost-2026) sets out what each band should actually buy.",
+      },
+      { type: "h2", text: "Test them with a small first step" },
+      {
+        type: "p",
+        text: "If you're unsure, reduce the risk: start with a paid discovery session, a small landing page or a single-page prototype before committing to the full build. It costs little and tells you everything about how they communicate, how they work, and whether the output matches the pitch.",
+      },
+      {
+        type: "p",
+        text: "A good developer will welcome that. A bad one will push to lock in the whole project immediately.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "What should I ask a web development company before hiring?" },
+      {
+        type: "p",
+        text: "Ask for three live sites and a reference call, who specifically writes the code, what stack they use and why, whether you own the code and accounts, what happens after launch, and how scope changes are handled. How they answer matters as much as what they say.",
+      },
+      { type: "h3", text: "How do I know if a web developer is trustworthy?" },
+      {
+        type: "p",
+        text: "Check live work rather than portfolio images, phone a past client and ask what went wrong and how it was handled, and confirm ownership terms in writing before signing. Trustworthy vendors put scope and ownership in a contract without being pushed.",
+      },
+      { type: "h3", text: "Is a freelancer or an agency better for a website?" },
+      {
+        type: "p",
+        text: "A senior freelancer or small studio suits most business sites and focused applications, at roughly half agency pricing with direct access to the builder. An agency earns its premium on enterprise scope, heavy process needs, or when you need several specialists working in parallel.",
+      },
+      { type: "h3", text: "Who owns the website when a developer builds it?" },
+      {
+        type: "p",
+        text: "You should — domain registered in your name, full hosting access, the source code handed over, and all content and assets. Any vendor who resists is building lock-in, and that's the single most common way businesses get trapped.",
+      },
+      { type: "h3", text: "Why do two website quotes for the same brief differ so much?" },
+      {
+        type: "p",
+        text: "Because they're rarely quoting the same work. Differences hide in who writes the content, how many unique templates are built, how many revision rounds are included, and whether post-launch support and redirect mapping are in scope at all.",
+      },
+      { type: "h2", text: "The bottom line" },
+      {
+        type: "p",
+        text: "It comes down to three things: **clarity** — do they understand your goal before quoting? **Proof** — can they show real, live work and references? And **ownership** — do you walk away owning everything? Price matters, but it's the last filter rather than the first.",
+      },
+      {
+        type: "p",
+        text: "If you'd like to see live work, ask the hard questions and get a fixed-scope quote with ownership in writing, [start with a call](/contact) and judge for yourself — or look through the [projects page](/projects) first.",
+      },
+    ],
+  },
+  {
+    slug: "custom-web-application-cost",
+    title: "How Much Does a Custom Web Application Cost?",
+    excerpt:
+      "What a custom web application costs in 2026 — MVP to production ranges, the six factors that drive the price, and how to avoid overbuilding your first version.",
+    coverImage:
+      "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-11",
+    tags: ["Web App Cost", "MERN", "Hiring"],
+    content: [
+      {
+        type: "p",
+        text: "A custom web application in 2026 typically costs between **$30,000 and $150,000+** — but that range hides more than it reveals. A focused MVP and a full production platform can both be called \"a web app\" while costing wildly different amounts.",
+      },
+      {
+        type: "p",
+        text: "This breaks the number down by what actually drives it, so you can estimate your own project and avoid the two classic mistakes: underbudgeting, and overbuilding. Figures are USD international market rates; my own fixed prices are on the [services page](/services), and [how much a custom web app costs](/blogs/custom-web-app-cost-2026) covers how I quote smaller, tightly scoped builds.",
+      },
+      { type: "h2", text: "Website vs web application: why the price jumps" },
+      {
+        type: "p",
+        text: "A **website** presents information — pages, images, a contact form. A **web application** does work: users log in, data changes, actions have consequences. Dashboards, booking-and-payment platforms, customer portals, internal tools, SaaS products.",
+      },
+      {
+        type: "p",
+        text: "That difference explains the jump. A marketing site might have a dozen static pages. An application has **user flows** — sequences of screens and logic where somebody does something, and where every edge case has to be handled. What if the payment fails? What if two users edit the same record? Each flow is a small piece of software, and cost tracks the number and complexity of those flows rather than the number of pages.",
+      },
+      { type: "h2", text: "The 2026 cost tiers" },
+      {
+        type: "table",
+        headers: ["Tier", "Typical cost", "What it is"],
+        rows: [
+          ["Prototype / clickable MVP", "$8,000–$25,000", "Proves the concept; limited real functionality"],
+          ["Functional MVP", "$30,000–$70,000", "A real, usable product with core features"],
+          ["Production platform", "$80,000–$150,000", "Multi-user, roles, billing, integrations, at scale"],
+          ["Enterprise or complex SaaS", "$150,000+", "Heavy compliance, high scale, deep integrations"],
+        ],
+        caption: "USD, international market rates.",
+      },
+      {
+        type: "p",
+        text: "Most first-time app builders should be aiming at the **functional MVP** tier — enough to launch, learn and earn, without paying to build features nobody has validated yet.",
+      },
+      { type: "h2", text: "What drives the price" },
+      {
+        type: "p",
+        text: "Six factors account for nearly all the variation in a web app quote.",
+      },
+      { type: "h3", text: "1. Number and complexity of user flows" },
+      {
+        type: "p",
+        text: "The single biggest driver. A tool with one main flow — submit, review, approve — is a fraction of the cost of one with ten interconnected flows. When you scope your app, count the distinct things a user can do. That's your complexity map.",
+      },
+      { type: "h3", text: "2. Accounts, roles and permissions" },
+      {
+        type: "p",
+        text: "The moment you have logins you have authentication, password resets and security to handle. Add roles — admin, member, viewer — and permission logic, and you've added real engineering. A single-user tool is far cheaper than a multi-role platform, and the [hospital management system](/projects/hospital-management-system) case study is what that difference looks like in practice.",
+      },
+      { type: "h3", text: "3. Data complexity" },
+      {
+        type: "p",
+        text: "How much data, how structured, and how interrelated? An app storing a few record types is straightforward. One modelling inventory tied to orders tied to customers tied to invoices needs careful database design — time-consuming to get right and expensive to fix later.",
+      },
+      { type: "h3", text: "4. Integrations" },
+      {
+        type: "p",
+        text: "Every external service you connect — payment processors, email, CRMs, mapping, third-party APIs — is additional work. Not just wiring it up, but handling failures, syncing state and staying inside their limits. Three integrations add meaningfully to a build.",
+      },
+      { type: "h3", text: "5. Design and UX" },
+      {
+        type: "p",
+        text: "An internal tool can look plain. A customer-facing SaaS needs a polished, intuitive interface, which means design work, custom components and iteration. The more your users expect a refined experience, the more design costs.",
+      },
+      { type: "h3", text: "6. Non-functional requirements" },
+      {
+        type: "p",
+        text: "The invisible expensive part: security hardening, performance at scale, accessibility, automated testing, and compliance where it applies. None of it adds a visible feature, and all of it is what separates a demo from a product people will trust with real data and money.",
+      },
+      { type: "h2", text: "Where the budget actually goes" },
+      {
+        type: "table",
+        headers: ["Phase", "Share of budget"],
+        rows: [
+          ["Discovery and planning", "~10%"],
+          ["Design and UX", "15–20%"],
+          ["Frontend development", "25–30%"],
+          ["Backend development", "25–30%"],
+          ["Testing and QA", "10–15%"],
+          ["Deployment and setup", "~5%"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Notice that visible design is a minority of the cost. Most of the budget is logic and data — the parts users never see and entirely depend on. Skimping on the discovery 10% is the most expensive mistake available to you, because vague requirements cause rework and rework is where budgets die.",
+      },
+      { type: "h2", text: "Ongoing costs after launch" },
+      {
+        type: "p",
+        text: "An app is never done. Budget for:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Hosting and infrastructure** — $20 to $500+ a month depending on scale",
+          "**Third-party service fees** — payments, email, APIs, usually usage-based",
+          "**Maintenance** — bug fixes, dependency updates and security patches, commonly **15–20% of the build cost per year**",
+          "**New features** — the successful apps are the ones that keep evolving",
+        ],
+      },
+      {
+        type: "p",
+        text: "Plan for this from the start. An app you can't afford to maintain becomes a security liability within a year — the same pattern set out in [annual website maintenance costs](/blogs/annual-website-maintenance-costs-nz).",
+      },
+      { type: "h2", text: "How to keep the cost down without cutting corners" },
+      {
+        type: "p",
+        text: "The goal is a smaller first version, not a cheaper-per-hour build. The real levers:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Build an MVP, not the final vision.** Ship the smallest version that delivers core value, launch it, then expand based on what real users actually do. Most \"essential\" features on a first spec turn out to be assumptions.",
+          "**Use existing services instead of building from scratch.** Auth, payments, email and search are solved problems, and mature services do them better and cheaper than a custom build ever will.",
+          "**Prioritise ruthlessly.** For each feature ask whether the product fails without it at launch. If not, it's phase two.",
+          "**Nail scope before building.** A solid discovery phase pays for itself several times over.",
+          "**Choose the right builder.** Someone who has built this kind of app before moves faster and hits fewer dead ends than a cheaper generalist, which often makes the expensive option the cheaper one overall.",
+        ],
+      },
+      { type: "h2", text: "Freelancer vs agency for web apps" },
+      {
+        type: "p",
+        text: "The gap is even wider for applications than for websites.",
+      },
+      {
+        type: "list",
+        items: [
+          "A **senior solo developer or small team** can build a well-architected MVP for **$30,000–$70,000**, with direct communication and fast decisions — ideal when the app has a focused, well-defined scope.",
+          "A **larger agency** typically quotes **$80,000–$200,000+** for comparable MVP scope, which is justified when you need many specialists in parallel, formal process, or genuinely enterprise-scale complexity.",
+        ],
+      },
+      {
+        type: "p",
+        text: "For a first product or a focused internal tool, the solo or small-team route usually delivers better value. For sprawling multi-team systems, an agency's capacity earns its premium. Match the builder to the actual complexity, not to the ambition of the pitch deck — [how to choose a web development company](/blogs/how-to-choose-a-web-development-company) covers how to tell them apart.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does it cost to build a web application?" },
+      {
+        type: "p",
+        text: "A functional MVP runs $30,000–$70,000 and a production platform $80,000–$150,000+. A clickable prototype that proves the concept without real functionality sits at $8,000–$25,000. The driver is the number of user flows, not the number of screens.",
+      },
+      { type: "h3", text: "What's the difference between a website and a web application?" },
+      {
+        type: "p",
+        text: "A website presents information; an application does work. Users log in, data changes, and actions have consequences that have to be handled — including the edge cases. That's why pricing is based on user flows rather than page count.",
+      },
+      { type: "h3", text: "How much does an MVP cost to build?" },
+      {
+        type: "p",
+        text: "$30,000–$70,000 for a real, usable first version with core features, built by a senior solo developer or small team. The way to control that number is scope: ship the smallest version that delivers value, then expand based on what real users do.",
+      },
+      { type: "h3", text: "What are the ongoing costs of a web application?" },
+      {
+        type: "p",
+        text: "Hosting and infrastructure from $20 to $500+ a month depending on scale, usage-based third-party service fees, and maintenance at roughly 15–20% of the build cost per year. An app nobody maintains becomes a security liability within about a year.",
+      },
+      { type: "h3", text: "Why are agency quotes for web apps so much higher?" },
+      {
+        type: "p",
+        text: "Agencies typically quote $80,000–$200,000+ for MVP scope a senior solo developer or small team delivers for $30,000–$70,000. The difference is overhead and parallel specialists, which is worth paying for at genuine enterprise complexity and not much below it.",
+      },
+      { type: "h2", text: "The bottom line" },
+      {
+        type: "p",
+        text: "A custom web application costs most businesses **$30,000–$70,000 for a real MVP** and **$80,000–$150,000+ for a production platform**, driven mostly by user flows, permission complexity, data design and integrations rather than by how it looks.",
+      },
+      {
+        type: "p",
+        text: "The smartest way to control that is to build the smallest version that delivers real value, use existing services for solved problems, and nail scope before development starts. If you want an honest scope-and-cost conversation — including whether you need a full application yet — [get in touch](/contact).",
+      },
+    ],
+  },
 ];
 
 export function findBlogPost(slug: string): BlogPost | undefined {
