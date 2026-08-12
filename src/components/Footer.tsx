@@ -155,10 +155,20 @@ export const Footer = () => {
         <div className={`pt-6 border-t border-border/35 flex flex-col sm:flex-row
           items-center justify-between gap-3 transition-all duration-700 delay-300
           ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-            &copy; {new Date().getFullYear()} WebDevStudio. Made with
-            <Heart className="h-3 w-3 text-red-500 fill-red-500 animate-pulse" />
-            All rights reserved.
+          {/* The heart is an <svg>, so it contributes no text: this line's
+              textContent read "Made withAll rights reserved." — one sentence
+              running into the next with nothing between them. Sighted readers
+              saw a dangling "Made with", and anyone using a screen reader or
+              copying the text got the run-on. Separators now carry the break,
+              and the heart is marked decorative so it isn't announced. */}
+          <p className="text-xs text-muted-foreground">
+            &copy; {new Date().getFullYear()} WebDevStudio. Made with{" "}
+            <Heart
+              role="img"
+              aria-label="love"
+              className="inline h-3 w-3 align-[-0.15em] text-red-500 fill-red-500 animate-pulse"
+            />
+            . All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground/70 font-semibold tracking-wide">
             React · TypeScript · Tailwind CSS

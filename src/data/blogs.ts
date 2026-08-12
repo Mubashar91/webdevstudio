@@ -4887,6 +4887,862 @@ updates:
       },
     ],
   },
+  {
+    slug: "how-to-compare-web-developer-quotes",
+    title: "How to Compare Web Developer Quotes: 10 Checks",
+    excerpt:
+      "Three quotes, three prices, no way to compare them? The 10 things to check in a web developer quote before you sign — with real NZ market ranges.",
+    coverImage:
+      "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-12",
+    tags: ["Hiring a Developer", "Website Cost", "New Zealand"],
+    content: [
+      {
+        type: "p",
+        text: "You asked three developers to quote the same project. One said $2,000, one said $9,000, one said $28,000. Nobody explained why. Now you're supposed to pick.",
+      },
+      {
+        type: "p",
+        text: "That isn't a pricing problem. It's a scope problem — the three of them were describing different projects, and nobody noticed.",
+      },
+      { type: "h2", text: "The short version" },
+      {
+        type: "p",
+        text: "Before you compare prices, compare these five things. If a quote doesn't state them, its price means nothing:",
+      },
+      {
+        type: "list",
+        items: [
+          "**What's being built** — page count, feature list, integrations, named in the quote",
+          "**Who owns the result** — code, domain, hosting, design files, after final payment",
+          "**What happens after launch** — bug window, support, maintenance, and what each costs",
+          "**What you have to supply** — content, images, logins, approvals, and by when",
+          "**What a change costs** — the rate or process for anything outside the written scope",
+        ],
+      },
+      {
+        type: "p",
+        text: "Two quotes are only comparable when both answer all five. Usually the expensive one does and the cheap one doesn't — and that gap is most of the price difference.",
+      },
+      { type: "h2", text: "1. Is the scope written down, or implied?" },
+      {
+        type: "p",
+        text: "This is the single biggest cause of quote variance. \"A 5-page business website\" can mean a bought theme with your logo dropped in, or a custom design with a booking system and a CMS behind it.",
+      },
+      {
+        type: "p",
+        text: "**Check:** does the quote list pages by name, features by function, and integrations by product? \"Contact form\" and \"contact form with spam filtering, an autoresponder and a push to your CRM\" are two different builds, and often two different price brackets.",
+      },
+      {
+        type: "p",
+        text: "**Red flag:** a single-line quote. \"Website — $3,500\" can't be compared with anything, and neither can the developer when you later ask for something they never priced.",
+      },
+      { type: "h2", text: "2. Is design included, and whose design?" },
+      {
+        type: "p",
+        text: "There are three levels, and quotes rarely say which one you're getting:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Template** — a bought theme, lightly customised. Fastest and cheapest.",
+          "**Semi-custom** — an existing design system applied to your brand. The middle.",
+          "**Fully custom** — designed from scratch, usually with a designer involved. The most expensive.",
+        ],
+      },
+      {
+        type: "p",
+        text: "None of them is wrong. A local trades business genuinely may not need a custom design. But paying custom prices for a template is the most common overcharge in this market, and it's invisible unless you ask which one you're buying.",
+      },
+      { type: "h2", text: "3. How many revision rounds, and what counts as one?" },
+      {
+        type: "p",
+        text: "\"Unlimited revisions\" is either untrue or already priced into the number, and either way it isn't a feature. A quote naming two rounds at defined stages is more honest than one promising infinity.",
+      },
+      {
+        type: "p",
+        text: "**Check:** does a round mean one batch of consolidated feedback, or one change? If it's one change, three rounds is three changes, and you'll hit the limit before the homepage is settled.",
+      },
+      { type: "h2", text: "4. Who owns the code, the domain and the hosting?" },
+      {
+        type: "p",
+        text: "This is the one that costs people the most, years later.",
+      },
+      {
+        type: "p",
+        text: "Ask directly, in writing: after final payment, do I own the code, the domain, the hosting account and the design files? Can I move to another developer without rebuilding?",
+      },
+      {
+        type: "p",
+        text: "If the answer is vague, or the developer registers the domain in their own name, you're renting your website. That's the situation behind most \"I can't reach my developer and my site is down\" stories — and [how to choose a web development company](/blogs/how-to-choose-a-web-development-company) has the full ownership checklist.",
+      },
+      { type: "h2", text: "5. What are the hosting and maintenance costs after launch?" },
+      {
+        type: "p",
+        text: "A website isn't a one-time purchase. Hosting, domain renewal, SSL, updates and backups all land whether the quote mentions them or not.",
+      },
+      {
+        type: "p",
+        text: "NZ market ranges: hosting **$20–$100 a month**, maintenance **$50–$300 a month** depending on whether it's monitoring only or includes actual work ([Lucid Media](https://www.lucidmedia.co.nz/blog/website-cost-new-zealand-2026-pricing-guide)), and a .co.nz domain at [around $25 a year](https://www.kiwiwebdesign.co.nz/affordable-web-design-auckland/website-cost-new-zealand-small-business/). SSL should be free and included.",
+      },
+      {
+        type: "p",
+        text: "A quote that omits these isn't cheaper. It's incomplete — [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz) sets out the full picture, including what a maintenance plan has to contain before it's worth paying for.",
+      },
+      { type: "h2", text: "6. Is the timeline realistic, and what makes it slip?" },
+      {
+        type: "p",
+        text: "Any developer can promise four weeks. The useful question is what makes it late, and every honest answer is the same: waiting on your content, your feedback and your approvals.",
+      },
+      {
+        type: "p",
+        text: "**Check:** does the quote say what you must provide, and by when? A timeline that doesn't name your obligations will be missed, and the conversation about whose fault that was is unpleasant for everybody.",
+      },
+      { type: "h2", text: "7. Is mobile, accessibility and speed included, or extra?" },
+      {
+        type: "p",
+        text: "Most of your visitors are on a phone. If \"responsive\" appears as a line item with a price beside it, you're being sold the baseline as an upgrade.",
+      },
+      {
+        type: "p",
+        text: "**Check:** performance, accessibility and mobile behaviour are stated as standard rather than optional. Ask what they target — a named Core Web Vitals or Lighthouse threshold is a good sign, and silence isn't.",
+      },
+      { type: "h2", text: "8. What SEO is actually included?" },
+      {
+        type: "p",
+        text: "\"SEO included\" ranges from technically-sound-and-that's-it to a full content and link programme costing more than the site.",
+      },
+      {
+        type: "p",
+        text: "**Reasonable to expect in any build:** clean URLs, real page titles and meta descriptions, a sensible heading structure, a sitemap, schema markup, fast load, and pages that are actually indexable.",
+      },
+      {
+        type: "p",
+        text: "**Not standard, and should be priced separately:** keyword research, content writing, link building, ongoing optimisation, and local listings. Anyone promising rankings on a fixed timeline is guessing — nobody controls Google's results.",
+      },
+      { type: "h2", text: "9. Can you verify the work?" },
+      {
+        type: "p",
+        text: "**Check:** live URLs you can open, not screenshots. Case studies that describe decisions rather than just showing logos.",
+      },
+      {
+        type: "p",
+        text: "Then ask what they expect to be hardest about your project. Someone who says \"none of it\" either hasn't read your brief or hasn't done this before. The [hospital management system](/projects/hospital-management-system) case study is what that answer looks like written down — permissions and scheduling were the hard parts, and the page says so.",
+      },
+      { type: "h2", text: "10. What does a change cost after signing?" },
+      {
+        type: "p",
+        text: "Scope changes on nearly every project. That isn't a failure; it's what happens when a real business meets a real build.",
+      },
+      {
+        type: "p",
+        text: "**Check:** the quote states an hourly rate or a change-request process for out-of-scope work. A quote with no change mechanism turns every new idea into an argument.",
+      },
+      { type: "h2", text: "What these actually cost in New Zealand" },
+      {
+        type: "p",
+        text: "Market ranges from NZ providers publishing their own 2026 pricing. Yours will differ with scope and with who you hire. All figures NZD, excluding GST.",
+      },
+      {
+        type: "table",
+        headers: ["What you're buying", "Typical NZ range (ex GST)"],
+        rows: [
+          ["Simple marketing site, 3–6 pages", "$1,500 – $5,000"],
+          ["Small business site, 5–8 pages", "$3,990 – $8,000"],
+          ["Standard marketing site, 8–20 pages", "$5,000 – $15,000"],
+          ["Custom web application or portal", "$20,000 – $100,000+"],
+        ],
+        caption: "Sources: Kingtide, Fuel Design and Lucid Media 2026 pricing guides.",
+      },
+      {
+        type: "p",
+        text: "Those come from published NZ guides: [$1,500–$5,000 for a simple marketing site and $5,000–$15,000 for a standard one](https://kingtide.nz/blog/website-design-auckland-cost), [$3,990–$8,000 + GST for a 5–8 page small business site](https://www.fueldesign.co.nz/blog/how-much-does-a-website-cost-in-new-zealand-2026-pricing-guide/), and [custom applications starting at $20,000 and exceeding $100,000](https://www.lucidmedia.co.nz/blog/website-cost-new-zealand-2026-pricing-guide) for complex functionality.",
+      },
+      {
+        type: "p",
+        text: "Buying in Cyprus? The euro figures live in [what a website costs in Cyprus](/blogs/website-cost-cyprus-2026), because converting NZ market rates into euros would produce a number no Cyprus buyer would recognise from an actual quote.",
+      },
+      {
+        type: "p",
+        text: "The pattern matters more than any single number: agencies price for overhead — project managers, account managers, offices — freelancers price for time, and offshore teams price for volume. The same brief genuinely costs different amounts depending on who is carrying what.",
+      },
+      { type: "h2", text: "When you don't need a developer at all" },
+      {
+        type: "p",
+        text: "Worth saying plainly, because it's the part nobody selling you a website will tell you.",
+      },
+      {
+        type: "p",
+        text: "**You probably don't need a custom build** if you need under about five pages, you're not selling online, you have no logins or bookings, and you're happy editing text yourself. A well-configured site builder will serve you for a fraction of the cost.",
+      },
+      {
+        type: "p",
+        text: "**You probably do need a developer** if users log in, you're taking bookings or payments, something has to talk to another system like a CRM or accounting package, your current site is slow or broken or uneditable, or you're holding a quote for a custom build and want somebody to check it.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Get three quotes, and send all three developers the same written brief — same pages, same features, same must-haves. Most quote variance disappears the moment everybody is pricing the same thing.",
+      },
+      {
+        type: "p",
+        text: "Then compare on the five checks at the top, not on the number at the bottom.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Why is one website quote $2,000 and another $15,000?" },
+      {
+        type: "p",
+        text: "Usually scope, not skill. The cheap quote is often a template with no ongoing support, no revisions defined and no ownership clause; the expensive one may include custom design, a CMS, integrations and a support window. Ask both to itemise before assuming either is wrong.",
+      },
+      { type: "h3", text: "Should I always pick the cheapest quote?" },
+      {
+        type: "p",
+        text: "No, and not automatically the most expensive either. Pick the one whose scope matches what you actually need. The cheapest quote becomes the most expensive project when everything you assumed was included turns out to be a change request.",
+      },
+      { type: "h3", text: "Is it normal to pay a deposit?" },
+      {
+        type: "p",
+        text: "Yes. Roughly a third up front with the remainder tied to milestones or launch is standard practice for freelancers and small studios. Paying 100% up front to someone you've never worked with is not.",
+      },
+      { type: "h3", text: "How do I compare a local developer to an overseas one?" },
+      {
+        type: "p",
+        text: "On the same five checks, plus timezone overlap, the quality of their written communication, and how ownership and handover are handled. Cost differences are real, but a developer who answers clearly in writing is worth more than one four hours closer who doesn't.",
+      },
+      { type: "h3", text: "What if I already signed and the scope is wrong?" },
+      {
+        type: "p",
+        text: "Ask for a written change request with a price before any more work happens. Most disputes come from changes agreed verbally and invoiced later, and the fix is to put the next one in writing even if the last one wasn't.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write the brief before you ask anyone for a number. Everything above gets easier once it exists, and the developers worth hiring will ask for it unprompted.",
+      },
+      {
+        type: "p",
+        text: "If you'd like a second opinion on a quote you've already received, [send it over](/contact) with your brief and I'll tell you what's missing, what looks fairly priced and what I'd question — including when the quote you have is a good one. My own scope and prices are on the [services page](/services).",
+      },
+    ],
+  },
+  {
+    slug: "take-over-existing-website-developer",
+    // 44 chars — withBrand() lands on 59, inside the 62 limit.
+    title: "Taking Over a Website From Another Developer",
+    excerpt:
+      "Your developer has gone quiet, or you want to move on. Here's the four pieces of access to secure first, how to recover them when someone else holds the keys, and what a takeover actually costs.",
+    coverImage:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-12",
+    tags: ["Hiring a Developer", "Website Handover", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Before you hire anyone to take over your website, secure four things: the **domain registrar account**, the **hosting account**, the **code**, and an **owner-level CMS login**. Without them no developer can help you, and any developer who says otherwise hasn't understood the problem yet. Everything else in a takeover is negotiable. These four are not.",
+      },
+      {
+        type: "p",
+        text: "This post is for the situation where the site exists, it's working or half-working, and the person who built it is unreachable, unresponsive, or simply someone you'd rather not work with again. If you're earlier than that — still choosing who to hire — [how to compare web developer quotes](/blogs/how-to-compare-web-developer-quotes) is the better starting point.",
+      },
+      { type: "h2", text: "The four things to secure before you hire anyone" },
+      { type: "h3", text: "1. The domain registrar account" },
+      {
+        type: "p",
+        text: "This is the one that matters most, because it's the one that's hardest to recover and easiest to lose. Your domain is registered with a registrar — GoDaddy, Namecheap, a NZ registrar like Freeparking or 1st Domains, a Cyprus provider, or a reseller account owned by your developer.",
+      },
+      {
+        type: "p",
+        text: "Run a [WHOIS lookup](https://who.is/) on your domain. It will show the registrar and, unless privacy protection is on, the registrant contact. **The registrant should be your business, not your developer.** If it isn't, that's the first thing to fix, and it's fixable — see the recovery section below.",
+      },
+      { type: "h3", text: "2. Hosting or server access" },
+      {
+        type: "p",
+        text: "Either a control panel login (cPanel, Plesk, a managed WordPress host) or a cloud account (AWS, Vercel, Netlify, DigitalOcean). What you want is the **account owner** login, not a user account someone created for you — an account owner can add and remove people, and a user cannot.",
+      },
+      {
+        type: "p",
+        text: "The fastest way to find out who's paying for hosting is your own bank statement. If hosting doesn't appear on it, someone else is paying for it, and that someone controls whether your site stays online.",
+      },
+      { type: "h3", text: "3. The code" },
+      {
+        type: "p",
+        text: "Repository access is what you want — GitHub, GitLab or Bitbucket, with your own account added as an owner or admin. A zip file emailed at handover is much weaker: it's a snapshot with no history, and version history is exactly what a new developer reads to understand why the code is the way it is.",
+      },
+      {
+        type: "p",
+        text: "If there's no repository at all, the files on the server are the code. That's recoverable, but it tells you something about how the site was built, and it belongs in the audit conversation below.",
+      },
+      { type: "h3", text: "4. An owner-level CMS or admin login" },
+      {
+        type: "p",
+        text: "Administrator, not editor. On WordPress that's the Administrator role; on a custom build it's whatever role can manage other users. The test is simple: log in and try to create another admin account. If you can't, you don't have owner-level access.",
+      },
+      {
+        type: "p",
+        text: "Locked out of your own website, or not sure which of these you actually hold? Tell me what you can and can't log into and I'll tell you what's recoverable, what isn't, and roughly what each path costs — free, before you commit to anything. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "Why developers go quiet (it's usually not malice)" },
+      {
+        type: "p",
+        text: "Worth saying plainly, because the internet's version of this story is always a villain. Most disappearances are mundane: the developer took a full-time job and let the side work lapse, the studio closed, the person who built it left the company, or the project ended on bad terms years ago and nobody expected to speak again.",
+      },
+      {
+        type: "p",
+        text: "The site keeps running regardless — that's the trap. A website with nobody maintaining it works fine right up until a certificate expires, a host migrates, or a dependency breaks. Then it stops, and only at that point does anyone discover the access problem. **The best time to fix this is while everything still works.**",
+      },
+      { type: "h2", text: "What to do if you can't reach your current developer" },
+      {
+        type: "p",
+        text: "In order, cheapest and most likely to work first:",
+      },
+      {
+        type: "list",
+        items: [
+          "**WHOIS the domain** to identify the registrar. This tells you which company to talk to, which is more than most people in this situation start with.",
+          "**Attempt registrar account recovery** directly with that registrar. If the domain is registered to your business, registrars have a documented process for proving ownership — typically company documents, an ID, and matching billing details. This works more often than people expect.",
+          "**Check your card and bank statements** for hosting, domain and email charges. Whoever the payments go to is who holds that account, and a paying customer has leverage a third party doesn't.",
+          "**Try CMS password recovery** to the email address on the admin account. If that email is your own domain and you control mail, you may already be able to get back in.",
+          "**Check whether your email is separate from your hosting.** If your business email runs through the same provider, prioritise it — losing email is worse than losing the website.",
+        ],
+      },
+      {
+        type: "p",
+        text: "What's genuinely unrecoverable: a domain registered in someone else's name at a registrar that won't transfer it, and code that only ever existed on a machine you can't access. Both have workarounds — a new domain, or a rebuild — but neither is a recovery, and a developer who implies otherwise is selling you something.",
+      },
+      { type: "h2", text: "What a new developer needs before quoting a takeover" },
+      {
+        type: "p",
+        text: "A takeover quote is different from a build quote, and you should be suspicious of anyone who prices one without looking at the code first. A new build is a known quantity — the developer decides how it's made. An inherited codebase is somebody else's decisions, and nobody can price the cost of understanding decisions they haven't read yet.",
+      },
+      {
+        type: "p",
+        text: "This is why most honest takeovers start with **a paid audit** rather than a fixed project price. The audit is small, bounded, and it produces the information a real quote needs:",
+      },
+      {
+        type: "list",
+        items: [
+          "What the site is actually built on — platform, framework, versions, and how far behind they are",
+          "Where it's hosted and what that costs",
+          "Whether there's version control, and how much history survives",
+          "What's broken now, and what's about to break",
+          "Which dependencies have known vulnerabilities",
+          "Whether the thing you actually want next is feasible on this codebase, or whether it fights it",
+        ],
+      },
+      {
+        type: "p",
+        text: "A developer who quotes a firm fixed price on an unseen codebase is doing one of two things: padding heavily to cover the unknown, or about to be unpleasantly surprised. Both end up costing you.",
+      },
+      { type: "h2", text: "What a takeover costs" },
+      {
+        type: "p",
+        text: "These are market ranges from published price guides, not my quote — and takeover pricing varies more than new-build pricing precisely because the starting condition varies so much. **Inherited code is normally priced above equivalent greenfield work**, because someone has to read and understand another developer's decisions before safely changing any of them.",
+      },
+      { type: "h3", text: "New Zealand (NZD)" },
+      {
+        type: "table",
+        headers: ["Stage", "Typical range", "What it covers"],
+        rows: [
+          ["Discovery / audit", "$5,000–$15,000 for application-scale work", "Reading the codebase, documenting it, and pricing what comes next. Small brochure sites sit well below this."],
+          ["Ongoing maintenance", "$50–$200/month", "Hosting oversight, updates, backups, small content changes on a standard business site."],
+          ["Application support retainer", "$1,500–$5,000/month", "Mid-complexity platforms with real users and uptime expectations."],
+          ["Annual maintenance allowance", "15–20% of the original build cost", "The rule of thumb for budgeting a year of upkeep on custom software."],
+        ],
+        caption: "NZD ranges published by NZ providers — discovery, retainer and the 15–20% rule from Web Maniacs; the $50–$200/month band from Fuel Design and Lucid Media.",
+      },
+      {
+        type: "p",
+        text: "Sources: [Web Maniacs](https://webmaniacs.co.nz/custom-web-application-development-pricing-nz/), [Fuel Design](https://www.fueldesign.co.nz/blog/how-much-does-a-website-cost-in-new-zealand-2026-pricing-guide/) and [Lucid Media](https://www.lucidmedia.co.nz/guides/web-design-cost-nz/). Hourly work on an existing site is commonly billed at $50–$150/hr in NZ.",
+      },
+      { type: "h3", text: "Cyprus (EUR)" },
+      {
+        type: "table",
+        headers: ["Stage", "Typical range", "What it covers"],
+        rows: [
+          ["Ongoing maintenance", "€100–€500/month", "Updates, security, backups and small changes."],
+          ["Hosting and domain", "€60–€200/year hosting, €10–€20/year domain", "The bill that keeps the site online, wherever it's hosted."],
+          ["Freelance ongoing engagement", "€500–€2,000/month", "A named individual handling the site rather than an agency retainer."],
+        ],
+        caption: "EUR ranges published by Cyprus providers.",
+      },
+      {
+        type: "p",
+        text: "Sources: [Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/) and [Bandziuk](https://www.bandziuk.com/blog/website-development-cost-in-cyprus). For full build ranges rather than takeover costs, see [what a website costs in Cyprus](/blogs/website-cost-cyprus-2026).",
+      },
+      { type: "h2", text: "Red flags in the code you're inheriting" },
+      {
+        type: "p",
+        text: "You don't need to read code to ask about these. Each one has a plain-English cost attached, and a new developer should be able to tell you which apply within a day of getting access.",
+      },
+      {
+        type: "list",
+        items: [
+          "**No version control.** There's no history, so nobody can see why anything was done or safely undo a change. Every edit is riskier and therefore slower — this is the single biggest driver of \"why is this so expensive to change?\"",
+          "**Outdated dependencies.** Old libraries with published vulnerabilities. The fix is usually mandatory and rarely quoted for, because upgrading one thing tends to break another.",
+          "**No staging environment.** Changes get tested on the live site, in front of your customers. Setting up staging is cheap and it's the first thing worth paying for.",
+          "**Hardcoded credentials.** Passwords and API keys written into the code itself. If the code has ever been shared, those credentials are effectively public and all of them need rotating.",
+          "**No backups.** Nothing to restore from when something goes wrong. Verify that backups both exist and have been restored from at least once — an untested backup is a hope, not a backup.",
+          "**No documentation.** Not fatal, but it converts directly into hours, because the new developer has to rediscover everything by reading.",
+        ],
+      },
+      { type: "h2", text: "When rebuilding beats recovering" },
+      {
+        type: "p",
+        text: "Sometimes the honest answer is that the existing site isn't worth saving, and you should want a developer who'll tell you that even though a rebuild is the bigger invoice. The rough test: **if the audit finds more than about half the red flags above, and you also want significant new functionality, a rebuild is usually cheaper within eighteen months.**",
+      },
+      {
+        type: "p",
+        text: "The reverse is also true and less often said. If the site works, ranks, and just needs someone to look after it, a rebuild is an expensive way to solve a maintenance problem — and you'd be giving up accumulated search visibility to do it. If what you actually want is one new capability rather than a new site, [what it costs to add features to an existing website](/blogs/cost-to-add-features-existing-website) covers that decision directly.",
+      },
+      { type: "h2", text: "What to do differently with the next developer" },
+      {
+        type: "p",
+        text: "This is the part that stops you being here again in three years:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Register the domain yourself**, in your business name, on an account you control, and put the renewal in a calendar.",
+          "**Get repository access on day one**, not at handover. An owner seat on the repo from the start costs nothing and changes everything if the relationship ends.",
+          "**Pay for hosting on your own card**, with the developer added as a user. Access follows the bill.",
+          "**Get ownership in writing** before work starts — the code, the domain, the hosting, the design files, transferring on final payment. [What a web developer contract should include](/blogs/web-developer-contract-checklist) covers the specific clauses.",
+          "**Ask for a documented handover**: where things live, how to deploy, what breaks, who to call. A recorded screen-share is worth more than a PDF nobody reads.",
+        ],
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "My web developer isn't responding. Can I get my website back?" },
+      {
+        type: "p",
+        text: "Usually yes, at least in part. Start with a WHOIS lookup to identify your domain registrar, then go through that registrar's ownership-recovery process — if the domain is registered to your business, this is a documented procedure requiring proof of identity and company details. Check bank statements to find who's paying for hosting, and try CMS password recovery to an email address you control. What's genuinely unrecoverable is a domain registered in someone else's name at an uncooperative registrar, and code that never existed anywhere but their machine.",
+      },
+      { type: "h3", text: "Who legally owns my website code?" },
+      {
+        type: "p",
+        text: "It depends on your contract and on the law where each party is based, so treat this as background rather than a ruling — I'm a developer, not a lawyer, and anything significant is worth a proper legal opinion. In practice, ownership follows what the written agreement says. Where a contract is silent, many jurisdictions leave copyright in commissioned work with the person who created it, even though the client paid for it — which surprises people. That's precisely why an explicit assignment-on-final-payment clause matters more than assuming.",
+      },
+      { type: "h3", text: "Is it cheaper to fix an old website or rebuild it?" },
+      {
+        type: "p",
+        text: "Fix it if the site works, performs, and mainly needs maintenance — rebuilding to solve a maintenance problem is expensive and risks the search visibility the current site has accumulated. Rebuild if the audit finds no version control, outdated dependencies and no staging, and you also want significant new functionality on top. In that combination the cost of working carefully inside fragile code usually overtakes the cost of replacing it within about eighteen months.",
+      },
+      { type: "h3", text: "Can a developer work on a website someone else built?" },
+      {
+        type: "p",
+        text: "Yes, and it's routine — but it should start with a paid audit rather than a fixed quote. An inherited codebase is another developer's decisions, and nobody can honestly price the work of understanding decisions they haven't read. Expect a small bounded audit first, then a real quote based on what it found.",
+      },
+      { type: "h3", text: "What access do I need to give a new web developer?" },
+      {
+        type: "p",
+        text: "Domain registrar, hosting or server, the code repository, and an owner-level CMS or admin account. Add them as a user on accounts you own rather than handing over your own credentials, so you can remove access later without changing every password. If any of the four doesn't exist or you can't produce it, say so up front — it changes the scope, and it's better discovered before the quote than after.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Do the WHOIS lookup today. It takes a minute, it's free, and it tells you whether you have an inconvenience or a real problem — which determines everything else you do next.",
+      },
+      {
+        type: "p",
+        text: "If you'd like a second pair of eyes, send me what you have and what you're locked out of. I'll tell you honestly what's recoverable, whether the site is worth keeping, and what I'd do first — including if the answer is that you don't need to pay anyone yet. [Get in touch](/contact), or [see what I work on](/services).",
+      },
+    ],
+  },
+  {
+    slug: "how-to-compare-web-developer-quotes",
+    // 46 chars — withBrand() lands on 61, inside the 62 limit.
+    title: "How to Compare Web Developer Quotes: 10 Checks",
+    excerpt:
+      "Three quotes, three prices, no way to compare them. The ten things to check in a web developer quote before you sign — scope, ownership, revisions, maintenance and change costs — with NZ and Cyprus ranges.",
+    coverImage:
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-12",
+    tags: ["Hiring a Developer", "Pricing", "New Zealand", "Cyprus"],
+    content: [
+      {
+        type: "p",
+        text: "Before comparing prices, compare five things: **what's being built** (pages, features and integrations named), **who owns the result** after final payment, **what happens after launch**, **what you have to supply**, and **what a change costs**. Two quotes are only comparable when both answer all five. Usually the expensive one does and the cheap one doesn't — and that gap is most of the price difference.",
+      },
+      {
+        type: "p",
+        text: "You asked three developers for a quote on the same project. One said $2,000, one said $9,000, one said $28,000, and nobody explained why. That isn't a pricing problem. It's a scope problem: the three of them were describing different projects and nobody noticed.",
+      },
+      {
+        type: "p",
+        text: "Not sure what your project should cost? Send me what you need it to do and I'll tell you the realistic scope, timeline and range before you spend anything — including if your project is simpler than you've been quoted for. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "1. Is the scope written down, or implied?" },
+      {
+        type: "p",
+        text: "The single biggest cause of quote variance. \"A 5-page business website\" can mean a bought theme with your logo dropped in, or a custom design with a booking system and a CMS behind it.",
+      },
+      {
+        type: "p",
+        text: "Check that the quote lists **pages by name, features by function, and integrations by product**. \"Contact form\" and \"contact form with spam filtering, an autoresponder and a push to HubSpot\" are two different builds in two different price brackets.",
+      },
+      {
+        type: "p",
+        text: "The red flag is a single-line quote — \"Website — $3,500.\" You can't compare that to anything, and neither can the developer when you later ask for something they never priced.",
+      },
+      { type: "h2", text: "2. Is design included, and whose design?" },
+      {
+        type: "table",
+        headers: ["Level", "What it is", "When it's the right call"],
+        rows: [
+          ["Template", "A bought theme, lightly customised", "Straightforward businesses that need to look credible and be found. Fastest and cheapest."],
+          ["Semi-custom", "A design system applied to your brand", "Most SMBs — distinct enough to own, without a designer's full engagement."],
+          ["Fully custom", "Designed from scratch, usually with a designer involved", "When the brand is the product, or the interface is genuinely novel."],
+        ],
+      },
+      {
+        type: "p",
+        text: "None of these is wrong. A local trades business genuinely may not need a custom design. But **paying custom prices for a template is the most common overcharge in this market**, and it's invisible unless you ask which one you're getting.",
+      },
+      { type: "h2", text: "3. How many revision rounds — and what counts as one?" },
+      {
+        type: "p",
+        text: "\"Unlimited revisions\" is either untrue or already priced into the number, and either way it isn't a feature. Two named rounds at defined stages is a more honest offer than infinity.",
+      },
+      {
+        type: "p",
+        text: "Ask what a round means: one batch of consolidated feedback, or one individual change? If it's one change, then three rounds is three changes, and you'll discover that at the worst possible moment.",
+      },
+      { type: "h2", text: "4. Who owns the code, domain and hosting?" },
+      {
+        type: "p",
+        text: "The one that costs people the most, years later. Ask directly and in writing: **after final payment, do I own the code, the domain, the hosting account and the design files — and can I move to another developer without rebuilding?**",
+      },
+      {
+        type: "p",
+        text: "If the answer is vague, or the developer registers the domain in their own name, you're renting your website. This is the situation behind almost every \"I can't reach my developer and my site is down\" story — and [taking over a website from another developer](/blogs/take-over-existing-website-developer) is what it costs to get out of it.",
+      },
+      { type: "h2", text: "5. What are the ongoing costs after launch?" },
+      {
+        type: "p",
+        text: "A website isn't a one-time purchase. Hosting, domain renewal, SSL, updates and backups land whether or not the quote mentions them. Published NZ ranges put hosting at **$39–$99/month**, domains at **$25–$50/year** and maintenance at **$50–$200/month** ([Fuel Design](https://www.fueldesign.co.nz/blog/how-much-does-a-website-cost-in-new-zealand-2026-pricing-guide/), [Lucid Media](https://www.lucidmedia.co.nz/guides/web-design-cost-nz/)). In Cyprus, maintenance runs **€100–€500/month** with hosting and domain around **€60–€200/year** ([Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/), [Bandziuk](https://www.bandziuk.com/blog/website-development-cost-in-cyprus)).",
+      },
+      {
+        type: "p",
+        text: "A quote that omits these isn't cheaper. It's incomplete. The full NZ picture is in [annual website maintenance costs](/blogs/annual-website-maintenance-costs-nz).",
+      },
+      { type: "h2", text: "6. Is the timeline realistic — and what makes it slip?" },
+      {
+        type: "p",
+        text: "Anyone can promise four weeks. The useful question is what makes it late, and the honest answer is always the same: waiting on your content, your feedback and your approvals.",
+      },
+      {
+        type: "p",
+        text: "Check that the quote states **what you must provide and by when**. A timeline that doesn't name your obligations will be missed, and the conversation about whose fault that was is unpleasant for everyone.",
+      },
+      { type: "h2", text: "7. Is mobile, accessibility and speed included — or extra?" },
+      {
+        type: "p",
+        text: "In 2026 most of your visitors arrive on a phone. If \"responsive design\" appears as a line item with a price beside it, you're being sold the baseline as an upgrade.",
+      },
+      {
+        type: "p",
+        text: "Performance, accessibility and mobile behaviour should be stated as standard. Ask what they target — a named [Core Web Vitals](https://web.dev/articles/lcp) threshold or WCAG 2.1 AA is a good sign. Silence isn't.",
+      },
+      { type: "h2", text: "8. What SEO is actually included?" },
+      {
+        type: "p",
+        text: "\"SEO included\" ranges from technically-sound-and-nothing-else to a content and link programme costing more than the site.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Reasonable to expect in any build:** clean URLs, real page titles and meta descriptions, a sensible heading structure, a sitemap, schema markup, fast loading, and pages that are actually indexable.",
+          "**Not standard, and priced separately:** keyword research, content writing, link building, ongoing optimisation and local listings.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Anyone promising rankings on a fixed timeline is guessing — nobody controls Google's results. If your current site isn't appearing at all, [why your website isn't showing on Google](/blogs/why-website-not-showing-on-google) covers the usual causes.",
+      },
+      { type: "h2", text: "9. Can you verify the work?" },
+      {
+        type: "p",
+        text: "Ask for **live URLs you can open**, not screenshots, and case studies that describe decisions rather than just displaying logos. Then ask one question: what part of this project do you expect to be hardest? A developer who says \"none of it\" either hasn't read your brief or hasn't done this before.",
+      },
+      {
+        type: "p",
+        text: "For an application rather than a brochure site, ask what the hard part was on a comparable build. On a [hospital system with three staff roles sharing one patient record](/projects/hospital-management-system), the hard part wasn't the interface — it was that permissions had to be enforced server-side, so the UI only ever hides what the API already refuses. That's the shape of answer you're listening for.",
+      },
+      { type: "h2", text: "10. What does a change cost after you've signed?" },
+      {
+        type: "p",
+        text: "Scope changes on nearly every project. It isn't a failure, it's what happens when a real business meets a real build. What matters is that the quote states an hourly rate or a written change-request process for out-of-scope work.",
+      },
+      {
+        type: "p",
+        text: "A quote with no change mechanism turns every new idea into an argument. NZ providers commonly bill this at **$50–$150/hr** for content and small changes.",
+      },
+      { type: "h2", text: "What these actually cost — NZ and Cyprus ranges" },
+      {
+        type: "p",
+        text: "Market ranges published by providers in each country, not my quote. Yours will differ with scope and with who you hire.",
+      },
+      { type: "h3", text: "New Zealand (NZD)" },
+      {
+        type: "table",
+        headers: ["Project type", "Published range", "Source"],
+        rows: [
+          ["Landing / single-page site", "$1,500–$3,000 + GST", "Fuel Design"],
+          ["Template small-business site", "$2,000–$5,000", "Lucid Media"],
+          ["Custom marketing site (8–15 pages)", "$5,990–$15,000 + GST", "Fuel Design"],
+          ["Premium / fully custom build", "$15,000–$30,000+", "Lucid Media"],
+          ["Simple web app or internal tool", "$15,000–$40,000", "Web Maniacs"],
+          ["Mid-complexity platform or portal", "$40,000–$120,000", "Web Maniacs"],
+        ],
+      },
+      { type: "h3", text: "Cyprus (EUR)" },
+      {
+        type: "table",
+        headers: ["Project type", "Published range", "Source"],
+        rows: [
+          ["Starter site (3–5 pages)", "€500–€1,000", "Cyprus Digital Agency, Bandziuk"],
+          ["Small business site", "€900–€2,500", "Bandziuk"],
+          ["Business / corporate site (10+ pages)", "€1,200–€3,500", "Cyprus Digital Agency, Bandziuk"],
+          ["Mid-range custom build", "€4,500–€12,000", "Uveler"],
+          ["E-commerce", "€2,500–€10,000", "Bandziuk, Uveler"],
+          ["Custom platform / premium build", "€12,000–€35,000", "Uveler"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Note the overlap between Cypriot sources at the low end and the gap at the middle — that spread is real, and it's mostly the template-versus-custom distinction from check 2 showing up in the numbers. Adding Greek and English versions typically adds around 20% to a Cyprus project.",
+      },
+      {
+        type: "p",
+        text: "The pattern that matters more than any single number: **agencies price for overhead, freelancers price for time, and offshore teams price for volume.** The same brief genuinely costs different amounts depending on who's carrying what — which is the subject of [why web development quotes differ so much](/blogs/why-web-development-quotes-differ).",
+      },
+      { type: "h2", text: "When you don't need a developer at all" },
+      {
+        type: "p",
+        text: "Worth saying plainly, because nobody selling you a website will say it.",
+      },
+      {
+        type: "p",
+        text: "**You probably don't need a custom build** if you need under about five pages, you're not selling online, there are no logins or bookings, and you're happy editing text yourself. A well-configured site builder will serve you for a fraction of the cost — [WordPress vs Wix vs a custom website](/blogs/wordpress-vs-wix-vs-custom-website) walks through that choice.",
+      },
+      {
+        type: "p",
+        text: "**You probably do need a developer** if users log in, you're taking bookings or payments, something has to talk to another system like a CRM or accounting package, your current site is slow or broken or uneditable, or you've been quoted for a custom build and want someone to check the quote.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Get three quotes, and send all three developers **the same written brief** — same pages, same features, same must-haves. Most quote variance disappears the moment everyone is pricing the same thing.",
+      },
+      {
+        type: "p",
+        text: "Then compare on the five checks at the top of this post rather than on the number at the bottom.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Why is one website quote $2,000 and another $15,000?" },
+      {
+        type: "p",
+        text: "Usually scope, not skill. The cheap quote is often a template with no defined revisions, no ownership clause and no support after launch; the expensive one may include custom design, a CMS, integrations and a warranty period. Published NZ ranges run $2,000–$5,000 for a template site against $5,990–$15,000 for a custom 8–15 page build, so a gap that size is normal between different products. Ask both to itemise before assuming either is wrong.",
+      },
+      { type: "h3", text: "Should I always pick the cheapest quote?" },
+      {
+        type: "p",
+        text: "No, but not automatically the most expensive either. Pick the quote whose scope matches what you actually need. The cheapest quote becomes the most expensive project when everything you assumed was included turns out to be a change request billed at $50–$150 an hour.",
+      },
+      { type: "h3", text: "Is it normal to pay a deposit to a web developer?" },
+      {
+        type: "p",
+        text: "Yes. Roughly a third up front with the remainder tied to milestones or launch is standard for freelancers and small studios. Paying 100% up front to someone you've never worked with is not, and it removes the only leverage you have if the project stalls.",
+      },
+      { type: "h3", text: "How do I compare a local developer to an overseas one?" },
+      {
+        type: "p",
+        text: "On the same five checks, plus timezone overlap, written communication quality, and how ownership and handover are handled. The cost differences are real, but a developer who answers clearly in writing is worth more than one four hours closer who doesn't. [Hiring a remote web developer](/blogs/hire-remote-web-developer) covers what to set up so it works.",
+      },
+      { type: "h3", text: "What if I already signed and the scope is wrong?" },
+      {
+        type: "p",
+        text: "Ask for a written change request with a price attached before any further work happens. Most disputes in web projects come from changes agreed verbally in a call and invoiced later, when both sides remember the conversation differently.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write the brief before you ask for a single price. One page describing what the site has to do, in business terms, is the most valuable document in this whole process — and the developers worth hiring will ask for it unprompted.",
+      },
+      {
+        type: "p",
+        text: "If you've already got quotes and can't reconcile them, send them to me with your brief. I'll tell you what's missing, what's fairly priced and what I'd question — free, with no expectation you hire me. If one of them is a good quote, I'll tell you that too. [Get in touch](/contact), or [see what I build](/services).",
+      },
+    ],
+  },
+  {
+    slug: "cost-to-add-features-existing-website",
+    // 42 chars — withBrand() lands on 57.
+    title: "What It Costs to Add Features to a Website",
+    excerpt:
+      "Adding a booking system, logins or payments to an existing site? The price depends less on the feature than on the codebase it lands in. Here's what drives the number, and when a rebuild is cheaper.",
+    coverImage:
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&h=450&fit=crop",
+    category: "Pricing",
+    publishedAt: "2026-08-12",
+    tags: ["Pricing", "Web Development", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "The cost of adding a feature to an existing website is driven **more by the codebase it lands in than by the feature itself**. The same booking system is straightforward on a well-built site with version control and a staging environment, and expensive on a site with none of those. Before you can be quoted properly, someone has to look at what's already there.",
+      },
+      {
+        type: "p",
+        text: "That's an unsatisfying answer if you came here for a price, so this post explains exactly which conditions move the number and by roughly how much — enough that you can predict which bracket you're in before you ask anyone.",
+      },
+      {
+        type: "p",
+        text: "Want the short version for your specific site? Tell me what it's built on and what you want to add, and I'll tell you which bracket you're in and why — free. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "Why the same feature costs double on an older site" },
+      {
+        type: "p",
+        text: "This is the part that feels like developers being difficult, so it's worth explaining the actual mechanism. Four things make identical work take longer:",
+      },
+      { type: "h3", text: "No version control" },
+      {
+        type: "p",
+        text: "Without Git or equivalent there's no history and no safe undo. Every change has to be made defensively, manually backed up, and verified by hand, because a mistake can't simply be reverted. This is the single largest multiplier on the list, and it applies to every hour of the job rather than a fixed portion of it.",
+      },
+      { type: "h3", text: "No staging environment" },
+      {
+        type: "p",
+        text: "Changes get tested on the live site, in front of your customers. In practice this means work happens in cautious small increments, often outside business hours, with a rollback plan for each step. Setting up staging first is usually cheaper than working without it, even on a single project.",
+      },
+      { type: "h3", text: "Outdated dependencies" },
+      {
+        type: "p",
+        text: "New features generally need current libraries. If the site is several major versions behind, the upgrade comes first — and upgrades cascade, because bringing one package forward often forces others. This work is real, mandatory and almost never in the original quote, which is why it turns up as a surprise.",
+      },
+      { type: "h3", text: "No documentation and no original developer" },
+      {
+        type: "p",
+        text: "Someone has to read the code and work out what it does before changing it safely. On a small site that's an afternoon. On a large one with unusual decisions in it, it's a meaningful share of the total, and it's pure discovery cost — you get no visible feature for it.",
+      },
+      {
+        type: "p",
+        text: "If several of these describe your site, read [taking over a website from another developer](/blogs/take-over-existing-website-developer) first. Fixing the foundation is often a better first purchase than the feature you came for.",
+      },
+      { type: "h2", text: "What actually drives the price of each feature" },
+      {
+        type: "p",
+        text: "Independently of the codebase, features differ enormously in how much genuinely new work they need. The useful question is **how much of this is a solved problem you can rent, and how much is specific to your business.**",
+      },
+      {
+        type: "table",
+        headers: ["Feature", "Where the cost sits", "What makes it expensive"],
+        rows: [
+          ["Payments", "Mostly rented — Stripe, Paddle and similar handle the hard parts", "Subscriptions, refunds, partial payments, multi-currency, and reconciling with your accounting system"],
+          ["Login / user accounts", "Partly rented — hosted auth services do the credentials", "Roles and permissions. Two roles is a feature; six roles with overlapping rules is a project"],
+          ["Booking / scheduling", "Mostly custom", "Availability rules, timezones, cancellations, reminders — and preventing two people booking the same slot"],
+          ["CRM or accounting integration", "Depends entirely on the other system", "Their API quality, rate limits, and what happens when a sync fails halfway"],
+          ["Multilingual", "Structural, not cosmetic", "Every page, email and error message doubles; URLs and SEO markup need per-language handling"],
+          ["Dashboard / reporting", "Custom, and open-ended", "The queries behind the numbers, and the fact that every stakeholder wants one more metric"],
+        ],
+      },
+      {
+        type: "p",
+        text: "One sourced datapoint on the multilingual row: Cyprus providers put **adding Greek and English versions at roughly 20% on top of a project's cost** ([Cyprus Digital Agency](https://cyprusdigitalagency.com/website-design-cost-in-cyprus-2026/)). That's a fair rule of thumb for a two-language content site, though it understates the case where prices, tax rules or legal text differ per market.",
+      },
+      { type: "h2", text: "The two features people most underestimate" },
+      { type: "h3", text: "Booking, because of the double-booking problem" },
+      {
+        type: "p",
+        text: "A booking form looks like a form. The expensive part is invisible: **two people can submit the same slot in the same second.** Checking availability in the browser doesn't solve it, because each browser rendered a calendar that was accurate when it loaded and stale by the time it was submitted.",
+      },
+      {
+        type: "p",
+        text: "The fix has to sit at the point the data is written — a uniqueness constraint, a transaction, or a version check on the slot — and it's the difference between a calendar staff trust and one they quietly abandon for a paper diary. On the [hospital system I built](/projects/hospital-management-system), that decision was made before any feature work started, because a calendar nobody trusts is worse than no calendar at all: it still has to be maintained.",
+      },
+      { type: "h3", text: "Logins, because of permissions" },
+      {
+        type: "p",
+        text: "\"Let customers log in\" is cheap. \"Let customers, staff and managers log in and each see the right subset of the same records\" is a different project, and the cost scales with the number of distinct answers to \"who can see or change this?\" rather than with the number of screens.",
+      },
+      {
+        type: "p",
+        text: "The rule that keeps it safe is that permissions are enforced on the server, not in the interface — the UI should only ever hide what the API already refuses. A hidden button is a convenience, never a security boundary. If your feature is heading in this direction, [what a customer portal costs to build](/blogs/customer-portal-development-cost) is the more specific guide.",
+      },
+      { type: "h2", text: "How to estimate the cost yourself" },
+      {
+        type: "p",
+        text: "Since feature prices aren't published the way website prices are, the honest way to sanity-check a quote is to work backwards from hours and published rates. NZ hourly bands, from a provider that publishes them:",
+      },
+      {
+        type: "table",
+        headers: ["Who", "Published NZD rate"],
+        rows: [
+          ["NZ freelancer, junior to mid", "$65–$110/hr"],
+          ["NZ freelancer, senior or specialist", "$120–$175/hr"],
+          ["Boutique NZ agency (5–20 staff)", "$140–$220/hr blended"],
+          ["Large enterprise agency", "$220–$320+/hr blended"],
+        ],
+        caption: "Source: Web Maniacs, custom web application pricing in NZ.",
+      },
+      {
+        type: "p",
+        text: "Full bands and context at [Web Maniacs](https://webmaniacs.co.nz/custom-web-application-development-pricing-nz/). Content changes and small tweaks on an existing site are commonly billed lower, at **$50–$150/hr** ([Fuel Design](https://www.fueldesign.co.nz/blog/how-much-does-a-website-cost-in-new-zealand-2026-pricing-guide/)). In Cyprus, ongoing freelance engagements run **€500–€2,000/month** against agency retainers of **€3,500–€12,000+/month** ([Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/)).",
+      },
+      {
+        type: "p",
+        text: "So when you get a quote, ask for the estimated hours as well as the total. Two quotes at the same price can mean very different things — twenty hours from a senior developer, or forty from a junior — and knowing which tells you what you're buying.",
+      },
+      { type: "h2", text: "When adding the feature is the wrong move" },
+      {
+        type: "p",
+        text: "Three situations where I'd tell you to stop:",
+      },
+      {
+        type: "list",
+        items: [
+          "**The feature already exists as a product.** Bookings, scheduling, help desks and newsletters all have mature hosted tools. A monthly subscription that solves it today usually beats a custom build you also have to maintain — and you can always build it properly later once you know it's load-bearing.",
+          "**You're adding the third or fourth major feature to an aging site.** At that point you're funding a rebuild in instalments, at a worse price and with no coherent result. Published NZ ranges put a simple web app at $15,000–$40,000 and a mid-complexity platform at $40,000–$120,000 — worth comparing against the sum of what you're about to spend piecemeal.",
+          "**Nobody has asked for it.** The most expensive feature is one built on an assumption. If you can't name the customers who'll use it, build the smallest version that tests the idea.",
+        ],
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How much does it cost to add a booking system to a website?" },
+      {
+        type: "p",
+        text: "It depends far more on your existing codebase than on the booking feature itself, which is why no honest developer quotes it sight-unseen. The cost drivers are your availability rules, timezone handling, cancellations and reminders — plus the concurrency problem of preventing two customers booking the same slot, which has to be solved where the data is written rather than in the browser. If an off-the-shelf booking product fits your rules, it will almost always be cheaper than a custom build.",
+      },
+      { type: "h3", text: "Why does adding a small feature cost so much?" },
+      {
+        type: "p",
+        text: "Usually because of what surrounds it rather than the feature. If the site has no version control, no staging environment and outdated dependencies, every change has to be made defensively, tested on production, and often preceded by a library upgrade that cascades. That work is invisible in the finished result, which is why the price feels disconnected from what you can see.",
+      },
+      { type: "h3", text: "Is it cheaper to add features or rebuild the website?" },
+      {
+        type: "p",
+        text: "Add features while the foundation is sound and you're making one or two changes. Rebuild when you're on your third or fourth significant addition to an aging codebase, because at that point you're paying for a rebuild in instalments without getting a coherent one. Compare the running total you're about to spend against published NZ ranges of $15,000–$40,000 for a simple web app and $40,000–$120,000 for a mid-complexity platform.",
+      },
+      { type: "h3", text: "How much does it cost to add a login to an existing website?" },
+      {
+        type: "p",
+        text: "Simple customer accounts are relatively cheap because hosted authentication services handle passwords, resets and security. The cost scales with permissions, not screens: two roles is a feature, while six roles with overlapping rules about who can see and change each record is a project in its own right. Be specific about roles when you ask for a quote — it's the variable that moves the number most.",
+      },
+      { type: "h3", text: "Can any developer add features to a site someone else built?" },
+      {
+        type: "p",
+        text: "Yes, but they should look at the code before quoting a fixed price. An inherited codebase is another developer's decisions, and the work of understanding them can't be priced blind. Expect a short paid audit, then a real quote — and treat a confident fixed price offered without access to the code as either padded or about to become a variation invoice.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Find out whether your site has version control, a staging environment and current dependencies. Those three answers put you in a bracket before anyone quotes anything, and any developer who has touched the site can tell you in an hour.",
+      },
+      {
+        type: "p",
+        text: "If you'd like that answered honestly — including whether an off-the-shelf product would serve you better than anything I'd build — send me the details. [Get in touch](/contact), or [see what I work on](/services).",
+      },
+    ],
+  },
 ];
 
 export function findBlogPost(slug: string): BlogPost | undefined {
