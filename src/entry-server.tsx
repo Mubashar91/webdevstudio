@@ -4,7 +4,7 @@ import { AppProviders, AppRoutes } from "./App";
 import { BLOG_POSTS, faqsOf, wordCountOf } from "./data/blogs";
 import { DERIVED_LASTMOD, withBrand } from "./lib/seo";
 import { schemaImage } from "./lib/images";
-import { buildAreaServed, cyGeo, nzGeo } from "./data/geoPageData";
+import { buildAreaServed, cityArea, cyGeo, nzGeo } from "./data/geoPageData";
 import {
   LEGACY_PROJECT_REDIRECTS,
   STATIC_PROJECTS,
@@ -197,6 +197,33 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
         serviceType: "Web Development",
         provider: orgRef,
         areaServed: buildAreaServed(geo),
+        availableChannel: {
+          "@type": "ServiceChannel",
+          serviceUrl: url("/contact"),
+          availableLanguage: { "@type": "Language", name: "English" },
+        },
+      },
+    ];
+  }
+
+  // City landing pages: a Service scoped to one city rather than a whole
+  // country. Built here so the prerendered HTML crawlers read carries the
+  // Service node, and kept identical to the runtime node the page component
+  // emits — both read areaServed from cityArea(), so hydration can't drop it.
+  const cities = [
+    { path: "/web-developer-auckland", city: "Auckland", country: "New Zealand" },
+  ];
+  for (const { path, city, country } of cities) {
+    map[path] = [
+      {
+        "@type": "Service",
+        "@id": `${url(path)}#service`,
+        name: `Web Developer for ${city} Businesses`,
+        description: `Remote React and MERN web development for businesses in ${city}, ${country} — fixed-price, delivered by ${SITE_NAME}.`,
+        url: url(path),
+        serviceType: "Web Development",
+        provider: orgRef,
+        areaServed: cityArea(city, country),
         availableChannel: {
           "@type": "ServiceChannel",
           serviceUrl: url("/contact"),

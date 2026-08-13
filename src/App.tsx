@@ -21,6 +21,7 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import WebDevelopmentNewZealand from "./pages/WebDevelopmentNewZealand";
 import WebDevelopmentCyprus from "./pages/WebDevelopmentCyprus";
+import WebDeveloperAuckland from "./pages/WebDeveloperAuckland";
 import NotFound from "./pages/NotFound";
 
 // ── Admin routes: code-split ──
@@ -59,6 +60,7 @@ export const AppRoutes = () => (
     <Route path="/contact" element={<Contact />} />
     <Route path="/web-development-new-zealand" element={<WebDevelopmentNewZealand />} />
     <Route path="/web-development-cyprus" element={<WebDevelopmentCyprus />} />
+    <Route path="/web-developer-auckland" element={<WebDeveloperAuckland />} />
 
     {/* Admin auth (no layout) */}
     <Route

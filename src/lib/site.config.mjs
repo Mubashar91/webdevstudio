@@ -282,6 +282,48 @@ export const CYPRUS_FAQS = [
   },
 ];
 
+/**
+ * FAQs for the Auckland city landing page (/web-developer-auckland).
+ *
+ * Written honest-remote on purpose. The page targets "web developer auckland"
+ * — a business looking for someone to build their site — WITHOUT claiming to
+ * be Auckland-based, because a fake local presence is the one claim that ends
+ * a lead the moment someone asks to meet or checks an address. Every answer is
+ * about availability and how remote delivery works, never about completed
+ * local projects the site can't yet point to.
+ *
+ * The timezone answer names the gap plainly rather than papering over it, for
+ * the same reason: an Auckland buyer already knows the offshore objection, and
+ * naming it first is more persuasive than pretending it isn't there.
+ */
+export const AUCKLAND_FAQS = [
+  {
+    question: "Do I need an Auckland-based developer?",
+    answer:
+      "Usually not. In-person matters for some projects, but most website and web-app work is done remotely now. What matters more is a fixed price agreed up front, direct communication with the person actually building it, clear ownership of the result, and being able to watch the work as it happens — all of which you get remotely. If face-to-face really is essential for you, hire local, and I'll tell you the same.",
+  },
+  {
+    question: "How much does a website cost in Auckland?",
+    answer:
+      "It depends on scope — a brochure site and a web app with logins and payments are different projects. Auckland agencies typically quote NZ$15,000–$30,000+ for work a lower-overhead provider delivers for NZ$4,000–$8,000, because agency rates carry office and account-management costs a freelance developer doesn't. My quotes are fixed-price and agreed before any work starts; the full band-by-band breakdown is in my guide to what a website costs in New Zealand.",
+  },
+  {
+    question: "Will you be available in my Auckland timezone?",
+    answer:
+      "I won't pretend the gap isn't there — Auckland is about seven hours ahead of me, so you won't get a same-minute reply at 2pm your time. What you get instead is a set call time in your morning for demos and planning, everything else documented in writing so progress never depends on us being online together, and work handed back overnight ready for your next NZ morning. For most projects that async rhythm is faster than it sounds; if constant live back-and-forth is essential to you, a local developer fits better.",
+  },
+  {
+    question: "Who owns the website when it's done?",
+    answer:
+      "You do — the code, the domain and the hosting account, all in your name from the start. You're never locked in, and you can move to another developer whenever you want without rebuilding. Ownership is written into the quote, not left to be sorted out later.",
+  },
+  {
+    question: "Can you take over a website another developer built?",
+    answer:
+      "Yes. Takeovers and redesigns are a common request. I'll audit what's there, tell you honestly what's worth keeping and what isn't, and give you a fixed price to move forward — including when the honest answer is that a rebuild costs less than untangling the old one.",
+  },
+];
+
 /** General pre-sales FAQs shown on the services page. */
 export const SERVICES_FAQS = [
   {
@@ -419,6 +461,26 @@ export const ROUTES = [
     keywords:
       "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, web developer Paphos, fintech web development Cyprus",
     faqs: CYPRUS_FAQS,
+  },
+  {
+    // City landing page, one level more specific than /web-development-new-
+    // zealand. Targets "web developer auckland" (an open query) rather than
+    // "web design auckland" (agency-owned). It does NOT claim Auckland
+    // presence — see AUCKLAND_FAQS and the page's honest-remote framing. Only
+    // add sibling city pages (Wellington, Christchurch) when each has genuine
+    // per-city content; near-identical city pages are a doorway-page risk and
+    // would dilute this one and the country page above.
+    path: "/web-developer-auckland",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-13",
+    crumbLabel: "Auckland",
+    title: "Web Developer for Auckland Businesses | WebDevStudio",
+    description:
+      "Freelance web developer building fast, custom websites and web apps for Auckland businesses. Fixed-price, remote, React & MERN. Get a free quote on your project.",
+    keywords:
+      "web developer auckland, freelance web developer auckland, website developer auckland, web app developer auckland, custom website auckland",
+    faqs: AUCKLAND_FAQS,
   },
 ];
 

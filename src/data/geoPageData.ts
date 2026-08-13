@@ -54,6 +54,30 @@ export const cyGeo: GeoGraph = {
 };
 
 /**
+ * `areaServed` for a single-city landing page (e.g. /web-developer-auckland).
+ *
+ * Imported by BOTH the page component's runtime JSON-LD and the prerenderer's
+ * pageSchema() in entry-server.tsx, for the same reason buildAreaServed() is
+ * shared: hydration replaces the prerendered graph wholesale, so a second copy
+ * defined in the component would silently diverge from the one crawlers see.
+ *
+ * City first, then the country it sits in — the city is what this page is
+ * about, the country is context. Auckland is unambiguous enough not to need
+ * the Hamilton treatment, but the containedInPlace edge is kept for shape
+ * consistency with buildAreaServed().
+ */
+export function cityArea(city: string, country: string) {
+  return [
+    {
+      "@type": "City",
+      name: city,
+      containedInPlace: { "@type": "Country", name: country },
+    },
+    { "@type": "Country", name: country },
+  ];
+}
+
+/**
  * Builds the `areaServed` array for a location page's Service node.
  *
  * `containedInPlace` is set on every city deliberately. Hamilton is the reason:
