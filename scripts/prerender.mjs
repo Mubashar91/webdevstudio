@@ -351,6 +351,44 @@ function renderShell(template) {
  * thing standing between an old link and a 404. Keeping the check here means
  * the data and vercel.json cannot drift apart silently.
  */
+/**
+ * Fails the build when a prerendered page links to an internal path that
+ * doesn't exist.
+ *
+ * A 2026-08-13 audit found two inline "related reading" links pointing at
+ * posts that were referenced before they were written —
+ * /blogs/web-developer-contract-checklist and
+ * /blogs/customer-portal-development-cost — both shipping as real 404s inside
+ * body copy. Nothing in the pipeline noticed, and at the current publishing
+ * pace nothing would have noticed the next one either.
+ *
+ * Checked against the rendered HTML rather than the source data, so it catches
+ * a bad href wherever it comes from — a blog body, a case study, a component.
+ * Legacy /projects/<id> paths are valid targets: vercel.json 301s them, and
+ * assertLegacyRedirects() above proves those redirects exist.
+ */
+function assertInternalLinks(linksByRoute, validPaths) {
+  const broken = [];
+
+  for (const [routePath, hrefs] of linksByRoute) {
+    for (const href of hrefs) {
+      // Strip query/hash: /blogs/x#faq resolves to /blogs/x.
+      const path = href.split(/[?#]/)[0].replace(/\/$/, "") || "/";
+      if (!validPaths.has(path)) broken.push({ from: routePath, href });
+    }
+  }
+
+  if (broken.length > 0) {
+    const detail = broken
+      .map(({ from, href }) => `    ${from}  →  ${href}`)
+      .join("\n");
+    throw new Error(
+      `prerender: ${broken.length} internal link(s) point to paths that don't exist:\n${detail}\n` +
+        `  Either publish the target, or repoint the link. See assertInternalLinks().`
+    );
+  }
+}
+
 async function assertLegacyRedirects(pairs) {
   if (!pairs?.length) return;
 
@@ -452,6 +490,14 @@ async function main() {
 
   await assertLegacyRedirects(LEGACY_PROJECT_REDIRECTS);
 
+  // Every internal href found in a rendered body, checked after the loop —
+  // see assertInternalLinks().
+  const linksByRoute = new Map();
+  const validPaths = new Set([
+    ...allRoutes.map((r) => r.path),
+    ...LEGACY_PROJECT_REDIRECTS.map((r) => r.from),
+  ]);
+
   for (const route of allRoutes) {
     let html = renderHead(template, route, schemaByPath[route.path] ?? []);
 
@@ -466,6 +512,14 @@ async function main() {
       );
     }
     html = injectBody(html, body);
+
+    // Site-internal page links only: absolute "/..." hrefs, excluding "//host"
+    // protocol-relative URLs and asset paths that aren't routes.
+    linksByRoute.set(
+      route.path,
+      [...new Set([...body.matchAll(/href="(\/[^"#?]*)/g)].map((m) => m[1]))]
+        .filter((href) => !href.startsWith("//") && !/\.[a-z0-9]+$/i.test(href))
+    );
 
     // "/" overwrites dist/index.html; every other route becomes
     // dist/<path>/index.html, which static hosts serve directly.
@@ -482,6 +536,11 @@ async function main() {
       ).toFixed(0)} KB body)`
     );
   }
+
+  assertInternalLinks(linksByRoute, validPaths);
+  console.log(
+    `  ✓ internal links (${[...linksByRoute.values()].flat().length} checked, 0 broken)`
+  );
 
   await writeFile(join(distDir, "404.html"), render404(template), "utf8");
   console.log("  ✓ 404.html");
