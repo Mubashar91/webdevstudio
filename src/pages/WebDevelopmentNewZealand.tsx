@@ -4,6 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
 import { CitiesServed } from "@/components/CitiesServed";
+import { GeoGuides } from "@/components/GeoGuides";
 import { buildAreaServed, nzGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Pricing } from "@/components/Pricing";
@@ -147,6 +148,20 @@ const WebDevelopmentNewZealand = () => {
               </Link>
             </>
           }
+        />
+        <GeoGuides
+          heading="Pricing and hiring guides for NZ businesses"
+          intro="Written for the New Zealand market, with NZD figures sourced from published price guides rather than estimates."
+          slugs={[
+            "website-cost-new-zealand-2026",
+            "how-to-compare-web-developer-quotes",
+            "cost-to-hire-web-developer-2026",
+            "website-redesign-cost-new-zealand",
+            "annual-website-maintenance-costs-nz",
+            "fix-or-rebuild-website",
+            "take-over-existing-website-developer",
+            "booking-website-cost",
+          ]}
         />
         <Testimonials />
         <CTA />

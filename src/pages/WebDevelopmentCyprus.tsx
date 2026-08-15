@@ -4,6 +4,7 @@ import { Navigation } from "@/components/Navigation";
 import { PageHeader } from "@/components/PageHeader";
 import { LocationHighlights } from "@/components/LocationHighlights";
 import { CitiesServed } from "@/components/CitiesServed";
+import { GeoGuides } from "@/components/GeoGuides";
 import { buildAreaServed, cyGeo } from "@/data/geoPageData";
 import { Services as ServicesSection } from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
@@ -145,6 +146,18 @@ const WebDevelopmentCyprus = () => {
               </Link>
             </>
           }
+        />
+        <GeoGuides
+          heading="Pricing and hiring guides for Cyprus businesses"
+          intro="Written with EUR figures sourced from published Cyprus price guides, including what a second language adds to a build."
+          slugs={[
+            "website-cost-cyprus-2026",
+            "how-to-compare-web-developer-quotes",
+            "cost-to-hire-web-developer-2026",
+            "customer-portal-development-cost",
+            "what-should-be-in-web-development-quote",
+            "hire-remote-web-developer",
+          ]}
         />
         <Testimonials />
         <CTA />

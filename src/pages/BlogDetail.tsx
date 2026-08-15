@@ -13,7 +13,7 @@ import {
   SITE_NAME,
   withBrand,
 } from "@/lib/seo";
-import { faqsOf, findBlogPost, readTimeOf, wordCountOf } from "@/data/blogs";
+import { faqsOf, findBlogPost, readTimeOf, relatedPosts, wordCountOf } from "@/data/blogs";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
 // schemaImage for <head> (og:image, BlogPosting.image) and optimizedImage for
 // the visible hero — the head wants >=1200px, the page wants the card size.
@@ -73,6 +73,7 @@ const BlogDetail = () => {
   const navigate = useNavigate();
   const post = slug ? findBlogPost(slug) : undefined;
   const faqs = post ? faqsOf(post) : [];
+  const related = post ? relatedPosts(post) : [];
 
   useSEO({
     // withBrand, matching the prerendered <title>. Building the branded title
@@ -341,6 +342,42 @@ const BlogDetail = () => {
               </Badge>
             ))}
           </div>
+
+          {/* Post-to-post links, scored by shared tags and category — see
+              relatedPosts(). Before this, every article's only inbound path
+              was /blogs, so the archive had no cluster structure for a
+              crawler to follow and a finished reader had nowhere to go. */}
+          {related.length > 0 && (
+            <nav
+              aria-label="Related articles"
+              className="mt-12 pt-8 border-t border-border/40"
+            >
+              <h2 className="text-sm font-bold uppercase tracking-[0.14em] text-muted-foreground mb-4">
+                Keep reading
+              </h2>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {related.map((r) => (
+                  <li key={r.slug}>
+                    <Link
+                      to={`/blogs/${r.slug}`}
+                      className="group block h-full p-4 rounded-xl border border-border/50
+                        hover:border-primary/50 hover:bg-muted/40 transition-colors"
+                    >
+                      <span className="block text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-1">
+                        {r.category}
+                      </span>
+                      <span className="block font-semibold leading-snug group-hover:text-primary transition-colors">
+                        {r.title}
+                      </span>
+                      <span className="block text-xs text-muted-foreground mt-1">
+                        {readTimeOf(r)}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
           {/* Contextual internal links. An audit found zero in-body links
               connecting posts to the commercial pages — so a reader who

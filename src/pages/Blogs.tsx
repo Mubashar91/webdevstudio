@@ -5,7 +5,7 @@ import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
 import { breadcrumbNodeFor, canonicalPath, pageGraph, routeMeta } from "@/lib/seo";
-import { BLOG_POSTS } from "@/data/blogs";
+import { POSTS_BY_NEWEST } from "@/data/blogs";
 
 const meta = routeMeta("/blogs")!;
 
@@ -23,7 +23,9 @@ const Blogs = () => {
         description: "Articles on React, TypeScript, and MERN stack development.",
         url: canonicalPath("/blogs"),
         publisher: { "@id": `${canonicalPath("/")}#organization` },
-        blogPost: BLOG_POSTS.map((post) => ({
+        // Same order the page renders in, so the graph and the visible list
+        // describe the same sequence.
+        blogPost: POSTS_BY_NEWEST.map((post) => ({
           "@type": "BlogPosting",
           "@id": `${canonicalPath(`/blogs/${post.slug}`)}#article`,
           headline: post.title,

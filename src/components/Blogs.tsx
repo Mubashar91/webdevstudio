@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Calendar, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { BLOG_POSTS, readTimeOf } from "@/data/blogs";
+import { POSTS_BY_NEWEST, readTimeOf } from "@/data/blogs";
 import { CARD_IMAGE, optimizedImage } from "@/lib/images";
 
 interface BlogsProps {
@@ -16,7 +16,9 @@ export const Blogs = ({ compactHeader = false, aboveFold = false }: BlogsProps) 
     threshold: 0.05,
     initialVisible: aboveFold,
   });
-  const posts = BLOG_POSTS.slice(0, compactHeader ? BLOG_POSTS.length : 3);
+  // Newest first — the homepage teaser shows the three most recent posts,
+  // not the three that happen to sit at the top of BLOG_POSTS.
+  const posts = POSTS_BY_NEWEST.slice(0, compactHeader ? POSTS_BY_NEWEST.length : 3);
 
   return (
     <section id="blog" className={`relative overflow-hidden ${compactHeader ? "py-20" : "py-28"}`}>
