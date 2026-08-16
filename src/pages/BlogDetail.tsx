@@ -224,6 +224,24 @@ const BlogDetail = () => {
             className="w-full aspect-video object-cover rounded-2xl mb-10 border border-border/50 shadow-card"
           />
 
+          {/* The offer, above the fold of the body rather than after it.
+              The closing CTA stays where it is — this catches the reader who
+              already knows what they want and shouldn't have to earn it by
+              finishing the article. */}
+          {post.serviceCta && (
+            <div
+              className="rounded-2xl border border-primary/25 bg-primary/[0.06] p-5 md:p-6 mb-10
+                flex flex-col sm:flex-row sm:items-center gap-4"
+            >
+              <p className="text-sm md:text-[15px] text-foreground/90 leading-relaxed flex-1">
+                {post.serviceCta.text}
+              </p>
+              <Button asChild className="h-11 rounded-xl font-bold flex-shrink-0">
+                <Link to={post.serviceCta.href}>{post.serviceCta.label}</Link>
+              </Button>
+            </div>
+          )}
+
           {/* Structured blocks rather than plain paragraphs, so posts can carry
               headings, lists and code. Headings render as h2 — the page h1 is
               the title above, so this keeps the outline correct. */}

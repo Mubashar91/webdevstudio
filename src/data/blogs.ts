@@ -58,6 +58,27 @@ export interface BlogPost {
    *  which Google uses to judge freshness. Falls back to publishedAt. */
   updatedAt?: string;
   tags: string[];
+  /**
+   * Optional offer rendered under the cover image, above the article body.
+   *
+   * These posts carried their only route to a service in the closing
+   * paragraph, which reaches whoever finished a thousand words. The reader
+   * who already knows what they want — the one most likely to buy — had to
+   * scroll past the entire article to find it. Same offer, placed where that
+   * reader actually is.
+   *
+   * Deliberately NOT a ContentBlock. wordCountOf(), readTimeOf() and faqsOf()
+   * all read `content` as the article text, so putting a call to action in
+   * there would inflate the reported read time and could be swallowed into an
+   * FAQ answer. This is an offer attached to the post, not part of the
+   * writing.
+   */
+  serviceCta?: {
+    /** One line of context; the button carries the action. */
+    text: string;
+    label: string;
+    href: string;
+  };
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -3759,6 +3780,11 @@ wp core verify-checksums   # flags modified core files, a common malware signal`
     category: "Business",
     publishedAt: "2026-08-11",
     tags: ["Maintenance", "Website Cost", "New Zealand"],
+    serviceCta: {
+      text: "Want the number without working it out yourself? My maintenance plans are fixed monthly, from $39 NZD, with no lock-in.",
+      label: "See the plans",
+      href: "/services/website-maintenance",
+    },
     content: [
       {
         type: "p",
@@ -8330,6 +8356,11 @@ PEOPLE
     category: "Business",
     publishedAt: "2026-08-16",
     tags: ["Small Business", "New Zealand", "Website Handover"],
+    serviceCta: {
+      text: "Don't want to be the one updating it? I handle updates, backups and monitoring monthly, from $39 NZD.",
+      label: "See the plans",
+      href: "/services/website-maintenance",
+    },
     content: [
       {
         type: "p",
@@ -8469,6 +8500,11 @@ PEOPLE
     category: "Business",
     publishedAt: "2026-08-16",
     tags: ["Small Business", "New Zealand", "Pricing"],
+    serviceCta: {
+      text: "Already decided you want one? Here's exactly what my plans cover and what they cost — fixed monthly, cancel anytime.",
+      label: "See the plans",
+      href: "/services/website-maintenance",
+    },
     content: [
       {
         type: "p",
@@ -8578,6 +8614,11 @@ PEOPLE
     category: "Web Development",
     publishedAt: "2026-08-16",
     tags: ["Small Business", "Web Development"],
+    serviceCta: {
+      text: "Don't know whether your backups exist or work? Every plan includes daily off-site backups and a tested restore, from $39 NZD a month.",
+      label: "See the plans",
+      href: "/services/website-maintenance",
+    },
     content: [
       {
         type: "p",
@@ -8806,6 +8847,11 @@ PEOPLE
     category: "Web Development",
     publishedAt: "2026-08-16",
     tags: ["Small Business", "Web Development"],
+    serviceCta: {
+      text: "Would rather someone else kept it patched? Updates, security scanning and monitoring, handled monthly from $39 NZD.",
+      label: "See the plans",
+      href: "/services/website-maintenance",
+    },
     content: [
       {
         type: "p",
@@ -8917,6 +8963,14 @@ PEOPLE
     category: "Web Development",
     publishedAt: "2026-08-16",
     tags: ["Small Business", "Web Development"],
+    // Points at /contact, not the plans page. Someone whose site is down
+    // right now is not shopping for a monthly subscription — sending them to
+    // a pricing table is the wrong answer to the question they arrived with.
+    serviceCta: {
+      text: "Site down right now? Send me the URL and what you're seeing. I'll tell you what's happened — usually within a few hours, no charge for the look.",
+      label: "Get help now",
+      href: "/contact",
+    },
     content: [
       {
         type: "p",
