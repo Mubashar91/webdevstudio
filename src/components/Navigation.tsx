@@ -126,11 +126,11 @@ export const Navigation = () => {
                 className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200 ${
                   active(to)
                     ? "bg-primary text-white shadow-sm shadow-primary/40"
-                    : to === CTA_LINK
+                    : to === CTA_LINK && !active(to)
                     // Filled, not just tinted — a tint reads as "hovered" next
                     // to five muted siblings, which is the state this finding
                     // is about. See CTA_LINK.
-                    ? "bg-primary/90 text-white shadow-sm shadow-primary/30 hover:bg-primary"
+                    ? "bg-primary/80 text-white shadow-sm shadow-primary/20 hover:bg-primary/90"
                     : isTransparent
                     ? "text-white/75 hover:text-white hover:bg-white/15"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted/70"
