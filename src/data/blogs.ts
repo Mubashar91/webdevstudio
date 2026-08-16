@@ -4748,6 +4748,10 @@ updates:
       },
       {
         type: "p",
+        text: "You've probably seen quotes that wildly contradict each other for what sounded like the same project. A solo developer quoting $35K, an agency quoting $120K, someone on Upwork at $15K. Here's why the gap exists, what's actually driving each price, and how to know if your project lands in it.",
+      },
+      {
+        type: "p",
         text: "This breaks the number down by what actually drives it, so you can estimate your own project and avoid the two classic mistakes: underbudgeting, and overbuilding. Figures are USD international market rates; my own fixed prices are on the [services page](/services), and [how much a custom web app costs](/blogs/custom-web-app-cost-2026) covers how I quote smaller, tightly scoped builds.",
       },
       { type: "h2", text: "Website vs web application: why the price jumps" },
@@ -4827,6 +4831,22 @@ updates:
         type: "p",
         text: "Notice that visible design is a minority of the cost. Most of the budget is logic and data — the parts users never see and entirely depend on. Skimping on the discovery 10% is the most expensive mistake available to you, because vague requirements cause rework and rework is where budgets die.",
       },
+      { type: "h2", text: "Hidden costs nobody mentions upfront" },
+      {
+        type: "p",
+        text: "Every build has invisible line items that don't show up in the initial quote:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Infrastructure spikes** — the quiet part about cloud hosting is that it's cheap at small scale and scales exponentially. One successful feature sends traffic up; now you're renting more servers. Budget a 2–3× cushion on hosting costs for the first year.",
+          "**Third-party API fees** — payment processors (Stripe: 2.9% + 30¢ per transaction), mapping, email delivery, analytics. None of them are \"one price.\" They're usage-based and they're easy to underestimate.",
+          "**Security patching** — you will have dependencies with CVEs. Patches need testing to make sure they don't break your code. A mature app generates 4–12 patches a quarter, each one needing a few hours of attention.",
+          "**QA that got scoped out** — most fixed-price quotes cut features or testing to hit a date. You'll find the missing test cases when a user does something the build never considered. That's the beginning of post-launch firefighting.",
+          "**Recovery when something breaks** — not all downtime is preventable. A database corrupts, a third-party service goes down. You'll need someone on call who knows your codebase.",
+          "**Knowledge transfer** — if the developer leaves, the next person has to learn what was never documented. In production, that learning happens at critical moments, paid at emergency rates.",
+        ],
+      },
       { type: "h2", text: "Ongoing costs after launch" },
       {
         type: "p",
@@ -4863,7 +4883,18 @@ updates:
       { type: "h2", text: "Freelancer vs agency for web apps" },
       {
         type: "p",
-        text: "The gap is even wider for applications than for websites.",
+        text: "The gap is even wider for applications than for websites. Team size and region both affect the rate, though what you get for that rate is different:",
+      },
+      {
+        type: "table",
+        headers: ["Team type", "Typical rate", "What this covers", "Best for"],
+        rows: [
+          ["Solo senior dev (Eastern Europe/Pakistan)", "$25–$50/hr", "Full stack, owned end-to-end, direct communication", "Focused MVPs, tight scope, no politics"],
+          ["Small agency (LatAm/Eastern Europe)", "$40–$80/hr", "2–3 specialists in parallel, some process overhead", "Mid-complexity, timeline matters more than speed"],
+          ["Mid-size agency (Western Europe)", "$100–$150/hr", "Large team, formal process, project manager layer", "Regulatory complexity, multi-team coordination"],
+          ["US/Western agency", "$150–$250/hr", "Enterprise sales, account managers, compliance", "Public companies, financial services, scale"],
+        ],
+        caption: "International market rates vary by region and team size. The rate is only one factor — what matters is what you get for it.",
       },
       {
         type: "list",
@@ -4901,6 +4932,21 @@ updates:
       {
         type: "p",
         text: "Agencies typically quote $80,000–$200,000+ for MVP scope a senior solo developer or small team delivers for $30,000–$70,000. The difference is overhead and parallel specialists, which is worth paying for at genuine enterprise complexity and not much below it.",
+      },
+      { type: "h3", text: "What's the cheapest version of a web app that would actually be useful?" },
+      {
+        type: "p",
+        text: "An MVP sits at $30,000–$70,000 — but only when the scope is ruthlessly cut. The formula: one user role, 2–3 core workflows, no fancy integrations, minimal admin interface. Everything else is phase two. Most first versions ship with 20% of what people asked for and 100% of what they need.",
+      },
+      { type: "h3", text: "Can I build an app without a developer — using no-code tools?" },
+      {
+        type: "p",
+        text: "For specific use cases yes — appointment booking, forms, customer databases. For anything with significant custom logic, multi-role permissions or heavy integrations, no. No-code platforms charge monthly fees instead of upfront cost and become expensive as you scale. For a real MVP or a long-lived product, a developer pays for itself inside a year.",
+      },
+      { type: "h3", text: "Should I build an MVP or go straight to the full version?" },
+      {
+        type: "p",
+        text: "Always start with the MVP. Build the smallest version that delivers core value, launch it, and expand based on what real users actually do — not on what you imagined in a spec. The [Standish Group CHAOS report](https://www.standishgroup.com/reports/2023-standish-group-chaos-report/) found that only 31% of software projects land on time and on budget. Small scope projects succeed at higher rates. Start small, prove it works, then invest in scale.",
       },
       { type: "h2", text: "The bottom line" },
       {
