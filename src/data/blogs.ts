@@ -3766,7 +3766,7 @@ wp core verify-checksums   # flags modified core files, a common malware signal`
       },
       {
         type: "p",
-        text: "All figures NZD, excluding GST. A website is closer to a vehicle than a painting — the ongoing number is not optional, and leaving it out of the original decision is how people end up surprised.",
+        text: "All figures NZD, excluding GST. A website is closer to a vehicle than a painting — the ongoing number is not optional, and leaving it out of the original decision is how people end up surprised. If you'd rather skip the arithmetic, [my own maintenance plans](/services/website-maintenance) are fixed monthly and priced against the ranges below.",
       },
       { type: "h2", text: "The line items, with real 2026 NZ ranges" },
       {
@@ -3993,7 +3993,7 @@ updates:
       },
       {
         type: "p",
-        text: "Inherited a site nobody has touched in two years? Send me the URL and I'll tell you what state it's actually in: what's outdated, what's exposed, and what it would take to make it safe — and if you can't reach whoever built it, [taking over a website from another developer](/blogs/take-over-existing-website-developer) is the place to start. No charge for the look. [Get in touch](/contact), or [see recent work](/projects).",
+        text: "Inherited a site nobody has touched in two years? Send me the URL and I'll tell you what state it's actually in: what's outdated, what's exposed, and what it would take to make it safe — and if you can't reach whoever built it, [taking over a website from another developer](/blogs/take-over-existing-website-developer) is the place to start. No charge for the look. [Get in touch](/contact), or see [my own maintenance plans](/services/website-maintenance) if you'd rather compare against a fixed monthly number.",
       },
     ],
   },
@@ -8563,7 +8563,7 @@ PEOPLE
       { type: "h2", text: "Where to start" },
       {
         type: "p",
-        text: "Work out what your site is built on and what it would cost you to lose for a day. Those two answers decide this, not a sales page. Tell me both and I'll give you a straight answer — including “you don't need one”. [Get in touch](/contact).",
+        text: "Work out what your site is built on and what it would cost you to lose for a day. Those two answers decide this, not a sales page. Tell me both and I'll give you a straight answer — including “you don't need one”. [Get in touch](/contact), or look at [what a plan actually covers](/services/website-maintenance) if you've already decided you want one.",
       },
     ],
   },

@@ -112,6 +112,102 @@ export function eurFromUsd(usd) {
   return Math.round((usd * USD_TO_EUR) / 10) * 10;
 }
 
+/**
+ * Maintenance is the one thing on this site priced in NZD.
+ *
+ * Everything else invoices in USD (PRICE_CURRENCY above). The maintenance
+ * plans are sold to New Zealand businesses against New Zealand competitors
+ * whose published plans are NZD, so quoting USD there asks the buyer to do
+ * arithmetic mid-comparison. Declared as its own constant rather than reusing
+ * PRICE_CURRENCY so the Offer nodes on /services/website-maintenance can't
+ * silently inherit the wrong currency if PRICE_CURRENCY ever changes.
+ *
+ * All maintenance figures below EXCLUDE GST, which the page states.
+ */
+export const MAINTENANCE_CURRENCY = "NZD";
+
+/**
+ * Ad-hoc rate for content changes outside a plan's included hours.
+ *
+ * Deliberately below the $80–$150/hour band NZ providers publish, for the
+ * same reason the plans undercut the market: no agency overhead, and the
+ * buyer deals with the person doing the work. The page says so explicitly —
+ * an unexplained low price reads as risk, not value.
+ */
+export const MAINTENANCE_HOURLY = 60;
+
+/**
+ * The three maintenance tiers.
+ *
+ * Kept here, not in the page component, for the same reason SERVICE_PACKAGES
+ * is: these numbers feed the rendered pricing table AND the Offer nodes in
+ * the page's Service schema. Schema prices that contradict the visible page
+ * are a structured-data violation, and the only reliable way to prevent that
+ * is to have one source.
+ *
+ * `includedHours` is null on Essential deliberately — it has no included
+ * changes, and rendering "0 hours included" invites the reader to price it
+ * against the tiers that do rather than reading what it actually is.
+ */
+export const MAINTENANCE_PLANS = [
+  {
+    id: "essential",
+    name: "Essential",
+    price: 39,
+    tagline: "For brochure sites that don't change often.",
+    featured: false,
+    includedHours: null,
+    responseTime: null,
+    includes: [
+      "Monthly updates applied via staging",
+      "Daily off-site backups, 30-day retention",
+      "Uptime monitoring and SSL renewal",
+      "Security and malware scanning",
+      "Monthly report of work done",
+      `Content changes billed at $${MAINTENANCE_HOURLY}/hour`,
+    ],
+  },
+  {
+    id: "standard",
+    name: "Standard",
+    price: 79,
+    tagline: "For business sites that change and matter.",
+    featured: true,
+    includedHours: 1,
+    responseTime: "within 2 business days",
+    includes: [
+      "Everything in Essential",
+      "1 hour of content changes included each month",
+      "Quarterly Core Web Vitals check",
+      "Response within 2 business days",
+    ],
+  },
+  {
+    id: "priority",
+    name: "Priority",
+    price: 149,
+    tagline: "For sites taking bookings, orders or payments.",
+    featured: false,
+    includedHours: 2,
+    responseTime: "next business day",
+    includes: [
+      "Everything in Standard",
+      "2 hours of content changes included each month",
+      "Response by the next business day",
+      "Staging environment maintained for testing changes",
+    ],
+  },
+];
+
+/**
+ * How many maintenance clients I take at once.
+ *
+ * A real cap, not a scarcity device: maintenance runs alongside project work,
+ * and the response times above are only honest at a number I can actually
+ * service. If this changes, change it here — it is stated on the page.
+ */
+export const MAINTENANCE_CLIENT_CAP = 4;
+
 export const SERVICE_PACKAGES = [
   {
     id: "landing",
@@ -325,6 +421,52 @@ export const AUCKLAND_FAQS = [
 ];
 
 /** General pre-sales FAQs shown on the services page. */
+/**
+ * FAQs for /services/website-maintenance.
+ *
+ * The market figures here are the ones already published and sourced in the
+ * annual-website-maintenance-costs-nz post, which the answers link to. Two
+ * pages quoting two different maintenance ranges is exactly the drift that
+ * makes a site look careless, so this restates nothing it doesn't cite.
+ */
+export const MAINTENANCE_FAQS = [
+  {
+    question: "How much does website maintenance cost in NZ?",
+    answer:
+      "Most New Zealand plans run $50–$300 a month depending on whether real work is included or only monitoring, and ad-hoc developer work is commonly $80–$150 an hour. My plans are $39, $79 and $149 a month, NZD excluding GST. The full breakdown of what the market charges is in the annual website maintenance costs guide.",
+  },
+  {
+    question: "Do I need a maintenance plan?",
+    answer:
+      "On WordPress or any plugin-based platform, effectively yes — outdated plugins are the leading route into a small business site. A simple static brochure site on managed hosting often doesn't need one, and I'll tell you if that's your situation rather than sell you a plan.",
+  },
+  {
+    question: "Can you maintain a site you didn't build?",
+    answer:
+      "Yes. I audit what's there first and tell you honestly whether it's worth maintaining as it stands, or whether something needs fixing before a monthly plan makes sense.",
+  },
+  {
+    question: "What if my site is already hacked?",
+    answer:
+      "Send me the details. Cleaning a compromised site properly means finding how they got in, not just restoring a backup — restore without closing the hole and it happens again. Recovery is quoted separately from a plan, after I've seen the damage.",
+  },
+  {
+    question: "Is there a contract?",
+    answer:
+      "No. Plans are month to month and you can cancel any time. Your domain, hosting and CMS stay in your name throughout, so leaving is straightforward and I'll help with the handover.",
+  },
+  {
+    question: "Do you work with WordPress?",
+    answer:
+      "Yes, and it's where maintenance matters most — every plugin is third-party code that needs patching on someone else's schedule. I also maintain custom React and Node builds, and can advise on hosted platforms like Shopify or Squarespace.",
+  },
+  {
+    question: "Why are your plans cheaper than New Zealand agencies?",
+    answer:
+      "No agency overhead and no account manager — you deal directly with the developer doing the work. I work remotely from Pakistan with clients in New Zealand and Cyprus, which lowers the cost and shortens the chain. The trade-off is that I'm not local for a coffee, and there's a timezone gap I cover with a fixed daily overlap and everything documented in writing.",
+  },
+];
+
 export const SERVICES_FAQS = [
   {
     question: "How much does a website or web application cost?",
@@ -382,6 +524,22 @@ export const ROUTES = [
     keywords:
       "web development services, React development pricing, MERN stack development cost, hire freelance web developer, Node.js backend development",
     faqs: SERVICES_FAQS,
+  },
+  {
+    // The only nested service page. Maintenance is a separate purchase with a
+    // separate buyer — someone searching "website maintenance nz" is not
+    // shopping for a build — so it gets its own URL, its own Service node and
+    // its own NZD Offers rather than another block on /services.
+    path: "/services/website-maintenance",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-16",
+    title: "Website Maintenance NZ — Fixed Monthly Plans | WebDevStudio",
+    description:
+      "Monthly website maintenance for NZ businesses — updates, backups, security and uptime monitoring. Fixed price, no lock-in contract, cancel anytime.",
+    keywords:
+      "website maintenance nz, wordpress maintenance new zealand, website maintenance plans, website support nz",
+    faqs: MAINTENANCE_FAQS,
   },
   {
     path: "/projects",
@@ -699,8 +857,9 @@ export function webPageNode(siteUrl, route) {
     // page's primary entity, so the node existed without anything saying the
     // page is *about* it. Flagged by the 2026-08-13 schema audit as the one
     // remaining gap after the Service node itself was added.
-    ...(route.path === "/services"
-      ? { mainEntity: { "@id": `${absoluteUrl(base, "/services")}#service` } }
+    ...(route.path === "/services" ||
+    route.path === "/services/website-maintenance"
+      ? { mainEntity: { "@id": `${absoluteUrl(base, route.path)}#service` } }
       : {}),
     // A page with its own hero image declares that, not the sitewide logo.
     // Project and article pages were all claiming the WebDevStudio logo as
@@ -770,6 +929,64 @@ export function servicesServiceNode(siteUrl) {
         },
         availability: "https://schema.org/InStock",
         url: servicesUrl,
+      })),
+    },
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: absoluteUrl(base, "/contact"),
+      availableLanguage: { "@type": "Language", name: "English" },
+    },
+  };
+}
+
+/**
+ * Page-scoped Service node for /services/website-maintenance.
+ *
+ * Separate from servicesServiceNode() rather than a variant of it: the offers
+ * are NZD not USD, recurring not one-off, and areaServed is New Zealand
+ * rather than Worldwide. Folding those differences into the /services node
+ * with conditionals would give one node two personalities.
+ *
+ * Offers are derived from MAINTENANCE_PLANS so the markup cannot contradict
+ * the pricing table the page renders from the same array.
+ */
+export function maintenanceServiceNode(siteUrl) {
+  const base = normalizeSiteUrl(siteUrl);
+  const id = schemaIds(base);
+  const pageUrl = absoluteUrl(base, "/services/website-maintenance");
+
+  return {
+    "@type": "Service",
+    "@id": `${pageUrl}#service`,
+    name: "Website Maintenance",
+    description:
+      "Monthly website maintenance for New Zealand businesses: platform and plugin updates applied via staging, daily off-site backups, security scanning, SSL and uptime monitoring, and a monthly report.",
+    url: pageUrl,
+    serviceType: "Website Maintenance",
+    provider: { "@id": id.organization },
+    areaServed: { "@type": "Country", name: "New Zealand" },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Website Maintenance Plans",
+      itemListElement: MAINTENANCE_PLANS.map((plan) => ({
+        "@type": "Offer",
+        name: plan.name,
+        description: plan.tagline,
+        price: String(plan.price),
+        priceCurrency: MAINTENANCE_CURRENCY,
+        priceSpecification: {
+          // UnitPriceSpecification, not the plain PriceSpecification the
+          // project packages use: these recur monthly, and a bare price on a
+          // subscription reads to a parser as a one-off fee.
+          "@type": "UnitPriceSpecification",
+          price: plan.price,
+          priceCurrency: MAINTENANCE_CURRENCY,
+          valueAddedTaxIncluded: false,
+          unitCode: "MON",
+          billingIncrement: 1,
+        },
+        availability: "https://schema.org/InStock",
+        url: pageUrl,
       })),
     },
     availableChannel: {

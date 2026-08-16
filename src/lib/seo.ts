@@ -21,6 +21,7 @@ import {
   breadcrumbNode,
   faqNode,
   servicesServiceNode,
+  maintenanceServiceNode,
   buildGraph,
   findRoute,
   normalizeSiteUrl,
@@ -224,4 +225,9 @@ export function faqNodeFor(
  */
 export function servicesServiceNodeFor(): object {
   return servicesServiceNode(SITE_URL);
+}
+
+/** As above, for /services/website-maintenance. */
+export function maintenanceServiceNodeFor(): object {
+  return maintenanceServiceNode(SITE_URL);
 }

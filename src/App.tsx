@@ -18,6 +18,7 @@ import Blogs from "./pages/Blogs";
 import BlogDetail from "./pages/BlogDetail";
 import About from "./pages/About";
 import Services from "./pages/Services";
+import WebsiteMaintenance from "./pages/WebsiteMaintenance";
 import Contact from "./pages/Contact";
 import WebDevelopmentNewZealand from "./pages/WebDevelopmentNewZealand";
 import WebDevelopmentCyprus from "./pages/WebDevelopmentCyprus";
@@ -57,6 +58,10 @@ export const AppRoutes = () => (
     <Route path="/blogs/:slug" element={<BlogDetail />} />
     <Route path="/about" element={<About />} />
     <Route path="/services" element={<Services />} />
+    <Route
+      path="/services/website-maintenance"
+      element={<WebsiteMaintenance />}
+    />
     <Route path="/contact" element={<Contact />} />
     <Route path="/web-development-new-zealand" element={<WebDevelopmentNewZealand />} />
     <Route path="/web-development-cyprus" element={<WebDevelopmentCyprus />} />

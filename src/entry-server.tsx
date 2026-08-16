@@ -16,6 +16,7 @@ import {
   SITE_NAME,
   absoluteUrl,
   servicesServiceNode,
+  maintenanceServiceNode,
 } from "./lib/site.config.mjs";
 
 /**
@@ -110,6 +111,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
     // Shared with the React runtime via site.config.mjs — see the note there
     // on why this must not be built twice.
     "/services": [servicesServiceNode(siteUrl)],
+    "/services/website-maintenance": [maintenanceServiceNode(siteUrl)],
     "/projects": [
       {
         "@type": "CollectionPage",

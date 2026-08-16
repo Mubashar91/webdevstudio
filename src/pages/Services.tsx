@@ -72,7 +72,14 @@ const Services = () => {
               >
                 Cyprus
               </Link>
-              .
+              . Already have a site?{" "}
+              <Link
+                to="/services/website-maintenance"
+                className="text-primary hover:underline font-medium"
+              >
+                Monthly maintenance plans
+              </Link>{" "}
+              are priced separately.
             </>
           }
         />
