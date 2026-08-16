@@ -4,6 +4,7 @@ import { Check, Tag, ArrowRight, ShieldCheck, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { SERVICE_PACKAGES } from "@/lib/seo";
+import { MAINTENANCE_PLANS } from "@/lib/site.config.mjs";
 import { STATIC_PROJECTS } from "@/data/projects";
 
 /** Resolves a package's `proofSlug` against real case-study data — see the
@@ -28,6 +29,17 @@ interface PricingProps {
    * earn their own reason to exist rather than being a geo find-and-replace.
    */
   marketContext?: ReactNode;
+  /**
+   * Whether to offer maintenance plans below the table.
+   *
+   * On by default, off for Cyprus. Maintenance is priced in NZD and its
+   * Service node declares areaServed New Zealand, so the line does two wrong
+   * things on the Cyprus page: it puts a third currency on a page written to
+   * quote EUR (with USD in parentheses), and it sends a Cyprus buyer to a
+   * page that isn't sold to them. The same rule already governs the blog
+   * footer — see the note in BlogDetail about the removed USD price.
+   */
+  showMaintenance?: boolean;
 }
 
 /**
@@ -36,7 +48,11 @@ interface PricingProps {
  * the page and the prices in structured data can never disagree. Mismatched
  * prices are a structured-data policy violation, not just an inconsistency.
  */
-export const Pricing = ({ compactHeader = false, marketContext }: PricingProps) => {
+export const Pricing = ({
+  compactHeader = false,
+  marketContext,
+  showMaintenance = true,
+}: PricingProps) => {
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.05 });
 
   return (
@@ -199,6 +215,25 @@ export const Pricing = ({ compactHeader = false, marketContext }: PricingProps) 
           <span className="hidden sm:inline text-border">·</span>
           <span>Happy to work under your NDA</span>
         </div>
+
+        {/* Maintenance sits below the table rather than in it, deliberately.
+            These three are one-off USD project prices; maintenance is a
+            recurring NZD subscription. Dropping a fourth column in beside
+            them would put two currencies and two billing models in one
+            comparison, which is the drift that makes a price list untrusted. */}
+        {showMaintenance && (
+          <p className={`max-w-6xl mx-auto mt-6 text-center text-sm text-muted-foreground
+            transition-all duration-700 delay-300 ${isVisible ? "opacity-100" : "opacity-0"}`}>
+            Already have a site and just need it looked after?{" "}
+            <Link
+              to="/services/website-maintenance"
+              className="text-primary hover:underline font-medium"
+            >
+              Monthly maintenance plans
+            </Link>{" "}
+            are priced separately, from ${MAINTENANCE_PLANS[0].price}/month NZD.
+          </p>
+        )}
       </div>
     </section>
   );

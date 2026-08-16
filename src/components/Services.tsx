@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { BarChart3, Code, Database, FileText, Globe, Zap, ArrowRight, Wrench, CheckCircle2 } from "lucide-react";
+import { BarChart3, Code, Database, FileText, Globe, Zap, ArrowRight, Wrench, CheckCircle2, ShieldCheck } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { MAINTENANCE_PLANS } from "@/lib/site.config.mjs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Link } from "react-router-dom";
 import { STATIC_PROJECTS } from "@/data/projects";
@@ -35,7 +37,28 @@ const proofOf = (slug: string) => {
  * build this?" in the same eyeful, and it wires /services into /projects
  * instead of dead-ending at the contact form.
  */
-const services = [
+interface ServiceCard {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  stack: string[];
+  /** Where the card's proof link points, and what it's called. */
+  proof: { href: string; title: string };
+  /**
+   * Overrides the "Case study:" prefix on the proof link.
+   *
+   * Every card here is a build service backed by a delivered project. The
+   * maintenance card is the exception — it's an ongoing service with no case
+   * study to point at, so it links to its own page instead. Labelling that
+   * "Case study:" would promise proof the link doesn't deliver.
+   */
+  proofLabel?: string;
+  iconBg: string;
+  iconColor: string;
+  accentBar: string;
+}
+
+const services: ServiceCard[] = [
   {
     icon: Globe,
     title: "Business & Marketing Websites",
@@ -90,6 +113,23 @@ const services = [
     proof: proofOf("portfolio-blog-platform"),
     iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
   },
+  {
+    // The one card that sells an ongoing service rather than a build. It was
+    // reachable only from a line in the page header, which is not where anyone
+    // looks for a service — the grid is the list of what this business does,
+    // and maintenance being absent from it read as not offered.
+    icon: ShieldCheck,
+    title: "Website Maintenance & Support",
+    description:
+      "Updates, backups, security and uptime monitoring on a site you already have — handled monthly for a fixed price, with no lock-in contract.",
+    stack: ["Staged updates", "Off-site backups", "Uptime monitoring", "Monthly report"],
+    proof: {
+      href: "/services/website-maintenance",
+      title: `plans from $${MAINTENANCE_PLANS[0].price}/month NZD`,
+    },
+    proofLabel: "See",
+    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
+  },
 ];
 
 interface ServicesProps {
@@ -100,13 +140,28 @@ interface ServicesProps {
    * use-intersection-observer.tsx for why the reveal has to be skipped there.
    */
   aboveFold?: boolean;
+  /**
+   * Whether to show the maintenance card. On by default, off for Cyprus —
+   * that service is priced in NZD and its Service node declares areaServed
+   * New Zealand, so it belongs on the NZ path only. See the matching prop on
+   * Pricing for the currency rule this follows.
+   */
+  showMaintenance?: boolean;
 }
 
-export const Services = ({ compactHeader = false, aboveFold = false }: ServicesProps) => {
+export const Services = ({
+  compactHeader = false,
+  aboveFold = false,
+  showMaintenance = true,
+}: ServicesProps) => {
   const [ref, isVisible] = useIntersectionObserver({
     threshold: 0.05,
     initialVisible: aboveFold,
   });
+
+  const visibleServices = showMaintenance
+    ? services
+    : services.filter((s) => s.proof.href !== "/services/website-maintenance");
 
   return (
     <section id="services" className="py-32 relative overflow-hidden">
@@ -142,7 +197,7 @@ export const Services = ({ compactHeader = false, aboveFold = false }: ServicesP
 
         {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {services.map((svc, i) => (
+          {visibleServices.map((svc, i) => (
             <div
               key={svc.title}
               className={`tilt-card group relative flex flex-col rounded-2xl border border-border/50 bg-card
@@ -188,7 +243,7 @@ export const Services = ({ compactHeader = false, aboveFold = false }: ServicesP
                     text-primary hover:underline underline-offset-4 group/proof"
                 >
                   <span>
-                    Case study:{" "}
+                    {svc.proofLabel ?? "Case study:"}{" "}
                     <span className="font-bold">{svc.proof.title}</span>
                   </span>
                   <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 group-hover/proof:translate-x-1 transition-transform" />

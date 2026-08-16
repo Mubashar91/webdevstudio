@@ -119,8 +119,11 @@ const WebDevelopmentCyprus = () => {
             note={cyGeo.note}
           />
         </LocationHighlights>
-        <ServicesSection compactHeader />
+        {/* Maintenance is NZD-priced and NZ-scoped; this page quotes EUR with
+            USD in parentheses and must not carry a third currency. */}
+        <ServicesSection compactHeader showMaintenance={false} />
         <Pricing
+          showMaintenance={false}
           marketContext={
             <>
               <h3 className="text-lg font-bold mb-2">How this compares in the Cyprus market</h3>
