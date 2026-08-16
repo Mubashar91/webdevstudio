@@ -8311,6 +8311,722 @@ PEOPLE
       },
     ],
   },
+
+  // ── Cluster 9: after your website launches ──
+  //
+  // Six post-launch operations posts. Every market figure below is the one
+  // already published and sourced in annual-website-maintenance-costs-nz,
+  // and each is linked back to it rather than restated as a fresh claim —
+  // two posts quoting two different maintenance ranges is the drift that
+  // makes a whole site look careless. No WebDevStudio rate is quoted here;
+  // /services stays the single source of truth for what I charge.
+  {
+    slug: "who-updates-my-website",
+    title: "Who Updates My Website After It's Built?",
+    excerpt:
+      "You, your developer, or nobody — the three options after launch, what each costs, and the question to ask before you sign anything.",
+    coverImage:
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "New Zealand", "Website Handover"],
+    content: [
+      {
+        type: "p",
+        text: "Nobody tells you this at quote stage, and it's the thing that quietly decides whether your website stays useful or slowly goes stale.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "There are three arrangements, and you should know which one you're buying before you pay a deposit.",
+      },
+      {
+        type: "list",
+        items: [
+          "**You update it** — the site has a CMS, you log in and change text, prices and images yourself. Free, but only if the CMS is genuinely usable.",
+          "**Your developer updates it** — you email or message, they make the change. Billed hourly or bundled into a monthly plan.",
+          "**Nobody updates it** — the most common outcome, and the reason so many small business sites still show 2023 prices.",
+        ],
+      },
+      {
+        type: "p",
+        text: "Ask which one you're getting before signing. “Can I update this myself?” is a better question than most people ask about design.",
+      },
+      { type: "h2", text: "What “you can update it yourself” actually means" },
+      {
+        type: "p",
+        text: "This phrase covers two very different realities.",
+      },
+      {
+        type: "p",
+        text: "The good version: you log in, click into a page, edit text like a document, swap an image, hit save. No training needed beyond ten minutes.",
+      },
+      {
+        type: "p",
+        text: "The version people actually get: a CMS that technically allows editing but breaks the layout when you paste from Word, requires you to remember which of nine fields controls the homepage banner, and makes you nervous every time you touch it. Technically self-serviceable. Practically, you'll email the developer.",
+      },
+      {
+        type: "p",
+        text: "The difference isn't the platform. It's whether the person who built it set up the editing experience deliberately, or just handed you the admin panel and left. Ask to see it before you sign — a five-minute screen share of someone editing a page tells you more than any promise in a quote.",
+      },
+      { type: "h2", text: "What you'll realistically need to change" },
+      {
+        type: "p",
+        text: "Most small businesses need surprisingly little:",
+      },
+      {
+        type: "list",
+        items: [
+          "Prices and service details",
+          "Team members joining and leaving",
+          "Photos of recent work",
+          "Opening hours, especially over holidays",
+          "A new service page when the business shifts",
+        ],
+      },
+      {
+        type: "p",
+        text: "That's a handful of edits a year. Which is exactly why the “nobody updates it” outcome happens — it never feels urgent enough to pay for, so it doesn't get done, and two years later your site describes a business you no longer run.",
+      },
+      { type: "h2", text: "What needs a developer regardless" },
+      {
+        type: "p",
+        text: "Some things aren't CMS work, and no amount of self-service covers them:",
+      },
+      {
+        type: "list",
+        items: [
+          "Adding a new feature or integration",
+          "Changing the layout or structure of a page type",
+          "Anything that touches how the site works rather than what it says",
+          "Fixing something that broke",
+          "Updates to the underlying platform and its dependencies",
+        ],
+      },
+      {
+        type: "p",
+        text: "A reasonable arrangement: you handle content, the developer handles the machinery. Problems start when the boundary was never discussed.",
+      },
+      { type: "h2", text: "Three arrangements, honestly compared" },
+      {
+        type: "p",
+        text: "**Self-service.** Cheapest, and right for most small service businesses — if the CMS is genuinely easy. You're trading a little of your time for full control. The risk is that you don't get around to it.",
+      },
+      {
+        type: "p",
+        text: "**Ad-hoc developer.** You message when you need something, they bill hourly. NZ providers publishing 2026 rates put small ad-hoc changes in the $80–$150 per hour band — the same figure quoted in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz), where the sourcing sits. Fine for occasional work. It gets expensive if you need something monthly, and there's no guarantee they're free when you need them.",
+      },
+      {
+        type: "p",
+        text: "**Monthly plan.** A retainer covering updates, monitoring and small changes. Predictable, and someone's paying attention to your site rather than waiting to be asked. Worth it once you're changing things regularly or the site is generating real revenue. Not worth it for a five-page brochure site that changes twice a year.",
+      },
+      { type: "h2", text: "When you don't need anyone" },
+      {
+        type: "p",
+        text: "If your site is five pages, your prices are stable, you're not blogging, and the CMS lets you fix a typo without fear — you don't need an update arrangement at all. Change what you need, once or twice a year, and spend the money elsewhere. Anyone selling you a monthly plan for that site is selling you comfort, not necessity.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Before you accept a quote, ask three things. Can I edit my own content — show me? What do I pay for changes outside that? What happens if you're unavailable? Whoever answers those clearly is telling you they've thought about the two years after launch, not just the six weeks before it.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Can I update my website myself?" },
+      {
+        type: "p",
+        text: "If it was built with a CMS and set up properly, yes — text, images, prices and hours are usually straightforward. Structural changes, new features and anything that breaks still need a developer. The honest test is asking to watch someone make an edit before you sign.",
+      },
+      { type: "h3", text: "How much does it cost to have a developer update my website?" },
+      {
+        type: "p",
+        text: "NZ providers publishing 2026 rates put small changes in the $80–$150 per hour band, or bundled into a monthly plan. Ask which applies and what the minimum billing increment is — some charge in 15-minute blocks, some have a one-hour minimum. Figures are NZD and exclude GST.",
+      },
+      { type: "h3", text: "What happens if my developer stops responding?" },
+      {
+        type: "p",
+        text: "This is why domain, hosting and CMS access should be in your name from day one. If they hold the keys, you have a recovery problem before you have an update problem. [Taking over a website from another developer](/blogs/take-over-existing-website-developer) covers the recovery route.",
+      },
+      { type: "h3", text: "Do I need a maintenance plan just to update content?" },
+      {
+        type: "p",
+        text: "No. Content updates and maintenance are different things — maintenance is about hosting, backups, security and platform updates. You can have one without the other, and [whether you need a plan at all](/blogs/do-i-need-a-maintenance-plan) is a separate question.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Find out what your current setup actually lets you do before you pay anyone to change it. Send me your site and I'll tell you what you can edit yourself and what needs a developer — and if the answer is that you can do all of it, that's the answer you'll get. [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
+
+  {
+    slug: "do-i-need-a-maintenance-plan",
+    title: "Do I Need a Website Maintenance Plan?",
+    excerpt:
+      "Some sites genuinely need a monthly plan. Plenty don't. How to tell which yours is — and what a plan must include to be worth paying for.",
+    coverImage:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=450&fit=crop",
+    category: "Business",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "New Zealand", "Pricing"],
+    content: [
+      {
+        type: "p",
+        text: "Every developer offers one. Not every business needs one. Here's the honest version, including when the answer is no.",
+      },
+      {
+        type: "p",
+        text: "This post answers whether you need a plan. If you've already decided you do and want the numbers, [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz) is the cost breakdown, and every figure quoted here comes from it.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "You probably need a plan if your site runs on WordPress or another platform with plugins, you take payments or store customer data, the site generates real revenue, or you have no idea what would happen if it went down tomorrow.",
+      },
+      {
+        type: "p",
+        text: "You can probably skip it if your site is a small static or simply-built brochure site, it has no logins or payments, it's on managed hosting that handles updates, and you'd survive a day of downtime without losing money.",
+      },
+      {
+        type: "p",
+        text: "The deciding question is not “is my site important”. It's what breaks if nobody's watching, and what that costs you.",
+      },
+      { type: "h2", text: "What a maintenance plan actually is" },
+      {
+        type: "p",
+        text: "Not “someone occasionally looks at your website”. A real plan covers:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Platform and plugin updates** — the security patches that stop known vulnerabilities being exploited",
+          "**Backups**, taken regularly and tested",
+          "**Uptime monitoring**, so someone knows the site is down before your customers tell you",
+          "**Security scanning**",
+          "**SSL certificate renewal**",
+          "**A set amount of small changes**, or a stated rate for them",
+        ],
+      },
+      {
+        type: "p",
+        text: "If a plan doesn't specify all of that in writing, you're buying reassurance rather than maintenance. Ask for the list.",
+      },
+      { type: "h2", text: "Why plugin-based sites need it more" },
+      {
+        type: "p",
+        text: "This is the part that decides most cases. A WordPress site typically runs a dozen or more plugins, each written by someone else, each updated on its own schedule, each a potential way in when it goes unpatched. That's not a criticism of WordPress — it's the trade-off for its flexibility.",
+      },
+      {
+        type: "p",
+        text: "A site built without that plugin surface has far less to maintain. Fewer moving parts, fewer things to patch, less that silently breaks. So the honest rule: the more third-party pieces your site depends on, the more a plan is genuinely necessary rather than upsold.",
+      },
+      { type: "h2", text: "What it costs" },
+      {
+        type: "p",
+        text: "NZ providers publishing 2026 pricing put maintenance plans in the $50–$300 per month band, depending on whether it's monitoring-only or includes actual work, and hosting at $20–$100 per month. Hosting is often bundled; sometimes it isn't, so ask. All figures NZD, excluding GST — the sourcing is in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz).",
+      },
+      {
+        type: "p",
+        text: "The number that matters isn't the monthly fee. It's the monthly fee against what a day of downtime, or a hacked site, would cost your business. For some businesses that's an afternoon of inconvenience. For others it's the whole week's bookings.",
+      },
+      { type: "h2", text: "When to skip it — genuinely" },
+      {
+        type: "p",
+        text: "If you have a small brochure site, no logins, no payments, no plugin sprawl, sitting on managed hosting that handles platform updates — a monthly plan is money you could spend on something that grows the business. Keep a backup, keep the SSL renewing automatically, and check the site loads once a month.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Ask any provider offering a plan three things: what exactly is included, what the response time is when something breaks, and whether you can see a report of what they did last month. A plan without reporting is a subscription with nothing attached to it.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "What happens if I don't maintain my website?" },
+      {
+        type: "p",
+        text: "Usually nothing, until suddenly something. Unpatched plugins are the most common route into a small business site, and the failure mode is a hacked site or a broken one — often noticed by a customer rather than by you. Static sites with no plugins carry far less of this risk.",
+      },
+      { type: "h3", text: "Is website maintenance really necessary for a small business?" },
+      {
+        type: "p",
+        text: "It depends what the site is built on and what it does. A plugin-heavy site taking payments needs it. A simple brochure site on managed hosting usually doesn't.",
+      },
+      { type: "h3", text: "How much should a website maintenance plan cost?" },
+      {
+        type: "p",
+        text: "NZ providers publishing 2026 pricing put plans in the $50–$300 per month band, depending on whether real work is included or just monitoring. Get the inclusions in writing. Figures are NZD and exclude GST.",
+      },
+      { type: "h3", text: "Can I do website maintenance myself?" },
+      {
+        type: "p",
+        text: "Some of it — running updates, checking the site loads, confirming backups exist. What's harder to do yourself is knowing when an update will break something, and having a way back when it does. [Keeping a website secure without a developer](/blogs/keep-website-secure-without-developer) covers the part you can handle.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Work out what your site is built on and what it would cost you to lose for a day. Those two answers decide this, not a sales page. Tell me both and I'll give you a straight answer — including “you don't need one”. [Get in touch](/contact).",
+      },
+    ],
+  },
+
+  {
+    slug: "how-often-website-backup",
+    title: "How Often Should a Website Be Backed Up?",
+    excerpt:
+      "Daily for anything that changes or takes payments, weekly for a static brochure site. What matters more is where backups live and whether they work.",
+    coverImage:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&h=450&fit=crop",
+    category: "Web Development",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "Web Development"],
+    content: [
+      {
+        type: "p",
+        text: "Short post, because the answer is short — and because the frequency question distracts from the two that actually matter.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "list",
+        items: [
+          "**Daily** — if the site takes orders, bookings, payments, or has user accounts. Losing a day means losing real transactions.",
+          "**Weekly** — for a brochure site that changes occasionally.",
+          "**Before every change** — always, regardless of schedule. Updates and edits are when things break.",
+          "**Kept somewhere other than the website's own server** — a backup sitting on the same server as the site isn't a backup.",
+          "**Tested at least once** — an untested backup is a hope, not a safeguard.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The frequency matters less than that last point. Most people who lose a site had backups.",
+      },
+      { type: "h2", text: "The real question: how much work can you afford to lose?" },
+      {
+        type: "p",
+        text: "Backup frequency is just this question in disguise. If your site is backed up weekly and it fails on day six, you lose six days. For a brochure site, that's a couple of text edits — annoying. For a store, that's six days of orders — a different conversation entirely. So set the frequency by what accumulates, not by what feels responsible.",
+      },
+      { type: "h2", text: "Where backups live matters more than how often they run" },
+      {
+        type: "p",
+        text: "A backup stored on the same server as your website protects you from exactly one scenario: you broke something. It protects you from none of these:",
+      },
+      {
+        type: "list",
+        items: [
+          "The server fails",
+          "The hosting account is suspended or closed",
+          "The site is compromised and the attacker reaches everything on that machine",
+        ],
+      },
+      {
+        type: "p",
+        text: "Off-server backups — a separate cloud location, or a different provider — cover all three. Ask your host where backups are stored. If the answer is “on the server”, that's worth fixing.",
+      },
+      { type: "h2", text: "The untested backup problem" },
+      {
+        type: "p",
+        text: "This is the failure people don't see coming. Backups run for two years, everyone assumes they're fine, then the day comes and the restore doesn't work — the database wasn't included, or the files are corrupt, or nobody knows the restore process.",
+      },
+      {
+        type: "p",
+        text: "Restore one, once, to a staging environment rather than over your live site. It takes an hour and it's the only way to know.",
+      },
+      { type: "h2", text: "Who's responsible for yours" },
+      {
+        type: "p",
+        text: "Three possibilities, and you should know which applies:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Your host** — many managed hosts run automatic backups. Check the retention period; some keep only a few days.",
+          "**Your maintenance plan** — if you have one, backups should be listed in it. If they aren't, they may not be happening.",
+          "**You** — if neither of the above, it's you, and it's probably not happening.",
+        ],
+      },
+      { type: "h2", text: "When you can be relaxed about it" },
+      {
+        type: "p",
+        text: "A five-page static site with no database, no forms storing data, and content you have copies of elsewhere is nearly self-backing — you could rebuild it from your own files. Weekly host backups are plenty. Don't pay for a daily backup service for a site that changes twice a year.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How often should I back up my website?" },
+      {
+        type: "p",
+        text: "Daily if it takes payments, bookings or has user accounts. Weekly for a brochure site. Always before making changes.",
+      },
+      { type: "h3", text: "Where should website backups be stored?" },
+      {
+        type: "p",
+        text: "Somewhere other than the site's own server — a separate cloud location or provider. Same-server backups don't survive a server failure or an account suspension.",
+      },
+      { type: "h3", text: "Does my hosting company back up my website?" },
+      {
+        type: "p",
+        text: "Often, but not always, and retention varies. Check the frequency and how far back they keep copies. Don't assume.",
+      },
+      { type: "h3", text: "How do I know if my backups actually work?" },
+      {
+        type: "p",
+        text: "Restore one to a staging environment. It's the only real test, and most people never do it until the day they need it to work.",
+      },
+      { type: "h3", text: "How long should backups be kept?" },
+      {
+        type: "p",
+        text: "Long enough to cover a problem you didn't notice immediately. Thirty days is a reasonable default — some issues aren't spotted for weeks, and a three-day retention window is useless by then.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Find out three things today: who takes your backups, where they're stored, and whether anyone has ever restored one. If you can't answer all three, that's the gap. Tell me your host and I'll tell you what's likely running. [Get in touch](/contact).",
+      },
+    ],
+  },
+
+  {
+    slug: "what-is-web-hosting",
+    title: "What Is Web Hosting and How Do I Choose It?",
+    excerpt:
+      "Hosting explained without jargon — what you're actually paying for, the four types, and the two questions that matter more than price when choosing.",
+    coverImage:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop",
+    category: "Web Development",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "Web Development", "New Zealand"],
+    content: [
+      {
+        type: "p",
+        text: "Hosting is the computer your website lives on, rented by the month. Most of what's written about it is a feature list. Three things actually matter.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "list",
+        items: [
+          "**It's separate from your domain.** The domain is your address; hosting is the building. They're often bought together, which is why people confuse them.",
+          "**The account should be in your name**, not your developer's. This is the single most important thing on this page.",
+          "**Speed and support matter more than price.** The difference between good and cheap hosting is a few dollars a month and a great deal of aggravation.",
+        ],
+      },
+      { type: "h2", text: "What you're actually renting" },
+      {
+        type: "p",
+        text: "Your website is a pile of files and, usually, a database. Those need to sit on a computer that's connected to the internet permanently, so that when someone types your address, something answers. That computer is the host. That's genuinely it — the rest is variations on how much of that computer is yours and who looks after it.",
+      },
+      { type: "h2", text: "The four types, briefly" },
+      {
+        type: "p",
+        text: "**Shared hosting** — your site sits on a machine with many others. The cheapest tier, sitting at or below the floor of the band below. Fine for a small brochure site. The downside is neighbours: a busy site on the same machine can slow yours.",
+      },
+      {
+        type: "p",
+        text: "**Managed hosting** — shared or dedicated resources, but the host handles updates, security and backups. Usually the right answer for a small business that doesn't want to think about it.",
+      },
+      {
+        type: "p",
+        text: "**VPS or cloud** — a defined slice of a machine, yours alone. More control, more responsibility, and a price that scales with the resources you reserve rather than sitting in a fixed band. Right when the site outgrows shared hosting or needs specific configuration.",
+      },
+      {
+        type: "p",
+        text: "**Platform hosting** — Shopify, Squarespace and Wix include hosting in the subscription. Simplest, and you don't choose it separately; it comes with the platform.",
+      },
+      {
+        type: "p",
+        text: "On price: NZ providers publishing 2026 figures put hosting in the $20–$100 per month band, sourced in [annual website maintenance costs in NZ](/blogs/annual-website-maintenance-costs-nz). Shared plans sit at or under the floor of that band, VPS and cloud above its ceiling. NZD, excluding GST.",
+      },
+      { type: "h2", text: "What actually matters when choosing" },
+      {
+        type: "p",
+        text: "**Speed.** Where the server physically sits affects load time. For an NZ audience, hosting in New Zealand or Australia is usually faster than the US or Europe. A CDN reduces the difference but doesn't eliminate it.",
+      },
+      {
+        type: "p",
+        text: "**Support.** The thing you're really buying. When the site is down at 9am on a Monday, “24/7 support” means nothing if it's a ticket queue. Ask how you reach a human and how fast they answer.",
+      },
+      {
+        type: "p",
+        text: "**Backups.** Included? How often? How far back? Stored where? [How often a website should be backed up](/blogs/how-often-website-backup) covers what good looks like.",
+      },
+      {
+        type: "p",
+        text: "**Whose name it's in.** Covered next, and it's the one people get wrong.",
+      },
+      { type: "h2", text: "The ownership trap" },
+      {
+        type: "p",
+        text: "Plenty of developers host client sites under their own account and bill it on. It's convenient, and it's fine — until you want to leave, they stop responding, or they close the business. Then your site lives somewhere you can't reach.",
+      },
+      {
+        type: "p",
+        text: "Register the hosting account yourself, in your name, with your card, and give your developer access. That's the whole fix. It takes ten minutes at the start versus weeks of recovery later — [taking over a website from another developer](/blogs/take-over-existing-website-developer) is what the recovery looks like.",
+      },
+      { type: "h2", text: "When you don't need to choose at all" },
+      {
+        type: "p",
+        text: "If you're on Shopify, Squarespace or Wix, hosting is bundled — there's nothing to pick and no benefit to overthinking it. And if your developer recommends a specific host for good technical reasons, that's often worth following, as long as the account is in your name.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "What's the difference between a domain and hosting?" },
+      {
+        type: "p",
+        text: "The domain is your address; hosting is the building it points at. They're separate services, often sold together, and can be moved independently.",
+      },
+      { type: "h3", text: "How much should hosting cost for a small business website?" },
+      {
+        type: "p",
+        text: "NZ providers publishing 2026 pricing put hosting in the $20–$100 per month band, NZD excluding GST. Well under that usually means oversold shared hosting, where you pay in speed instead.",
+      },
+      { type: "h3", text: "Can I change hosting later?" },
+      {
+        type: "p",
+        text: "Yes. Moving a site between hosts is routine work. It's easier when the accounts are already in your name.",
+      },
+      { type: "h3", text: "Should my web developer host my website?" },
+      {
+        type: "p",
+        text: "They can manage it, but the account should be yours. Convenience now versus being locked out later is the trade-off, and the recovery is far more expensive than the setup.",
+      },
+      { type: "h3", text: "Does hosting affect SEO?" },
+      {
+        type: "p",
+        text: "Indirectly. Slow hosting means slow pages, and page speed affects both rankings and whether people stay. Server location matters for your target audience. It isn't a ranking factor by itself, but it feeds one that is.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Log in to your hosting account today. If you can't, or it isn't in your name, fix that before you worry about which tier you're on — it's the difference between a bad month and a lost website. [Get in touch](/contact) if you want a second opinion on the setup you've got.",
+      },
+    ],
+  },
+
+  {
+    slug: "keep-website-secure-without-developer",
+    title: "Website Security Without a Developer",
+    excerpt:
+      "Six things a non-technical owner can do to keep a website secure — and the two that genuinely need someone technical. No jargon, no scare tactics.",
+    coverImage:
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=450&fit=crop",
+    category: "Web Development",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "Web Development"],
+    content: [
+      {
+        type: "p",
+        text: "Most small business sites aren't targeted deliberately. They're found by automated scans looking for known, unpatched weaknesses — which is good news, because the fixes are boring and you can do most of them yourself.",
+      },
+      { type: "h2", text: "The short answer" },
+      {
+        type: "p",
+        text: "Six things, in order of how much they matter:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Keep everything updated** — platform, plugins, themes. Unpatched software is how most sites get compromised.",
+          "**Use strong, unique passwords** and turn on two-factor authentication on hosting, CMS and domain accounts.",
+          "**Remove what you don't use** — every unused plugin, theme and old admin account is a door you're not watching.",
+          "**Keep the SSL certificate valid** so the site doesn't warn visitors away.",
+          "**Keep working, off-server backups** — the thing that turns a disaster into an afternoon.",
+          "**Limit who has admin access**, and remove people when they leave.",
+        ],
+      },
+      {
+        type: "p",
+        text: "None of that requires a developer.",
+      },
+      { type: "h2", text: "Why updates matter more than anything else" },
+      {
+        type: "p",
+        text: "When a vulnerability is found in a popular plugin, two things happen: the developer releases a patch, and the details become public. From that moment, automated scanners start sweeping the internet for sites that haven't applied it.",
+      },
+      {
+        type: "p",
+        text: "Your site isn't chosen. It's found. Which means the defence isn't cleverness — it's not being one of the unpatched ones. Set updates to automatic where your platform allows it, and where it doesn't, put a monthly reminder in your calendar. That single habit prevents most of what happens to small business sites.",
+      },
+      { type: "h2", text: "The passwords conversation, briefly" },
+      {
+        type: "p",
+        text: "Yes, it's tedious. It's also where a real share of compromises start.",
+      },
+      {
+        type: "p",
+        text: "Three accounts matter most: hosting, CMS admin, and your domain registrar. Unique passwords on each, stored in a password manager, with two-factor authentication turned on. The registrar is the one people forget, and it's the account that controls everything else — lose it and you lose the address itself.",
+      },
+      { type: "h2", text: "Delete what you're not using" },
+      {
+        type: "p",
+        text: "Every plugin, theme and admin account you don't need is surface area. The old developer's admin login from two years ago. The three plugins you trialled and abandoned. The theme you switched away from but never removed — still installed, still unpatched, still exploitable. Deleting things is the cheapest security work there is.",
+      },
+      { type: "h2", text: "What actually needs someone technical" },
+      {
+        type: "p",
+        text: "**Recovery after a compromise.** If a site is hacked, cleaning it properly means finding what was changed, what was left behind, and how they got in. Restoring a backup without closing the hole just resets the clock.",
+      },
+      {
+        type: "p",
+        text: "**Server-level configuration** — firewall rules, permissions, anything below the CMS. If it isn't a setting in your admin panel, it isn't your job.",
+      },
+      { type: "h2", text: "When you're already fine" },
+      {
+        type: "p",
+        text: "If your site is a small static build with no CMS, no plugins, no logins and no database, sitting on managed hosting — there's very little to secure and very little to attack. Keep the SSL valid, keep the accounts locked down, and get on with running your business. Not every site needs a security posture.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Do the six things in the short answer once, properly. Then a monthly ten-minute check: updates applied, site loads, backup exists, SSL valid, no unfamiliar admin accounts. That's more than most small business sites get, and it prevents most of what goes wrong.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Can a small business website really get hacked?" },
+      {
+        type: "p",
+        text: "Yes, and usually not because anyone targeted it. Automated scans look for known unpatched vulnerabilities across the whole internet. Being small doesn't hide you; being updated protects you.",
+      },
+      { type: "h3", text: "Do I need a security plugin?" },
+      {
+        type: "p",
+        text: "On a plugin-based platform they can help — but they don't substitute for updates, strong passwords and backups. A security plugin on an unpatched site is a lock on an open window.",
+      },
+      { type: "h3", text: "What do I do if my website is already hacked?" },
+      {
+        type: "p",
+        text: "Get help. Cleaning a compromised site properly means finding the entry point, not just restoring a backup — restore without closing the hole and it happens again. [What to do when your website goes down](/blogs/website-down-what-to-do) covers the first hour.",
+      },
+      { type: "h3", text: "Is WordPress less secure than a custom site?" },
+      {
+        type: "p",
+        text: "Not inherently — but it has far more third-party plugins, which means more code from more authors to keep patched. The risk is the maintenance burden, not the platform. [Whether you need a maintenance plan](/blogs/do-i-need-a-maintenance-plan) turns largely on this.",
+      },
+      { type: "h3", text: "How often should I check my website's security?" },
+      {
+        type: "p",
+        text: "Ten minutes a month covers it for most small sites: updates, backups, SSL, admin accounts.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Do the ten-minute check this week rather than planning a bigger one you won't do. If you want a second pair of eyes, send me the address and I'll tell you what's visible from outside — including that there's nothing to worry about, if that's the case. [Get in touch](/contact).",
+      },
+    ],
+  },
+
+  {
+    slug: "website-down-what-to-do",
+    title: "What to Do When Your Website Goes Down",
+    excerpt:
+      "Website down? Work through this in order — check it's really down, find the cause, know who to call. Most outages are one of five things.",
+    coverImage:
+      "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&h=450&fit=crop",
+    category: "Web Development",
+    publishedAt: "2026-08-16",
+    tags: ["Small Business", "Web Development"],
+    content: [
+      {
+        type: "p",
+        text: "Written as a checklist, because if you're reading this you probably don't want an essay.",
+      },
+      { type: "h2", text: "The short answer — work through these in order" },
+      {
+        type: "list",
+        items: [
+          "**Confirm it's actually down for everyone**, not just you. Use an “is it down” checker, or your phone on mobile data.",
+          "**Check your email** — for a suspended hosting account, an expired domain, or a failed payment. This causes more outages than anything technical.",
+          "**Check your hosting provider's status page** — if their infrastructure is down, it isn't your site and you can stop looking.",
+          "**Ask what changed** — an update, a plugin, an edit, a DNS change in the last 24 hours. Recent change is the most likely culprit.",
+          "**Contact your host, then your developer.**",
+        ],
+      },
+      {
+        type: "p",
+        text: "Most outages are one of five things: an expired domain, an unpaid hosting invoice, a host outage, a bad update, or an expired SSL certificate.",
+      },
+      { type: "h2", text: "The two that catch people out" },
+      {
+        type: "p",
+        text: "**An expired domain.** The renewal email went to an address you no longer check, or the card on file expired. The site vanishes with no warning and no error that explains itself. Check your registrar first — it's a five-minute fix and it's embarrassingly common.",
+      },
+      {
+        type: "p",
+        text: "**An unpaid hosting invoice.** Same story. Hosts suspend accounts for non-payment and the notice often lands in spam. Neither is technical. Both look identical to a catastrophic failure from the outside.",
+      },
+      { type: "h2", text: "Reading what you're seeing" },
+      {
+        type: "p",
+        text: "The error tells you something:",
+      },
+      {
+        type: "list",
+        items: [
+          "**“This site can't be reached” or a DNS error** — usually domain or DNS, not the site itself",
+          "**500 error** — the server reached your site and something in it broke. Often a recent update or plugin",
+          "**403 forbidden** — permissions, or a security tool blocking access",
+          "**Account suspended page** — billing, almost always",
+          "**Site loads but looks broken** — usually not down at all; a CSS or asset issue, often after an update",
+          "**Security warning instead of the site** — an expired SSL certificate, or the site has been flagged",
+        ],
+      },
+      { type: "h2", text: "Who to call, in what order" },
+      {
+        type: "p",
+        text: "**Your host first**, for anything that looks like server, suspension or DNS. They can see things you can't, and it's included in what you pay them.",
+      },
+      {
+        type: "p",
+        text: "**Your developer second**, for anything that broke after a change to the site itself.",
+      },
+      {
+        type: "p",
+        text: "**Your domain registrar** if the domain has lapsed — sometimes a different company from your host, which is why people forget it exists.",
+      },
+      {
+        type: "p",
+        text: "If you can't reach any of them because they hold all the access, that's a different problem, and it's the one worth fixing once the site is back. [Taking over a website from another developer](/blogs/take-over-existing-website-developer) is the route out.",
+      },
+      { type: "h2", text: "After it's back: the ten minutes that prevent the next one" },
+      {
+        type: "list",
+        items: [
+          "Turn on auto-renew for domain and hosting, with a card that isn't about to expire",
+          "Point billing notices at an address you actually read",
+          "Set up uptime monitoring — free tools will email you when the site stops responding, so you find out before a customer does",
+          "Note what caused it. Outages repeat when nobody writes down why.",
+        ],
+      },
+      { type: "h2", text: "When you don't need a developer" },
+      {
+        type: "p",
+        text: "If it was a lapsed domain, an unpaid invoice, or a host-side outage, you don't need anyone technical. Pay it, renew it, or wait it out. Developers get called for plenty of outages that were a billing email in a spam folder, and I'd rather you check that first.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Why is my website suddenly down?" },
+      {
+        type: "p",
+        text: "Most commonly: an expired domain, unpaid hosting, a host outage, a recent update that broke something, or an expired SSL certificate. Check the first two before assuming anything technical.",
+      },
+      { type: "h3", text: "How do I know if my website is really down or just down for me?" },
+      {
+        type: "p",
+        text: "Use an online “is it down” checker, or open it on your phone using mobile data rather than your own wi-fi. Local caching and DNS make sites look down when they aren't.",
+      },
+      { type: "h3", text: "Who do I contact when my website goes down?" },
+      {
+        type: "p",
+        text: "Host first for server, suspension or DNS issues. Developer second if something broke after a change. Registrar if the domain has lapsed.",
+      },
+      { type: "h3", text: "How long does it take to fix a website that's down?" },
+      {
+        type: "p",
+        text: "Billing and domain issues resolve in minutes to a few hours once paid, though DNS can take longer to propagate. A broken update is usually quick if there's a recent backup. A compromised site takes longest, because it needs cleaning properly rather than just restoring.",
+      },
+      { type: "h3", text: "How can I stop my website going down again?" },
+      {
+        type: "p",
+        text: "Auto-renew on domain and hosting, billing notices to an address you read, uptime monitoring, and a tested backup before any change. [How often a website should be backed up](/blogs/how-often-website-backup) covers the last one.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "If the site is down right now, check your email and your registrar before anything else — that's where most of these end. If you've done that and it's still dark, send me the address and what you've already checked. [Get in touch](/contact).",
+      },
+    ],
+  },
 ];
 
 /**
@@ -8455,6 +9171,25 @@ export function latestBlogDate(): string {
  * phrased as a question. Posts with no FAQ section get an empty array and no
  * FAQPage node.
  */
+/**
+ * Resolves the two inline markers to the plain text a reader actually sees.
+ *
+ * Mirrors `renderInline()` in BlogDetail: `**bold**` renders as its content,
+ * `[label](/path)` renders as its label. The FAQ answers below feed FAQPage
+ * schema, and Google treats markup whose text does not appear on the page as
+ * a structured-data violation — so an answer containing a link shipped the
+ * literal "[label](/path)" into the markup while the page showed "label".
+ * Nine posts carried that mismatch before this existed.
+ *
+ * Kept next to faqsOf rather than exported: the renderer owns the visible
+ * side of this, and a second exported formatter invites the two to drift.
+ */
+function stripInline(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1");
+}
+
 export function faqsOf(post: BlogPost): { question: string; answer: string }[] {
   const start = post.content.findIndex(
     (b) => b.type === "h2" && /^frequently asked questions/i.test(b.text.trim())
@@ -8466,7 +9201,10 @@ export function faqsOf(post: BlogPost): { question: string; answer: string }[] {
 
   const flush = () => {
     if (current?.answer.length) {
-      faqs.push({ question: current.question, answer: current.answer.join(" ") });
+      faqs.push({
+        question: stripInline(current.question),
+        answer: stripInline(current.answer.join(" ")),
+      });
     }
   };
 
