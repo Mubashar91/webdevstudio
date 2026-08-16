@@ -4050,10 +4050,14 @@ updates:
       {
         type: "list",
         items: [
-          "**The rules change overnight.** Reach algorithms shift constantly, and the audience you spent years building can be throttled to a fraction of your followers without warning and without recourse.",
+          "**The rules change overnight.** Instagram posts now reach only 3-4% of a business's followers on average; Facebook business pages hit 1-2%, with some as low as 0.5%. In other words, if you have 10,000 followers, an average post might reach 200-300 of them today — a few years ago, that same account could reach 1,000+. The audience you spent years building can be throttled to a fraction without warning and without recourse. Facebook's organic reach for business pages was 16% in 2012 — it's now under 2%, and that's structural, not temporary.",
           "**Accounts get suspended.** Sometimes by mistake, sometimes with no meaningful appeal, and every follower and post can go with it.",
           "**Platforms decline.** Audiences migrate and networks fade. If your entire presence lives on one, its decline is your decline.",
         ],
+      },
+      {
+        type: "p",
+        text: "*Sources: BrightEdge (2026), The Kirk Group tracking Facebook reach 2012–2026), and current platform analytics showing Instagram at 3.5% average reach and Facebook at 1.65% — most business pages now under 2%.*",
       },
       {
         type: "p",
@@ -4063,7 +4067,15 @@ updates:
       { type: "h3", text: "It's your credibility check" },
       {
         type: "p",
-        text: "People who find you on social routinely search for your website before they buy, specifically to confirm you're a real business. In 2026, no website reads the way no phone number would have read thirty years ago — not a deliberate choice, just a gap someone else's competitor doesn't have.",
+        text: "People who find you on social routinely search for your website before they buy, specifically to confirm you're a real business. **81% of consumers research online before making a purchase**, and businesses with a website are perceived as **41% more trustworthy than those without one** — the strongest credibility signal outside of reviews.",
+      },
+      {
+        type: "p",
+        text: "In 2026, no website reads the way no phone number would have read thirty years ago — not a deliberate choice, just a gap someone else's competitor doesn't have.",
+      },
+      {
+        type: "p",
+        text: "*Sources: Network Solutions (2026 small business report) on pre-purchase research behavior; DreamHost's 2026 Local Business Trust Index, a survey of 1,200+ U.S. consumers (November 2025).*",
       },
       { type: "h3", text: "It's built to convert, not to hold attention" },
       {
@@ -4073,7 +4085,11 @@ updates:
       { type: "h3", text: "It's what shows up in a search" },
       {
         type: "p",
-        text: "When somebody searches for your service and your town, a website can rank for it. Social profiles rarely surface for those searches, and when they do they don't present the offer the way a purpose-built page does. Search traffic is people actively looking to buy — the highest-intent audience you'll ever get, and social alone leaves you invisible to it.",
+        text: "When somebody searches for your service and your town, a website can rank for it. Social profiles rarely surface for those searches, and when they do they don't present the offer the way a purpose-built page does. **Organic search drives roughly 53% of all trackable website traffic, compared to just 5-7% from social media** — and search generates over 1,000% more traffic than organic social. Search traffic is people actively looking to buy — the highest-intent audience you'll ever get, and social alone leaves you invisible to it.",
+      },
+      {
+        type: "p",
+        text: "*Source: BrightEdge analysis; 2026 data confirms organic search at ~53% of website traffic vs. social at 5-7%.*",
       },
       { type: "h3", text: "It's structured, and it keeps" },
       {
