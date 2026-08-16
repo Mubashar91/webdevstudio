@@ -584,7 +584,7 @@ function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     // is already the first thing on the page, as the excerpt.
     title: "How Much Does a Custom Web App Cost in 2026?",
     excerpt:
-      "What a custom web app really costs, what drives the number up, and the four levers that cut the price without cutting quality — from a developer who quotes fixed prices.",
+      "What a custom web app really costs, what drives the number up, and four levers that cut the price without cutting quality — from a fixed-price developer.",
     coverImage:
       "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=450&fit=crop",
     category: "Business",
@@ -1023,7 +1023,7 @@ const Job = new Schema({
     slug: "website-cost-new-zealand-2026",
     title: "How Much Does a Website Cost in New Zealand in 2026?",
     excerpt:
-      "Real 2026 NZ website prices: $1,500–$8,000 + GST for most small business sites. What each band buys, what agencies leave out, and how to compare quotes properly.",
+      "Real 2026 NZ website prices: $1,500–$8,000 + GST for most small business sites. What each band buys, and how to compare quotes properly.",
     coverImage:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=450&fit=crop",
     category: "Business",
@@ -1386,7 +1386,7 @@ const Job = new Schema({
     slug: "remote-developer-vs-local-agency",
     title: "Remote Developer or Local Agency? An Honest Comparison",
     excerpt:
-      "When an offshore developer is the right call and when a local agency is worth several times the price — written by a remote developer who'll tell you to hire locally sometimes.",
+      "When an offshore developer is the right call and when a local agency is worth the premium — by a remote dev who'll tell you to hire locally sometimes.",
     coverImage:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=450&fit=crop",
     category: "Hiring",
@@ -3527,7 +3527,7 @@ wp core verify-checksums   # flags modified core files, a common malware signal`
     // 47 chars — withBrand() lands on exactly 62, the limit it allows.
     title: "How to Choose a Website Developer: 12 Questions",
     excerpt:
-      "The checks that separate a good web developer from an expensive one: how to audit their live work in ten minutes, 12 questions to send in writing, and the ownership clause most contracts leave out.",
+      "How to audit a web developer's live work in ten minutes, the 12 questions to send in writing, and the ownership clause most contracts leave out.",
     coverImage:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=450&fit=crop",
     category: "Hiring",
@@ -4001,7 +4001,7 @@ updates:
     slug: "website-vs-social-media",
     title: "Website vs Social Media: Why You Need Both",
     excerpt:
-      "Why a business website still beats relying on social alone — what you don't own on a platform, what each channel is actually good at, and how they work together.",
+      "Why a business website still beats relying on social alone — what you don't own on a platform, and what each channel is actually good at.",
     coverImage:
       "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=450&fit=crop",
     category: "Business",
@@ -7738,6 +7738,576 @@ PEOPLE
       {
         type: "p",
         text: "Want a version tailored to your project before you commit to anyone? Describe what the site has to do and I'll send one back. [Get in touch](/contact), or [see recent work](/projects).",
+      },
+    ],
+  },
+  {
+    slug: "web-developer-cyprus-what-to-look-for",
+    // 41 chars — withBrand() lands on 56.
+    title: "Web Developer in Cyprus: What to Look For",
+    excerpt:
+      "How to choose a web developer in Cyprus: the language question that moves quotes most, what to get in writing, and when to hire locally instead.",
+    coverImage:
+      "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-15",
+    tags: ["Hiring a Developer", "Cyprus", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Five checks, in order. **Get scope, ownership and change costs in writing** before anything starts. **Settle the language question early** — who translates, and who pays for it — because that is where Cyprus quotes diverge most. **Confirm you own the domain, hosting and code** on final payment. **Ask for live sites, not screenshots.** And treat clear written communication as worth more than a local address.",
+      },
+      {
+        type: "p",
+        text: "That last one will sound self-serving coming from someone working remotely, so the honest version is further down under when to hire locally instead. For what a build actually costs here, [what a website costs in Cyprus](/blogs/website-cost-cyprus-2026) is the reference post.",
+      },
+      {
+        type: "p",
+        text: "Not sure what your project needs? Tell me who your customers are and what the site has to do, and I'll come back with a realistic scope and range — free. If a Cyprus-based developer is the better fit, I'll say so. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "Ask about languages before you ask about price" },
+      {
+        type: "p",
+        text: "This is the question that separates a Cyprus quote from a generic one, and most buyers raise it last.",
+      },
+      {
+        type: "p",
+        text: "Greek and Turkish are the Republic's two official languages, and English is widely used in business, tourism and higher education — roughly 80% of people in Cyprus speak it as a second language ([Languages of Cyprus](https://en.wikipedia.org/wiki/Languages_of_Cyprus)). So \"which languages does this site need?\" has a real answer that depends on who you sell to, not on what feels thorough.",
+      },
+      {
+        type: "p",
+        text: "Ask any developer three things about it: which languages are in scope, **who supplies the translated copy**, and whether translation is included or excluded. A quote that says \"multilingual site\" without answering those is not a quote yet. [Do Cyprus businesses need two languages?](/blogs/cyprus-multilingual-website) works through the decision itself.",
+      },
+      { type: "h2", text: "What to check in the quote" },
+      {
+        type: "p",
+        text: "The same checks apply here as anywhere, so rather than repeat them: [how to compare web developer quotes](/blogs/how-to-compare-web-developer-quotes) has the full ten, and [what should be in a web development quote](/blogs/what-should-be-in-web-development-quote) is the line-by-line checklist. The short version is that a quote must name pages and features, state what's **excluded**, and give you a rate for changes.",
+      },
+      { type: "h2", text: "Ownership: the clause people skip" },
+      {
+        type: "p",
+        text: "On final payment you should own the code, the domain registered in **your** business name, the hosting account, and the design files. Get it in writing before work starts rather than at handover.",
+      },
+      {
+        type: "p",
+        text: "This matters more when you're hiring across a border, because enforcing anything internationally is slow and expensive — the protection is the written agreement and having accounts in your own name from day one, not the ability to pursue someone later. [Taking over a website from another developer](/blogs/take-over-existing-website-developer) is what it costs when this clause is missing.",
+      },
+      { type: "h2", text: "Local developer or remote: what each actually buys" },
+      {
+        type: "table",
+        headers: ["", "Cyprus-based", "Remote"],
+        rows: [
+          ["Meetings", "In person, if that matters to how you work", "Video calls only"],
+          ["Greek-language copy", "Can often write it, not just place it", "Usually needs a translator you or they hire"],
+          ["Cost", "Local market rates", "Typically lower, no local overhead"],
+          ["Who you talk to", "Depends — agency or individual", "Usually the person writing the code"],
+          ["If it goes wrong", "Same jurisdiction, same legal system", "Practically, the written scope is your protection"],
+        ],
+      },
+      {
+        type: "p",
+        text: "Neither column is a winner. The mistake is choosing on proximity when the thing you actually needed was written clarity, or choosing on price when you genuinely needed someone who can write Greek marketing copy from scratch.",
+      },
+      { type: "h2", text: "What \"EU-based\" does and doesn't mean" },
+      {
+        type: "p",
+        text: "Three practical points, and one caveat: I'm a developer, not a lawyer or an accountant, so treat this as how it tends to work in practice and take anything consequential to a professional.",
+      },
+      {
+        type: "list",
+        items: [
+          "**Hosting location is a choice, not a consequence of who you hire.** A remote developer can deploy to EU regions on any major host. If you want data in the EU, put it in the scope as a requirement rather than assuming it.",
+          "**GDPR follows your customers, not your developer.** If you process personal data of people in the EU, the obligations are yours as the business, whoever built the site. Ask what the developer does about consent, forms and analytics — and get the rest from a lawyer.",
+          "**Invoicing and VAT treatment differ** depending on where the supplier is established. That's an accountant question, and it's worth asking before you sign rather than at the first invoice.",
+        ],
+      },
+      { type: "h2", text: "Red flags" },
+      {
+        type: "list",
+        items: [
+          "**No written scope.** \"We'll figure it out as we go\" means you'll pay for it as you go.",
+          "**100% payment up front** to someone you've never worked with. A third up front against milestones is normal.",
+          "**Won't show live URLs** you can open yourself. Screenshots prove nothing.",
+          "**Promises a Google ranking.** Nobody controls that, and offering it signals either dishonesty or inexperience.",
+          "**Registers your domain in their own name.** Non-negotiable — it's yours.",
+          "**Quotes a multilingual site without asking who writes the copy.** They haven't priced the expensive part.",
+        ],
+      },
+      { type: "h2", text: "When you should hire locally instead" },
+      {
+        type: "p",
+        text: "Plainly, because I work remotely from Pakistan and this is the part that costs me work.",
+      },
+      {
+        type: "p",
+        text: "**Hire in Cyprus** if you need someone in the room — some businesses genuinely run better that way, and it isn't a weakness. Hire locally if you need Greek marketing copy written from scratch rather than translated, since that's a copywriting job in a language I don't work in. Hire locally if your organisation requires an in-country supplier, or if you know from experience that projects only move when you can walk over and ask.",
+      },
+      {
+        type: "p",
+        text: "**Remote is the better buy** when you have your content sorted, you're comfortable working in writing, and you'd rather talk to the person building it than to an account manager. [Remote developer vs local agency](/blogs/remote-developer-vs-local-agency) weighs that more fully.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Decide the language question first, then write one page describing what the site has to do in business terms. Send that same page to everyone you ask. Most of the variation between Cyprus quotes disappears the moment every developer is pricing the same brief, and what's left is a real difference you can actually judge.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "How do I find a good web developer in Cyprus?" },
+      {
+        type: "p",
+        text: "Ask for three live URLs you can open on your own phone, a written scope naming pages and exclusions, and an ownership clause covering the domain, code and hosting. Then settle the language question — which languages, who translates, who pays — because that moves a Cyprus quote more than almost anything else. Judge the written answers rather than the sales conversation.",
+      },
+      { type: "h3", text: "Should I hire a Cyprus-based developer or work with someone remote?" },
+      {
+        type: "p",
+        text: "Hire locally if you need in-person meetings, Greek marketing copy written from scratch, or an in-country supplier for procurement reasons. Work remotely if your content is sorted, you're comfortable communicating in writing, and you want direct access to the person building the site rather than an account manager. Written communication quality predicts the outcome better than distance does.",
+      },
+      { type: "h3", text: "Does my Cyprus website need to be hosted in the EU?" },
+      {
+        type: "p",
+        text: "Not automatically — hosting region is a choice any developer can make on the major cloud providers, not something determined by where they're based. If EU hosting matters to you, write it into the scope as a requirement rather than assuming it. Whether it's legally necessary for your particular data is a question for a lawyer, not a developer.",
+      },
+      { type: "h3", text: "Who owns the website when a Cyprus developer builds it?" },
+      {
+        type: "p",
+        text: "Whatever the contract says, which is exactly why it must say something. A sound clause transfers the code, the domain registered in your business name, the hosting account and the design files to you on final payment. Where an agreement is silent, ownership can default in ways that surprise clients, and that's worth a lawyer's eye on anything significant.",
+      },
+      { type: "h3", text: "What should a Cyprus web developer include in their quote?" },
+      {
+        type: "p",
+        text: "Pages and features named specifically, an explicit list of what's excluded, which languages are in scope and who supplies the translations, the ownership clause, revision rounds, a payment schedule, the rate for out-of-scope changes, and the twelve-month total of hosting and maintenance rather than only the build price.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write down who your customers are and which languages they read. That single answer shapes the scope, the price and the shortlist more than any other decision you'll make.",
+      },
+      {
+        type: "p",
+        text: "Send it over and I'll tell you what I'd scope and what I'd charge — free, and if the honest answer is a Cyprus-based developer, that's what you'll get. [Get in touch](/contact), or [see what I build](/services).",
+      },
+    ],
+  },
+  {
+    slug: "website-cost-limassol-nicosia",
+    // 45 chars — withBrand() lands on 60.
+    title: "Website Cost in Cyprus: Does the City Matter?",
+    excerpt:
+      "Limassol or Nicosia, the city barely moves a website quote. Languages, who writes the copy and who you hire move it far more — here's the ranking.",
+    coverImage:
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=450&fit=crop",
+    category: "Pricing",
+    publishedAt: "2026-08-15",
+    tags: ["Pricing", "Cyprus", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "Most Cyprus business sites land in the **€800–€3,500** band, and **the city you're in barely moves that number**. What moves it, in order: how many languages the site needs, who writes the copy, whether you hire an agency or one developer, how much of the design is custom, and what has to integrate with what.",
+      },
+      {
+        type: "p",
+        text: "That's the contrarian answer, so here's the reasoning rather than the assertion. Limassol and Nicosia are about an hour apart in a market of roughly a million people. There's no separate talent pool, no separate cost of doing business, and no separate customer expectation to price against. Two developers in the same country quoting the same brief differ because of what they include, not where they park.",
+      },
+      {
+        type: "p",
+        text: "Want a number for your actual project? Tell me who your customers are and which languages they read, and I'll give you a realistic scope and range — free, before you commit. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "What actually drives a Cyprus quote, ranked" },
+      { type: "h3", text: "1. Languages" },
+      {
+        type: "p",
+        text: "The single biggest swing, and the one least likely to be itemised. Cyprus providers put the uplift at **roughly 20% on top of the project** for adding a second language ([Cyprus Digital Agency](https://cyprusdigitalagency.com/website-design-cost-in-cyprus-2026/)). That's a fair rule of thumb for a content site and it understates the case where prices, legal text or service descriptions genuinely differ per market.",
+      },
+      { type: "h3", text: "2. Who writes the copy" },
+      {
+        type: "p",
+        text: "If you supply the words, the project is cheaper and slower. If the developer or a copywriter supplies them, it's more expensive and faster. Neither is wrong — but this is the line most often left ambiguous, and an ambiguous line becomes an invoice. Decide it before you compare quotes.",
+      },
+      { type: "h3", text: "3. Agency or one developer" },
+      {
+        type: "p",
+        text: "In a market this size the gap is wide. Published Cyprus figures put an ongoing freelance engagement at **€500–€2,000/month** against **€3,500–€12,000+/month** for a full-service agency retainer ([Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/)). On project work, the same source puts a basic build at €1,500–€4,500 and a mid-range custom build at €4,500–€12,000, while other Cyprus providers quote **€500–€1,000** for a starter site and **€1,200–€3,500** for a business site ([Cyprus Digital Agency](https://cyprusdigitalagency.com/website-design-cost-in-cyprus-2026/), [Bandziuk](https://www.bandziuk.com/blog/website-development-cost-in-cyprus)).",
+      },
+      {
+        type: "p",
+        text: "That spread between sources is not an error — it's the agency-versus-individual difference showing up as a price gap rather than a described one, which is precisely why [comparing on scope beats comparing on totals](/blogs/why-web-development-quotes-differ).",
+      },
+      { type: "h3", text: "4. Design depth, then integrations" },
+      {
+        type: "p",
+        text: "Template, semi-custom, or designed from scratch — three different products often sold under one phrase. After that, anything that has to talk to another system is priced by that system's API, not by your requirements.",
+      },
+      { type: "h2", text: "The multilingual cost nobody quotes" },
+      {
+        type: "p",
+        text: "Worth expanding, because \"add Greek\" sounds like a content task and isn't. Four separate pieces of work sit behind it:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Translation** — either a human translator you pay, or machine output somebody has to review. This is a recurring cost, not a one-off.",
+          "**Layout that survives longer text.** Translated strings routinely run longer than the English they replace, and a design that only ever saw English breaks in ways nobody notices until launch.",
+          "**A language switcher** that remembers the visitor's choice and doesn't dump them back on the homepage when they use it.",
+          "**Separate SEO per language** — each language needs its own indexable URL, not a toggle on one page. Google's guidance on localised versions covers the markup ([Google Search Central](https://developers.google.com/search/docs/specialty/international/localized-versions)).",
+        ],
+      },
+      {
+        type: "p",
+        text: "And the part that surprises people: **every content update happens twice, forever.** Each new service page, price change and blog post is two pieces of work from launch onwards. [Do Cyprus businesses need two languages?](/blogs/cyprus-multilingual-website) is the decision itself, in detail.",
+      },
+      { type: "h2", text: "Ongoing costs" },
+      {
+        type: "table",
+        headers: ["Item", "Published Cyprus range"],
+        rows: [
+          ["Hosting and domain, bundled", "€80–€180/year"],
+          ["Hosting alone", "€60–€200/year"],
+          ["Domain alone", "€10–€20/year"],
+          ["Maintenance", "€100–€500/month"],
+          ["Ongoing freelance engagement", "€500–€2,000/month"],
+        ],
+        caption: "Sources: Cyprus Digital Agency, Bandziuk, Uveler.",
+      },
+      {
+        type: "p",
+        text: "Ask any provider for the twelve-month total rather than the build price. That's the number you're actually committing to, and it's where a cheap quote and an honest one separate.",
+      },
+      { type: "h2", text: "When the city does buy you something" },
+      {
+        type: "p",
+        text: "Not never — just not through price. A Limassol or Nicosia developer can sit in your office, can often write Greek marketing copy rather than commissioning it, and shares your jurisdiction if something goes wrong. Those are real goods. They're just not what the number at the bottom of the quote is measuring.",
+      },
+      {
+        type: "p",
+        text: "If in-person work is how your business actually runs, buy that deliberately and accept the cost. What I'd avoid is paying a premium for a local address you never use.",
+      },
+      { type: "h2", text: "When you should hire locally instead" },
+      {
+        type: "p",
+        text: "If your site needs Greek copy written from scratch rather than translated, hire in Cyprus — that's a copywriting job in a language I don't work in, and a translator bolted onto a remote build is the more expensive route to a worse result. Same if you need someone physically present, or an in-country supplier for procurement.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Stop comparing cities and start comparing scopes. Write one brief, name the languages, say explicitly who supplies the copy, and send it to everyone. The quotes that come back will differ for reasons you can actually evaluate — which is the whole point of getting three of them.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Is a website cheaper in Nicosia than Limassol?" },
+      {
+        type: "p",
+        text: "Not meaningfully. The cities are about an hour apart in a market of roughly a million people, sharing one talent pool and one cost base, so there's no structural reason for a price gap. Differences between two Cyprus quotes come from what each one includes — languages, copywriting, agency overhead, design depth — not from the address at the bottom of the invoice.",
+      },
+      { type: "h3", text: "How much does a website cost in Limassol?" },
+      {
+        type: "p",
+        text: "The same as elsewhere in Cyprus: most business sites land in the €800–€3,500 band, with starter sites published at €500–€1,000 and mid-range custom builds running €4,500–€12,000 depending on who you hire. Adding a second language typically adds around 20%. Ask for the twelve-month total including hosting and maintenance, not just the build price.",
+      },
+      { type: "h3", text: "Why do two Cyprus website quotes differ so much?" },
+      {
+        type: "p",
+        text: "Usually because one is an agency and one is an individual, or because one priced translation and copywriting and the other assumed you'd supply them. Published Cyprus figures put freelance engagements at €500–€2,000/month against €3,500–€12,000+/month for full-service agency retainers — a gap that reflects structure rather than capability. Ask both to itemise what's excluded.",
+      },
+      { type: "h3", text: "What are the ongoing costs of a website in Cyprus?" },
+      {
+        type: "p",
+        text: "Published ranges are €80–€180/year for hosting and domain bundled, or €60–€200/year hosting plus €10–€20/year for the domain separately, with maintenance at €100–€500/month. On a bilingual site, budget for content updates happening twice — that's an ongoing time cost that rarely appears in any quote.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Answer two questions before you ask anyone for a price: which languages, and who writes the words. Everything else in a Cyprus quote is downstream of those.",
+      },
+      {
+        type: "p",
+        text: "Send me both answers and I'll come back with a scope and a range — free, and I'll tell you if a local developer suits you better. [Get in touch](/contact), or [see what I build](/services).",
+      },
+    ],
+  },
+  {
+    slug: "cyprus-multilingual-website",
+    // 40 chars — withBrand() lands on 55.
+    title: "Do Cyprus Businesses Need Two Languages?",
+    excerpt:
+      "Greek and English, or English alone? How to decide from who your customers are, and the ongoing cost of a second language that nobody quotes.",
+    coverImage:
+      "https://images.unsplash.com/photo-1526857240824-4b9f9e0d1f4a?w=800&h=450&fit=crop",
+    category: "Web Development",
+    publishedAt: "2026-08-15",
+    tags: ["Cyprus", "Web Development", "Small Business"],
+    content: [
+      {
+        type: "p",
+        text: "**If your customers are local businesses or residents, Greek plus English is usually the baseline.** If you serve tourists or international clients, English alone may be enough. **Adding a language is not double the site** — it's translation, a layout that tolerates longer text, a language switcher, and separate SEO for each language. And the part that surprises people: **every content update then happens twice, forever.**",
+      },
+      {
+        type: "p",
+        text: "Greek and Turkish are the Republic's official languages, and English is widely used in business, tourism and higher education — around 80% of people in Cyprus speak it as a second language ([Languages of Cyprus](https://en.wikipedia.org/wiki/Languages_of_Cyprus)). That's why this isn't a simple yes: a large share of your potential customers can read an English-only site perfectly well, which makes the decision commercial rather than automatic.",
+      },
+      {
+        type: "p",
+        text: "Not sure which way to go? Tell me who your customers are and I'll tell you whether a second language earns its cost on your site — free, and if English alone will do, that's what I'll say. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "How to decide: start from your customers" },
+      {
+        type: "p",
+        text: "Not from what feels thorough. Three honest cases:",
+      },
+      {
+        type: "list",
+        items: [
+          "**You sell to local residents and small businesses** — trades, clinics, accountants, retail. Greek is doing real work here, and English alongside it covers the rest. This is the clearest case for two.",
+          "**You sell to tourists, expatriates, or clients outside Cyprus** — hospitality, yacht services, international consulting, most software. English alone is often sufficient, and a half-maintained Greek version reads worse than none.",
+          "**You sell to both, but one is clearly bigger.** Build the bigger one properly first. A complete site in one language beats two half-finished ones, and you can add the second when the first is earning.",
+        ],
+      },
+      {
+        type: "p",
+        text: "The test I'd apply: can you name customers you lost, or would lose, because the site was in the wrong language? If yes, that's your answer. If you're reaching for a hypothetical, you're buying reassurance rather than revenue.",
+      },
+      { type: "h2", text: "What adding a language actually involves" },
+      {
+        type: "p",
+        text: "\"Duplicate the pages\" is the small part. Four pieces of work sit behind it, and only one of them is content:",
+      },
+      { type: "h3", text: "Translation" },
+      {
+        type: "p",
+        text: "Either a human translator you pay, or machine output that a fluent human reviews. Budget it as recurring rather than one-off, because it applies to everything you publish afterwards too.",
+      },
+      { type: "h3", text: "A layout that survives longer text" },
+      {
+        type: "p",
+        text: "Translated strings frequently run longer than the English they replace. Buttons that fitted, wrap. Headings that sat on one line, take two. A design that has only ever seen English breaks in small ways nobody catches until content goes in — which is why the second language is cheaper to plan for than to retrofit.",
+      },
+      { type: "h3", text: "A language switcher that behaves" },
+      {
+        type: "p",
+        text: "It should remember the choice and keep the visitor on the page they were reading. Switchers that dump you back on the homepage are common and quietly infuriating.",
+      },
+      { type: "h3", text: "Separate SEO per language" },
+      {
+        type: "p",
+        text: "This is the one most often got wrong. **Each language needs its own indexable URL** — a toggle that swaps text on a single page gives Google one page to index, not two, so the Greek version can't rank on its own. Google's guidance on localised versions covers the URL structures and the `hreflang` annotations that tell it which version to serve to whom ([Google Search Central](https://developers.google.com/search/docs/specialty/international/localized-versions)).",
+      },
+      { type: "h2", text: "Machine translation: where it costs you credibility" },
+      {
+        type: "p",
+        text: "Machine translation is genuinely good now, and pretending otherwise would be dishonest. Where it still fails is exactly where it hurts most: your service descriptions, your value proposition, and anything with a legal or financial consequence.",
+      },
+      {
+        type: "p",
+        text: "A slightly-off product description reads as carelessness to a native speaker, and carelessness is the opposite of what a service business is selling. A reasonable middle path is machine translation reviewed by a fluent human for the pages that sell, and unreviewed machine output only for content where being 95% right is fine.",
+      },
+      { type: "h2", text: "The ongoing cost is the real one" },
+      {
+        type: "p",
+        text: "Build cost is finite. Maintenance isn't. From launch, **every new service page, price change, blog post and seasonal update is two pieces of work.** That's the cost nobody quotes because it doesn't appear in the build price — it appears in your calendar, every month, indefinitely.",
+      },
+      {
+        type: "p",
+        text: "Cyprus providers put the build-side uplift at **roughly 20% on top of the project** for a second language ([Cyprus Digital Agency](https://cyprusdigitalagency.com/website-design-cost-in-cyprus-2026/)), and published maintenance runs **€100–€500/month** ([Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/)). The 20% is the honest headline for a content site; it understates the case where prices, legal text or service terms genuinely differ per market. Fuller context in [what a website costs in Cyprus](/blogs/website-cost-cyprus-2026) and [does the city matter](/blogs/website-cost-limassol-nicosia).",
+      },
+      { type: "h2", text: "When one language is the right answer" },
+      {
+        type: "p",
+        text: "Say it plainly, because the industry has an obvious incentive not to. **One language is right** when your customers overwhelmingly read it, when you don't have the time or budget to maintain a second version properly, or when you're early enough that you don't yet know who your customers are.",
+      },
+      {
+        type: "p",
+        text: "An abandoned Greek section with 2024 prices on it damages you more than an English-only site ever would. If you can't commit to maintaining it, don't build it — and add it later from a position of knowing it'll be used.",
+      },
+      { type: "h2", text: "When you should hire locally instead" },
+      {
+        type: "p",
+        text: "If the Greek version needs to be **written**, not translated — real marketing copy that persuades — hire a Cyprus-based developer or copywriter. That's a language job, and I work in English. I can build the structure that serves two languages properly; I can't write the Greek that fills it, and a translator bolted onto the end is the expensive route to something that reads translated.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Build the language your customers actually use, completely. Then decide about the second one with real data — which pages they land on, which they leave, and whether anyone has asked. Structuring the site so a second language *can* be added cleanly costs very little at build time; adding one you don't need costs you every month afterwards.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Does my Cyprus business website need to be in Greek?" },
+      {
+        type: "p",
+        text: "It depends on who buys from you. If your customers are local residents and small businesses, Greek alongside English is usually the baseline. If you serve tourists, expatriates or international clients, English alone is often enough — around 80% of people in Cyprus speak English as a second language. The deciding question is whether you can name customers you'd lose without it.",
+      },
+      { type: "h3", text: "How much does a bilingual website cost in Cyprus?" },
+      {
+        type: "p",
+        text: "Cyprus providers put the build-side uplift at roughly 20% on top of the project cost for a second language. That's a fair rule of thumb for a content site, and it understates cases where prices, legal text or service terms differ per market. The larger cost is ongoing: every content update from launch onwards is two pieces of work rather than one.",
+      },
+      { type: "h3", text: "Can I just use Google Translate on my website?" },
+      {
+        type: "p",
+        text: "For pages where being roughly right is acceptable, machine translation is genuinely good. For the pages that sell — service descriptions, your value proposition, anything with legal or financial consequence — unreviewed output reads as carelessness to a native speaker, which is the opposite of what a service business is selling. Machine translation reviewed by a fluent human is a reasonable middle path.",
+      },
+      { type: "h3", text: "How does SEO work for a two-language website?" },
+      {
+        type: "p",
+        text: "Each language needs its own indexable URL. A switcher that swaps text on a single page gives Google one page to index rather than two, so the second-language version can't rank independently. Google's documentation on localised versions covers the accepted URL structures and the hreflang annotations that tell search engines which version to serve to which audience.",
+      },
+      { type: "h3", text: "Is it cheaper to add a second language later?" },
+      {
+        type: "p",
+        text: "No — retrofitting is usually more expensive than planning for it. Layouts built for one language break in small ways when translated text runs longer, and URL structure and SEO markup are cheaper to get right at the start than to migrate afterwards. Structuring for two languages at build time costs very little even if you only launch one.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Write down your last ten customers and which language each of them reads. If that list is mixed, build both. If it isn't, you have your answer and you've saved yourself a recurring cost.",
+      },
+      {
+        type: "p",
+        text: "Send me the list and I'll tell you what I'd build — free, including when the answer is one language and a structure that can take a second later. [Get in touch](/contact), or [see what I build](/services).",
+      },
+    ],
+  },
+  // [CONFIRM — owner input] Article 4 deliberately does NOT state payment
+  // methods, invoicing currency, VAT treatment, or a specific working-hours
+  // window. Those are facts only Muhammad has, and the spec is explicit that
+  // they are marked rather than invented. The timezone arithmetic below is
+  // arithmetic (EET/EEST vs PKT), not a claim about his schedule.
+  {
+    slug: "hiring-remote-developer-cyprus",
+    // 37 chars — withBrand() lands on 52.
+    title: "Hiring a Remote Developer From Cyprus",
+    excerpt:
+      "What you gain, what you give up, and what to agree in writing first — written by the remote developer, including the cases where hiring in Cyprus wins.",
+    coverImage:
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=450&fit=crop",
+    category: "Hiring",
+    publishedAt: "2026-08-15",
+    tags: ["Hiring a Developer", "Cyprus", "Remote Work"],
+    content: [
+      {
+        type: "p",
+        text: "**Agree scope, ownership, payment and communication in writing before anything starts.** **Written communication quality matters more than timezone overlap.** **Fixed price protects you more than hourly** when you can't look over someone's shoulder. **Put domain, hosting and repository access in your name from day one.** And if you genuinely need someone in the room, that's a real reason to hire in Cyprus rather than a preference to talk yourself out of.",
+      },
+      {
+        type: "p",
+        text: "I should declare the obvious: I'm the remote developer in this scenario, working from Pakistan with clients in Cyprus and elsewhere. So this post names what you give up before what you gain.",
+      },
+      {
+        type: "p",
+        text: "Considering it and want the awkward version? Ask me the uncomfortable questions directly — what happens if you're unhappy, who owns what, what I'm not good at. [Get in touch](/contact).",
+      },
+      { type: "h2", text: "What you give up" },
+      {
+        type: "list",
+        items: [
+          "**No in-person meetings.** Video calls are not the same thing for everyone, and some businesses genuinely decide better around a table.",
+          "**A different legal jurisdiction.** If something goes badly wrong, pursuing it across borders is slow and expensive enough that, realistically, your written scope and your account ownership are the protection — not the courts.",
+          "**No local-language copywriting.** I work in English. Greek marketing copy needs a Greek writer, wherever the developer sits.",
+          "**You carry more of the coordination.** No account manager is chasing you for content. If your feedback slips, the project slips, and nobody in your office will remind you.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If two or more of those are dealbreakers, hire in Cyprus. That's a sound decision and the rest of this post won't change it.",
+      },
+      { type: "h2", text: "What you gain" },
+      {
+        type: "p",
+        text: "Direct access to the person writing the code, no agency layer translating your requirements into a brief and back again, and a lower cost base — published Cyprus figures put ongoing freelance engagements at **€500–€2,000/month** against **€3,500–€12,000+/month** for full-service agency retainers ([Uveler](https://uveler.com/blogs/marketing-agency-cost-cyprus/)).",
+      },
+      {
+        type: "p",
+        text: "Cost alone is a weak reason, though. A cheap developer who needs replacing is the most expensive option available. The better reason is that on a small project, the shortest path between what you want and what gets built is talking to the person building it.",
+      },
+      { type: "h2", text: "Timezone: Cyprus is one of the easy ones" },
+      {
+        type: "p",
+        text: "Cyprus runs on EET in winter and EEST in summer; Pakistan is UTC+5 year-round with no daylight saving. That puts me **two to three hours ahead of you depending on the season** — so a Cypriot 9am is my 11am or midday, and we share most of a normal working day.",
+      },
+      {
+        type: "p",
+        text: "For comparison, this is the market where the timezone objection is weakest. [Hiring a remote web developer](/blogs/hire-remote-web-developer) covers the harder case, New Zealand, where the gap is seven to eight hours and the honest answer is different.",
+      },
+      { type: "h2", text: "Payment, invoicing and VAT" },
+      {
+        type: "p",
+        text: "What to agree before the first invoice rather than after it: which currency the invoice is denominated in, which payment method, who bears the transfer fees, and which side carries exchange-rate movement between quote and payment. Those four lines prevent a genuinely annoying conversation later.",
+      },
+      {
+        type: "p",
+        text: "On VAT and how a non-EU supplier's invoices should be treated in your books — that's an accountant's question, not a developer's, and it's worth asking yours before you sign rather than at year end. I'd be suspicious of any developer who answers it confidently on your behalf.",
+      },
+      { type: "h2", text: "Ownership and contracts across borders" },
+      {
+        type: "p",
+        text: "Get it in writing that on final payment you own the code, the domain registered in your business name, the hosting account and the design files. Then do the thing that actually matters: **hold those accounts yourself from day one** and add the developer as a user, rather than receiving them at handover.",
+      },
+      {
+        type: "p",
+        text: "The reasoning is unsentimental. Cross-border enforcement is expensive enough that in practice it isn't your remedy for a small project. What protects you is that you already hold the keys, so the worst case is finding someone new rather than recovering an asset. [What a web developer contract should include](/blogs/web-developer-contract-checklist) has the clauses; I'm a developer, not a lawyer, so anything significant deserves a proper legal read.",
+      },
+      { type: "h2", text: "Communication that makes it work" },
+      {
+        type: "list",
+        items: [
+          "**A named channel** and an agreed response time. Mine is within one business day, always.",
+          "**A weekly written update** covering what was done, what's next, and what's blocked. It creates a record and surfaces problems while they're small.",
+          "**Consolidated feedback**, one document per round. Ten separate messages over a week costs a week.",
+          "**Treat a missed update as a signal**, not an oversight. It's the earliest warning you'll get that something is drifting.",
+        ],
+      },
+      { type: "h2", text: "Red flags in any remote arrangement" },
+      {
+        type: "list",
+        items: [
+          "Won't put scope and exclusions in writing",
+          "Wants 100% payment up front",
+          "Repository access promised \"at the end\" rather than day one",
+          "Vague about who owns the domain",
+          "Goes quiet and treats it as normal",
+          "Quotes a fixed price on an existing codebase without looking at it",
+        ],
+      },
+      { type: "h2", text: "When you should hire locally instead" },
+      {
+        type: "p",
+        text: "Hire in Cyprus if you need someone physically present, if you need Greek copy written rather than translated, if procurement requires an in-country supplier, or if you know your projects only move when you can walk over and ask. That last one isn't a character flaw — it's a real constraint, and remote work punishes it rather than fixing it.",
+      },
+      { type: "h2", text: "What I'd recommend" },
+      {
+        type: "p",
+        text: "Test the written communication before you commit to anything. Send a short brief and read what comes back. If the reply is clear, asks the right questions, and names something that will be difficult, distance is a detail. If it's vague now — while they're trying hardest — it will not improve once the work starts.",
+      },
+      { type: "h2", text: "Frequently asked questions" },
+      { type: "h3", text: "Does hiring a developer outside Cyprus actually work?" },
+      {
+        type: "p",
+        text: "Yes, when four things are agreed first: a written scope with exclusions, an ownership clause covering code, domain and hosting, the payment currency and method, and a named communication cadence. Distance doesn't cause project failures by itself — it removes the informal corrections that hide underlying problems when everyone shares an office.",
+      },
+      { type: "h3", text: "What's the time difference between Cyprus and a Pakistan-based developer?" },
+      {
+        type: "p",
+        text: "Two to three hours, depending on the season — Cyprus observes EET in winter and EEST in summer, while Pakistan stays on UTC+5 year-round. A Cypriot 9am is 11am or midday in Pakistan, so most of a normal working day overlaps. Of the markets I work with, Cyprus has the smallest timezone gap by a wide margin.",
+      },
+      { type: "h3", text: "How do I pay an overseas web developer from Cyprus?" },
+      {
+        type: "p",
+        text: "By bank transfer or an international payment service, on a schedule tied to named milestones rather than dates. Agree up front which currency the invoice is denominated in, who bears transfer fees, and which side carries exchange-rate movement. How a non-EU supplier's invoices should be treated for VAT is a question for your accountant, not your developer.",
+      },
+      { type: "h3", text: "What happens if a remote developer disappears mid-project?" },
+      {
+        type: "p",
+        text: "It depends entirely on whether you hold the accounts. If the domain, hosting and repository are already in your name with the developer added as a user, you lose time and find someone else. If they hold everything, you have a recovery problem that crossing a border makes considerably worse — which is why account ownership from day one matters more than any contract clause you'd realistically enforce.",
+      },
+      { type: "h3", text: "Should I pay a remote developer hourly or a fixed price?" },
+      {
+        type: "p",
+        text: "Fixed price, when the scope can be settled in writing beforehand. It caps your exposure and moves the estimating risk to the developer, which matters more when you can't observe the work day to day. Hourly suits genuinely exploratory work or an existing codebase nobody has read yet — but insist on an estimate, a not-to-exceed cap, and regular reporting of hours used.",
+      },
+      { type: "h2", text: "Where to start" },
+      {
+        type: "p",
+        text: "Before you shortlist anyone, open accounts for your own domain and hosting in your business name. It takes twenty minutes, costs almost nothing, and it converts the biggest risk in remote hiring into an inconvenience.",
+      },
+      {
+        type: "p",
+        text: "Then send a short brief to two or three people and judge the replies. Send me one too if you like — and if a Cyprus-based developer is the better answer for your project, I'll tell you. [Get in touch](/contact), or [see recent work](/projects).",
       },
     ],
   },

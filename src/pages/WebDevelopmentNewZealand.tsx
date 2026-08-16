@@ -119,6 +119,9 @@ const WebDevelopmentNewZealand = () => {
             heading={nzGeo.heading}
             intro={nzGeo.intro}
             cities={nzGeo.cities}
+            // Auckland has its own landing page and was the site's only
+            // orphan — in the sitemap, linked from nowhere. See cityLinks.
+            cityLinks={{ Auckland: "/web-developer-auckland" }}
             note={nzGeo.note}
           />
         </LocationHighlights>

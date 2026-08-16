@@ -477,7 +477,7 @@ export const ROUTES = [
     crumbLabel: "Auckland",
     title: "Web Developer for Auckland Businesses | WebDevStudio",
     description:
-      "Freelance web developer building fast, custom websites and web apps for Auckland businesses. Fixed-price, remote, React & MERN. Get a free quote on your project.",
+      "Freelance web developer building fast custom websites and web apps for Auckland businesses. Fixed-price, remote, React and MERN. Get a free quote.",
     keywords:
       "web developer auckland, freelance web developer auckland, website developer auckland, web app developer auckland, custom website auckland",
     faqs: AUCKLAND_FAQS,
@@ -695,6 +695,13 @@ export function webPageNode(siteUrl, route) {
     description: route.description,
     isPartOf: { "@id": id.website },
     about: { "@id": id.organization },
+    // /services defines its own Service node but never declared it as the
+    // page's primary entity, so the node existed without anything saying the
+    // page is *about* it. Flagged by the 2026-08-13 schema audit as the one
+    // remaining gap after the Service node itself was added.
+    ...(route.path === "/services"
+      ? { mainEntity: { "@id": `${absoluteUrl(base, "/services")}#service` } }
+      : {}),
     // A page with its own hero image declares that, not the sitewide logo.
     // Project and article pages were all claiming the WebDevStudio logo as
     // their primary image, which is useless for image search and for any

@@ -392,7 +392,14 @@ const BlogDetail = () => {
                 <Link to="/services" className="text-primary hover:underline font-medium">
                   Web development services &amp; pricing
                 </Link>
-                <span className="text-muted-foreground"> — fixed quotes from $900</span>
+                {/* The price used to be stated here as "from $900". Removed,
+                    for two reasons. It's the stale figure that's wrong
+                    everywhere on the site pending confirmed pricing — and
+                    because this block renders on EVERY post, it put a USD
+                    number inside the EUR-only Cyprus articles, breaking the
+                    one currency rule those posts are written to. /services is
+                    the single source of truth; don't restate prices here. */}
+                <span className="text-muted-foreground"> — fixed scope and a written quote before work starts</span>
               </li>
               <li>
                 <Link to="/projects" className="text-primary hover:underline font-medium">

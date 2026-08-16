@@ -13,7 +13,7 @@ export const hospitalManagementSystem: CaseStudy = {
   // Doubles as the meta description, so it stays inside ~155 characters and
   // leads with the two decisions the page is actually about.
   description:
-    "A hospital platform where reception, doctors and administrators share one patient record — permissions enforced at the API, appointments validated at write time.",
+    "A hospital platform where reception, doctors and administrators share one patient record — permissions enforced at the API, not just hidden in the UI.",
   fullDescription:
     "Patient registration, appointment scheduling and staff workflows behind one permission model — reception, doctors and administrators see the same record shaped by what their role is allowed to read.",
   image:

@@ -33,7 +33,7 @@ export const restfulApiService: CaseStudy = {
   // load, and there is no number on this page supporting it. Describe what was
   // built; let the benchmark make the performance claim once it exists.
   description:
-    "Node.js REST API with Redis caching on the read-heavy endpoints, stateless JWT auth, rate limiting on the routes that cost most, and a Swagger-documented contract.",
+    "Node.js REST API with Redis caching on read-heavy endpoints, stateless JWT auth, rate limiting where it costs most, and a Swagger-documented contract.",
   fullDescription:
     "A REST API built to survive its own success: cached reads, stateless sessions so instances scale horizontally, per-route rate limits, one consistent error shape, and Docker to keep local and deployed environments identical.",
   image:

@@ -12,6 +12,16 @@ export interface CitiesServedProps {
   intro: string;
   /** City names in the order you want them read */
   cities: string[];
+  /**
+   * Optional city -> route map for cities that have their own landing page.
+   *
+   * /web-developer-auckland shipped with a route, meta, FAQs and schema, but
+   * nothing on the site ever linked to it — a full-site crawl found it as the
+   * only orphan page (0 inbound internal links) while still sitting in the
+   * sitemap. A page reachable only from sitemap.xml is a page Google has
+   * little reason to rank. Cities without an entry stay plain text.
+   */
+  cityLinks?: Record<string, string>;
   /** Short closing line under the city grid */
   note?: string;
   /** Where the CTA points */
@@ -36,6 +46,7 @@ export const CitiesServed = ({
   heading,
   intro,
   cities,
+  cityLinks,
   note,
   ctaHref = "/contact",
   ctaLabel = "Book a free 30-min call",
@@ -72,16 +83,27 @@ export const CitiesServed = ({
         </p>
 
         <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {cities.map((city) => (
-            <li
-              key={city}
-              className="rounded-xl border border-border/50 bg-card px-4 py-3 text-center
-                text-sm font-bold shadow-card
-                hover:border-primary/40 hover:text-primary transition-colors duration-300"
-            >
-              {city}
-            </li>
-          ))}
+          {cities.map((city) => {
+            const href = cityLinks?.[city];
+            return (
+              <li
+                key={city}
+                className="rounded-xl border border-border/50 bg-card text-center
+                  text-sm font-bold shadow-card
+                  hover:border-primary/40 hover:text-primary transition-colors duration-300"
+              >
+                {href ? (
+                  // block + padding on the anchor, not the li, so the whole
+                  // tile stays a 44px+ tap target rather than just the word.
+                  <Link to={href} className="block px-4 py-3">
+                    {city}
+                  </Link>
+                ) : (
+                  <span className="block px-4 py-3">{city}</span>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         {note && (

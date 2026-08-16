@@ -137,7 +137,21 @@ export const Hero = () => {
                 {/* Secondary half hidden on phones, where it forced the badge
                     to wrap onto two cramped lines. */}
                 <span className="hidden sm:inline text-white/25" aria-hidden="true">|</span>
-                <span className="hidden sm:inline text-white/50 font-medium">
+                {/* suppressHydrationWarning because this text is deliberately
+                    time-dependent: the prerenderer bakes the month at BUILD
+                    time, the browser computes it at VISIT time, and the two
+                    stop agreeing the moment the calendar rolls over. Without
+                    this, the first visitor of a new month triggers a text
+                    mismatch (React #418), and because the badge sits outside
+                    any Suspense boundary React escalates to #423 and re-renders
+                    the entire root on the client — discarding the prerendered
+                    HTML this site's LCP and AI-crawler story depends on.
+                    The badge is decorative, so tolerating the difference is
+                    correct; the client value wins after hydration. */}
+                <span
+                  className="hidden sm:inline text-white/50 font-medium"
+                  suppressHydrationWarning
+                >
                   Booking {bookingWindow}
                 </span>
               </div>

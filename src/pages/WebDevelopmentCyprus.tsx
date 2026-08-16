@@ -150,13 +150,17 @@ const WebDevelopmentCyprus = () => {
         <GeoGuides
           heading="Pricing and hiring guides for Cyprus businesses"
           intro="Written with EUR figures sourced from published Cyprus price guides, including what a second language adds to a build."
+          // Cyprus-specific posts first — the geo page is the hub for that
+          // cluster, so the four EUR posts lead and the general guides follow.
           slugs={[
             "website-cost-cyprus-2026",
+            "web-developer-cyprus-what-to-look-for",
+            "cyprus-multilingual-website",
+            "website-cost-limassol-nicosia",
+            "hiring-remote-developer-cyprus",
             "how-to-compare-web-developer-quotes",
-            "cost-to-hire-web-developer-2026",
-            "customer-portal-development-cost",
             "what-should-be-in-web-development-quote",
-            "hire-remote-web-developer",
+            "cost-to-hire-web-developer-2026",
           ]}
         />
         <Testimonials />

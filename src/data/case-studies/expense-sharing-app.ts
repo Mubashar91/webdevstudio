@@ -8,7 +8,7 @@ export const expenseSharingApp: CaseStudy = {
   subtitle:
     "Split bills across a group without balances drifting out of sync",
   description:
-    "React Native app for shared group expenses. Balances are derived from the transaction log rather than stored, so they cannot drift from the expenses behind them.",
+    "React Native app for shared group expenses. Balances are derived from the transaction log rather than stored, so they can't drift from the expenses.",
   // Was "A comprehensive expense tracking application that enables users to
   // split bills…" — the same "comprehensive / modern / beautiful" opener that
   // led all six of these. It asserts nothing and reads as generated.

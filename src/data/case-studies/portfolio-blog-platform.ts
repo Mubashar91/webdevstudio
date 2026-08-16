@@ -20,7 +20,7 @@ export const portfolioBlogPlatform: CaseStudy = {
   subtitle:
     "Publish a post without holding a deploy pipeline in your head",
   description:
-    "Next.js portfolio and blog where posts are MDX content rather than markup, so publishing does not mean editing components — with a small CMS layer for edits that shouldn't need a deploy.",
+    "Next.js portfolio and blog where posts are MDX content rather than markup, so publishing doesn't mean editing components. Small CMS layer for quick edits.",
   fullDescription:
     "A portfolio and blog for developers: MDX posts rendered to real HTML for crawlers, theme state that persists without a flash of the wrong colours, and an editing layer for content changes that shouldn't require a commit.",
   image:

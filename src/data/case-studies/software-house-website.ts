@@ -14,7 +14,7 @@ export const softwareHouseWebsite: CaseStudy = {
   // Every item on it is table stakes in 2026, and "responsive design" as a
   // headline capability signals a low bar. Decisions, not features.
   description:
-    "React and TypeScript marketing site for a software development company, built so an animation-heavy design brief could survive Core Web Vitals: GPU-composited motion, build-time metadata, and a self-hosted contact endpoint.",
+    "React and TypeScript marketing site built so an animation-heavy design brief could survive Core Web Vitals — GPU-composited motion, build-time metadata.",
   fullDescription:
     "A marketing site for a software development company: service and portfolio pages, a contact pipeline running on the client's own infrastructure, and per-page metadata generated at build time rather than after hydration.",
   image:
