@@ -170,7 +170,17 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
                     {project.image ? (
                       <img
                         src={optimizedImage(projectImageUrl(project.image))}
-                        alt={`${project.title} — illustrative cover image`}
+                        /* Names the link's destination, not the picture. The
+                           cover is stock art, so the old "— illustrative cover
+                           image" told a screen-reader user only that the image
+                           is filler — repeated once per card. ProjectDetail
+                           solved the same problem with alt="", but that works
+                           there because the image is decorative and standalone.
+                           Here the image IS the link, so an empty alt would
+                           leave every card's link named by the hover overlay
+                           ("View case study") and indistinguishable from the
+                           other five. */
+                        alt={`${project.title} case study`}
                         width={CARD_IMAGE.width}
                         height={CARD_IMAGE.height}
                         loading={isAboveFold ? "eager" : "lazy"}
@@ -252,7 +262,12 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
           </div>
         )}
 
-        {!loading && filtered.length > 0 && (
+        {/* Homepage only. `compactHeader` is set exactly where this section is
+            already the whole page (/projects), and there "Browse All Projects"
+            pointed at the URL the visitor was standing on — a dead end at the
+            bottom of the portfolio. The page's own CTA follows immediately
+            after, so nothing needs to replace it. */}
+        {!loading && !compactHeader && filtered.length > 0 && (
           <div className={`text-center mt-16 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <Link to="/projects">
               <Button variant="outline" size="lg" className="px-10 h-12 border-border/55 hover:border-primary/45 hover:bg-primary/5 font-bold group gap-2.5 rounded-2xl shadow-card">
