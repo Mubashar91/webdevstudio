@@ -19,6 +19,10 @@ import BlogDetail from "./pages/BlogDetail";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import WebsiteMaintenance from "./pages/WebsiteMaintenance";
+import BusinessMarketingWebsites from "./pages/BusinessMarketingWebsites";
+import CustomWebApplications from "./pages/CustomWebApplications";
+import DashboardsInternalTools from "./pages/DashboardsInternalTools";
+import PerformanceCoreWebVitals from "./pages/PerformanceCoreWebVitals";
 import Contact from "./pages/Contact";
 import WebDevelopmentNewZealand from "./pages/WebDevelopmentNewZealand";
 import WebDevelopmentCyprus from "./pages/WebDevelopmentCyprus";
@@ -58,6 +62,22 @@ export const AppRoutes = () => (
     <Route path="/blogs/:slug" element={<BlogDetail />} />
     <Route path="/about" element={<About />} />
     <Route path="/services" element={<Services />} />
+    <Route
+      path="/services/business-marketing-websites"
+      element={<BusinessMarketingWebsites />}
+    />
+    <Route
+      path="/services/custom-web-applications"
+      element={<CustomWebApplications />}
+    />
+    <Route
+      path="/services/dashboards-internal-tools"
+      element={<DashboardsInternalTools />}
+    />
+    <Route
+      path="/services/performance-core-web-vitals"
+      element={<PerformanceCoreWebVitals />}
+    />
     <Route
       path="/services/website-maintenance"
       element={<WebsiteMaintenance />}
