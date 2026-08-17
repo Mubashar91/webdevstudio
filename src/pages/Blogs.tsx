@@ -56,7 +56,7 @@ const Blogs = () => {
         <PageHeader
           title="Developer"
           highlight="Blog"
-          description="Practical notes on React, TypeScript, and building scalable MERN applications."
+          description="Practical guides on website costs, hiring a developer, and getting more from your business website."
           breadcrumbs={[{ label: "Blog" }]}
         />
         <BlogsSection compactHeader aboveFold />

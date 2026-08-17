@@ -75,7 +75,7 @@ export interface RouteMeta {
   lastmod: string;
   title: string;
   description: string;
-  keywords: string;
+  keywords?: string;
   /**
    * Short name for this route in a breadcrumb. Optional — routes whose title
    * is already "Something | WebDevStudio" derive a usable crumb from the part

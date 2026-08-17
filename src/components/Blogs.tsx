@@ -49,7 +49,7 @@ export const Blogs = ({ compactHeader = false, aboveFold = false }: BlogsProps) 
               <span className="gradient-text">Blog Posts</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-              Notes on React, TypeScript, and MERN stack development from real project work.
+              Practical guides on website costs, hiring a developer, and getting more from your business website.
             </p>
           </div>
         )}

@@ -507,11 +507,9 @@ export const ROUTES = [
     priority: "1.0",
     changefreq: "weekly",
     lastmod: "2026-07-30",
-    title: "React & MERN Web Development | WebDevStudio",
+    title: "Web Developer for Small Business Websites & Web Apps | WebDevStudio",
     description:
-      "Fast, conversion-focused React, TypeScript and MERN web apps. 5+ years, fixed scope and fixed price. Remote development for NZ, Cyprus and worldwide.",
-    keywords:
-      "React development agency, MERN stack development, hire React developer, TypeScript web development, Node.js development, remote web developer, WebDevStudio",
+      "Fast, conversion-focused websites and web apps. Fixed scope, fixed price — from $900. Remote developer serving NZ, Cyprus and worldwide.",
   },
   {
     path: "/services",
@@ -520,9 +518,7 @@ export const ROUTES = [
     lastmod: "2026-07-30",
     title: "Web Development Services & Pricing | WebDevStudio",
     description:
-      "Transparent pricing for React, MERN and Node.js development. Sites from $900, web apps from $2,500, retainers from $1,200/mo. Fixed scope, fixed price.",
-    keywords:
-      "web development services, React development pricing, MERN stack development cost, hire freelance web developer, Node.js backend development",
+      "Transparent pricing for React, MERN and Node.js development. Sites from USD $900, web apps from USD $2,500, retainers from USD $1,200/mo. Fixed scope, fixed price.",
     faqs: SERVICES_FAQS,
   },
   {
@@ -537,8 +533,6 @@ export const ROUTES = [
     title: "Website Maintenance NZ — Fixed Monthly Plans | WebDevStudio",
     description:
       "Monthly website maintenance for NZ businesses — updates, backups, security and uptime monitoring. Fixed price, no lock-in contract, cancel anytime.",
-    keywords:
-      "website maintenance nz, wordpress maintenance new zealand, website maintenance plans, website support nz",
     faqs: MAINTENANCE_FAQS,
   },
   {
@@ -549,8 +543,6 @@ export const ROUTES = [
     title: "Web Development Portfolio & Case Studies | WebDevStudio",
     description:
       "Selected React, MERN and Node.js projects — the problem, the build and the result. See how WebDevStudio delivers production web applications.",
-    keywords:
-      "React portfolio, MERN stack projects, web development case studies, Node.js projects, developer portfolio",
   },
   {
     path: "/about",
@@ -560,19 +552,15 @@ export const ROUTES = [
     title: "About WebDevStudio | Led by Muhammad Mubashar Shahzad",
     description:
       "WebDevStudio is the practice of Muhammad Mubashar Shahzad — 5+ years building React, TypeScript and MERN stack apps for clients worldwide.",
-    keywords:
-      "Muhammad Mubashar Shahzad, about WebDevStudio, React developer background, MERN stack expert",
   },
   {
     path: "/blogs",
     priority: "0.8",
     changefreq: "weekly",
     lastmod: "2026-07-30",
-    title: "React, TypeScript & MERN Stack Articles | WebDevStudio",
+    title: "Website Costs, Hiring & Web Development Guides | WebDevStudio",
     description:
-      "Practical writing on React performance, TypeScript patterns and MERN stack architecture — lessons from real production builds, not theory.",
-    keywords:
-      "React blog, TypeScript articles, MERN stack guide, web performance tips, React best practices",
+      "Practical guides on website costs, hiring a web developer, and getting more from your business website — written by a fixed-price developer.",
   },
   {
     path: "/contact",
@@ -582,8 +570,6 @@ export const ROUTES = [
     title: "Start a Project | Free Consultation — WebDevStudio",
     description:
       "Tell WebDevStudio about your project and get a scoped quote within 24 hours. Free 30-minute consultation, transparent pricing, no obligation.",
-    keywords:
-      "hire React developer, get web development quote, free web development consultation, contact web developer",
   },
   {
     path: "/web-development-new-zealand",
@@ -592,15 +578,13 @@ export const ROUTES = [
     lastmod: "2026-07-30",
     // No "|" in this title, so the breadcrumb fallback would use all of it.
     crumbLabel: "New Zealand",
-    title: "Web Developer for New Zealand — Fixed Prices from $900",
+    title: "Web Developer for New Zealand — Fixed Prices from USD $900",
     // Names the main centres, because Search Console showed geo queries
     // ("web developer nicosia", "react developers hamilton") are what this
     // site actually surfaces for. Price stays $900 to match SERVICE_PACKAGES
     // and every other page — the numbers must never disagree again.
     description:
-      "Websites and web apps for businesses in Auckland, Wellington, Hamilton, Christchurch and across NZ — fixed price from $900, live in 2–3 weeks.",
-    keywords:
-      "web developer New Zealand, hire React developer NZ, MERN stack developer Auckland, web development Wellington, React developer Hamilton, freelance developer New Zealand",
+      "Websites and web apps for businesses in Auckland, Wellington, Hamilton, Christchurch and across NZ — fixed price from USD $900, live in 2–3 weeks.",
     faqs: NZ_FAQS,
   },
   {
@@ -616,8 +600,6 @@ export const ROUTES = [
     crumbLabel: "Cyprus",
     title: `Web Developer in Cyprus — Fixed Prices from €${CYPRUS_EUR_FROM}`,
     description: `Websites and web apps for businesses in Limassol, Nicosia, Larnaca and across Cyprus — fixed price from €${CYPRUS_EUR_FROM} (USD $900), live in 2–3 weeks.`,
-    keywords:
-      "web developer Cyprus, hire React developer Cyprus, MERN stack developer Limassol, web development Nicosia, web developer Paphos, fintech web development Cyprus",
     faqs: CYPRUS_FAQS,
   },
   {
@@ -636,8 +618,6 @@ export const ROUTES = [
     title: "Web Developer for Auckland Businesses | WebDevStudio",
     description:
       "Freelance web developer building fast custom websites and web apps for Auckland businesses. Fixed-price, remote, React and MERN. Get a free quote.",
-    keywords:
-      "web developer auckland, freelance web developer auckland, website developer auckland, web app developer auckland, custom website auckland",
     faqs: AUCKLAND_FAQS,
   },
 ];

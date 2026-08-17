@@ -37,7 +37,6 @@ function seoHead(siteUrl: string): Plugin {
 
       const head = `<title>${esc(home.title)}</title>
     <meta name="description" content="${esc(home.description)}" />
-    <meta name="keywords" content="${esc(home.keywords)}" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="${esc(url)}" />
 
@@ -49,14 +48,14 @@ function seoHead(siteUrl: string): Plugin {
     <meta property="og:image" content="${esc(ogImage)}" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="${esc(SITE_NAME)} — React and MERN web development" />
-    <meta property="og:locale" content="en" />
+    <meta property="og:image:alt" content="${esc(SITE_NAME)} — Web developer for small business websites &amp; web apps" />
+    <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${esc(home.title)}" />
     <meta name="twitter:description" content="${esc(home.description)}" />
     <meta name="twitter:image" content="${esc(ogImage)}" />
-    <meta name="twitter:image:alt" content="${esc(SITE_NAME)} — React and MERN web development" />
+    <meta name="twitter:image:alt" content="${esc(SITE_NAME)} — Web developer for small business websites &amp; web apps" />
 
     <script type="application/ld+json">${JSON.stringify(
       routeGraph(siteUrl, home)

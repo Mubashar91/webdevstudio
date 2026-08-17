@@ -5,7 +5,6 @@ import { ogImageSize } from "@/lib/site.config.mjs";
 interface SEOProps {
   title: string;
   description: string;
-  keywords?: string;
   canonical?: string;
   ogImage?: string;
   ogType?: string;
@@ -16,7 +15,6 @@ interface SEOProps {
 export const useSEO = ({
   title,
   description,
-  keywords,
   canonical,
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
@@ -47,7 +45,6 @@ export const useSEO = ({
     };
 
     setMeta("description", description);
-    if (keywords) setMeta("keywords", keywords);
     setMeta("robots", noindex ? "noindex, nofollow" : "index, follow, max-image-preview:large");
 
     setMeta("og:title", title, "property");
@@ -109,5 +106,5 @@ export const useSEO = ({
     return () => {
       scripts.forEach((s) => s.remove());
     };
-  }, [title, description, keywords, canonical, ogImage, ogType, noindex, structuredDataJson]);
+  }, [title, description, canonical, ogImage, ogType, noindex, structuredDataJson]);
 };
