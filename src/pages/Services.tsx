@@ -24,8 +24,7 @@ const meta = routeMeta("/services")!;
 const Services = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/services"),
     // The sitewide Organization node carries the OfferCatalog, but it is
     // emitted identically on every page, so on its own it never marks THIS

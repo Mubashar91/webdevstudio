@@ -53,8 +53,7 @@ const EXCLUSIONS = [
 const WebsiteMaintenance = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/services/website-maintenance"),
     structuredData: pageGraph("/services/website-maintenance", [
       maintenanceServiceNodeFor(),

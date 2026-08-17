@@ -62,8 +62,7 @@ const meta = routeMeta("/web-development-new-zealand")!;
 const WebDevelopmentNewZealand = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/web-development-new-zealand"),
     structuredData: pageGraph("/web-development-new-zealand", [
       // Country-scoped Service linked to the site-wide Organization by @id,

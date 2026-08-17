@@ -15,8 +15,7 @@ const meta = routeMeta("/")!;
 const Index = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/"),
     // One connected @graph (Organization + Person + WebSite + WebPage),
     // identical to what scripts/prerender.mjs bakes into the static HTML.

@@ -60,8 +60,7 @@ const meta = routeMeta("/web-development-cyprus")!;
 const WebDevelopmentCyprus = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/web-development-cyprus"),
     structuredData: pageGraph("/web-development-cyprus", [
       // A Service node scoped to this country, linked to the site-wide

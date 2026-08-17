@@ -117,8 +117,7 @@ const BlogDetail = () => {
             // a resolvable identity — which the Person node in the graph
             // provides via sameAs links.
             author: { "@id": `${canonicalPath("/")}#founder` },
-            publisher: { "@id": `${canonicalPath("/")}#organization` },
-            keywords: post.tags.join(", "),
+            publisher: { "@id": `${canonicalPath("/")}#organization` }
             articleSection: post.category,
             // wordCountOf(), not content.join(" ") — `content` is a
             // ContentBlock[] of objects, so joining it stringified each block

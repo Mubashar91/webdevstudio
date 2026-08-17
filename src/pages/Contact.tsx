@@ -10,8 +10,7 @@ const meta = routeMeta("/contact")!;
 const Contact = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/contact"),
     structuredData: pageGraph("/contact", [
       {

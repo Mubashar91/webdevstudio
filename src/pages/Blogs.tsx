@@ -12,8 +12,7 @@ const meta = routeMeta("/blogs")!;
 const Blogs = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/blogs"),
     structuredData: pageGraph("/blogs", [
       {
@@ -36,8 +35,7 @@ const Blogs = () => {
           // qualify no matter how good the content was.
           image: post.coverImage,
           datePublished: post.publishedAt,
-          dateModified: post.updatedAt ?? post.publishedAt,
-          keywords: post.tags.join(", "),
+          dateModified: post.updatedAt ?? post.publishedAt
           author: { "@id": `${canonicalPath("/")}#founder` },
           publisher: { "@id": `${canonicalPath("/")}#organization` },
         })),

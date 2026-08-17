@@ -94,7 +94,6 @@ function renderHead(templateHtml, route, extraSchema = []) {
   // Simple name/property meta replacements
   const metaReplacements = [
     [/(<meta\s+name="description"\s+content=")[^"]*(")/, route.description],
-    [/(<meta\s+name="keywords"\s+content=")[^"]*(")/, route.keywords],
     [/(<meta\s+property="og:type"\s+content=")[^"]*(")/, pageOgType],
     [/(<meta\s+property="og:title"\s+content=")[^"]*(")/, route.title],
     [/(<meta\s+property="og:description"\s+content=")[^"]*(")/, route.description],

@@ -51,8 +51,7 @@ const whyRemote = [
 const WebDeveloperAuckland = () => {
   useSEO({
     title: meta.title,
-    description: meta.description,
-    keywords: meta.keywords,
+    description: meta.description
     canonical: canonicalPath("/web-developer-auckland"),
     structuredData: pageGraph("/web-developer-auckland", [
       // City-scoped Service, linked to the site-wide Organization by @id.
