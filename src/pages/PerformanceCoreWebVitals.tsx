@@ -270,6 +270,27 @@ const PerformanceCoreWebVitals = () => {
 
         <FAQ items={FAQS} title="Questions before we start" />
 
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-8 tracking-tight">
+              Related services
+            </h2>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Speed optimization works best as part of broader development. You might also need a new site or app built.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link to="/services/business-marketing-websites" className="p-4 rounded-lg border border-border/50 hover:border-primary/35 transition-colors group">
+                <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">Business & Marketing Websites</h3>
+                <p className="text-sm text-muted-foreground">Fast sites built for speed from the ground up</p>
+              </Link>
+              <Link to="/services/custom-web-applications" className="p-4 rounded-lg border border-border/50 hover:border-primary/35 transition-colors group">
+                <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">Custom Web Applications</h3>
+                <p className="text-sm text-muted-foreground">Apps built with performance in mind</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 md:py-28 bg-surface-alt border-t border-border/40">
           <div className="container mx-auto px-6 max-w-2xl text-center">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-5 tracking-tight">

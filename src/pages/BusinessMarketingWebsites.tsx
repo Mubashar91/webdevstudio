@@ -253,6 +253,27 @@ const BusinessMarketingWebsites = () => {
 
         <FAQ items={FAQS} title="Questions before we start" />
 
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-extrabold mb-8 tracking-tight">
+              Improve performance after launch
+            </h2>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Once the site is live, you may want to optimize speed or keep it updated over time.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <Link to="/services/performance-core-web-vitals" className="p-4 rounded-lg border border-border/50 hover:border-primary/35 transition-colors group">
+                <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">Speed & Core Web Vitals</h3>
+                <p className="text-sm text-muted-foreground">Optimize LCP, INP and CLS on a live site</p>
+              </Link>
+              <Link to="/services/website-maintenance" className="p-4 rounded-lg border border-border/50 hover:border-primary/35 transition-colors group">
+                <h3 className="font-bold mb-1 group-hover:text-primary transition-colors">Maintenance & Support</h3>
+                <p className="text-sm text-muted-foreground">Monthly updates, backups and monitoring</p>
+              </Link>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 md:py-28 bg-surface-alt border-t border-border/40">
           <div className="container mx-auto px-6 max-w-2xl text-center">
             <h2 className="text-2xl md:text-4xl font-extrabold mb-5 tracking-tight">
