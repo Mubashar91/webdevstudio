@@ -12,7 +12,7 @@ const meta = routeMeta("/about")!;
 const About = () => {
   useSEO({
     title: meta.title,
-    description: meta.description
+    description: meta.description,
     canonical: canonicalPath("/about"),
     structuredData: pageGraph("/about", [
       {

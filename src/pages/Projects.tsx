@@ -12,7 +12,7 @@ const meta = routeMeta("/projects")!;
 const Projects = () => {
   useSEO({
     title: meta.title,
-    description: meta.description
+    description: meta.description,
     canonical: canonicalPath("/projects"),
     structuredData: pageGraph("/projects", [
       {
@@ -36,7 +36,7 @@ const Projects = () => {
               "@type": "CreativeWork",
               name: project.title,
               description: project.description,
-              url: canonicalPath(projectPath(project))
+              url: canonicalPath(projectPath(project)),
               creator: { "@id": `${canonicalPath("/")}#organization` },
             },
           })),
