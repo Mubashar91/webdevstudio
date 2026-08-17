@@ -53,6 +53,8 @@ interface ServiceCard {
    * "Case study:" would promise proof the link doesn't deliver.
    */
   proofLabel?: string;
+  /** Path to the service detail page. When set, the card becomes clickable to that page. */
+  servicePath?: string;
   iconBg: string;
   iconColor: string;
   accentBar: string;
@@ -66,6 +68,7 @@ const services: ServiceCard[] = [
       "Fast, credible sites for service businesses — built to load in under two seconds on a phone and to rank for the services they sell.",
     stack: ["React", "TypeScript", "Tailwind CSS", "SEO & schema markup"],
     proof: proofOf("software-house-website"),
+    servicePath: "/services/business-marketing-websites",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
   {
@@ -75,6 +78,7 @@ const services: ServiceCard[] = [
       "Data-driven applications with real user roles and real workflows — most recently a hospital platform where reception, doctors and administrators share one patient record.",
     stack: ["React", "TypeScript", "Node.js", "MongoDB"],
     proof: proofOf("hospital-management-system"),
+    servicePath: "/services/custom-web-applications",
     iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
   },
   {
@@ -84,6 +88,7 @@ const services: ServiceCard[] = [
       "Admin panels and reporting screens for the people who run the business — order, inventory and payment views that stay readable as the numbers move.",
     stack: ["React", "Node.js", "Socket.io", "MongoDB"],
     proof: proofOf("ecommerce-dashboard"),
+    servicePath: "/services/dashboards-internal-tools",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
   {
@@ -102,6 +107,7 @@ const services: ServiceCard[] = [
       "Fixing LCP, INP and CLS on a site you already have, measured on real mobile connections rather than a desktop lab score.",
     stack: ["Core Web Vitals", "Lighthouse", "Bundle analysis", "Caching"],
     proof: proofOf("software-house-website"),
+    servicePath: "/services/performance-core-web-vitals",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
   {
@@ -217,12 +223,25 @@ export const Services = ({
                   <svc.icon className="h-7 w-7" />
                 </div>
 
-                <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-                  {svc.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
-                  {svc.description}
-                </p>
+                {svc.servicePath ? (
+                  <Link to={svc.servicePath} className="group/link hover:no-underline">
+                    <h3 className="text-xl font-bold mb-4 group-hover/link:text-primary transition-colors">
+                      {svc.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 group-hover/link:text-foreground transition-colors">
+                      {svc.description}
+                    </p>
+                  </Link>
+                ) : (
+                  <>
+                    <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+                      {svc.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">
+                      {svc.description}
+                    </p>
+                  </>
+                )}
 
                 {/* Stack — reassurance for a technical reader, one level down
                     from the outcome the card leads with. */}
