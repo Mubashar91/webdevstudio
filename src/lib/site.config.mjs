@@ -536,6 +536,42 @@ export const ROUTES = [
     faqs: MAINTENANCE_FAQS,
   },
   {
+    path: "/services/business-marketing-websites",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-17",
+    title: "Business & Marketing Website Development | WebDevStudio",
+    description:
+      "Fast, credible marketing sites for service businesses — React and TypeScript, under two seconds on mobile, fixed price from USD $900. No CMS bloat, no lock-in.",
+  },
+  {
+    path: "/services/custom-web-applications",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-17",
+    title: "Custom Web Application Development | WebDevStudio",
+    description:
+      "Data-driven web apps with real user roles and workflows — React, TypeScript, Node and MongoDB. Fixed price from USD $2,500, scope agreed before work starts.",
+  },
+  {
+    path: "/services/dashboards-internal-tools",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-17",
+    title: "Custom Dashboards & Internal Tools Development | WebDevStudio",
+    description:
+      "Admin panels and reporting screens built for daily use — order, inventory and payment views that stay readable as the numbers move. Fixed price, React and Node.",
+  },
+  {
+    path: "/services/performance-core-web-vitals",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-17",
+    title: "Website Speed & Core Web Vitals Optimisation | WebDevStudio",
+    description:
+      "Fixing a slow site you already have — LCP, INP and CLS measured on real mobile connections, not a desktop lab score. Fixed price, report before any work.",
+  },
+  {
     path: "/projects",
     priority: "0.9",
     changefreq: "weekly",
