@@ -9,7 +9,7 @@ export const mkNailsBeauty: CaseStudy = {
     "A fast, mobile-first website for a two-branch nails and beauty salon in Larnaca and Nicosia — built to be found locally and to get bookings started.",
   fullDescription:
     "MK Nails & Beauty operates two branches in Larnaca and Nicosia offering nails, laser hair removal, body treatments, facials, brows, lashes, and permanent makeup. The website is built for mobile-first discovery and local search, with separate location pages and a clear path to booking.",
-  image: "https://mknailsnbeauty.com/screenshot.jpg",
+  image: "/images/mk-nails-beauty/hero.jpg",
   seoTitle: "MK Nails & Beauty — Salon Website, Cyprus | WebDevStudio",
   technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
   repoUrl: null,
@@ -31,9 +31,9 @@ export const mkNailsBeauty: CaseStudy = {
   retrospective:
     "This is the first client site on the portfolio where the proof is one click away — anyone can open it and verify the work. For a business-to-consumer site, that changes the credibility completely.",
   screenshots: [
-    "https://mknailsnbeauty.com/hero.jpg",
-    "https://mknailsnbeauty.com/services.jpg",
-    "https://mknailsnbeauty.com/locations.jpg",
+    "/images/mk-nails-beauty/hero.jpg",
+    "/images/mk-nails-beauty/services.jpg",
+    "/images/mk-nails-beauty/locations.jpg",
   ],
   testimonial: null,
   updatedAt: "2026-08-15",
