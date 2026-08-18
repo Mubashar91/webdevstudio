@@ -28,7 +28,7 @@ export const Contact = ({ compactHeader = false, aboveFold = false }: ContactPro
     threshold: 0.05,
     initialVisible: aboveFold,
   });
-  const [form, setForm] = useState({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
+  const [form, setForm] = useState({ name: "", email: "", projectType: "New website", description: "", budget: "", timeline: "" });
   /** Honeypot value — always empty for real users. See the hidden field below. */
   const [honeypot, setHoneypot] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -69,7 +69,7 @@ export const Contact = ({ compactHeader = false, aboveFold = false }: ContactPro
 
       setResult("Thanks! Your message was sent successfully.");
       toast({ title: "Message sent!", description: "Thank you! I'll get back to you within 24 hours." });
-      setForm({ name: "", email: "", projectType: "MERN", description: "", budget: "", timeline: "" });
+      setForm({ name: "", email: "", projectType: "New website", description: "", budget: "", timeline: "" });
     } catch {
       // Tracked with a different `method` so a spike in mailto fallbacks shows
       // up as an endpoint problem rather than blending into healthy conversions.
@@ -180,8 +180,24 @@ export const Contact = ({ compactHeader = false, aboveFold = false }: ContactPro
                     className="w-full h-11 rounded-xl border border-border/50 bg-background/50 px-3 text-base md:text-sm
                       focus:outline-none focus:ring-1 focus:ring-primary focus:border-primary transition-all duration-200"
                   >
-                    {[["MERN","MERN Application"],["Node","Node.js Backend"],["React","React Frontend"],["Other","Other"]].map(([v,l]) => (
-                      <option key={v} value={v}>{l}</option>
+                    {/* Named by what the buyer wants, not by the stack that
+                        delivers it. "MERN Application / Node.js Backend /
+                        React Frontend" asks a non-technical business owner to
+                        self-diagnose in a vocabulary they don't have, and the
+                        honest answer for most of them was none of the four.
+                        The value is free-form and goes straight into the
+                        enquiry email subject, so plain language reads better
+                        on both ends. "Not sure yet" is deliberate: it's the
+                        true answer for a first enquiry and removes the reason
+                        to abandon the form. */}
+                    {[
+                      "New website",
+                      "Web app or custom system",
+                      "Fix or improve an existing site",
+                      "Ongoing maintenance",
+                      "Not sure yet",
+                    ].map((label) => (
+                      <option key={label} value={label}>{label}</option>
                     ))}
                   </select>
                 </div>
