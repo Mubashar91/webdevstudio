@@ -15,6 +15,7 @@
  * change, not a refactor.
  */
 import type { CaseStudy } from "./types";
+import { mkNailsBeauty } from "./mk-nails-beauty";
 import { expenseSharingApp } from "./expense-sharing-app";
 import { hospitalManagementSystem } from "./hospital-management-system";
 import { softwareHouseWebsite } from "./software-house-website";
@@ -23,6 +24,7 @@ import { restfulApiService } from "./restful-api-service";
 import { portfolioBlogPlatform } from "./portfolio-blog-platform";
 
 export const STATIC_PROJECTS: CaseStudy[] = [
+  mkNailsBeauty,
   expenseSharingApp,
   hospitalManagementSystem,
   softwareHouseWebsite,
@@ -32,6 +34,7 @@ export const STATIC_PROJECTS: CaseStudy[] = [
 ];
 
 export {
+  mkNailsBeauty,
   expenseSharingApp,
   hospitalManagementSystem,
   softwareHouseWebsite,
