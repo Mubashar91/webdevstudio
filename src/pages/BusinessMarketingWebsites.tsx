@@ -253,6 +253,28 @@ const BusinessMarketingWebsites = () => {
 
         <FAQ items={FAQS} title="Questions before we start" />
 
+        {/* Proof: a real business website anyone can open and check */}
+        <section className="py-16 md:py-20 bg-surface-alt border-y border-border/40">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Proof: a real small business site you can verify
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              MK Nails & Beauty is a two-branch salon in Larnaca and Nicosia that needed to move beyond Instagram-only discovery. The site is live, public, and live at{" "}
+              <a href="https://mknailsnbeauty.com" className="text-primary font-semibold hover:underline">
+                mknailsnbeauty.com
+              </a>{" "}
+              — you can open it right now and check the work. Fast on mobile, easy to book from, and getting found for local searches like "laser hair removal Nicosia."
+            </p>
+            <Link
+              to="/projects/mk-nails-beauty"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+            >
+              Read the full case study →
+            </Link>
+          </div>
+        </section>
+
         <section className="py-16 md:py-20">
           <div className="container mx-auto px-6 max-w-3xl">
             <h2 className="text-2xl md:text-3xl font-extrabold mb-8 tracking-tight">

@@ -500,19 +500,39 @@ const ProjectDetail = () => {
                 reader on the site instead of back on Google. */}
             <p className="mt-2 text-sm text-muted-foreground">
               Related:{" "}
-              <Link
-                to="/blogs/custom-web-application-cost"
-                className="text-primary hover:underline underline-offset-4"
-              >
-                what a custom web application costs
-              </Link>{" "}
-              ·{" "}
-              <Link
-                to="/blogs/how-to-choose-a-web-development-company"
-                className="text-primary hover:underline underline-offset-4"
-              >
-                how to choose a web development company
-              </Link>
+              {project.context === "Cyprus" ? (
+                <>
+                  <Link
+                    to="/web-development-cyprus"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    web development for Cyprus businesses
+                  </Link>{" "}
+                  ·{" "}
+                  <Link
+                    to="/blogs/website-cost-cyprus-2026"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    Cyprus website pricing
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/blogs/custom-web-application-cost"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    what a custom web application costs
+                  </Link>{" "}
+                  ·{" "}
+                  <Link
+                    to="/blogs/how-to-choose-a-web-development-company"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    how to choose a web development company
+                  </Link>
+                </>
+              )}
             </p>
           </div>
         </section>

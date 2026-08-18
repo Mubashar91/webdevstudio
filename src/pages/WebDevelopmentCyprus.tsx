@@ -165,6 +165,28 @@ const WebDevelopmentCyprus = () => {
             "cost-to-hire-web-developer-2026",
           ]}
         />
+
+        {/* Case study: proof that this works for Cyprus businesses */}
+        <section className="py-16 md:py-20 bg-surface-alt border-y border-border/40">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              Built for a Cyprus business
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              MK Nails & Beauty, a two-branch salon in Larnaca and Nicosia, needed a website that works on a phone and gets found locally. Instead of Instagram-only discovery, they now get bookings from organic search — laser hair removal, permanent makeup, and nails searches across both cities.
+            </p>
+            <Link
+              to="/projects/mk-nails-beauty"
+              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+            >
+              See the case study →
+            </Link>
+            <p className="text-sm text-muted-foreground mt-6">
+              This is the first case study on the portfolio where the proof is one click away — anyone can open the live site and verify the work.
+            </p>
+          </div>
+        </section>
+
         <Testimonials />
         <CTA />
       </main>
