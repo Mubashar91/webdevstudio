@@ -124,7 +124,7 @@ const WebDevelopmentNewZealand = () => {
             note={nzGeo.note}
           />
         </LocationHighlights>
-        <ServicesSection compactHeader />
+        <ServicesSection compactHeader showMaintenance={true} />
         <Pricing
           marketContext={
             <>

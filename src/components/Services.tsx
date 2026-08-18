@@ -92,15 +92,6 @@ const services: ServiceCard[] = [
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
   {
-    icon: Database,
-    title: "APIs & Backend Development",
-    description:
-      "REST APIs, authentication and database schema design — the half of a product nobody notices until it's slow or it leaks something it shouldn't.",
-    stack: ["Node.js", "Express", "MongoDB", "REST"],
-    proof: proofOf("restful-api-service"),
-    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
-  },
-  {
     icon: Zap,
     title: "Performance & Core Web Vitals",
     description:
@@ -109,15 +100,6 @@ const services: ServiceCard[] = [
     proof: proofOf("software-house-website"),
     servicePath: "/services/performance-core-web-vitals",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
-  },
-  {
-    icon: FileText,
-    title: "Content & Publishing Platforms",
-    description:
-      "Blogs, portfolios and content sites where publishing a post means writing a file — not editing components or holding a deploy pipeline in your head.",
-    stack: ["Next.js", "MDX", "React", "TypeScript"],
-    proof: proofOf("portfolio-blog-platform"),
-    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
   },
   {
     // The one card that sells an ongoing service rather than a build. It was
