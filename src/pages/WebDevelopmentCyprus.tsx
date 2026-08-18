@@ -115,6 +115,11 @@ const WebDevelopmentCyprus = () => {
             heading={cyGeo.heading}
             intro={cyGeo.intro}
             cities={cyGeo.cities}
+            // Nicosia has its own page and a Nicosia client to point at, so
+            // it links rather than sitting as plain text. Limassol and Larnaca
+            // stay plain until each has genuine per-city content — near
+            // identical city pages are a doorway-page risk.
+            cityLinks={{ Nicosia: "/web-developer-nicosia" }}
             note={cyGeo.note}
           />
         </LocationHighlights>
@@ -175,12 +180,20 @@ const WebDevelopmentCyprus = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               MK Nails &amp; Beauty is a nails and beauty salon with branches in Larnaca and Nicosia. The site is live and public, so this is a Cyprus build you can open and check rather than take on trust.
             </p>
-            <Link
-              to="/projects/mk-nails-beauty"
-              className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
-            >
-              See the case study →
-            </Link>
+            <div className="flex flex-wrap gap-x-6 gap-y-3">
+              <Link
+                to="/projects/mk-nails-beauty"
+                className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+              >
+                See the case study →
+              </Link>
+              <Link
+                to="/web-developer-nicosia"
+                className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+              >
+                Web developer in Nicosia →
+              </Link>
+            </div>
             <p className="text-sm text-muted-foreground mt-6">
               This is the first case study on the portfolio where the proof is one click away — anyone can open the live site and verify the work.
             </p>

@@ -514,8 +514,15 @@ const ProjectDetail = () => {
                 reader on the site instead of back on Google. */}
             <p className="mt-2 text-sm text-muted-foreground">
               Related:{" "}
-              {project.context === "Cyprus" ? (
+              {project.slug === "mk-nails-beauty" ? (
                 <>
+                  <Link
+                    to="/web-developer-nicosia"
+                    className="text-primary hover:underline underline-offset-4"
+                  >
+                    web developer in Nicosia
+                  </Link>{" "}
+                  ·{" "}
                   <Link
                     to="/web-development-cyprus"
                     className="text-primary hover:underline underline-offset-4"

@@ -420,6 +420,62 @@ export const AUCKLAND_FAQS = [
   },
 ];
 
+/**
+ * FAQs for the Nicosia city landing page (/web-developer-nicosia).
+ *
+ * Same honest-remote framing as AUCKLAND_FAQS — no claimed Nicosia address,
+ * because a fake local presence ends a lead the moment someone asks to meet.
+ * The difference is that this page can answer the "have you built anything
+ * here?" question with a live URL instead of a promise.
+ *
+ * Two answers are Cyprus-specific and carry the page: the language decision
+ * (which moves a Cyprus quote more than the city does) and GDPR (Cyprus is an
+ * EU member state). Both are questions a Nicosia buyer actually has and most
+ * competitor pages leave until after the quote.
+ */
+export const NICOSIA_FAQS = [
+  {
+    question: "Do you work with businesses in Nicosia?",
+    answer:
+      "Yes. I'm a remote React and MERN developer working with clients across Cyprus. The most recent is MK Nails & Beauty, a salon with branches in Nicosia and Larnaca — the site is live at mknailsnbeauty.com, so you can open it and judge the work yourself rather than take my word for it. All collaboration happens online: video calls, email or WhatsApp, and a shared board you can follow.",
+  },
+  {
+    question: "How much does a website cost in Nicosia?",
+    answer:
+      "Cyprus studios typically quote €1,500–€3,000 for a business site, with eCommerce from €3,500. Mine starts at roughly €830, invoiced as USD $900 or in EUR if you prefer, and fixed in writing before work starts. The city itself barely moves a quote — how many languages you need, who writes the copy, and who you hire move it far more.",
+  },
+  {
+    question: "Do I need the site in Greek as well as English?",
+    answer:
+      "It depends entirely on who your customers are. English alone is fine for a business selling to expats, international clients or the professional-services market. If you're selling to Cypriot consumers, Greek earns its cost. What it isn't is a translation widget — a second language is a second version of every page, with its own structure and hreflang, and it carries an ongoing cost every time you change anything. Worth deciding before the build rather than after.",
+  },
+  {
+    question: "What about GDPR?",
+    answer:
+      "Cyprus is an EU member state, so GDPR applies. I build with it in mind from the start — minimal data collection, secure authentication, clear separation of personal data — because retrofitting it later costs more than doing it at the beginning. If your organisation has specific compliance requirements, they go in the brief.",
+  },
+  {
+    question: "How much time overlap do we get for calls?",
+    answer:
+      "Cyprus is roughly 2–3 hours behind me, so there's a comfortable working overlap most afternoons. That's genuinely closer to working with someone local than a typical offshore arrangement — live demos and planning calls happen in real time rather than overnight.",
+  },
+  {
+    question: "What currency do you invoice in?",
+    answer:
+      "EUR or USD, via bank transfer, Wise or PayPal. Scope and price are agreed upfront, so there's nothing to renegotiate mid-project.",
+  },
+  {
+    question: "Who owns the website when it's finished?",
+    answer:
+      "You do — code, domain and hosting, all in your name from day one. You can move to another developer whenever you want and I'll help with the handover. Ownership is written into the quote rather than left to be sorted out later.",
+  },
+  {
+    question: "Do you sign contracts and NDAs?",
+    answer:
+      "Yes. I'm happy to work under your standard contract, NDA or IP assignment terms before any project details are shared.",
+  },
+];
+
 /** General pre-sales FAQs shown on the services page. */
 /**
  * FAQs for /services/website-maintenance.
@@ -655,6 +711,22 @@ export const ROUTES = [
     description:
       "Freelance web developer building fast custom websites and web apps for Auckland businesses. Fixed-price, remote, React and MERN. Get a free quote.",
     faqs: AUCKLAND_FAQS,
+  },
+  {
+    // Cyprus city page, nested under /web-development-cyprus. Unlike Auckland,
+    // this one has genuine per-city substance: MK Nails & Beauty is a Nicosia
+    // client with a live, public site, and "web developer nicosia" is the
+    // site's top non-brand query. Proof and demand both exist, which is the
+    // bar a city page has to clear before it is worth publishing.
+    path: "/web-developer-nicosia",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-08-18",
+    crumbLabel: "Nicosia",
+    title: "Web Developer in Nicosia — Fixed Prices, Remote | WebDevStudio",
+    description:
+      "Websites and web apps for Nicosia businesses — React and TypeScript, fixed price from €830, live in 2–3 weeks. See a Nicosia salon site you can open right now.",
+    faqs: NICOSIA_FAQS,
   },
 ];
 

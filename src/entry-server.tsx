@@ -87,43 +87,12 @@ export const DYNAMIC_ROUTES = [
     ogType: "article",
     image: schemaImage(project.image),
   })),
-  // Service pages
-  {
-    path: "/services/business-marketing-websites",
-    title: "Business & Marketing Website Development | WebDevStudio",
-    description: "Fast, credible marketing sites for service businesses — React and TypeScript, under two seconds on mobile, fixed price from USD $900.",
-    keywords: "business website development, marketing website design, small business website developer, react business website, fast marketing website",
-    lastmod: "2026-08-17",
-    changefreq: "monthly",
-    priority: "0.8",
-  },
-  {
-    path: "/services/custom-web-applications",
-    title: "Custom Web Application Development | WebDevStudio",
-    description: "Data-driven web apps with real user roles and workflows — React, TypeScript, Node and MongoDB. Fixed price from USD $2,500, scope agreed before work starts.",
-    keywords: "custom web application development, web app developer, mern stack development, role based web application, custom business application",
-    lastmod: "2026-08-17",
-    changefreq: "monthly",
-    priority: "0.8",
-  },
-  {
-    path: "/services/dashboards-internal-tools",
-    title: "Custom Dashboards & Internal Tools Development | WebDevStudio",
-    description: "Admin panels and reporting screens built for daily use — order, inventory and payment views that stay readable as the numbers move. Fixed price, React and Node.",
-    keywords: "custom dashboard development, internal tools developer, admin panel development, business reporting dashboard, react dashboard developer",
-    lastmod: "2026-08-17",
-    changefreq: "monthly",
-    priority: "0.8",
-  },
-  {
-    path: "/services/performance-core-web-vitals",
-    title: "Website Speed & Core Web Vitals Optimisation | WebDevStudio",
-    description: "Fixing a slow site you already have — LCP, INP and CLS measured on real mobile connections, not a desktop lab score. Fixed price, report before any work.",
-    keywords: "website speed optimisation, core web vitals fix, slow website fix, improve page speed, lcp inp cls optimisation",
-    lastmod: "2026-08-17",
-    changefreq: "monthly",
-    priority: "0.8",
-  },
+  // NOTE: the four /services/* sub-pages are NOT listed here. They are static
+  // routes with hand-written metadata, so they live in ROUTES in
+  // site.config.mjs — which is also where routeMeta() reads from, so they have
+  // to be there regardless. Listing them in both arrays made the prerenderer
+  // render each one twice and emitted duplicate <loc> entries in sitemap.xml.
+  // This array is only for routes DERIVED from data: blog posts and projects.
 ];
 
 /**
@@ -251,6 +220,7 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
   // emits — both read areaServed from cityArea(), so hydration can't drop it.
   const cities = [
     { path: "/web-developer-auckland", city: "Auckland", country: "New Zealand" },
+    { path: "/web-developer-nicosia", city: "Nicosia", country: "Cyprus" },
   ];
   for (const { path, city, country } of cities) {
     map[path] = [
