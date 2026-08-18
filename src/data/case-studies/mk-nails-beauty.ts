@@ -31,11 +31,31 @@ export const mkNailsBeauty: CaseStudy = {
   retrospective:
     "This is the first client site on the portfolio where the proof is one click away — anyone can open it and verify the work. For a business-to-consumer site, that changes the credibility completely.",
   screenshots: [
-    "/images/mk-nails-beauty/hero.jpg",
-    "/images/mk-nails-beauty/services.jpg",
-    "/images/mk-nails-beauty/reviews.jpg",
-    "/images/mk-nails-beauty/award.jpg",
-    "/images/mk-nails-beauty/video.jpg",
+    {
+      src: "/images/mk-nails-beauty/hero.jpg",
+      alt: "MK Nails & Beauty home page on mobile",
+      caption: "Fast, mobile-first homepage with clear call-to-action",
+    },
+    {
+      src: "/images/mk-nails-beauty/services.jpg",
+      alt: "Services section showing nails, laser, and beauty treatments",
+      caption: "Services organized by type for easy discovery",
+    },
+    {
+      src: "/images/mk-nails-beauty/reviews.jpg",
+      alt: "Customer reviews and testimonials section",
+      caption: "Social proof builds trust with new visitors",
+    },
+    {
+      src: "/images/mk-nails-beauty/award.jpg",
+      alt: "Awards and credentials section",
+      caption: "Professional credentials displayed prominently",
+    },
+    {
+      src: "/images/mk-nails-beauty/video.jpg",
+      alt: "Before and after gallery gallery",
+      caption: "Visual proof of work quality",
+    },
   ],
   testimonial: null,
   updatedAt: "2026-08-15",
