@@ -116,6 +116,7 @@ const services: ServiceCard[] = [
       title: `plans from $${MAINTENANCE_PLANS[0].price}/month NZD`,
     },
     proofLabel: "See",
+    servicePath: "/services/website-maintenance",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
 ];
