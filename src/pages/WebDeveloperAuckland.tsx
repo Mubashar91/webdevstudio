@@ -191,6 +191,81 @@ const WebDeveloperAuckland = () => {
           </div>
         </section>
 
+        {/* Auckland-specific market context — not on the NZ-wide page */}
+        <section className="py-16 bg-surface-alt border-y border-border/40">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">
+              Why Auckland businesses choose remote development
+            </h2>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-lg font-bold mb-3">Auckland's agency pricing gap</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Auckland web agencies quote NZ$15,000–$30,000+ for standard business sites and NZ$40,000–$80,000+ for custom applications. The premium reflects city-centre rent, salaries in one of NZ's most expensive markets, and account management layers. A remote developer with lower overhead delivers the same quality build at 50–70% of the Auckland price, with no compromise on code quality or accountability.
+                </p>
+                <p className="text-muted-foreground text-sm italic">
+                  This pricing gap doesn't reflect skill difference — it reflects geographic overhead. You pay for the office and the middle layer, not the developer.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold mb-3">The Auckland tech startup ecosystem</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Auckland's tech sector — concentrated in Ponsonby, Freemans Bay, and the Viaduct — has grown to over 2,000 tech companies. But most bootstrapped startups and early-stage founders hit the same problem: Auckland agency minimums are NZ$10,000+ for even small projects, and hiring full-time developers in Auckland costs NZ$100,000–$140,000/year. Remote developers offer a third option: fixed-price projects without the agency markup or the employment cost.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold mb-3">Who chooses this model in Auckland</h3>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">•</span>
+                    <span><strong>Service businesses</strong> (accountants, lawyers, plumbers) needing fast, credible websites without the $20k+ Auckland agency price</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">•</span>
+                    <span><strong>Early-stage founders</strong> who need custom apps or dashboards but don't want to hire full-time or commit to an expensive retainer</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">•</span>
+                    <span><strong>Auckland agencies</strong> looking to outsource builds without raising prices or maintaining full-time staff</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">•</span>
+                    <span><strong>Growth-stage companies</strong> needing project work without the overhead of negotiating with local studios or managing junior developers</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold mb-3">What makes remote work for Auckland teams</h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  The timezone gap (NZ is 17 hours ahead of Pakistan) sounds like a problem — but it's actually an advantage. You get:
+                </p>
+                <ul className="space-y-2 text-muted-foreground text-sm">
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">✓</span>
+                    <span>Scheduled standup in your morning, my evening (live demo, questions, planning)</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">✓</span>
+                    <span>Work completed overnight and ready for your next NZ morning</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">✓</span>
+                    <span>Written documentation instead of meetings — every decision is recorded</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-primary font-bold flex-shrink-0">✓</span>
+                    <span>No "I need this urgently" last-minute changes — scope is agreed upfront and time-boxed</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <ServicesSection compactHeader />
 
         <Pricing
