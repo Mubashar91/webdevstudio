@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { About as AboutSection } from "@/components/About";
 import { Stats } from "@/components/Stats";
 import { Skills } from "@/components/Skills";
@@ -37,6 +38,12 @@ const About = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navigation />
       <main id="main-content" className="pt-20">
+        {/* This page emits BreadcrumbList JSON-LD but had no visible trail to
+            match it — it's the only main page not built on PageHeader. */}
+        <div className="container mx-auto px-6 pt-8">
+          <Breadcrumbs items={[{ label: "About" }]} />
+        </div>
+
         <AboutSection aboveFold />
         <Stats />
         <Skills />

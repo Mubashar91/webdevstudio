@@ -65,6 +65,16 @@ export interface Project {
   description: string;
   fullDescription?: string;
   image?: string;
+  /**
+   * Alt text for the cover, set ONLY when `image` is a real screenshot.
+   *
+   * Most covers here are stock photographs that say nothing about the project,
+   * and a decorative image takes an empty alt — describing it just announces
+   * "illustrative cover image" to a screen reader. Leave this unset for those.
+   * Set it when the cover is an actual capture of the thing, and describe what
+   * the capture shows.
+   */
+  imageAlt?: string;
   technologies: string[];
   /**
    * Direct link to THIS project's repository — never a profile link.

@@ -49,7 +49,11 @@ const items = [
   { icon: GitBranch,     value: String(STATIC_PROJECTS.length), suffix: "",  label: "Case Studies",  sub: "Written up in full" },
   { icon: Award,         value: "5",                            suffix: "+", label: "Years Building", sub: "Since 2020" },
   { icon: CalendarClock, value: "24",                           suffix: "h", label: "Response Time",  sub: "Every enquiry" },
-  { icon: BookOpen,      value: String(BLOG_POSTS.length),      suffix: "",  label: "Articles",       sub: "React, TS & MERN" },
+  // "React, TS & MERN" is left over from the blog's old identity. It was
+  // repositioned to business guides — the /blogs title, description and
+  // subhead all say so — and this label was the last place still describing
+  // it as a developer blog to the buyers it's now written for.
+  { icon: BookOpen,      value: String(BLOG_POSTS.length),      suffix: "",  label: "Guides",         sub: "Costs, hiring & web" },
 ];
 
 // Two-tone accent system — alternates the site's primary and accent colors

@@ -167,7 +167,12 @@ export const Hero = () => {
                   </span>
                   <span className="text-white"> development</span>
                 </span>
-
+                {/* Both halves are display:block, so this space changes nothing
+                    visually — but without it the H1's textContent reads
+                    "React & MERN developmentfor growing businesses", and
+                    textContent is what Google, the accessibility tree and every
+                    LLM scraper actually index. */}
+                {" "}
                 <span className="block text-2xl md:text-3xl lg:text-4xl text-white/70 font-bold leading-tight">
                   for growing businesses
                 </span>
@@ -278,12 +283,19 @@ export const Hero = () => {
                       href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
-                      aria-label={label}
                       className="p-3 md:p-2.5 rounded-xl bg-white/[0.06] border border-white/12 text-white/55
                         hover:text-white hover:border-white/30 hover:bg-white/12
                         transition-all duration-300 backdrop-blur-sm"
                     >
-                      <Icon className="h-[18px] w-[18px]" />
+                      {/* Icon is decorative; the label lives in a visually-
+                          hidden span rather than an aria-label. Same reasoning
+                          as the footer heart: aria-label fixes screen readers
+                          but is invisible to textContent, so crawlers and LLM
+                          scrapers saw an anchor with no text and fell back to
+                          printing the raw href — which is exactly what an
+                          Aug 2026 audit reported seeing on the homepage. */}
+                      <Icon aria-hidden="true" className="h-[18px] w-[18px]" />
+                      <span className="sr-only">{label}</span>
                     </a>
                   ))}
                 </div>

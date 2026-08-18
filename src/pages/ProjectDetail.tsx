@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link, Navigate } from "react-router-dom";
 import { Navigation } from "@/components/Navigation";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { Footer } from "@/components/Footer";
 import { useSEO } from "@/hooks/use-seo";
 import {
@@ -270,6 +271,18 @@ const ProjectDetail = () => {
           </div>
 
           <div className="container mx-auto px-6 relative z-10">
+            {/* These pages emit BreadcrumbList JSON-LD, but "Back to Projects"
+                is a control, not a trail — it tells you nothing about where
+                this page sits. Google wants the visible navigation to match
+                the markup. */}
+            <Breadcrumbs
+              items={[
+                { label: "Projects", href: "/projects" },
+                { label: project.title },
+              ]}
+              className="mb-6"
+            />
+
             <Button
               variant="ghost"
               onClick={() => navigate("/projects")}
@@ -330,13 +343,14 @@ const ProjectDetail = () => {
                             sizes: "(min-width: 1024px) 50vw, 100vw",
                           }
                         : {})}
-                      /* Empty alt, deliberately: this is a stock photograph
-                         that says nothing about the project, and the old text
-                         ("— illustrative cover image") announced exactly that
-                         to anyone using a screen reader. Decorative images
-                         take an empty alt. When a real screenshot replaces it,
-                         describe what the screenshot shows. */
-                      alt=""
+                      /* Empty alt, deliberately, for the stock covers: a
+                         photograph that says nothing about the project is
+                         decorative, and the old text ("— illustrative cover
+                         image") announced exactly that to anyone using a
+                         screen reader. Case studies whose cover is a real
+                         screenshot set `imageAlt` and get a real description
+                         instead — see the field note in case-studies/types.ts. */
+                      alt={project.imageAlt ?? ""}
                       width={CARD_IMAGE.width}
                       height={CARD_IMAGE.height}
                       loading="eager"

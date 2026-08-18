@@ -52,8 +52,8 @@ const Blogs = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Developer"
-          highlight="Blog"
+          title="Website Costs &"
+          highlight="Hiring Guides"
           description="Practical guides on website costs, hiring a developer, and getting more from your business website."
           breadcrumbs={[{ label: "Blog" }]}
         />

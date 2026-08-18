@@ -26,6 +26,10 @@ export const mkNailsBeauty: CaseStudy = {
   fullDescription:
     "MK Nails & Beauty runs two branches in Cyprus, in Larnaca and Nicosia, offering nails, laser hair removal, body treatments, facials, brows, lashes and permanent makeup. The site is live and public, so the work can be opened and checked rather than taken on trust.",
   image: "/images/mk-nails-beauty/hero.png",
+  // A real capture, not a stock photo — so it gets described rather than
+  // marked decorative. See the imageAlt note in ./types.ts.
+  imageAlt:
+    "The MK Nails & Beauty homepage, showing the salon's branding and its main booking call to action",
   seoTitle: "MK Nails & Beauty — Salon Website, Cyprus",
   // Confirmed from the live build output: /assets/index-[hash].js and a
   // matching CSS asset is Vite's naming, and the contact form posts via

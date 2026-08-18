@@ -1,12 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, ChevronRight, Home } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-interface Breadcrumb {
-  label: string;
-  href?: string;
-}
+import { Breadcrumbs, type Crumb as Breadcrumb } from "@/components/Breadcrumbs";
 
 /**
  * Above-the-fold call to action.
@@ -56,40 +52,7 @@ export const PageHeader = ({
     <div className="absolute -bottom-32 left-0 w-[400px] h-[400px] bg-violet-500/6 rounded-full blur-[100px] pointer-events-none" />
 
     <div className="container mx-auto px-6 py-14 md:py-16 relative z-10">
-      <nav aria-label="Breadcrumb" className="mb-6">
-        <ol className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
-          <li>
-            {/* The home icon renders at 14x14, which was the entire tap
-                target. min-h/w-11 grows the hit area to the 44x44 guideline
-                while the icon stays 14px, and -m-[15px] cancels exactly the
-                15px of padding that creates, so the breadcrumb row lays out
-                as it did before. */}
-            <Link
-              to="/"
-              className="inline-flex items-center justify-center gap-1
-                min-h-11 min-w-11 -m-[15px]
-                hover:text-primary transition-colors"
-            >
-              <Home className="h-3.5 w-3.5" aria-hidden />
-              <span className="sr-only">Home</span>
-            </Link>
-          </li>
-          {breadcrumbs.map((crumb, i) => (
-            <li key={i} className="flex items-center gap-1.5">
-              <ChevronRight className="h-3.5 w-3.5 opacity-40" aria-hidden />
-              {crumb.href ? (
-                <Link to={crumb.href} className="hover:text-primary transition-colors font-medium">
-                  {crumb.label}
-                </Link>
-              ) : (
-                <span className="text-foreground font-semibold" aria-current="page">
-                  {crumb.label}
-                </span>
-              )}
-            </li>
-          ))}
-        </ol>
-      </nav>
+      <Breadcrumbs items={breadcrumbs} className="mb-6" />
 
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4 max-w-3xl">
         {title}
