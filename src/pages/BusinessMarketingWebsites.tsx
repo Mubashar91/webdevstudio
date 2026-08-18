@@ -260,11 +260,16 @@ const BusinessMarketingWebsites = () => {
               Proof: a real small business site you can verify
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              MK Nails & Beauty is a two-branch salon in Larnaca and Nicosia that needed to move beyond Instagram-only discovery. The site is live, public, and live at{" "}
-              <a href="https://mknailsnbeauty.com" className="text-primary font-semibold hover:underline">
+              MK Nails & Beauty is a two-branch salon in Larnaca and Nicosia that needed to move beyond Instagram-only discovery. The site is live and public at{" "}
+              <a
+                href="https://mknailsnbeauty.com"
+                target="_blank"
+                rel="noopener"
+                className="text-primary font-semibold hover:underline"
+              >
                 mknailsnbeauty.com
               </a>{" "}
-              — you can open it right now and check the work. Fast on mobile, easy to book from, and getting found for local searches like "laser hair removal Nicosia."
+              — you can open it right now and check the work. Fast on mobile, and easy to book from.
             </p>
             <Link
               to="/projects/mk-nails-beauty"

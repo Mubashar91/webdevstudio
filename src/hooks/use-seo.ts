@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
-import { ogImageSize } from "@/lib/site.config.mjs";
+import { absoluteImage, ogImageSize } from "@/lib/site.config.mjs";
 
 interface SEOProps {
   title: string;
@@ -50,13 +50,16 @@ export const useSEO = ({
     setMeta("og:title", title, "property");
     setMeta("og:description", description, "property");
     setMeta("og:type", ogType, "property");
-    setMeta("og:image", ogImage, "property");
+    // Absolute, always: og:image and twitter:image are fetched by consumers
+    // with no page to resolve a relative path against. See absoluteImage().
+    const ogImageAbs = absoluteImage(ogImage, SITE_URL);
+    setMeta("og:image", ogImageAbs, "property");
     // The declared size has to follow the image it describes. Client-side
     // navigation swaps og:image between routes whose covers are different
     // heights, so leaving the prerendered numbers in place would announce the
     // previous page's dimensions for the current page's card. Unknown size
     // means the tags come off entirely — see ogImageSize().
-    const size = ogImageSize(ogImage, SITE_URL);
+    const size = ogImageSize(ogImageAbs, SITE_URL);
     for (const [prop, value] of [
       ["og:image:width", size && String(size.width)],
       ["og:image:height", size && String(size.height)],
@@ -70,7 +73,7 @@ export const useSEO = ({
     setMeta("twitter:card", "summary_large_image", "name");
     setMeta("twitter:title", title, "name");
     setMeta("twitter:description", description, "name");
-    setMeta("twitter:image", ogImage, "name");
+    setMeta("twitter:image", ogImageAbs, "name");
 
     if (canonical) {
       let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');

@@ -173,7 +173,7 @@ const WebDevelopmentCyprus = () => {
               Built for a Cyprus business
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              MK Nails & Beauty, a two-branch salon in Larnaca and Nicosia, needed a website that works on a phone and gets found locally. Instead of Instagram-only discovery, they now get bookings from organic search — laser hair removal, permanent makeup, and nails searches across both cities.
+              MK Nails &amp; Beauty is a nails and beauty salon with branches in Larnaca and Nicosia. The site is live and public, so this is a Cyprus build you can open and check rather than take on trust.
             </p>
             <Link
               to="/projects/mk-nails-beauty"

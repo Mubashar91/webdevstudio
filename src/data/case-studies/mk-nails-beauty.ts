@@ -1,62 +1,81 @@
 import type { CaseStudy } from "./types";
 
+/**
+ * /projects/mk-nails-beauty — the first case study on the site whose proof is a
+ * live, public, named client site rather than a screenshot.
+ *
+ * EVERYTHING HERE IS EITHER VERIFIED AGAINST THE LIVE SITE OR NULL.
+ * Verified 2026-08-18 by fetching https://mknailsnbeauty.com:
+ *   · two branches, Larnaca and Nicosia          (meta description)
+ *   · the service list                            (meta description)
+ *   · Vite build, EmailJS contact                 (/assets/index-[hash].js, CDN script)
+ *   · site returns 200 and is publicly reachable
+ *
+ * The nulls below are facts only the owner has. They are NOT placeholders to
+ * be filled with something plausible — an invented Lighthouse score on the one
+ * page a prospect visits to check the work is real is the most expensive lie on
+ * the site. pendingCaseStudyFields() reports them after every build.
+ */
 export const mkNailsBeauty: CaseStudy = {
   _id: "mk-nails-beauty",
   slug: "mk-nails-beauty",
-  title: "MK Nails & Beauty — Salon Website, Cyprus",
-  subtitle: "A fast, mobile-first website for a two-branch salon in Larnaca and Nicosia",
+  title: "MK Nails & Beauty",
+  subtitle: "A salon website for two branches, in Larnaca and Nicosia",
   description:
-    "A fast, mobile-first website for a two-branch nails and beauty salon in Larnaca and Nicosia — built to be found locally and to get bookings started.",
+    "Website for a nails and beauty salon with branches in Larnaca and Nicosia, Cyprus — built to be found locally and to make getting in touch easy from a phone.",
   fullDescription:
-    "MK Nails & Beauty operates two branches in Larnaca and Nicosia offering nails, laser hair removal, body treatments, facials, brows, lashes, and permanent makeup. The website is built for mobile-first discovery and local search, with separate location pages and a clear path to booking.",
-  image: "/images/mk-nails-beauty/hero.jpg",
-  seoTitle: "MK Nails & Beauty — Salon Website, Cyprus | WebDevStudio",
-  technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    "MK Nails & Beauty runs two branches in Cyprus, in Larnaca and Nicosia, offering nails, laser hair removal, body treatments, facials, brows, lashes and permanent makeup. The site is live and public, so the work can be opened and checked rather than taken on trust.",
+  image: "/images/mk-nails-beauty/hero.png",
+  seoTitle: "MK Nails & Beauty — Salon Website, Cyprus",
+  // Confirmed from the live build output: /assets/index-[hash].js and a
+  // matching CSS asset is Vite's naming, and the contact form posts via
+  // EmailJS. [CONFIRM: React, TypeScript and Tailwind are not provable from
+  // the served bundle — correct this list if any of them is wrong.]
+  technologies: ["React", "Vite", "EmailJS"],
   repoUrl: null,
   demoUrl: "https://mknailsnbeauty.com",
-  type: "Business Website",
-  context: "Cyprus",
-  timelineMonths: 3,
-  completedAt: "2026-08-15",
+  type: "React",
+  context: "Client project",
+  // [CONFIRM] How long it took, and when it went live.
+  timelineMonths: null,
+  completedAt: null,
   teamSize: 1,
-  roleDetail: "Designed and built solo",
+  // [CONFIRM] If you built it solo, "Designed and built solo" is the strongest
+  // line available and the one every other case study here is missing.
+  roleDetail: null,
   problem:
-    "Beauty salons live on being found and being trusted. Someone searching for laser hair removal at night on a phone is comparing three salons in ninety seconds. They want to see the work, know the services, and find a way to get in touch — fast. MK Nails & Beauty had two challenges: two branches serving different customers, and a wide service list (nails, laser, body treatments, facials, brows, lashes, permanent makeup) where each service needed to be discoverable separately.",
-  approach:
-    "Mobile-first design built from the start on a phone screen, not adapted down. Photography and galleries are the primary selling tool — for a beauty business, images do what copy cannot. Services are structured as individual pages so each can rank for its own search term. Both Larnaca and Nicosia locations are represented with local context. A clear path to contact includes tap-to-call and WhatsApp options, which outperform contact forms for salons.",
-  hardPart:
-    "The challenge wasn't technical — it was information architecture. A salon has many services but one booking system. If all services live on one page, none can rank individually for 'laser hair removal Larnaca' or 'permanent makeup Nicosia'. The solution was separate service pages linked from a clear location structure, so the search intent each page targets is unambiguous.",
-  outcome:
-    "Launched live on mknailsnbeauty.com. Site loads in under 2 seconds on mobile 3G, with Lighthouse mobile score 94+. Indexed for both branch names and service terms within two weeks of launch.",
-  retrospective:
-    "This is the first client site on the portfolio where the proof is one click away — anyone can open it and verify the work. For a business-to-consumer site, that changes the credibility completely.",
+    "A salon is found or it isn't. Someone looking for laser hair removal is on a phone, at night, comparing two or three places in about a minute — they want to see the work, find the service they came for, and get in touch, in that order. Two things make that harder here than it sounds: two branches whose customers search differently, and a service list wide enough that anyone arriving for one of them has no interest in the other six on the way past.",
+  // [CONFIRM] What you actually decided and built. The paragraph below is the
+  // shape of the answer, not the answer — replace it with what you did.
+  approach: null,
+  // [CONFIRM] ONE decision, 150–250 words, including what it cost you.
+  hardPart: null,
+  // [CONFIRM] Wants a digit. The cheapest honest number available is a
+  // PageSpeed Insights run on the live site — five minutes, real, and more
+  // than any other case study on this site currently has.
+  outcome: null,
+  retrospective: null,
   screenshots: [
     {
-      src: "/images/mk-nails-beauty/hero.jpg",
-      alt: "MK Nails & Beauty home page on mobile",
-      caption: "Fast, mobile-first homepage with clear call-to-action",
+      src: "/images/mk-nails-beauty/services.png",
+      alt: "MK Nails & Beauty services page listing nails, laser hair removal, facials and brow treatments",
+      caption: "Services split by treatment, so each one can be found on its own terms",
     },
     {
-      src: "/images/mk-nails-beauty/services.jpg",
-      alt: "Services section showing nails, laser, and beauty treatments",
-      caption: "Services organized by type for easy discovery",
+      src: "/images/mk-nails-beauty/reviews.png",
+      alt: "Customer reviews section of the MK Nails & Beauty website",
+      caption: "Reviews carried on the site rather than left on a social profile",
     },
     {
-      src: "/images/mk-nails-beauty/reviews.jpg",
-      alt: "Customer reviews and testimonials section",
-      caption: "Social proof builds trust with new visitors",
+      src: "/images/mk-nails-beauty/award.png",
+      alt: "Awards and credentials section of the MK Nails & Beauty website",
+      caption: "Credentials shown where a first-time visitor is deciding whether to trust the salon",
     },
     {
-      src: "/images/mk-nails-beauty/award.jpg",
-      alt: "Awards and credentials section",
-      caption: "Professional credentials displayed prominently",
-    },
-    {
-      src: "/images/mk-nails-beauty/video.jpg",
-      alt: "Before and after gallery gallery",
-      caption: "Visual proof of work quality",
+      src: "/images/mk-nails-beauty/video.png",
+      alt: "Video section of the MK Nails & Beauty website showing salon treatments",
+      caption: "Video of the work, which for a beauty business does what copy cannot",
     },
   ],
-  testimonial: null,
-  updatedAt: "2026-08-15",
+  updatedAt: "2026-08-18",
 };

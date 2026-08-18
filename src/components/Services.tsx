@@ -186,85 +186,79 @@ export const Services = ({
 
         {/* Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {visibleServices.map((svc, i) => {
-            const CardContent = (
-              <>
-                {/* Top accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-[3px] ${svc.accentBar}
-                  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+          {visibleServices.map((svc, i) => (
+            /* The whole card is clickable, but it is NOT an <a> wrapping the
+               card. An outer anchor containing the proof anchor is nested-<a>,
+               which is invalid HTML: the parser auto-closes the outer one at
+               the inner tag, so the card rendered as two adjacent links with
+               the raw href as visible anchor text. The fix is the stretched-
+               link pattern — the heading link owns the card via an ::after
+               overlay (`before:`/`after:` inset-0), and the proof link sits
+               above it on z-index so it stays independently clickable. */
+            <div
+              key={svc.title}
+              className={`tilt-card group relative flex flex-col rounded-2xl border border-border/50 bg-card
+                p-8 overflow-hidden shadow-card
+                hover:border-primary/35 hover:shadow-card-hover
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
+              {/* Top accent line */}
+              <div className={`absolute top-0 left-0 right-0 h-[3px] ${svc.accentBar}
+                scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
 
-                <div className="relative z-10 flex flex-col flex-1">
-                  {/* Icon */}
-                  <div className={`inline-flex p-5 rounded-2xl ${svc.iconBg} ${svc.iconColor} mb-6 w-fit
-                    group-hover:scale-115 transition-transform duration-400`}>
-                    <svc.icon className="h-7 w-7" />
-                  </div>
-
-                  <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
-                    {svc.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 group-hover:text-foreground transition-colors">
-                    {svc.description}
-                  </p>
-
-                  {/* Stack — reassurance for a technical reader, one level down
-                      from the outcome the card leads with. */}
-                  <ul className="space-y-3 pt-5 border-t border-border/40">
-                    {svc.stack.map(item => (
-                      <li key={item} className="flex items-center gap-3 text-xs text-muted-foreground">
-                        <CheckCircle2 className={`h-4 w-4 ${svc.iconColor} opacity-70 flex-shrink-0`} />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Proof. The whole point of the card: a claim and the thing
-                      that backs it, without a second click to find out. */}
-                  <Link
-                    to={svc.proof.href}
-                    onClick={(e) => e.stopPropagation()}
-                    className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold
-                      text-primary hover:underline underline-offset-4 group/proof"
-                  >
-                    <span>
-                      {svc.proofLabel ?? "Case study:"}{" "}
-                      <span className="font-bold">{svc.proof.title}</span>
-                    </span>
-                    <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 group-hover/proof:translate-x-1 transition-transform" />
-                  </Link>
+              <div className="relative z-10 flex flex-col flex-1">
+                {/* Icon */}
+                <div className={`inline-flex p-5 rounded-2xl ${svc.iconBg} ${svc.iconColor} mb-6 w-fit
+                  group-hover:scale-115 transition-transform duration-400`}>
+                  <svc.icon className="h-7 w-7" />
                 </div>
-              </>
-            );
 
-            if (svc.servicePath) {
-              return (
+                <h3 className="text-xl font-bold mb-4 group-hover:text-primary transition-colors">
+                  {svc.servicePath ? (
+                    <Link
+                      to={svc.servicePath}
+                      className="after:absolute after:inset-0 after:z-20 after:content-['']
+                        focus-visible:outline-none focus-visible:underline underline-offset-4"
+                    >
+                      {svc.title}
+                    </Link>
+                  ) : (
+                    svc.title
+                  )}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1 group-hover:text-foreground transition-colors">
+                  {svc.description}
+                </p>
+
+                {/* Stack — reassurance for a technical reader, one level down
+                    from the outcome the card leads with. */}
+                <ul className="space-y-3 pt-5 border-t border-border/40">
+                  {svc.stack.map(item => (
+                    <li key={item} className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <CheckCircle2 className={`h-4 w-4 ${svc.iconColor} opacity-70 flex-shrink-0`} />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Proof. The whole point of the card: a claim and the thing
+                    that backs it, without a second click to find out.
+                    z-30 keeps it above the heading link's stretched overlay. */}
                 <Link
-                  key={svc.title}
-                  to={svc.servicePath}
-                  className={`tilt-card group relative flex flex-col rounded-2xl border border-border/50 bg-card
-                    p-8 overflow-hidden shadow-card
-                    hover:border-primary/35 hover:shadow-card-hover cursor-pointer
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-                  style={{ transitionDelay: `${i * 80}ms` }}
+                  to={svc.proof.href}
+                  className="relative z-30 mt-5 inline-flex items-center gap-1.5 text-sm font-semibold
+                    text-primary hover:underline underline-offset-4 group/proof w-fit"
                 >
-                  {CardContent}
+                  <span>
+                    {svc.proofLabel ?? "Case study:"}{" "}
+                    <span className="font-bold">{svc.proof.title}</span>
+                  </span>
+                  <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 group-hover/proof:translate-x-1 transition-transform" />
                 </Link>
-              );
-            }
-
-            return (
-              <div
-                key={svc.title}
-                className={`tilt-card group relative flex flex-col rounded-2xl border border-border/50 bg-card
-                  p-8 overflow-hidden shadow-card
-                  hover:border-primary/35 hover:shadow-card-hover
-                  ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-                style={{ transitionDelay: `${i * 80}ms` }}
-              >
-                {CardContent}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* CTA Banner */}

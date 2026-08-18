@@ -27,6 +27,7 @@ import {
   INDEXNOW_KEY,
   ROUTES,
   SITE_NAME,
+  absoluteImage,
   absoluteUrl,
   normalizeSiteUrl,
   ogImageSize,
@@ -88,7 +89,10 @@ function renderHead(templateHtml, route, extraSchema = []) {
 
   // Detail pages carry their own cover image and are articles, not the site
   // homepage — sharing a blog post should show that post's image.
-  const pageImage = route.image || ogImage;
+  // Absolute, always. Case-study covers are files in /public, so route.image
+  // is a site-relative path — and a relative og:image is not a bad preview,
+  // it is no preview at all. See absoluteImage().
+  const pageImage = absoluteImage(route.image, SITE_URL) || ogImage;
   const pageOgType = route.ogType || "website";
 
   // Simple name/property meta replacements

@@ -212,7 +212,7 @@ const WebDeveloperAuckland = () => {
               <div>
                 <h3 className="text-lg font-bold mb-3">The Auckland tech startup ecosystem</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Auckland's tech sector — concentrated in Ponsonby, Freemans Bay, and the Viaduct — has grown to over 2,000 tech companies. But most bootstrapped startups and early-stage founders hit the same problem: Auckland agency minimums are NZ$10,000+ for even small projects, and hiring full-time developers in Auckland costs NZ$100,000–$140,000/year. Remote developers offer a third option: fixed-price projects without the agency markup or the employment cost.
+                  Auckland holds most of New Zealand's tech sector, concentrated around the Viaduct, Ponsonby and Freemans Bay. Bootstrapped startups and early-stage founders there hit the same wall: agency minimums that make small projects uneconomic, and a full-time developer salary that is a serious commitment before there is revenue to support it. Remote developers offer a third option — fixed-price projects without the agency markup or the employment cost.
                 </p>
               </div>
 
@@ -241,7 +241,7 @@ const WebDeveloperAuckland = () => {
               <div>
                 <h3 className="text-lg font-bold mb-3">What makes remote work for Auckland teams</h3>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  The timezone gap (NZ is 17 hours ahead of Pakistan) sounds like a problem — but it's actually an advantage. You get:
+                  The timezone gap (Auckland is about seven hours ahead of me) sounds like a problem — but it's actually an advantage. You get:
                 </p>
                 <ul className="space-y-2 text-muted-foreground text-sm">
                   <li className="flex gap-3">

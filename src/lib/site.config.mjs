@@ -674,6 +674,27 @@ export function ogImageUrl(siteUrl) {
   return `${normalizeSiteUrl(siteUrl)}/og-image.png`;
 }
 
+/**
+ * Absolute URL for anything that goes in <head> as an image.
+ *
+ * og:image, twitter:image and every schema `image` field are read by consumers
+ * that have no page context to resolve against — Facebook, LinkedIn, Slack and
+ * the AI crawlers all fetch the value as given. A site-relative path like
+ * "/images/mk-nails-beauty/hero.jpg" is therefore not a broken-looking preview,
+ * it is no preview at all.
+ *
+ * Case-study covers moved from hotlinked Unsplash URLs (already absolute) to
+ * files in /public (relative), which is how this reached production: nothing
+ * on the page changed, only what <head> handed to consumers off-site.
+ *
+ * Already-absolute URLs and data: URIs pass through untouched.
+ */
+export function absoluteImage(url, siteUrl) {
+  if (!url) return url;
+  if (/^(https?:)?\/\//.test(url) || url.startsWith("data:")) return url;
+  return absoluteUrl(siteUrl, url);
+}
+
 /** Real pixel size of the generated og-image.png — see scripts/generate-og-image.mjs. */
 export const DEFAULT_OG_IMAGE_SIZE = { width: 1200, height: 630 };
 
