@@ -33,7 +33,9 @@ export const mkNailsBeauty: CaseStudy = {
   screenshots: [
     "/images/mk-nails-beauty/hero.jpg",
     "/images/mk-nails-beauty/services.jpg",
-    "/images/mk-nails-beauty/locations.jpg",
+    "/images/mk-nails-beauty/reviews.jpg",
+    "/images/mk-nails-beauty/award.jpg",
+    "/images/mk-nails-beauty/video.jpg",
   ],
   testimonial: null,
   updatedAt: "2026-08-15",
