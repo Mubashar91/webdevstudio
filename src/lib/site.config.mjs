@@ -641,6 +641,8 @@ export const ROUTES = [
     priority: "0.8",
     changefreq: "monthly",
     lastmod: "2026-07-30",
+    // Keep the static BreadcrumbList aligned with the visible/runtime trail.
+    crumbLabel: "About",
     title: "About WebDevStudio | Led by Muhammad Mubashar Shahzad",
     description:
       "WebDevStudio is the practice of Muhammad Mubashar Shahzad — 5+ years building React, TypeScript and MERN stack apps for clients worldwide.",
