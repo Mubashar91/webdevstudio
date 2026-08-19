@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { BarChart3, Code, Database, FileText, Globe, Zap, ArrowRight, Wrench, CheckCircle2, ShieldCheck } from "lucide-react";
+import { BarChart3, Code, Database, FileText, Globe, Zap, ArrowRight, Wrench, CheckCircle2, ShieldCheck, Server } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { MAINTENANCE_PLANS } from "@/lib/site.config.mjs";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
@@ -119,6 +119,26 @@ const services: ServiceCard[] = [
     servicePath: "/services/website-maintenance",
     iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
   },
+  {
+    icon: Server,
+    title: "APIs & Backend Systems",
+    description:
+      "Secure APIs and backend workflows that keep applications, payments and third-party services working together reliably.",
+    stack: ["Node.js", "REST APIs", "Authentication", "MongoDB"],
+    proof: proofOf("restful-api-service"),
+    servicePath: "/services/custom-web-applications",
+    iconBg: "bg-accent/10", iconColor: "text-accent", accentBar: "bg-accent",
+  },
+  {
+    icon: FileText,
+    title: "Content Platforms",
+    description:
+      "Structured content platforms that make publishing, editing and growing a useful website straightforward for the people running it.",
+    stack: ["React", "TypeScript", "Content modelling", "SEO & schema markup"],
+    proof: proofOf("portfolio-blog-platform"),
+    servicePath: "/services/business-marketing-websites",
+    iconBg: "bg-primary/10", iconColor: "text-primary", accentBar: "bg-primary",
+  },
 ];
 
 interface ServicesProps {
@@ -129,12 +149,7 @@ interface ServicesProps {
    * use-intersection-observer.tsx for why the reveal has to be skipped there.
    */
   aboveFold?: boolean;
-  /**
-   * Whether to show the maintenance card. On by default, off for Cyprus —
-   * that service is priced in NZD and its Service node declares areaServed
-   * New Zealand, so it belongs on the NZ path only. See the matching prop on
-   * Pricing for the currency rule this follows.
-   */
+  /** Whether to show the maintenance card. */
   showMaintenance?: boolean;
 }
 

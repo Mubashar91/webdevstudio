@@ -123,9 +123,10 @@ const WebDevelopmentCyprus = () => {
             note={cyGeo.note}
           />
         </LocationHighlights>
-        {/* Maintenance is NZD-priced and NZ-scoped; this page quotes EUR with
-            USD in parentheses and must not carry a third currency. */}
-        <ServicesSection compactHeader showMaintenance={false} />
+        {/* Keep the full service set visible here; the maintenance card carries
+            its own clearly labelled NZD pricing so it cannot be mistaken for
+            the EUR/USD project pricing below. */}
+        <ServicesSection compactHeader />
         <Pricing
           showMaintenance={false}
           marketContext={

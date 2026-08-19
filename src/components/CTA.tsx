@@ -61,9 +61,7 @@ export const CTA = () => {
               </div>
 
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-8 text-white leading-[1.06] tracking-tight">
-                Ready to Build
-                <br />
-                <span className="text-white/85">Something Great?</span>
+                Ready to Build <span className="text-white/85">Something Great?</span>
               </h2>
 
               <p className="text-white/75 text-lg leading-relaxed mb-12 max-w-lg mx-auto lg:mx-0">

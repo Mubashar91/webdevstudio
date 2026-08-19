@@ -54,9 +54,10 @@ const About = () => {
             the nav and the footer, so it accumulated authority and passed none
             of it on. The two links below go where someone who has just decided
             they trust the person actually wants to go next. */}
-        <section className="py-16 border-t border-border/40">
+        <section className="py-16 border-t border-border/40 bg-surface-alt">
           <div className="container mx-auto px-6 max-w-3xl text-center">
-            <p className="text-muted-foreground leading-relaxed">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">See what I can build for you</h2>
+            <p className="text-muted-foreground leading-relaxed mb-7">
               Want to see the work rather than read about it? Start with the{" "}
               <Link
                 to="/projects"
@@ -73,6 +74,12 @@ const About = () => {
               </Link>
               .
             </p>
+            <Link
+              to="/contact"
+              className="inline-flex items-center rounded-2xl bg-primary px-7 py-3 font-bold text-primary-foreground shadow-glow-sm hover:opacity-90 transition-opacity"
+            >
+              Tell me about your project
+            </Link>
           </div>
         </section>
 

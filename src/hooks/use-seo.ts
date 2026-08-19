@@ -68,6 +68,7 @@ export const useSEO = ({
       else document.querySelector(`meta[property="${prop}"]`)?.remove();
     }
     setMeta("og:site_name", SITE_NAME, "property");
+    setMeta("og:locale", "en_US", "property");
     if (canonical) setMeta("og:url", canonical, "property");
 
     setMeta("twitter:card", "summary_large_image", "name");
