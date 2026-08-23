@@ -9,9 +9,9 @@ import { CONTACT_EMAIL } from "@/lib/site.config.mjs";
 import { STATIC_PROJECTS } from "@/data/projects";
 
 const socials = [
-  { href: "https://github.com/mubasharshahzad",      icon: Github,   label: "GitHub" },
-  { href: "https://linkedin.com/in/mubasharshahzad", icon: Linkedin, label: "LinkedIn" },
-  { href: `mailto:${CONTACT_EMAIL}`,                 icon: Mail,     label: "Email" },
+  { href: "https://github.com/mubasharshahzad",           icon: Github,   label: "GitHub" },
+  { href: "https://www.linkedin.com/in/webdev-studio-bbb513430/", icon: Linkedin, label: "LinkedIn" },
+  { href: `mailto:${CONTACT_EMAIL}`,                      icon: Mail,     label: "Email" },
 ];
 
 /**
