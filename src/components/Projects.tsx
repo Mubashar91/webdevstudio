@@ -234,7 +234,7 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
                       )}
                     </div>
 
-                    <div className="flex gap-2 pt-4 border-t border-border/35">
+                    <div className="flex gap-2 pt-5 md:pt-6 border-t border-border/35">
                       {/* Only a link to THIS project's repo. The six static
                           case studies all pointed at the GitHub profile, so
                           the button promised code and delivered a listing. */}

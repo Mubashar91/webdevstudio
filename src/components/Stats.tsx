@@ -120,9 +120,9 @@ export const Stats = () => {
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 {/* Icon */}
-                <div className={`relative z-10 inline-flex p-4 rounded-2xl ${tone.iconBg} ${tone.iconColor}
-                  mb-5 group-hover:scale-110 transition-transform duration-400`}>
-                  <item.icon className="h-7 w-7" />
+                <div className={`relative z-10 inline-flex p-5 rounded-2xl ${tone.iconBg} ${tone.iconColor}
+                  mb-6 group-hover:scale-110 transition-transform duration-400`}>
+                  <item.icon className="h-9 w-9" />
                 </div>
 
                 <div className="relative z-10">
