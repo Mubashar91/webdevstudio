@@ -104,7 +104,7 @@ export const Navigation = () => {
               transition-all duration-300">
               <Code2 className="h-5 w-5 text-white" />
             </div>
-            <span className={`text-[15px] font-bold tracking-tight transition-colors duration-300 ${
+            <span className={`text-base font-bold tracking-tight transition-colors duration-300 ${
               isTransparent ? "text-white" : "text-foreground"
             }`}>
               WebDev<span className="text-primary">Studio</span>

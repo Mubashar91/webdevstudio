@@ -259,7 +259,7 @@ export const Contact = ({ compactHeader = false, aboveFold = false }: ContactPro
                   <Icon className="h-5 w-5" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-xs md:text-[11px] font-bold text-muted-foreground uppercase tracking-[0.12em] mb-0.5">{label}</p>
+                  <p className="text-xs md:text-xs font-bold text-muted-foreground uppercase tracking-[0.12em] mb-0.5">{label}</p>
                   {href
                     ? <a href={href} className="text-sm font-semibold hover:text-primary transition-colors truncate block underline-anim">{value}</a>
                     : <p className="text-sm font-semibold truncate">{value}</p>}

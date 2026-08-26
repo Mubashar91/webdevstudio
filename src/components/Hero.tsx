@@ -133,7 +133,7 @@ export const Hero = () => {
                   studio taking briefs. The capacity line gives the badge a
                   reason to exist beyond decoration. */}
               <div className="inline-flex items-center gap-2.5 pl-3 pr-4 py-2 rounded-full
-                bg-white/[0.07] border border-white/12 text-white text-[13px] font-semibold
+                bg-white/[0.07] border border-white/12 text-white text-sm font-semibold
                 mb-6 md:mb-8 animate-fade-in backdrop-blur-md">
                 <span className="relative flex h-2 w-2 ml-1">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
@@ -351,7 +351,7 @@ export const Hero = () => {
                       because this card always sits on a hardcoded-dark surface regardless
                       of the site's light/dark theme; inherited text-foreground would be
                       near-black in light mode and disappear against this dark card. */}
-                  <div className="px-6 py-6 font-mono text-[12.5px] leading-[1.9] overflow-x-auto text-white/70">
+                  <div className="px-6 py-6 font-mono text-sm leading-[1.9] overflow-x-auto text-white/70">
                     <p><span className="text-violet-400">const</span> <span className="text-sky-300">developer</span> <span className="text-white/50">=</span> <span className="text-white/70">{"{"}</span></p>
                     <p className="pl-4"><span className="text-blue-300">name</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Mubashar Shahzad"</span><span className="text-white/70">,</span></p>
                     <p className="pl-4"><span className="text-blue-300">role</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Frontend Engineer"</span><span className="text-white/70">,</span></p>
@@ -372,7 +372,7 @@ export const Hero = () => {
                       >
                         <Icon className="h-4 w-4 text-primary" />
                         <span className="text-lg font-extrabold text-white leading-none">{value}</span>
-                        <span className="text-xs md:text-[10px] text-white/45 font-bold uppercase tracking-wide">{label}</span>
+                        <span className="text-xs md:text-2xs text-white/45 font-bold uppercase tracking-wide">{label}</span>
                       </div>
                     ))}
                   </div>
@@ -390,7 +390,7 @@ export const Hero = () => {
       <div className="hidden tall:flex absolute bottom-8 left-1/2 -translate-x-1/2
         flex-col items-center gap-2 opacity-40 pointer-events-none">
         <ChevronDown className="h-5 w-5 text-white animate-bounce" />
-        <span className="text-xs md:text-[10px] text-white/65 tracking-[0.25em] uppercase font-bold">Scroll</span>
+        <span className="text-xs md:text-2xs text-white/65 tracking-[0.25em] uppercase font-bold">Scroll</span>
       </div>
     </section>
   );

@@ -211,7 +211,7 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
                   </Link>
 
                   <div className="flex flex-col flex-1 p-6">
-                    <h3 className="text-[15px] font-bold mb-2 group-hover:text-primary transition-colors leading-snug">
+                    <h3 className="text-base font-bold mb-2 group-hover:text-primary transition-colors leading-snug">
                       <Link to={detailPath}>{project.title}</Link>
                     </h3>
                     <p className="text-muted-foreground text-sm mb-4 line-clamp-2 leading-relaxed flex-1">
@@ -222,13 +222,13 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
                       {project.technologies.slice(0, 4).map((tech) => (
                         <span
                           key={tech}
-                          className="px-2.5 py-0.5 rounded-full text-xs md:text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40"
+                          className="px-2.5 py-0.5 rounded-full text-xs md:text-xs font-semibold bg-muted/70 text-muted-foreground border border-border/40"
                         >
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 4 && (
-                        <span className="px-2.5 py-0.5 rounded-full text-xs md:text-[11px] font-semibold bg-muted/70 text-muted-foreground border border-border/40">
+                        <span className="px-2.5 py-0.5 rounded-full text-xs md:text-xs font-semibold bg-muted/70 text-muted-foreground border border-border/40">
                           +{project.technologies.length - 4}
                         </span>
                       )}

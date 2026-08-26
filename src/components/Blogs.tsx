@@ -94,7 +94,7 @@ export const Blogs = ({ compactHeader = false, aboveFold = false }: BlogsProps) 
                   </span>
                 </div>
 
-                <h3 className="text-[15px] font-bold mb-2 group-hover:text-primary transition-colors leading-snug">
+                <h3 className="text-base font-bold mb-2 group-hover:text-primary transition-colors leading-snug">
                   <Link to={`/blogs/${post.slug}`}>{post.title}</Link>
                 </h3>
                 <p className="text-muted-foreground text-sm mb-5 line-clamp-3 leading-relaxed flex-1">

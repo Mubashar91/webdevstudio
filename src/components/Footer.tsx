@@ -101,7 +101,7 @@ export const Footer = () => {
 
           {/* Navigation */}
           <div className={`md:col-span-3 transition-all duration-700 delay-100 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
+            <h2 className="text-xs md:text-xs font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
               Navigation
             </h2>
             {/* Six ~20px links stacked 14px apart gave every one of them a tap
@@ -127,7 +127,7 @@ export const Footer = () => {
 
           {/* Connect */}
           <div className={`md:col-span-4 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-            <h2 className="text-xs md:text-[11px] font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
+            <h2 className="text-xs md:text-xs font-extrabold uppercase tracking-[0.2em] text-muted-foreground/80 mb-6">
               Connect
             </h2>
             <div className="flex flex-col gap-3">
