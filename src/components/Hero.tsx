@@ -283,45 +283,33 @@ export const Hero = () => {
                 </p>
 
                 <div className="flex items-center gap-2.5">
-                  {/* Cities — now a second row below regions, since the list grew. */}
-                  {cities.map((c, i) => (
-                    <span key={c.to}>
-                      <Link
-                        to={c.to}
-                        className="text-white/70 text-xs font-medium hover:text-white transition-colors"
-                      >
-                        {c.label}
-                      </Link>
-                      {i < cities.length - 1 ? " · " : ""}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Social links row */}
-              <div className="flex items-center gap-2.5 animate-fade-in">
-                {socials.map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
+                  {socials.map(({ href, icon: Icon, label }) => (
+                    <a
+                      key={label}
+                      href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
                       className="p-3 md:p-2.5 rounded-xl bg-white/[0.06] border border-white/12 text-white/55
                         hover:text-white hover:border-white/30 hover:bg-white/12
                         transition-all duration-300 backdrop-blur-sm"
                     >
-                      {/* Icon is decorative; the label lives in a visually-
-                          hidden span rather than an aria-label. Same reasoning
-                          as the footer heart: aria-label fixes screen readers
-                          but is invisible to textContent, so crawlers and LLM
-                          scrapers saw an anchor with no text and fell back to
-                          printing the raw href — which is exactly what an
-                          Aug 2026 audit reported seeing on the homepage. */}
                       <Icon aria-hidden="true" className="h-[18px] w-[18px]" />
                       <span className="sr-only">{label}</span>
                     </a>
                   ))}
                 </div>
+              </div>
+
+              {/* City pages */}
+              <div className="flex items-center justify-center lg:justify-start gap-3 text-xs animate-fade-in">
+                {cities.map((c, i) => (
+                  <span key={c.to}>
+                    <Link to={c.to} className="text-white/60 hover:text-white font-medium transition-colors">
+                      {c.label}
+                    </Link>
+                    {i < cities.length - 1 && <span className="text-white/20">·</span>}
+                  </span>
+                ))}
               </div>
             </div>
 
