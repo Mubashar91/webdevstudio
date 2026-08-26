@@ -41,6 +41,12 @@ const regions = [
   { to: "/web-development-cyprus", label: "Cyprus" },
 ];
 
+/** City landing pages — top-intent queries within each region. */
+const cities = [
+  { to: "/web-developer-auckland", label: "Auckland" },
+  { to: "/web-developer-nicosia", label: "Nicosia" },
+];
+
 /**
  * "Booking <next month>" — derived rather than hardcoded so the badge can
  * never go stale and quietly advertise a month that has already passed.
@@ -277,10 +283,27 @@ export const Hero = () => {
                 </p>
 
                 <div className="flex items-center gap-2.5">
-                  {socials.map(({ href, icon: Icon, label }) => (
-                    <a
-                      key={label}
-                      href={href}
+                  {/* Cities — now a second row below regions, since the list grew. */}
+                  {cities.map((c, i) => (
+                    <span key={c.to}>
+                      <Link
+                        to={c.to}
+                        className="text-white/70 text-xs font-medium hover:text-white transition-colors"
+                      >
+                        {c.label}
+                      </Link>
+                      {i < cities.length - 1 ? " · " : ""}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Social links row */}
+              <div className="flex items-center gap-2.5 animate-fade-in">
+                {socials.map(({ href, icon: Icon, label }) => (
+                  <a
+                    key={label}
+                    href={href}
                       target={href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
                       className="p-3 md:p-2.5 rounded-xl bg-white/[0.06] border border-white/12 text-white/55
