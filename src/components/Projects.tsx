@@ -145,7 +145,7 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
         )}
 
         {!loading && (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 [&>article:last-child:nth-child(3n+2)]:lg:col-start-2">
             {filtered.map((project, i) => {
               const tc = TYPE[project.type] ?? TYPE.Other;
               const detailPath = projectPath(project);
@@ -268,7 +268,7 @@ export const Projects = ({ compactHeader = false, aboveFold = false }: ProjectsP
             bottom of the portfolio. The page's own CTA follows immediately
             after, so nothing needs to replace it. */}
         {!loading && !compactHeader && filtered.length > 0 && (
-          <div className={`text-center mt-16 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className={`text-center mt-10 md:mt-12 transition-all duration-700 delay-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <Link to="/projects">
               <Button variant="outline" size="lg" className="px-10 h-12 border-border/55 hover:border-primary/45 hover:bg-primary/5 font-bold group gap-2.5 rounded-2xl shadow-card">
                 Browse All Projects

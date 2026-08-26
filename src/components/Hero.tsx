@@ -259,11 +259,9 @@ export const Hero = () => {
               <div className="h-px w-full max-w-sm mx-auto lg:mx-0 bg-gradient-to-r
                 from-white/15 via-white/8 to-transparent mb-7" />
 
-              {/* Regions + socials share one row. The region links also give
-                  the two location landing pages a link from the homepage,
-                  which they previously only had from the footer. */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start
-                gap-x-6 gap-y-4 animate-fade-in">
+              {/* Regions and socials separated into distinct visual groups */}
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-start
+                gap-6 animate-fade-in">
                 <p className="text-xs text-white/40 font-medium">
                   Working with clients in{" "}
                   {regions.map((r, i) => (
@@ -281,6 +279,8 @@ export const Hero = () => {
                   ))}
                   &amp; worldwide
                 </p>
+
+                <div className="hidden lg:block w-px h-5 bg-white/10" />
 
                 <div className="flex items-center gap-2.5">
                   {socials.map(({ href, icon: Icon, label }) => (

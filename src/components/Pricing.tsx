@@ -115,11 +115,11 @@ export const Pricing = ({
           </tbody>
         </table>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-start">
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {SERVICE_PACKAGES.map((pkg, i) => (
             <div
               key={pkg.id}
-              className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-500
+              className={`relative flex flex-col rounded-2xl border p-7 transition-all duration-500 h-full
                 ${pkg.featured
                   ? "border-primary/40 bg-card shadow-[0_16px_56px_hsl(var(--primary)/0.16)] md:-mt-4 md:pb-9"
                   : "border-border/50 bg-card shadow-card hover:border-primary/25 hover:shadow-card-hover"}
@@ -157,7 +157,7 @@ export const Pricing = ({
                 Typical delivery: {pkg.timeline}
               </p>
 
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-3 mb-8">
                 {pkg.includes.map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-sm">
                     <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
@@ -170,7 +170,7 @@ export const Pricing = ({
                   at the moment they see a price is whether the person quoting
                   it has built the thing, and it has to be answered before the
                   button rather than after it. */}
-              {proofOf(pkg.proofSlug) && (
+              {proofOf(pkg.proofSlug) ? (
                 <Link
                   to={proofOf(pkg.proofSlug)!.href}
                   className="mb-4 flex items-start gap-2 rounded-xl border border-border/50
@@ -185,12 +185,14 @@ export const Pricing = ({
                     </span>
                   </span>
                 </Link>
+              ) : (
+                <div className="mb-4 h-16" />
               )}
 
               <Button
                 asChild
                 variant={pkg.featured ? "default" : "outline"}
-                className={`w-full h-11 font-bold rounded-xl gap-2 group
+                className={`w-full h-11 font-bold rounded-xl gap-2 group mt-auto
                   ${pkg.featured ? "shadow-glow-sm" : ""}`}
               >
                 <Link to="/contact">
