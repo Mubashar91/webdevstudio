@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { Stats } from "@/components/Stats";
+import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
 import { Blogs } from "@/components/Blogs";
 import { TechStack } from "@/components/TechStack";
@@ -30,6 +31,7 @@ const Index = () => {
       <main id="main-content">
         <Hero />
         <Stats />
+        <Services />
         <Projects />
         <Pricing />
         <Blogs />

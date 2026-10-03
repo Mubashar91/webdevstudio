@@ -5,12 +5,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScenePointer } from "@/hooks/use-scene-pointer";
-import { CONTACT_EMAIL } from "@/lib/site.config.mjs";
+import { CONTACT_EMAIL, SOCIAL_PROFILES } from "@/lib/site.config.mjs";
 import { STATIC_PROJECTS } from "@/data/projects";
 
 const socials = [
-  { href: "https://github.com/abet11122",                  icon: Github,   label: "GitHub" },
-  { href: "https://www.linkedin.com/in/webdev-studio-bbb513430/", icon: Linkedin, label: "LinkedIn" },
+  { href: SOCIAL_PROFILES[0], icon: Github, label: "GitHub" },
+  { href: SOCIAL_PROFILES[1], icon: Linkedin, label: "LinkedIn" },
   { href: `mailto:${CONTACT_EMAIL}`,                      icon: Mail,     label: "Email" },
 ];
 
@@ -169,30 +169,26 @@ export const Hero = () => {
               <h1 className="font-extrabold mb-5 md:mb-7 animate-fade-in tracking-tight">
                 <span className="block text-4xl md:text-6xl lg:text-[4.2rem] leading-[1.02] mb-3">
                   <span className="bg-gradient-to-r from-white via-blue-200 to-violet-300 bg-clip-text text-transparent">
-                    React &amp; MERN
+                    Websites &amp; web apps
                   </span>
-                  <span className="text-white"> development</span>
+                  <span className="text-white"> that drive growth</span>
                 </span>
                 {/* Both halves are display:block, so this space changes nothing
-                    visually — but without it the H1's textContent reads
-                    "React & MERN developmentfor growing businesses", and
-                    textContent is what Google, the accessibility tree and every
-                    LLM scraper actually index. */}
+                    visually, but it keeps the heading's indexed textContent
+                    readable for search engines and assistive technology. */}
                 {" "}
                 <span className="block text-2xl md:text-3xl lg:text-4xl text-white/70 font-bold leading-tight">
-                  for growing businesses
+                  designed and built directly with you
                 </span>
               </h1>
 
               {/* Description */}
               <p className="text-base md:text-lg text-white/60 leading-relaxed mb-6 md:mb-8
                 max-w-lg mx-auto lg:mx-0 animate-fade-in">
-                I design and ship fast, accessible web applications in{" "}
-                <span className="text-white font-bold">React</span>,{" "}
-                <span className="text-white font-bold">TypeScript</span> and the{" "}
-                <span className="text-white font-bold">MERN stack</span> — from
-                first wireframe to production deploy. Fixed scope, fixed price,
-                no agency overhead.
+                I design and build fast business websites, customer portals and
+                custom web applications — from first wireframe to production
+                launch. Fixed scope, fixed price, and direct communication with
+                the developer doing the work.
               </p>
 
               {/* Founder byline — keeps the personal trust signal the old H1
@@ -354,7 +350,7 @@ export const Hero = () => {
                   <div className="px-6 py-6 font-mono text-sm leading-[1.9] overflow-x-auto text-white/70">
                     <p><span className="text-violet-400">const</span> <span className="text-sky-300">developer</span> <span className="text-white/50">=</span> <span className="text-white/70">{"{"}</span></p>
                     <p className="pl-4"><span className="text-blue-300">name</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Mubashar Shahzad"</span><span className="text-white/70">,</span></p>
-                    <p className="pl-4"><span className="text-blue-300">role</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Frontend Engineer"</span><span className="text-white/70">,</span></p>
+                    <p className="pl-4"><span className="text-blue-300">role</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Web Development Partner"</span><span className="text-white/70">,</span></p>
                     <p className="pl-4"><span className="text-blue-300">stack</span><span className="text-white/50">:</span> <span className="text-white/50">[</span><span className="text-emerald-300">"React"</span><span className="text-white/50">,</span> <span className="text-emerald-300">"TypeScript"</span><span className="text-white/50">,</span> <span className="text-emerald-300">"Node"</span><span className="text-white/50">],</span></p>
                     <p className="pl-4"><span className="text-blue-300">location</span><span className="text-white/50">:</span> <span className="text-emerald-300">"Remote · Worldwide"</span><span className="text-white/70">,</span></p>
                     <p className="pl-4"><span className="text-blue-300">available</span><span className="text-white/50">:</span> <span className="text-amber-300">true</span><span className="text-white/70">,</span></p>

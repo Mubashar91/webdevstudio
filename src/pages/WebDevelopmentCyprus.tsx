@@ -99,9 +99,9 @@ const WebDevelopmentCyprus = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Web Development for"
-          highlight="Cyprus"
-          description="Remote React.js & MERN stack development for Cyprus businesses — senior-level execution, real-time working overlap, and EUR/USD pricing."
+          title="Websites & Web Apps for"
+          highlight="Cyprus Businesses"
+          description="Fixed-price business websites and custom web applications, with EUR or USD invoicing, real-time working overlap, and a live Cyprus project you can verify."
           breadcrumbs={[{ label: "Cyprus" }]}
         />
         <LocationHighlights

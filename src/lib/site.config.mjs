@@ -562,7 +562,7 @@ export const ROUTES = [
     path: "/",
     priority: "1.0",
     changefreq: "weekly",
-    lastmod: "2026-07-30",
+    lastmod: "2026-10-03",
     title: "Web Developer for Small Business Websites & Web Apps | WebDevStudio",
     description:
       "Fast, conversion-focused websites and web apps. Fixed scope, fixed price — from $900. Remote developer serving NZ, Cyprus and worldwide.",
@@ -669,23 +669,23 @@ export const ROUTES = [
     path: "/web-development-new-zealand",
     priority: "0.85",
     changefreq: "monthly",
-    lastmod: "2026-07-30",
+    lastmod: "2026-10-03",
     // No "|" in this title, so the breadcrumb fallback would use all of it.
     crumbLabel: "New Zealand",
-    title: "Web Developer for New Zealand — Fixed Prices from USD $900",
+    title: "Web Development New Zealand | Fixed-Price Websites",
     // Names the main centres, because Search Console showed geo queries
     // ("web developer nicosia", "react developers hamilton") are what this
     // site actually surfaces for. Price stays $900 to match SERVICE_PACKAGES
     // and every other page — the numbers must never disagree again.
     description:
-      "Websites and web apps for businesses in Auckland, Wellington, Hamilton, Christchurch and across NZ — fixed price from USD $900, live in 2–3 weeks.",
+      "Fixed-price websites and custom web apps for New Zealand businesses. NZD invoicing, scheduled morning calls and written progress updates. From USD $900.",
     faqs: NZ_FAQS,
   },
   {
     path: "/web-development-cyprus",
     priority: "0.85",
     changefreq: "monthly",
-    lastmod: "2026-07-30",
+    lastmod: "2026-10-03",
     // Leads with EUR because a Cyprus buyer compares against EUR quotes, and
     // carries the USD figure alongside it because that is what gets invoiced —
     // and because /blogs/website-cost-cyprus-2026, which this page links to,

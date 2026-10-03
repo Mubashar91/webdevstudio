@@ -102,9 +102,9 @@ const WebDevelopmentNewZealand = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Web Development for"
-          highlight="New Zealand"
-          description="Remote React.js & MERN stack development for New Zealand businesses — senior-level execution, transparent pricing, and a workflow built around your time zone."
+          title="Websites & Web Apps for"
+          highlight="New Zealand Businesses"
+          description="Fixed-price business websites and custom web applications, delivered remotely with NZD invoicing, scheduled morning calls, and written progress updates."
           breadcrumbs={[{ label: "New Zealand" }]}
         />
         <LocationHighlights
