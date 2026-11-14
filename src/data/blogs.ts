@@ -1042,13 +1042,17 @@ const Job = new Schema({
   },
   {
     slug: "website-cost-new-zealand-2026",
-    title: "How Much Does a Website Cost in New Zealand in 2026?",
+    // Retitled 2026-11 to match the query as searched ("how much does a
+    // website cost nz"). 49 chars — withBrand() lands on 64, so it ships
+    // without the brand suffix.
+    title: "How Much Does a Website Cost in NZ? (2026 Prices)",
     excerpt:
       "Real 2026 NZ website prices: $1,500–$8,000 + GST for most small business sites. What each band buys, and how to compare quotes properly.",
     coverImage:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=450&fit=crop",
     category: "Business",
     publishedAt: "2026-08-07",
+    updatedAt: "2026-11-15",
     tags: ["Website Cost", "New Zealand", "Small Business"],
     content: [
       {
@@ -7978,14 +7982,15 @@ PEOPLE
   },
   {
     slug: "website-cost-limassol-nicosia",
-    // 45 chars — withBrand() lands on 60.
-    title: "Website Cost in Cyprus: Does the City Matter?",
+    // 50 chars — withBrand() lands on 65, so it ships without the brand suffix.
+    title: "Website Cost in Cyprus (2026): Real Prices by City",
     excerpt:
-      "Limassol or Nicosia, the city barely moves a website quote. Languages, who writes the copy and who you hire move it far more — here's the ranking.",
+      "What a website costs in Cyprus in 2026: real € price ranges for Limassol, Nicosia and Larnaca, plus hosting, domain and maintenance costs.",
     coverImage:
       "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&h=450&fit=crop",
     category: "Pricing",
     publishedAt: "2026-08-15",
+    updatedAt: "2026-11-15",
     tags: ["Pricing", "Cyprus", "Small Business"],
     content: [
       {

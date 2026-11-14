@@ -520,7 +520,7 @@ const ProjectDetail = () => {
                     to="/web-developer-nicosia"
                     className="text-primary hover:underline underline-offset-4"
                   >
-                    web developer in Nicosia
+                    web design in Nicosia
                   </Link>{" "}
                   ·{" "}
                   <Link

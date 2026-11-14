@@ -28,6 +28,7 @@ import WebDevelopmentNewZealand from "./pages/WebDevelopmentNewZealand";
 import WebDevelopmentCyprus from "./pages/WebDevelopmentCyprus";
 import WebDeveloperAuckland from "./pages/WebDeveloperAuckland";
 import WebDeveloperNicosia from "./pages/WebDeveloperNicosia";
+import WebDesignLimassol from "./pages/WebDesignLimassol";
 import NotFound from "./pages/NotFound";
     
 // ── Admin routes: code-split ──
@@ -88,6 +89,7 @@ export const AppRoutes = () => (
     <Route path="/web-development-cyprus" element={<WebDevelopmentCyprus />} />
     <Route path="/web-developer-auckland" element={<WebDeveloperAuckland />} />
     <Route path="/web-developer-nicosia" element={<WebDeveloperNicosia />} />
+    <Route path="/web-design-limassol" element={<WebDesignLimassol />} />
 
     {/* Admin auth (no layout) */}
     <Route

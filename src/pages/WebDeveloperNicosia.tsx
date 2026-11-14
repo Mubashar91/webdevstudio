@@ -67,9 +67,9 @@ const WebDeveloperNicosia = () => {
       {
         "@type": "Service",
         "@id": `${canonicalPath("/web-developer-nicosia")}#service`,
-        name: "Web Developer for Nicosia Businesses",
+        name: "Web Design for Nicosia Businesses",
         description:
-          "Remote React and MERN web development for businesses in Nicosia, Cyprus — fixed-price, delivered by WebDevStudio.",
+          "Remote web design and development for businesses in Nicosia, Cyprus — fixed-price, delivered by WebDevStudio.",
         url: canonicalPath("/web-developer-nicosia"),
         serviceType: "Web Development",
         provider: { "@id": `${canonicalPath("/")}#organization` },
@@ -96,9 +96,9 @@ const WebDeveloperNicosia = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Web Developer for"
-          highlight="Nicosia"
-          description="Custom websites and web apps for Nicosia businesses — React and TypeScript, fixed price agreed before work starts, and a real working overlap most afternoons."
+          title="Web Design in Nicosia —"
+          highlight="Fixed-Price Websites"
+          description="Web design in Nicosia without the studio overhead — fast, mobile-first websites at a fixed price agreed before work starts, with a real working overlap most afternoons."
           breadcrumbs={[
             { label: "Cyprus", href: "/web-development-cyprus" },
             { label: "Nicosia" },
@@ -115,7 +115,14 @@ const WebDeveloperNicosia = () => {
                 to="/web-development-cyprus"
                 className="text-primary hover:underline font-medium"
               >
-                web development for Cyprus
+                web design and development for Cyprus
+              </Link>
+              . Based on the coast? See{" "}
+              <Link
+                to="/web-design-limassol"
+                className="text-primary hover:underline font-medium"
+              >
+                web design in Limassol
               </Link>
               .
             </>
@@ -277,7 +284,7 @@ const WebDeveloperNicosia = () => {
           }
         />
 
-        <FAQ items={faqs} title="Nicosia web developer — common questions" />
+        <FAQ items={faqs} title="Web design in Nicosia — common questions" />
 
         {/* The honesty section. It is the main reason the other geo pages read
             as credible, and it costs nothing to keep saying. */}

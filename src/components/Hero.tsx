@@ -45,6 +45,7 @@ const regions = [
 const cities = [
   { to: "/web-developer-auckland", label: "Auckland" },
   { to: "/web-developer-nicosia", label: "Nicosia" },
+  { to: "/web-design-limassol", label: "Limassol" },
 ];
 
 /**

@@ -190,16 +190,26 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
   // That module is also what the pages render their visible "Cities I work
   // with" section from, so a city can never be claimed in areaServed without
   // also appearing in the page copy.
+  // `name` must stay identical to the Service node each page component emits
+  // at runtime — hydration replaces this graph wholesale.
   const locations = [
-    { path: "/web-development-new-zealand", geo: nzGeo },
-    { path: "/web-development-cyprus", geo: cyGeo },
+    {
+      path: "/web-development-new-zealand",
+      geo: nzGeo,
+      name: "Web Development Services for New Zealand Businesses",
+    },
+    {
+      path: "/web-development-cyprus",
+      geo: cyGeo,
+      name: "Web Design & Development Services for Cyprus Businesses",
+    },
   ];
-  for (const { path, geo } of locations) {
+  for (const { path, geo, name } of locations) {
     map[path] = [
       {
         "@type": "Service",
         "@id": `${url(path)}#service`,
-        name: `Web Development Services for ${geo.country} Businesses`,
+        name,
         description: `Remote React.js, MERN stack, and full-stack web development for businesses in ${geo.country}, delivered by ${SITE_NAME}.`,
         url: url(path),
         serviceType: "Web Development",
@@ -218,17 +228,38 @@ export function pageSchema(siteUrl: string): Record<string, object[]> {
   // country. Built here so the prerendered HTML crawlers read carries the
   // Service node, and kept identical to the runtime node the page component
   // emits — both read areaServed from cityArea(), so hydration can't drop it.
+  // `name` and `description` are written out per city, and must stay identical
+  // to the strings in each page component's runtime Service node.
   const cities = [
-    { path: "/web-developer-auckland", city: "Auckland", country: "New Zealand" },
-    { path: "/web-developer-nicosia", city: "Nicosia", country: "Cyprus" },
+    {
+      path: "/web-developer-auckland",
+      city: "Auckland",
+      country: "New Zealand",
+      name: "Web Developer & Website Design for Auckland Businesses",
+      description: `Remote web development and website design for businesses in Auckland, New Zealand — fixed-price, delivered by ${SITE_NAME}.`,
+    },
+    {
+      path: "/web-developer-nicosia",
+      city: "Nicosia",
+      country: "Cyprus",
+      name: "Web Design for Nicosia Businesses",
+      description: `Remote web design and development for businesses in Nicosia, Cyprus — fixed-price, delivered by ${SITE_NAME}.`,
+    },
+    {
+      path: "/web-design-limassol",
+      city: "Limassol",
+      country: "Cyprus",
+      name: "Web Design for Limassol Businesses",
+      description: `Remote web design and development for businesses in Limassol, Cyprus — fixed-price, delivered by ${SITE_NAME}.`,
+    },
   ];
-  for (const { path, city, country } of cities) {
+  for (const { path, city, country, name, description } of cities) {
     map[path] = [
       {
         "@type": "Service",
         "@id": `${url(path)}#service`,
-        name: `Web Developer for ${city} Businesses`,
-        description: `Remote React and MERN web development for businesses in ${city}, ${country} — fixed-price, delivered by ${SITE_NAME}.`,
+        name,
+        description,
         url: url(path),
         serviceType: "Web Development",
         provider: orgRef,

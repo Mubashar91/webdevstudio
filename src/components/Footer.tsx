@@ -95,6 +95,18 @@ export const Footer = () => {
               <Link to="/web-development-cyprus" className="text-primary hover:underline font-medium">
                 Cyprus
               </Link>
+              , including{" "}
+              <Link to="/web-developer-auckland" className="text-primary hover:underline font-medium">
+                Auckland
+              </Link>
+              ,{" "}
+              <Link to="/web-developer-nicosia" className="text-primary hover:underline font-medium">
+                Nicosia
+              </Link>{" "}
+              and{" "}
+              <Link to="/web-design-limassol" className="text-primary hover:underline font-medium">
+                Limassol
+              </Link>
               .
             </p>
           </div>

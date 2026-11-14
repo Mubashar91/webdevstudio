@@ -68,7 +68,7 @@ const WebDevelopmentCyprus = () => {
       {
         "@type": "Service",
         "@id": `${canonicalPath("/web-development-cyprus")}#service`,
-        name: "Web Development Services for Cyprus Businesses",
+        name: "Web Design & Development Services for Cyprus Businesses",
         description:
           "Remote React.js, MERN stack, and full-stack web development for businesses in Cyprus, delivered by WebDevStudio.",
         url: canonicalPath("/web-development-cyprus"),
@@ -99,9 +99,9 @@ const WebDevelopmentCyprus = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Websites & Web Apps for"
+          title="Web Design & Development for"
           highlight="Cyprus Businesses"
-          description="Fixed-price business websites and custom web applications, with EUR or USD invoicing, real-time working overlap, and a live Cyprus project you can verify."
+          description="Fixed-price web design and custom web applications for Cyprus businesses, with EUR or USD invoicing, real-time working overlap, and a live Cyprus project you can verify."
           breadcrumbs={[{ label: "Cyprus" }]}
         />
         <LocationHighlights
@@ -115,11 +115,14 @@ const WebDevelopmentCyprus = () => {
             heading={cyGeo.heading}
             intro={cyGeo.intro}
             cities={cyGeo.cities}
-            // Nicosia has its own page and a Nicosia client to point at, so
-            // it links rather than sitting as plain text. Limassol and Larnaca
-            // stay plain until each has genuine per-city content — near
-            // identical city pages are a doorway-page risk.
-            cityLinks={{ Nicosia: "/web-developer-nicosia" }}
+            // Nicosia and Limassol have their own pages, so they link rather
+            // than sitting as plain text. Larnaca and the rest stay plain
+            // until each has genuine per-city content — near identical city
+            // pages are a doorway-page risk.
+            cityLinks={{
+              Nicosia: "/web-developer-nicosia",
+              Limassol: "/web-design-limassol",
+            }}
             note={cyGeo.note}
           />
         </LocationHighlights>
@@ -133,7 +136,7 @@ const WebDevelopmentCyprus = () => {
             <>
               <h3 className="text-lg font-bold mb-2">How this compares in the Cyprus market</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                Cyprus studios typically quote{" "}
+                Cyprus web design studios typically quote{" "}
                 <strong className="text-foreground">€1,500–€3,000</strong> for a business
                 site, with eCommerce from €3,500. A marketing site here starts at
                 roughly €{CYPRUS_EUR_FROM} (invoiced as USD $900) — quoted in EUR if you
@@ -179,7 +182,7 @@ const WebDevelopmentCyprus = () => {
               Built for a Cyprus business
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              MK Nails &amp; Beauty is a nails and beauty salon with branches in Larnaca and Nicosia. The site is live and public, so this is a Cyprus build you can open and check rather than take on trust.
+              MK Nails &amp; Beauty is a nails and beauty salon with branches in Larnaca and Nicosia. The site is live and public, so this is Cyprus web design you can open and check rather than take on trust.
             </p>
             <div className="flex flex-wrap gap-x-6 gap-y-3">
               <Link
@@ -192,7 +195,13 @@ const WebDevelopmentCyprus = () => {
                 to="/web-developer-nicosia"
                 className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
               >
-                Web developer in Nicosia →
+                Web design in Nicosia →
+              </Link>
+              <Link
+                to="/web-design-limassol"
+                className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+              >
+                Web design in Limassol →
               </Link>
             </div>
             <p className="text-sm text-muted-foreground mt-6">

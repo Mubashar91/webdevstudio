@@ -61,9 +61,9 @@ const WebDeveloperAuckland = () => {
       {
         "@type": "Service",
         "@id": `${canonicalPath("/web-developer-auckland")}#service`,
-        name: "Web Developer for Auckland Businesses",
+        name: "Web Developer & Website Design for Auckland Businesses",
         description:
-          "Remote React and MERN web development for businesses in Auckland, New Zealand — fixed-price, delivered by WebDevStudio.",
+          "Remote web development and website design for businesses in Auckland, New Zealand — fixed-price, delivered by WebDevStudio.",
         url: canonicalPath("/web-developer-auckland"),
         serviceType: "Web Development",
         provider: { "@id": `${canonicalPath("/")}#organization` },
@@ -87,9 +87,9 @@ const WebDeveloperAuckland = () => {
       <Navigation />
       <main id="main-content" className="pt-20">
         <PageHeader
-          title="Web Developer for"
+          title="Web Developer & Website Design in"
           highlight="Auckland"
-          description="Custom websites and web apps for Auckland businesses — built fast, priced up front, and delivered remotely without agency overhead."
+          description="Website design and custom web apps for Auckland small businesses — built fast, priced up front, and delivered remotely without agency overhead."
           breadcrumbs={[{ label: "Auckland" }]}
           cta={{
             label: "Get a free quote",

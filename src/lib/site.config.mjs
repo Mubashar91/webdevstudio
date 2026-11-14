@@ -476,6 +476,52 @@ export const NICOSIA_FAQS = [
   },
 ];
 
+/**
+ * FAQs for the Limassol city landing page (/web-design-limassol).
+ *
+ * Same honest-remote framing as the other city pages, with one extra piece of
+ * honesty: there is no Limassol client yet, so the first answer says the
+ * Cyprus build on show is in Larnaca and Nicosia. The questions are different
+ * from NICOSIA_FAQS on purpose — two city pages sharing one FAQ block is the
+ * doorway-page pattern the ROUTES comments warn about.
+ */
+export const LIMASSOL_FAQS = [
+  {
+    question: "Have you built a website for a Limassol business?",
+    answer:
+      "Not yet, and I'd rather say so than imply it. My live Cyprus build is MK Nails & Beauty, a salon with branches in Larnaca and Nicosia — the site is public at mknailsnbeauty.com, so you can open it on your phone and judge the work directly. The process for a Limassol business is identical, because everything runs remotely.",
+  },
+  {
+    question: "How much does web design cost in Limassol?",
+    answer: `Cyprus studios typically quote €1,500–€3,000 for a business website, with eCommerce from €3,500. Mine starts at roughly €${CYPRUS_EUR_FROM}, invoiced in EUR or as USD $900, and fixed in writing before work starts. Limassol itself doesn't carry a premium — what moves a quote is how many languages you need, who writes the copy, and whether you hire a studio or one developer.`,
+  },
+  {
+    question: "How long does a website take?",
+    answer:
+      "A business website of up to six pages is usually live in 2–3 weeks from the day you send the copy and photos. You get a milestone schedule with the quote, and you can watch the build on a preview link as it happens rather than waiting for a reveal at the end.",
+  },
+  {
+    question: "Should a Limassol website be in English, Greek or Russian?",
+    answer:
+      "It depends on who actually buys from you. Limassol has a large international and expat community, so English alone is often right for professional services and anything selling to foreign residents. Greek earns its cost when your customers are Cypriot consumers, and Russian when a real share of your enquiries arrive in it. Each language is a second version of every page with its own URL, so decide before the build rather than after.",
+  },
+  {
+    question: "Will the site work properly on phones?",
+    answer:
+      "Yes — it is designed for a phone first and widened for desktop afterwards, not the other way round. Most local searches happen on a phone, so the page has to load fast on mobile data and put your phone number, WhatsApp or booking link where a thumb can reach it.",
+  },
+  {
+    question: "Can we meet in person in Limassol?",
+    answer:
+      "No. I work remotely, so meetings are video calls. Cyprus is only 2–3 hours behind me, which gives a comfortable live overlap most afternoons. If sitting across a table matters to you, a Limassol studio is the better fit, and I'd tell you that on the first call.",
+  },
+  {
+    question: "Who owns the website and domain?",
+    answer:
+      "You do. The domain, hosting account and code are registered in your name from the first day, and that is written into the quote. If you later move to another developer or a local studio, nothing has to be rebuilt.",
+  },
+];
+
 /** General pre-sales FAQs shown on the services page. */
 /**
  * FAQs for /services/website-maintenance.
@@ -685,21 +731,22 @@ export const ROUTES = [
     path: "/web-development-cyprus",
     priority: "0.85",
     changefreq: "monthly",
-    lastmod: "2026-10-03",
-    // Leads with EUR because a Cyprus buyer compares against EUR quotes, and
-    // carries the USD figure alongside it because that is what gets invoiced —
-    // and because /blogs/website-cost-cyprus-2026, which this page links to,
-    // talks entirely in euros. A visitor moving between the two must not meet
-    // two different-looking prices. See CYPRUS_EUR_FROM above.
+    lastmod: "2026-11-15",
+    // Leads with "web design": keyword research (2026-11) showed Cyprus buyers
+    // search "web design cyprus", while "web developer cyprus" returns job
+    // boards. Priced in EUR because a Cyprus buyer compares against EUR quotes
+    // and /blogs/website-cost-cyprus-2026, which this page links to, talks
+    // entirely in euros. The USD invoice figure is stated in the page body
+    // rather than the meta. See CYPRUS_EUR_FROM above.
     crumbLabel: "Cyprus",
-    title: `Web Developer in Cyprus — Fixed Prices from €${CYPRUS_EUR_FROM}`,
-    description: `Websites and web apps for businesses in Limassol, Nicosia, Larnaca and across Cyprus — fixed price from €${CYPRUS_EUR_FROM} (USD $900), live in 2–3 weeks.`,
+    title: `Web Design & Development Cyprus — Fixed Prices from €${CYPRUS_EUR_FROM}`,
+    description: `Web design & development for businesses in Limassol, Nicosia and Larnaca. Fixed price from €${CYPRUS_EUR_FROM}, live in 2–3 weeks. Book a free 30-min call.`,
     faqs: CYPRUS_FAQS,
   },
   {
     // City landing page, one level more specific than /web-development-new-
-    // zealand. Targets "web developer auckland" (an open query) rather than
-    // "web design auckland" (agency-owned). It does NOT claim Auckland
+    // zealand. Targets "web developer auckland" first, and since 2026-11 also
+    // "website design auckland" in the title and H1. It does NOT claim Auckland
     // presence — see AUCKLAND_FAQS and the page's honest-remote framing. Only
     // add sibling city pages (Wellington, Christchurch) when each has genuine
     // per-city content; near-identical city pages are a doorway-page risk and
@@ -707,28 +754,41 @@ export const ROUTES = [
     path: "/web-developer-auckland",
     priority: "0.8",
     changefreq: "monthly",
-    lastmod: "2026-08-13",
+    lastmod: "2026-11-15",
     crumbLabel: "Auckland",
-    title: "Web Developer for Auckland Businesses | WebDevStudio",
+    title: "Web Developer & Website Design Auckland — Fixed Prices",
     description:
-      "Freelance web developer building fast custom websites and web apps for Auckland businesses. Fixed-price, remote, React and MERN. Get a free quote.",
+      "Web developer and website design for Auckland small businesses. Fixed-price quotes, live in 2–3 weeks. Book a free 30-min call.",
     faqs: AUCKLAND_FAQS,
   },
   {
     // Cyprus city page, nested under /web-development-cyprus. Unlike Auckland,
     // this one has genuine per-city substance: MK Nails & Beauty is a Nicosia
-    // client with a live, public site, and "web developer nicosia" is the
-    // site's top non-brand query. Proof and demand both exist, which is the
-    // bar a city page has to clear before it is worth publishing.
+    // client with a live, public site. Retargeted 2026-11 from "web developer
+    // nicosia" (page 1 is job boards, ~0 searches) to "web design nicosia".
+    // The URL is unchanged on purpose — only the title, H1 and copy moved.
     path: "/web-developer-nicosia",
     priority: "0.8",
     changefreq: "monthly",
-    lastmod: "2026-08-18",
+    lastmod: "2026-11-15",
     crumbLabel: "Nicosia",
-    title: "Web Developer in Nicosia — Fixed Prices, Remote | WebDevStudio",
-    description:
-      "Websites and web apps for Nicosia businesses — React and TypeScript, fixed price from €830, live in 2–3 weeks. See a Nicosia salon site you can open right now.",
+    title: "Web Design Nicosia — Fixed-Price Websites | WebDevStudio",
+    description: `Fast, mobile-first websites for Nicosia businesses at a fixed price from €${CYPRUS_EUR_FROM}. Remote, English-speaking, live in 2–3 weeks. Free 30-min call.`,
     faqs: NICOSIA_FAQS,
+  },
+  {
+    // Second Cyprus city page, targeting "web design limassol". There is no
+    // Limassol client to point at, so the page says so: its proof is the MK
+    // Nails & Beauty build (Larnaca and Nicosia), framed as Cyprus proof, and
+    // its own substance is the Limassol-specific language and market copy.
+    path: "/web-design-limassol",
+    priority: "0.8",
+    changefreq: "monthly",
+    lastmod: "2026-11-15",
+    crumbLabel: "Limassol",
+    title: "Web Design Limassol — Fixed-Price Websites | WebDevStudio",
+    description: `Websites for Limassol businesses at a fixed price from €${CYPRUS_EUR_FROM}. Mobile-first, fast, live in 2–3 weeks. Book a free 30-min call.`,
+    faqs: LIMASSOL_FAQS,
   },
 ];
 
