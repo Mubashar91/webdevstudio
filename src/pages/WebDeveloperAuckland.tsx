@@ -266,6 +266,53 @@ const WebDeveloperAuckland = () => {
           </div>
         </section>
 
+        {/* Backs up "Website Design" in the title and H1 — before this, the
+            body only ever talked about development. */}
+        <section className="py-16">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+              Website design for Auckland small businesses
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Most Auckland small businesses don&apos;t need a web application.
+              They need a website that looks credible, loads quickly on a
+              phone, and turns a search into a call or an enquiry. That is a
+              design job as much as a build job, and I do both, so the person
+              who lays out the page is the one who makes it fast.
+            </p>
+            <ul className="space-y-2 text-muted-foreground text-sm mb-4">
+              <li className="flex gap-3">
+                <span className="text-primary font-bold flex-shrink-0">•</span>
+                <span><strong>Designed for the phone first</strong>, then widened for desktop, because that is where a local search happens</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold flex-shrink-0">•</span>
+                <span><strong>One page per service</strong>, so each thing you offer can be found on Google on its own terms</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold flex-shrink-0">•</span>
+                <span><strong>A clear next step on every page</strong> — call, email or enquiry form — without scrolling to find it</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-primary font-bold flex-shrink-0">•</span>
+                <span><strong>Up to six pages, live in 2–3 weeks</strong>, at a fixed price agreed before work starts</span>
+              </li>
+            </ul>
+            <p className="text-muted-foreground leading-relaxed">
+              What website design here doesn&apos;t include is a brand identity
+              or a photo shoot. You bring the logo, the words and the photos,
+              and I turn them into a site. The details are on the{" "}
+              <Link
+                to="/services/business-marketing-websites"
+                className="text-primary font-semibold hover:underline underline-offset-4"
+              >
+                business and marketing websites
+              </Link>{" "}
+              page.
+            </p>
+          </div>
+        </section>
+
         <ServicesSection compactHeader />
 
         <Pricing

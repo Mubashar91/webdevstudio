@@ -8005,6 +8005,25 @@ PEOPLE
         type: "p",
         text: "Want a number for your actual project? Tell me who your customers are and which languages they read, and I'll give you a realistic scope and range — free, before you commit. [Get in touch](/contact).",
       },
+      { type: "h2", text: "Website prices in Limassol, Nicosia and Larnaca" },
+      {
+        type: "p",
+        text: "Published Cyprus price guides don't break their figures out by city, and that is itself the finding: the same band applies in all three. What differs from city to city is which languages a typical business ends up needing, and that is what moves the total.",
+      },
+      {
+        type: "table",
+        headers: ["City", "Business site, one language", "With a second language (about +20%)", "What usually moves the quote"],
+        rows: [
+          ["Limassol", "€800–€3,500", "€960–€4,200", "English first for an international customer base; Russian or Greek as the add-on"],
+          ["Nicosia", "€800–€3,500", "€960–€4,200", "English or Greek first, depending on whether you sell to companies or Cypriot households"],
+          ["Larnaca", "€800–€3,500", "€960–€4,200", "English for visitors and residents, Greek for local trade; often both"],
+        ],
+        caption: "One-language band from published Cyprus price guides; the second-language column applies the roughly 20% uplift those guides quote. Starter sites are published lower, at €500–€1,000.",
+      },
+      {
+        type: "p",
+        text: "So a Larnaca salon and a Limassol law firm asking for the same six pages in the same languages should expect the same range. If two quotes for one brief differ by more than the table suggests, the cause is in the next section, not on the map.",
+      },
       { type: "h2", text: "What actually drives a Cyprus quote, ranked" },
       { type: "h3", text: "1. Languages" },
       {
@@ -8094,6 +8113,11 @@ PEOPLE
       {
         type: "p",
         text: "The same as elsewhere in Cyprus: most business sites land in the €800–€3,500 band, with starter sites published at €500–€1,000 and mid-range custom builds running €4,500–€12,000 depending on who you hire. Adding a second language typically adds around 20%. Ask for the twelve-month total including hosting and maintenance, not just the build price.",
+      },
+      { type: "h3", text: "How much does a website cost in Larnaca?" },
+      {
+        type: "p",
+        text: "The same as in Limassol or Nicosia: most business sites land in the €800–€3,500 band, and roughly €960–€4,200 once a second language is added. Larnaca businesses serving both visitors and local customers often need English and Greek, so budget for the bilingual figure and for hosting and maintenance on top.",
       },
       { type: "h3", text: "Why do two Cyprus website quotes differ so much?" },
       {
