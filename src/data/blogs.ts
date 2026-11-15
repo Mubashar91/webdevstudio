@@ -1241,6 +1241,12 @@ const Job = new Schema({
   },
   {
     slug: "website-cost-cyprus-2026",
+    updatedAt: "2026-11-15",
+    serviceCta: {
+      text: `Ready to price your own project? See the Cyprus website package from approximately €${CYPRUS_EUR_FROM} and a live salon project.`,
+      label: "See Cyprus web design packages",
+      href: "/web-development-cyprus",
+    },
     title: "How Much Does a Website Cost in Cyprus in 2026?",
     excerpt:
       "Real 2026 Cyprus web design prices: €800–€3,500 for most business sites. What each band buys in Limassol and Nicosia, plus the multilingual cost nobody quotes.",
@@ -1403,7 +1409,7 @@ const Job = new Schema({
       },
       {
         type: "p",
-        text: "Book a free 30-minute call and you'll get a fixed written quote — scope and price agreed before any work begins.",
+        text: "Ready to turn these figures into a project scope? [See my Cyprus web design package and a live client project](/web-development-cyprus), then [request a fixed written quote](/contact). Scope and price are agreed before any work begins.",
       },
     ],
   },
@@ -7835,6 +7841,12 @@ PEOPLE
   },
   {
     slug: "web-developer-cyprus-what-to-look-for",
+    updatedAt: "2026-11-15",
+    serviceCta: {
+      text: "Ready to hire? Compare the starting package, project example and remote working arrangements for Cyprus businesses.",
+      label: "Explore Cyprus web design",
+      href: "/web-development-cyprus",
+    },
     // 41 chars — withBrand() lands on 56.
     title: "Web Developer in Cyprus: What to Look For",
     excerpt:
@@ -7976,12 +7988,17 @@ PEOPLE
       },
       {
         type: "p",
-        text: "Send it over and I'll tell you what I'd scope and what I'd charge — free, and if the honest answer is a Cyprus-based developer, that's what you'll get. [Get in touch](/contact), or [see what I build](/services).",
+        text: "Ready to hire? [See my web design and development service for Cyprus businesses](/web-development-cyprus), including the starting package and a live salon project. [Send your brief](/contact) for a scope and quote — and if a Cyprus-based developer is the better fit, I'll say so.",
       },
     ],
   },
   {
     slug: "website-cost-limassol-nicosia",
+    serviceCta: {
+      text: "See the starting website package and a live project for a salon in Larnaca and Nicosia.",
+      label: "Compare the Cyprus website package",
+      href: "/web-development-cyprus",
+    },
     // 50 chars — withBrand() lands on 65, so it ships without the brand suffix.
     title: "Website Cost in Cyprus (2026): Real Prices by City",
     excerpt:

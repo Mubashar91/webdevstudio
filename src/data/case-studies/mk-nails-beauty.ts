@@ -20,17 +20,19 @@ export const mkNailsBeauty: CaseStudy = {
   _id: "mk-nails-beauty",
   slug: "mk-nails-beauty",
   title: "MK Nails & Beauty",
-  subtitle: "A salon website for two branches, in Larnaca and Nicosia",
+  subtitle: "Salon website design for two branches in Larnaca and Nicosia, Cyprus",
   description:
-    "Website for a nails and beauty salon with branches in Larnaca and Nicosia, Cyprus — built to be found locally and easy to contact from a phone.",
+    "Explore the MK Nails & Beauty website case study: salon web design for Larnaca and Nicosia, Cyprus, with treatment pages and branch-specific booking links.",
   fullDescription:
     "MK Nails & Beauty runs two branches in Cyprus, in Larnaca and Nicosia, offering nails, laser hair removal, body treatments, facials, brows, lashes and permanent makeup. The site is live and public, so the work can be opened and checked rather than taken on trust.",
   image: "/images/mk-nails-beauty/hero.png",
   // A real capture, not a stock photo — so it gets described rather than
   // marked decorative. See the imageAlt note in ./types.ts.
   imageAlt:
-    "The MK Nails & Beauty homepage, showing the salon's branding and its main booking call to action",
-  seoTitle: "How I Built a Mobile-First Salon Website in Cyprus — Case Study",
+    "MK Nails & Beauty homepage with separate Book Now buttons for Larnaca and Nicosia",
+  // GSC queries for Oct 16–Nov 12, 2026 were salon-brand searches. Lead with
+  // the client name and identify this as a case study, not the salon itself.
+  seoTitle: "MK Nails & Beauty | Cyprus Salon Website Case Study",
   // Confirmed from the live build output: /assets/index-[hash].js and a
   // matching CSS asset is Vite's naming, and the contact form posts via
   // EmailJS. [CONFIRM: React, TypeScript and Tailwind are not provable from
@@ -48,16 +50,15 @@ export const mkNailsBeauty: CaseStudy = {
   // line available and the one every other case study here is missing.
   roleDetail: null,
   problem:
-    "A salon is found or it isn't. Someone looking for laser hair removal is on a phone, at night, comparing two or three places in about a minute — they want to see the work, find the service they came for, and get in touch, in that order. Two things make that harder here than it sounds: two branches whose customers search differently, and a service list wide enough that anyone arriving for one of them has no interest in the other six on the way past.",
-  // [CONFIRM] What you actually decided and built. The paragraph below is the
-  // shape of the answer, not the answer — replace it with what you did.
-  approach: null,
+    "MK Nails & Beauty offers nails, laser hair removal, body treatments, facials, brows, lashes and permanent makeup across two Cyprus branches. The website needed to make that range easy to explore while giving visitors a clear choice between Larnaca and Nicosia when they wanted to book. A single generic booking link would leave that branch choice unresolved.",
+  // Describe shipped UI visible in the real captures; do not invent client
+  // research, delivery history or a booking-system integration.
+  approach:
+    "The homepage puts separate Book Now buttons for Larnaca and Nicosia alongside the salon introduction. That gives visitors a branch choice at the point they decide to book. Treatment information is grouped by service, so someone interested in nails or laser hair removal can find the relevant offering.\n\nThe site also brings customer reviews, credentials and treatment video into the browsing journey. The screenshots below show these parts of the delivered website. The build uses React and Vite, with EmailJS for contact enquiries; the branch booking links are separate from that contact form.",
   // [CONFIRM] ONE decision, 150–250 words, including what it cost you.
   hardPart: null,
-  // [CONFIRM] Wants a digit. The cheapest honest number available is a
-  // PageSpeed Insights run on the live site — five minutes, real, and more
-  // than any other case study on this site currently has.
-  outcome: null,
+  outcome:
+    "A public website serving 2 branches, with treatment information, separate booking links for Larnaca and Nicosia, customer reviews, credentials, treatment video and an enquiry form. This is the delivered scope; booking increases, lead totals and before-and-after conversion data have not been measured for this case study.",
   retrospective: null,
   screenshots: [
     {

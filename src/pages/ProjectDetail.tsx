@@ -323,7 +323,7 @@ const ProjectDetail = () => {
                       <Button variant="outline" asChild className="hover:shadow-lg hover:shadow-accent/50 transition-all duration-300 dark:hover:shadow-accent/40 dark:border-gray-500 dark:text-white shadow-md">
                         <a href={demoUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="mr-2 h-4 w-4" />
-                          Live demo
+                          {project.slug === "mk-nails-beauty" ? "Visit the salon website" : "Live demo"}
                         </a>
                       </Button>
                     )}
@@ -560,6 +560,17 @@ const ProjectDetail = () => {
 
         <section className="py-12 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10">
           <div className="container mx-auto px-6 max-w-4xl text-center">
+            {project.slug === "mk-nails-beauty" && (
+              <>
+                <h2 className="text-2xl md:text-3xl font-bold mb-4">Need a website for your Cyprus business?</h2>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  See what a fixed-price website includes and how the project would work.
+                </p>
+                <Link to="/web-development-cyprus" className="inline-block text-primary font-semibold hover:underline underline-offset-4 mb-6">
+                  Explore web design and development for Cyprus →
+                </Link>
+              </>
+            )}
             <p className="text-lg mb-6">
               <strong>Built by {FOUNDER_NAME}</strong> — React &amp; MERN
               developer, {SITE_NAME}.

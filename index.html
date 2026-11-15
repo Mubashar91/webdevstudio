@@ -61,7 +61,7 @@
          preconnect, not dns-prefetch. Every hero and card cover comes from
          images.unsplash.com, and dns-prefetch only resolves DNS — the TCP
          handshake and TLS negotiation still happened after the browser
-         discovered the <img>. A performance audit measured 5.4s to load a 24KB
+         discovered the image element. A performance audit measured 5.4s to load a 24KB
          blog hero for that reason, driving a 6.4s LCP. preconnect completes the
          handshake during head parsing so the image request starts warm.
          crossorigin is required: images are fetched anonymously, and a
