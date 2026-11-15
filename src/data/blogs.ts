@@ -7885,6 +7885,21 @@ PEOPLE
       { type: "h2", text: "What to check in the quote" },
       {
         type: "p",
+        text: "Send each developer the same brief, then compare these items side by side. The examples below show the level of detail to ask for; they are not a package or a price offer.",
+      },
+      {
+        type: "table",
+        headers: ["Check", "Example of a clear quote", "Ask before accepting"],
+        rows: [
+          ["Pages and features", "Home, services, about and contact pages; enquiry form sends to a named inbox", "Are bookings, payments or a content editor included?"],
+          ["Languages and content", "English at launch; client supplies copy and images", "Who supplies Greek or Russian translations, and what does each extra language cost?"],
+          ["Revisions and changes", "Two review rounds; additional work needs a separate written quote", "What counts as a revision, and how are extra requests priced?"],
+          ["Delivery and handover", "Milestones, feedback dates and a handover list covering domain, hosting and source access", "Which accounts will be in your business name, and when do you receive access?"],
+          ["First-year total", "Build, domain, hosting, maintenance and third-party subscriptions itemised separately", "Which costs recur, which currency is used, and what is excluded?"],
+        ],
+      },
+      {
+        type: "p",
         text: "The same checks apply here as anywhere, so rather than repeat them: [how to compare web developer quotes](/blogs/how-to-compare-web-developer-quotes) has the full ten, and [what should be in a web development quote](/blogs/what-should-be-in-web-development-quote) is the line-by-line checklist. The short version is that a quote must name pages and features, state what's **excluded**, and give you a rate for changes.",
       },
       { type: "h2", text: "Ownership: the clause people skip" },

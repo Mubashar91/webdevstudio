@@ -608,8 +608,8 @@ export const ROUTES = [
     path: "/",
     priority: "1.0",
     changefreq: "weekly",
-    lastmod: "2026-10-03",
-    title: "Web Developer for Small Business Websites & Web Apps | WebDevStudio",
+    lastmod: "2026-11-15",
+    title: "Web Developer for Small Businesses | WebDevStudio",
     description:
       "Fast, conversion-focused websites and web apps. Fixed scope, fixed price — from $900. Remote developer serving NZ, Cyprus and worldwide.",
   },
@@ -617,10 +617,10 @@ export const ROUTES = [
     path: "/services",
     priority: "0.9",
     changefreq: "monthly",
-    lastmod: "2026-07-30",
+    lastmod: "2026-11-15",
     title: "Web Development Services & Pricing | WebDevStudio",
     description:
-      "Transparent pricing for React, MERN and Node.js development. Sites from USD $900, web apps from USD $2,500, retainers from USD $1,200/mo. Fixed scope, fixed price.",
+      "Compare fixed-price websites from USD $900, web apps from USD $2,500 and retainers from USD $1,200/mo. See scope and timelines, then request a quote.",
     faqs: SERVICES_FAQS,
   },
   {

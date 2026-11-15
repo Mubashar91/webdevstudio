@@ -54,6 +54,11 @@ export const useSEO = ({
     // with no page to resolve a relative path against. See absoluteImage().
     const ogImageAbs = absoluteImage(ogImage, SITE_URL);
     setMeta("og:image", ogImageAbs, "property");
+    const imageAlt = ogImageAbs === DEFAULT_OG_IMAGE
+      ? `${SITE_NAME} — Web developer for small business websites & web apps`
+      : title;
+    setMeta("og:image:alt", imageAlt, "property");
+    setMeta("twitter:image:alt", imageAlt, "name");
     // The declared size has to follow the image it describes. Client-side
     // navigation swaps og:image between routes whose covers are different
     // heights, so leaving the prerendered numbers in place would announce the
@@ -70,6 +75,7 @@ export const useSEO = ({
     setMeta("og:site_name", SITE_NAME, "property");
     setMeta("og:locale", "en_GB", "property");
     if (canonical) setMeta("og:url", canonical, "property");
+    else document.querySelector('meta[property="og:url"]')?.remove();
 
     setMeta("twitter:card", "summary_large_image", "name");
     setMeta("twitter:title", title, "name");
@@ -84,6 +90,8 @@ export const useSEO = ({
         document.head.appendChild(link);
       }
       link.setAttribute("href", canonical);
+    } else {
+      document.querySelector('link[rel="canonical"]')?.remove();
     }
 
     // Remove any JSON-LD baked in at build time by the prerenderer before

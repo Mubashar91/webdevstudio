@@ -1,0 +1,591 @@
+{
+  "origin": "https://www.webdevstudio.me",
+  "pages": 73,
+  "checkedLinks": 2731,
+  "results": [
+    {
+      "path": "/",
+      "title": "Web Developer for Small Businesses | WebDevStudio",
+      "titleLength": 49,
+      "descriptionLength": 136,
+      "images": 10,
+      "status": "passed"
+    },
+    {
+      "path": "/services",
+      "title": "Web Development Services & Pricing | WebDevStudio",
+      "titleLength": 49,
+      "descriptionLength": 149,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/services/website-maintenance",
+      "title": "Website Maintenance NZ — Fixed Monthly Plans | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 147,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/services/business-marketing-websites",
+      "title": "Business & Marketing Website Development | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 159,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/services/custom-web-applications",
+      "title": "Custom Web Application Development | WebDevStudio",
+      "titleLength": 49,
+      "descriptionLength": 156,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/services/dashboards-internal-tools",
+      "title": "Custom Dashboards & Internal Tools Development | WebDevStudio",
+      "titleLength": 61,
+      "descriptionLength": 160,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/services/performance-core-web-vitals",
+      "title": "Website Speed & Core Web Vitals Optimisation | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 153,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/projects",
+      "title": "Web Development Portfolio & Case Studies | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 141,
+      "images": 7,
+      "status": "passed"
+    },
+    {
+      "path": "/about",
+      "title": "About WebDevStudio | Led by Muhammad Mubashar Shahzad",
+      "titleLength": 53,
+      "descriptionLength": 138,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs",
+      "title": "Website Costs, Hiring & Web Development Guides | WebDevStudio",
+      "titleLength": 61,
+      "descriptionLength": 140,
+      "images": 50,
+      "status": "passed"
+    },
+    {
+      "path": "/contact",
+      "title": "Start a Project | Free Consultation — WebDevStudio",
+      "titleLength": 50,
+      "descriptionLength": 141,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/web-development-new-zealand",
+      "title": "Web Development New Zealand | Fixed-Price Websites",
+      "titleLength": 50,
+      "descriptionLength": 152,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/web-development-cyprus",
+      "title": "Web Design & Development Cyprus — Fixed Prices from €830",
+      "titleLength": 56,
+      "descriptionLength": 140,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/web-developer-auckland",
+      "title": "Web Developer & Website Design Auckland — Fixed Prices",
+      "titleLength": 54,
+      "descriptionLength": 127,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/web-developer-nicosia",
+      "title": "Web Design Nicosia — Fixed-Price Websites | WebDevStudio",
+      "titleLength": 56,
+      "descriptionLength": 141,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/web-design-limassol",
+      "title": "Web Design Limassol — Fixed-Price Websites | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 124,
+      "images": 0,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/react-performance-tips-2025",
+      "title": "10 React Performance Tips That Actually Move the Needle",
+      "titleLength": 55,
+      "descriptionLength": 157,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/mern-stack-architecture-guide",
+      "title": "MERN Stack Architecture: Patterns That Scale | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 158,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/typescript-patterns-for-react",
+      "title": "TypeScript Patterns I Use in Every React Project",
+      "titleLength": 48,
+      "descriptionLength": 151,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/custom-web-app-cost-2026",
+      "title": "How Much Does a Custom Web App Cost in 2026? | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 153,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/do-i-need-an-app-or-a-website",
+      "title": "Do I Need an App, or Just a Better Website? | WebDevStudio",
+      "titleLength": 58,
+      "descriptionLength": 159,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-cost-new-zealand-2026",
+      "title": "How Much Does a Website Cost in NZ? (2026 Prices)",
+      "titleLength": 49,
+      "descriptionLength": 136,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-cost-cyprus-2026",
+      "title": "How Much Does a Website Cost in Cyprus in 2026? | WebDevStudio",
+      "titleLength": 62,
+      "descriptionLength": 159,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/remote-developer-vs-local-agency",
+      "title": "Remote Developer or Local Agency? An Honest Comparison",
+      "titleLength": 54,
+      "descriptionLength": 150,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/why-is-my-website-slow",
+      "title": "Why Is My Website So Slow? A Non-Technical Guide",
+      "titleLength": 48,
+      "descriptionLength": 160,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-to-hire-a-web-developer",
+      "title": "How to Hire a Web Developer When You Don't Know How to Code",
+      "titleLength": 59,
+      "descriptionLength": 142,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/signs-your-website-is-losing-customers",
+      "title": "10 Signs Your Website Is Losing You Customers | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 148,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/why-website-not-showing-on-google",
+      "title": "Why Your Website Doesn't Show Up on Google | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 153,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/does-my-website-need-a-developer",
+      "title": "Does Your Website Need a Developer or Just a Few Fixes?",
+      "titleLength": 55,
+      "descriptionLength": 153,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-not-getting-leads",
+      "title": "Why Is My Website Not Getting Leads? 9 Fixes | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 157,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-redesign-cost-new-zealand",
+      "title": "Website Redesign Cost in New Zealand (2026) | WebDevStudio",
+      "titleLength": 58,
+      "descriptionLength": 156,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/wordpress-vs-wix-vs-custom-website",
+      "title": "WordPress vs Wix vs Custom: How to Choose | WebDevStudio",
+      "titleLength": 56,
+      "descriptionLength": 158,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-to-choose-a-website-developer",
+      "title": "How to Choose a Website Developer: 12 Questions | WebDevStudio",
+      "titleLength": 62,
+      "descriptionLength": 144,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/annual-website-maintenance-costs-nz",
+      "title": "Annual Website Maintenance Costs in NZ (2026) | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 160,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-vs-social-media",
+      "title": "Website vs Social Media: Why You Need Both | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 137,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/business-website-cost-2026",
+      "title": "How Much Does a Business Website Cost in 2026? | WebDevStudio",
+      "titleLength": 61,
+      "descriptionLength": 150,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/signs-your-business-needs-a-new-website",
+      "title": "10 Signs Your Business Needs a New Website | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 149,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-to-choose-a-web-development-company",
+      "title": "How to Choose a Web Development Company | WebDevStudio",
+      "titleLength": 54,
+      "descriptionLength": 156,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/custom-web-application-cost",
+      "title": "How Much Does a Custom Web Application Cost? | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 159,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/take-over-existing-website-developer",
+      "title": "Taking Over a Website From Another Developer | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 147,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-to-compare-web-developer-quotes",
+      "title": "How to Compare Web Developer Quotes: 10 Checks | WebDevStudio",
+      "titleLength": 61,
+      "descriptionLength": 149,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/cost-to-add-features-existing-website",
+      "title": "What It Costs to Add Features to a Website | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 147,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/booking-website-cost",
+      "title": "How Much Does a Booking Website Cost? | WebDevStudio",
+      "titleLength": 52,
+      "descriptionLength": 142,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/customer-login-website-cost",
+      "title": "Cost to Add a Customer Login to a Website | WebDevStudio",
+      "titleLength": 56,
+      "descriptionLength": 147,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/fix-or-rebuild-website",
+      "title": "Should I Fix My Website or Build a New One? | WebDevStudio",
+      "titleLength": 58,
+      "descriptionLength": 144,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/why-web-development-quotes-differ",
+      "title": "Why Are Web Development Quotes So Different? | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 146,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/customer-portal-development-cost",
+      "title": "What Does a Customer Portal Cost to Build? | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 146,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/cost-to-hire-web-developer-2026",
+      "title": "What It Costs to Hire a Web Developer in 2026 | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 139,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/what-should-be-in-web-development-quote",
+      "title": "What Should Be in a Web Development Quote? | WebDevStudio",
+      "titleLength": 57,
+      "descriptionLength": 146,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/hourly-vs-fixed-price-web-developer",
+      "title": "Hourly or Fixed Price? Paying a Web Developer | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 149,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/hire-remote-web-developer",
+      "title": "How to Hire a Remote Web Developer | WebDevStudio",
+      "titleLength": 49,
+      "descriptionLength": 153,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/web-developer-contract-checklist",
+      "title": "What Should a Web Developer Contract Include? | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 149,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/is-my-web-developer-overcharging-me",
+      "title": "How Do I Know If a Developer Is Overcharging? | WebDevStudio",
+      "titleLength": 60,
+      "descriptionLength": 153,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/freelancer-vs-agency-web-development",
+      "title": "Freelancer or Agency: Which Should You Hire? | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 150,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-long-does-a-website-take-to-build",
+      "title": "How Long Does It Take to Build a Website? | WebDevStudio",
+      "titleLength": 56,
+      "descriptionLength": 136,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/what-to-give-a-web-developer-before-starting",
+      "title": "What to Give a Web Developer Before Starting | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 140,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/web-developer-cyprus-what-to-look-for",
+      "title": "Web Developer in Cyprus: What to Look For | WebDevStudio",
+      "titleLength": 56,
+      "descriptionLength": 144,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-cost-limassol-nicosia",
+      "title": "Website Cost in Cyprus (2026): Real Prices by City",
+      "titleLength": 50,
+      "descriptionLength": 138,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/cyprus-multilingual-website",
+      "title": "Do Cyprus Businesses Need Two Languages? | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 141,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/hiring-remote-developer-cyprus",
+      "title": "Hiring a Remote Developer From Cyprus | WebDevStudio",
+      "titleLength": 52,
+      "descriptionLength": 151,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/who-updates-my-website",
+      "title": "Who Updates My Website After It's Built? | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 131,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/do-i-need-a-maintenance-plan",
+      "title": "Do I Need a Website Maintenance Plan? | WebDevStudio",
+      "titleLength": 52,
+      "descriptionLength": 137,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/how-often-website-backup",
+      "title": "How Often Should a Website Be Backed Up? | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 148,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/what-is-web-hosting",
+      "title": "What Is Web Hosting and How Do I Choose It? | WebDevStudio",
+      "titleLength": 58,
+      "descriptionLength": 148,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/keep-website-secure-without-developer",
+      "title": "Website Security Without a Developer | WebDevStudio",
+      "titleLength": 51,
+      "descriptionLength": 146,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/blogs/website-down-what-to-do",
+      "title": "What to Do When Your Website Goes Down | WebDevStudio",
+      "titleLength": 53,
+      "descriptionLength": 137,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/mk-nails-beauty",
+      "title": "MK Nails & Beauty | Cyprus Salon Website Case Study",
+      "titleLength": 51,
+      "descriptionLength": 155,
+      "images": 5,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/expense-sharing-app",
+      "title": "Expense-Sharing Mobile App | WebDevStudio",
+      "titleLength": 41,
+      "descriptionLength": 148,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/hospital-management-system",
+      "title": "Hospital Management System — MERN case study | WebDevStudio",
+      "titleLength": 59,
+      "descriptionLength": 150,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/software-house-website",
+      "title": "Fast Marketing Site for a Software House | WebDevStudio",
+      "titleLength": 55,
+      "descriptionLength": 152,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/ecommerce-dashboard",
+      "title": "E-Commerce Dashboard Case Study — React, Node & Stripe",
+      "titleLength": 54,
+      "descriptionLength": 138,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/restful-api-service",
+      "title": "RESTful API Service | WebDevStudio",
+      "titleLength": 34,
+      "descriptionLength": 150,
+      "images": 1,
+      "status": "passed"
+    },
+    {
+      "path": "/projects/portfolio-blog-platform",
+      "title": "Portfolio & Blog Platform | WebDevStudio",
+      "titleLength": 40,
+      "descriptionLength": 154,
+      "images": 1,
+      "status": "passed"
+    }
+  ]
+}
